@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>1C26EF21-49C5-4C20-8BBB-CB2802D1A661</string>
+	<string>411F0EEB-BAFF-4BE4-8652-93DFB45C96B2</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Mclass</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F7560F185766383F744F4372DCE67D94D2AE667E</key>
-		<string>https://github.com/mdobro/Mclass</string>
+		<string>https://github.com/mdobro/Mclass.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Mclass.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/mdobro/Mclass</string>
+	<string>https://github.com/mdobro/Mclass.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
