@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D20341B0FB0CD00B0D613 /* CamView.swift */; };
+		089D20371B0FB14100B0D613 /* CamView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089D20361B0FB14100B0D613 /* CamView.storyboard */; };
 		D9E618721B0F8914007AFECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E618711B0F8914007AFECB /* AppDelegate.swift */; };
 		D9E618741B0F8914007AFECB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E618731B0F8914007AFECB /* ViewController.swift */; };
 		D9E618771B0F8914007AFECB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E618751B0F8914007AFECB /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		089D20341B0FB0CD00B0D613 /* CamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CamView.swift; sourceTree = "<group>"; };
+		089D20361B0FB14100B0D613 /* CamView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CamView.storyboard; sourceTree = "<group>"; };
 		D9E6186C1B0F8914007AFECB /* Mclass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mclass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E618701B0F8914007AFECB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9E618711B0F8914007AFECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 				D9E618711B0F8914007AFECB /* AppDelegate.swift */,
 				D9E618731B0F8914007AFECB /* ViewController.swift */,
 				D9E618751B0F8914007AFECB /* Main.storyboard */,
+				089D20341B0FB0CD00B0D613 /* CamView.swift */,
+				089D20361B0FB14100B0D613 /* CamView.storyboard */,
 				D9E618781B0F8914007AFECB /* Images.xcassets */,
 				D9E6187A1B0F8914007AFECB /* LaunchScreen.xib */,
 				D9E6186F1B0F8914007AFECB /* Supporting Files */,
@@ -194,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9E618771B0F8914007AFECB /* Main.storyboard in Resources */,
+				089D20371B0FB14100B0D613 /* CamView.storyboard in Resources */,
 				D9E6187C1B0F8914007AFECB /* LaunchScreen.xib in Resources */,
 				D9E618791B0F8914007AFECB /* Images.xcassets in Resources */,
 			);
@@ -214,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9E618741B0F8914007AFECB /* ViewController.swift in Sources */,
+				089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */,
 				D9E618721B0F8914007AFECB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +422,7 @@
 				D9E6188D1B0F8914007AFECB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D9E6188E1B0F8914007AFECB /* Build configuration list for PBXNativeTarget "MclassTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +431,7 @@
 				D9E618901B0F8914007AFECB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
