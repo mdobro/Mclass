@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>7C4F526B-EB0E-4364-B0E2-05FA770B0387</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Mclass</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F7560F185766383F744F4372DCE67D94D2AE667E</key>
 		<string>http://www.github.com/mdobro/Mclass</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Mclass.xcodeproj/project.xcworkspace</string>
+	<string>Mclass.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>F7560F185766383F744F4372DCE67D94D2AE667E</key>
