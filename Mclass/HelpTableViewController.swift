@@ -21,14 +21,24 @@ class HelpTableViewController: UITableViewController {
     
     
     @IBAction func doneButtonTap(sender: UIButton) {
-        let alert = UIAlertController(title: "Help is on the Way!", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        if self.selectedProb == nil{
+            let alert = UIAlertController(title: "Please select an issue.", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil
+            ))
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }
+        else {
+            let alert = UIAlertController(title: "Help is on the Way!", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         
-        alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler:{ (UIAlertAction)in
-            self.navigationController!.popToRootViewControllerAnimated(true)
-        }))
+            alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler:{ (UIAlertAction)in
+                self.navigationController!.popToRootViewControllerAnimated(true)
+            }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
-
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func configurationTextField(textField: UITextField!)
