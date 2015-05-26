@@ -9,8 +9,18 @@
 import UIKit
 
 class HelpViewController: UIViewController {
+    
+    var NowOrLater: Bool?
 
     @IBOutlet weak var cancelButton: UIButton!
+    
+    @IBAction func Now(sender: UIButton) {
+        NowOrLater = true;
+    }
+    
+    @IBAction func Later(sender: UIButton) {
+        NowOrLater = false;
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -14,7 +14,6 @@ class HelpTableViewController: UITableViewController {
     var selectedProb:String? = nil
     var selectedProbIndex:Int? = nil
     
-    
     var tField: UITextField!
     
     @IBAction func cancelButtonTap(sender: UIButton) {
@@ -32,7 +31,7 @@ class HelpTableViewController: UITableViewController {
             
         }
         else {
-            let alert = UIAlertController(title: "Help is on the Way!", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Help is on the way!", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         
             alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler:{ (UIAlertAction)in
                 self.navigationController!.popToRootViewControllerAnimated(true)
@@ -44,45 +43,28 @@ class HelpTableViewController: UITableViewController {
     
     func configurationTextField(textField: UITextField!)
     {
-        println("generating the TextField")
         textField.placeholder = "Enter an item"
         tField = textField
     }
     
-    
-    func handleCancel(alertView: UIAlertAction!)
-    {
-        println("Cancelled !!")
-    }
     
     func Custom () {
         var tField: UITextField!
         
         func configurationTextField(textField: UITextField!)
         {
-            println("generating the TextField")
             textField.placeholder = "Briefly describe your problem."
             tField = textField
-
-        }
-        
-        
-        func handleCancel(alertView: UIAlertAction!)
-        {
-            println("Cancelled !!")
         }
         
         var alert = UIAlertController(title: "Enter Input", message: "", preferredStyle: UIAlertControllerStyle.Alert)
         
         alert.addTextFieldWithConfigurationHandler(configurationTextField)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler:handleCancel))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler:{ (UIAlertAction)in
-            println("Help is on the way !!")
             self.selectedProb = tField.text
         }))
-        self.presentViewController(alert, animated: true, completion: {
-            println("completion block")
-        })
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
