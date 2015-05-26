@@ -24,10 +24,10 @@ class CamView: UIViewController {
     @IBAction func BackButton(sender: AnyObject) {
        
             
-            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! UIViewController
+            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MainViewController")  as! UIViewController
             // .instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
             
-            self.presentViewController(viewController, animated: false, completion: nil)
+            self.presentViewController(viewController, animated: true, completion: nil)
             
         
         

@@ -27,13 +27,20 @@ class MainViewController: UIViewController {
     }
 
     @IBAction func problemButtonTap(sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Help", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier("HelpViewController") as! UIViewController
         
+        self.presentViewController(controller, animated: true, completion: nil)
     }
     
     @IBAction func recordButtonTap(sender: UIButton) {
         if self.recordButton.titleForState(UIControlState.Normal) == "Recording Off" {
             self.recordButton.backgroundColor = UIColor.greenColor()
             self.recordButton.setTitle("Recording On", forState: UIControlState.Normal)
+            
+            let storyboard = UIStoryboard(name: "CamView", bundle: nil)
+            let controller = storyboard.instantiateViewControllerWithIdentifier("CamViewSB") as! UIViewController
+            self.presentViewController(controller, animated: true, completion: nil)
         }
         else {
             self.recordButton.backgroundColor = UIColor.redColor()
