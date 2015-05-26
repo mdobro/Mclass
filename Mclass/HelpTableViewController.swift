@@ -17,8 +17,9 @@ class HelpTableViewController: UITableViewController {
     
     var tField: UITextField!
     
-    @IBOutlet weak var doneButton: UIButton!
-    
+    @IBAction func cancelButtonTap(sender: UIButton) {
+        self.navigationController!.popToRootViewControllerAnimated(true)
+    }
     
     @IBAction func doneButtonTap(sender: UIButton) {
         if self.selectedProb == nil{

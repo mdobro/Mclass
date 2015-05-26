@@ -11,7 +11,6 @@ import UIKit
 class MainViewController: UIViewController {
 
     @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var problemButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,16 +19,10 @@ class MainViewController: UIViewController {
         self.recordButton.backgroundColor = UIColor.redColor()
         self.recordButton.layer.cornerRadius = 15
         self.recordButton.setTitle("Recording Off", forState: UIControlState.Normal)
-        
-        self.problemButton.backgroundColor = UIColor.redColor()
-        self.problemButton.layer.cornerRadius = 15
-        self.problemButton.setTitle("Report a Problem", forState: UIControlState.Normal)
     }
-
-    @IBAction func problemButtonTap(sender: UIButton) {
+    @IBAction func ProblemBarButtonTap(sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Help", bundle: nil)
         let controller = storyboard.instantiateViewControllerWithIdentifier("HelpViewController") as! UIViewController
-        
         self.navigationController!.pushViewController(controller, animated: true)
     }
     

@@ -67,24 +67,9 @@
                                     <segue destination="OVf-Dl-LjK" kind="embed" id="sEm-YH-mDc"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQz-v4-kno">
-                                <rect key="frame" x="505" y="72" width="336" height="97"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="336" id="1OQ-Kt-ap2"/>
-                                    <constraint firstAttribute="height" constant="97" id="ick-e1-iPS"/>
-                                </constraints>
-                                <state key="normal" title="Problem">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="problemButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zoy-Vt-54B"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LQz-v4-kno" firstAttribute="top" secondItem="ARH-0h-h6N" secondAttribute="top" id="52p-fs-6y0"/>
                             <constraint firstItem="ARH-0h-h6N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-8" id="AZu-bI-K3P"/>
                             <constraint firstItem="gSS-yk-XBO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="517" id="BtU-IG-UFg"/>
                             <constraint firstItem="VN2-Gg-4ce" firstAttribute="top" secondItem="gSS-yk-XBO" secondAttribute="bottom" constant="41" id="FJ0-jf-Cuv"/>
@@ -95,13 +80,18 @@
                             <constraint firstItem="VN2-Gg-4ce" firstAttribute="leading" secondItem="aTj-Kv-5LU" secondAttribute="trailing" constant="12" id="R81-8t-BF8"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aTj-Kv-5LU" secondAttribute="bottom" constant="25" id="f8C-fP-0UX"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ARH-0h-h6N" secondAttribute="bottom" id="g6Y-Mx-MVB"/>
-                            <constraint firstItem="LQz-v4-kno" firstAttribute="centerX" secondItem="gSS-yk-XBO" secondAttribute="centerX" id="ku4-jI-Rwg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Pxa-al-v3E"/>
+                    <navigationItem key="navigationItem" id="Pxa-al-v3E">
+                        <barButtonItem key="rightBarButtonItem" title="Report a Problem" id="y14-bf-Chc" userLabel="Report a Problem">
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="ProblemBarButtonTap:" destination="BYZ-38-t0r" id="xsP-ew-3r0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="problemButton" destination="LQz-v4-kno" id="0pZ-ks-NDX"/>
                         <outlet property="recordButton" destination="gSS-yk-XBO" id="qkd-2o-emT"/>
                     </connections>
                 </viewController>
