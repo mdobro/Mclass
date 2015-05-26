@@ -10,22 +10,23 @@ import UIKit
 
 class HelpViewController: UIViewController {
     
-    var NowOrLater: Bool?
-
-    @IBOutlet weak var cancelButton: UIButton!
-    
-    @IBAction func Now(sender: UIButton) {
-        NowOrLater = true;
-    }
-    
-    @IBAction func Later(sender: UIButton) {
-        NowOrLater = false;
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "help"){
+            let button = sender as! UIButton
+            let issuevc = segue.destinationViewController as! HelpTableViewController
+            if (button.titleLabel?.text == "Get Help Now"){
+                issuevc.helpNow = true
+            }
+            else{
+                issuevc.helpNow = false
+            }
+        }
     }
         
     @IBAction func cancelButtonTap(sender: UIButton) {

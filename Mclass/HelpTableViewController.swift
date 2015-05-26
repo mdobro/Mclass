@@ -10,6 +10,8 @@ import UIKit
 
 class HelpTableViewController: UITableViewController {
     
+    var helpNow:Bool!
+    
     var problems: [String] = ["The laptop is dumb", "I broke something", "I don't even know", "it doesnt work", "Other"]
     var selectedProb:String? = nil
     var selectedProbIndex:Int? = nil
@@ -31,7 +33,14 @@ class HelpTableViewController: UITableViewController {
             
         }
         else {
-            let alert = UIAlertController(title: "Help is on the way!", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            let help:String!
+            if helpNow! {
+                help = "Help is on the way!"
+            }
+            else {
+                help = "Help will arrive after class."
+            }
+            let alert = UIAlertController(title: help, message: "", preferredStyle: UIAlertControllerStyle.Alert)
         
             alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler:{ (UIAlertAction)in
                 self.navigationController!.popToRootViewControllerAnimated(true)
@@ -69,7 +78,7 @@ class HelpTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
