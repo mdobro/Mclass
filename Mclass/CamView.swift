@@ -21,16 +21,8 @@ class CamView: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func BackButton(sender: AnyObject) {
-       
-            
-            let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("MainViewController")  as! UIViewController
-            // .instantiatViewControllerWithIdentifier() returns AnyObject! this must be downcast to utilize it
-            
-            self.presentViewController(viewController, animated: true, completion: nil)
-            
-        
-        
+    @IBAction func BackButton(sender: UIButton) {
+        self.navigationController!.popToRootViewControllerAnimated(true)
     }
 
     /*

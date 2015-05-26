@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Help", bundle: nil)
         let controller = storyboard.instantiateViewControllerWithIdentifier("HelpViewController") as! UIViewController
         
-        self.presentViewController(controller, animated: true, completion: nil)
+        self.navigationController!.pushViewController(controller, animated: true)
     }
     
     @IBAction func recordButtonTap(sender: UIButton) {
@@ -40,7 +40,7 @@ class MainViewController: UIViewController {
             
             let storyboard = UIStoryboard(name: "CamView", bundle: nil)
             let controller = storyboard.instantiateViewControllerWithIdentifier("CamViewSB") as! UIViewController
-            self.presentViewController(controller, animated: true, completion: nil)
+            self.navigationController!.pushViewController(controller, animated: true)
         }
         else {
             self.recordButton.backgroundColor = UIColor.redColor()

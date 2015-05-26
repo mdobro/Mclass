@@ -24,17 +24,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="E4c-aO-Upd" kind="modal" id="4GC-T9-EMQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjS-Bp-j9L">
-                                <rect key="frame" x="475" y="730" width="75" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelButtonTap:" destination="tVg-uf-Geq" eventType="touchUpInside" id="iQ8-Kb-ptU"/>
+                                    <segue destination="rOW-UA-THB" kind="push" id="4T2-Ph-HpT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFE-03-xp5">
@@ -45,38 +35,17 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="E4c-aO-Upd" kind="modal" id="jNH-T7-5s4"/>
+                                    <segue destination="rOW-UA-THB" kind="push" id="KVH-WW-M59"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <connections>
-                        <outlet property="cancelButton" destination="cjS-Bp-j9L" id="dbh-4Z-IOP"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSG-O4-80g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2866" y="-730"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="xhJ-cG-NMK">
-            <objects>
-                <navigationController id="E4c-aO-Upd" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="r2g-29-oel"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UJn-cy-Raa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="rOW-UA-THB" kind="relationship" relationship="rootViewController" id="al2-qA-cSN"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="08J-DE-izo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1699" y="-1784"/>
+            <point key="canvasLocation" x="-2391" y="-876"/>
         </scene>
         <!--Select an Issue-->
         <scene sceneID="KA7-qA-ltU">
@@ -117,51 +86,19 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="aoV-bs-eGD" kind="push" id="Ygj-4V-YnF"/>
+                                    <action selector="doneButtonTap:" destination="rOW-UA-THB" eventType="touchUpInside" id="QcU-78-1eH"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="doneButton" destination="k7m-WK-lAS" id="mYF-jv-7BX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYU-f2-UmW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1205" y="-876"/>
-        </scene>
-        <!--Help View Controller-->
-        <scene sceneID="rZK-B4-J46">
-            <objects>
-                <viewController id="aoV-bs-eGD" customClass="HelpViewController" customModule="Mclass" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XmS-mQ-1sz"/>
-                        <viewControllerLayoutGuide type="bottom" id="TTz-kE-dw5"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5lt-Cq-R95">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Help is on the way." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUw-pe-Ug3">
-                                <rect key="frame" x="238" y="132" width="549" height="440"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SxQ-J1-NcU">
-                                <rect key="frame" x="417" y="449" width="191" height="79"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <state key="normal" title="Home">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="b5j-8C-llP"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VaC-JX-HLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1" y="-886"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -170,6 +107,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jNH-T7-5s4"/>
+        <segue reference="KVH-WW-M59"/>
     </inferredMetricsTieBreakers>
 </document>
