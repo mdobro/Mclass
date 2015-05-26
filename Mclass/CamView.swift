@@ -22,7 +22,8 @@ class CamView: UIViewController {
     }
     
     @IBAction func BackButton(sender: UIButton) {
-        self.navigationController!.popToRootViewControllerAnimated(true)
+        self.view.removeFromSuperview()
+        self.removeFromParentViewController()
     }
 
     /*

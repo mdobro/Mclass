@@ -19,6 +19,7 @@
 		D9E6189D1B0FCEB4007AFECB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E6189C1B0FCEB4007AFECB /* MainViewController.swift */; };
 		D9E618A41B0FD2E7007AFECB /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E618A31B0FD2E7007AFECB /* Help.storyboard */; };
 		D9EC82C21B14D22700E64B68 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82C11B14D22700E64B68 /* HelpViewController.swift */; };
+		D9EC82C61B1523B200E64B68 /* SubMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		D9E6189C1B0FCEB4007AFECB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D9E618A31B0FD2E7007AFECB /* Help.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
 		D9EC82C11B14D22700E64B68 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubMainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				D9E618991B0FCCC6007AFECB /* Main.storyboard */,
 				D9E6189C1B0FCEB4007AFECB /* MainViewController.swift */,
 				D9E618911B0FAFFF007AFECB /* MainTableViewController.swift */,
+				D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9E618921B0FAFFF007AFECB /* MainTableViewController.swift in Sources */,
+				D9EC82C61B1523B200E64B68 /* SubMainViewController.swift in Sources */,
 				D9EC82C21B14D22700E64B68 /* HelpViewController.swift in Sources */,
 				9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */,
 				089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */,
