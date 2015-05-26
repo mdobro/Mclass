@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="tVg-uf-Geq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Help View Controller-->
         <scene sceneID="YU8-dy-68q">
             <objects>
-                <viewController id="tVg-uf-Geq" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HelpViewController" id="tVg-uf-Geq" customClass="HelpViewController" customModule="Mclass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hGE-K9-VWA"/>
                         <viewControllerLayoutGuide type="bottom" id="F0r-Wq-PGJ"/>
@@ -33,6 +33,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButtonTap:" destination="tVg-uf-Geq" eventType="touchUpInside" id="iQ8-Kb-ptU"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFE-03-xp5">
                                 <rect key="frame" x="335" y="169" width="355" height="90"/>
@@ -49,6 +52,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="cjS-Bp-j9L" id="dbh-4Z-IOP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSG-O4-80g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -75,7 +81,7 @@
         <!--Select an Issue-->
         <scene sceneID="KA7-qA-ltU">
             <objects>
-                <tableViewController id="rOW-UA-THB" customClass="HelpViewController" customModule="Mclass" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="rOW-UA-THB" customClass="HelpTableViewController" customModule="Mclass" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="II4-Zi-PWi">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -122,10 +128,10 @@
             </objects>
             <point key="canvasLocation" x="-1205" y="-876"/>
         </scene>
-        <!--View Controller-->
+        <!--Help View Controller-->
         <scene sceneID="rZK-B4-J46">
             <objects>
-                <viewController id="aoV-bs-eGD" sceneMemberID="viewController">
+                <viewController id="aoV-bs-eGD" customClass="HelpViewController" customModule="Mclass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XmS-mQ-1sz"/>
                         <viewControllerLayoutGuide type="bottom" id="TTz-kE-dw5"/>
