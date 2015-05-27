@@ -16,24 +16,16 @@ class SubMainViewController: UIViewController {
         super.viewDidLoad()
         self.recordButton.frame = CGRectMake(100, 100, 100, 50)
         self.recordButton.backgroundColor = UIColor.redColor()
+        self.recordButton.layer.borderColor = CGColor[UIColor.blueColor()]
         self.recordButton.layer.cornerRadius = 15
         self.recordButton.setTitle("Recording Off", forState: UIControlState.Normal)
     }
     
     @IBAction func recordButtonTap(sender: UIButton) {
-        if self.recordButton.titleForState(UIControlState.Normal) == "Recording Off" {
-            self.recordButton.backgroundColor = UIColor.greenColor()
-            self.recordButton.setTitle("Recording On", forState: UIControlState.Normal)
-            
             let storyboard = UIStoryboard(name: "CamView", bundle: nil)
             let controller = storyboard.instantiateViewControllerWithIdentifier("CamViewSB") as! CamView
             self.addChildViewController(controller)
             self.view.addSubview(controller.view)
-            
-        }
-        else {
-            self.recordButton.backgroundColor = UIColor.redColor()
-            self.recordButton.setTitle("Recording Off", forState: UIControlState.Normal)        }
     }
     
     override func didReceiveMemoryWarning() {

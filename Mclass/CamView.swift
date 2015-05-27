@@ -12,8 +12,27 @@ class CamView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+         self.PauseButton.backgroundColor = UIColor.redColor()
+        self.PauseButton.layer.cornerRadius = 15
+        self.PauseButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         // Do any additional setup after loading the view.
+    }
+    @IBOutlet weak var PauseButton: UIButton!
+   
+    @IBAction func PauseButtonTouch(sender: UIButton) {
+            if self.PauseButton.titleForState(UIControlState.Normal) == "Pause Recording" {
+                self.PauseButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+                self.PauseButton.backgroundColor = UIColor.greenColor()
+                 self.PauseButton.layer.cornerRadius = 15
+                self.PauseButton.setTitle("Resume Recording", forState: UIControlState.Normal)
+            }
+            else {
+                self.PauseButton.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
+                self.PauseButton.backgroundColor = UIColor.redColor()
+                 self.PauseButton.layer.cornerRadius = 15
+                self.PauseButton.setTitle("Pause Recording", forState: UIControlState.Normal)
+                self.PauseButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        }
     }
 
     override func didReceiveMemoryWarning() {

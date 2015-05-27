@@ -65,12 +65,15 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ie-5q-4cC">
-                                <rect key="frame" x="316" y="81" width="187" height="49"/>
+                                <rect key="frame" x="288" y="81" width="256" height="49"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Pause Recording">
                                     <color key="titleColor" red="1" green="0.066729168747816758" blue="0.020298644677702149" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="PauseButtonTouch:" destination="8bo-zg-97m" eventType="touchDown" id="Pc0-gp-saZ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time Elapsed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0X-4b-d83">
                                 <rect key="frame" x="56" y="524" width="124" height="21"/>
@@ -105,6 +108,9 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="690" height="696"/>
+                    <connections>
+                        <outlet property="PauseButton" destination="3ie-5q-4cC" id="3b3-tT-36y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="phA-sm-7Q8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
