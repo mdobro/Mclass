@@ -50,6 +50,10 @@ class HelpTableViewController: UITableViewController {
         }
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     func configurationTextField(textField: UITextField!)
     {
         textField.placeholder = "Enter an item"
@@ -79,6 +83,15 @@ class HelpTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let cancel = self.navigationItem.leftBarButtonItem
+        var negSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        negSpace.width = -90
+        self.navigationItem.leftBarButtonItems?.insert(negSpace, atIndex: 0)
+        self.navigationItem.rightBarButtonItems?.insert(negSpace, atIndex: 0)
+        
+        let titleDict = [NSForegroundColorAttributeName: UIColor.yellowColor()]
+        self.navigationController?.navigationBar.titleTextAttributes = titleDict
+        self.navigationController?.navigationBar.tintColor = UIColor.yellowColor()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

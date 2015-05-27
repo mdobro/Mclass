@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
         let logo = UIImage(named: "CAEN Logo")
         //self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: logo))
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(named: "Bar"), forBarMetrics:.Default)
+        self.navigationController!.navigationBar.tintColor = UIColor.yellowColor()
         
     }
     

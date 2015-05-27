@@ -11,7 +11,7 @@
 		089D20371B0FB14100B0D613 /* CamView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089D20361B0FB14100B0D613 /* CamView.storyboard */; };
 		9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */; };
 		D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB5D1B1630C7003C687A /* CAEN Logo.png */; };
-		D979CB6A1B164194003C687A /* Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB691B164194003C687A /* Bar.png */; };
+		D979CB6C1B16479F003C687A /* Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB6B1B16479F003C687A /* Bar.png */; };
 		D9E618721B0F8914007AFECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E618711B0F8914007AFECB /* AppDelegate.swift */; };
 		D9E618791B0F8914007AFECB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E618781B0F8914007AFECB /* Images.xcassets */; };
 		D9E6187C1B0F8914007AFECB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9E6187A1B0F8914007AFECB /* LaunchScreen.xib */; };
@@ -39,7 +39,7 @@
 		089D20361B0FB14100B0D613 /* CamView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CamView.storyboard; sourceTree = "<group>"; };
 		9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		D979CB5D1B1630C7003C687A /* CAEN Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CAEN Logo.png"; sourceTree = SOURCE_ROOT; };
-		D979CB691B164194003C687A /* Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bar.png; sourceTree = "<group>"; };
+		D979CB6B1B16479F003C687A /* Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bar.png; sourceTree = "<group>"; };
 		D9E6186C1B0F8914007AFECB /* Mclass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mclass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E618701B0F8914007AFECB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9E618711B0F8914007AFECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 		D9E6186F1B0F8914007AFECB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D979CB691B164194003C687A /* Bar.png */,
+				D979CB6B1B16479F003C687A /* Bar.png */,
 				D979CB5D1B1630C7003C687A /* CAEN Logo.png */,
 				D9E618701B0F8914007AFECB /* Info.plist */,
 			);
@@ -250,7 +250,7 @@
 				D9E6187C1B0F8914007AFECB /* LaunchScreen.xib in Resources */,
 				D9E618791B0F8914007AFECB /* Images.xcassets in Resources */,
 				D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */,
-				D979CB6A1B164194003C687A /* Bar.png in Resources */,
+				D979CB6C1B16479F003C687A /* Bar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

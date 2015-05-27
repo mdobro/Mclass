@@ -58,7 +58,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="Pxa-al-v3E">
                         <barButtonItem key="rightBarButtonItem" title="Report a Problem" id="y14-bf-Chc" userLabel="Report a Problem">
-                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="ProblemBarButtonTap:" destination="BYZ-38-t0r" id="xsP-ew-3r0"/>
                             </connections>
