@@ -11,7 +11,14 @@ import UIKit
 class MainViewController: UIViewController {
     
     override func viewDidLoad() {
-        self.navigationController!.navigationBar.backgroundColor = UIColor.blueColor()
+        let logo = UIImage(named: "CAEN Logo")
+        //self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: logo))
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(named: "Bar"), forBarMetrics:.Default)
+        
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     @IBAction func ProblemBarButtonTap(sender: UIBarButtonItem) {

@@ -9,7 +9,7 @@
         <scene sceneID="qdE-c4-4lZ">
             <objects>
                 <navigationController id="B6N-6v-rvL" userLabel="Main Navigation Controller" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dYa-Aa-Ryw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="dYa-Aa-Ryw">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -19,7 +19,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S8k-q9-tlq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="111" y="-699"/>
+            <point key="canvasLocation" x="125" y="-759"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -30,22 +30,22 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="left" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="65Q-UT-M3b">
+                                <rect key="frame" x="334" y="64" width="690" height="704"/>
+                                <connections>
+                                    <segue destination="olh-5c-Sre" kind="embed" id="gCX-23-XI1"/>
+                                </connections>
+                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARH-0h-h6N">
-                                <rect key="frame" x="16" y="64" width="314" height="704"/>
+                                <rect key="frame" x="16" y="64" width="314" height="640"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="314" id="tb8-RX-q1u"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="OVf-Dl-LjK" kind="embed" id="sEm-YH-mDc"/>
-                                </connections>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="65Q-UT-M3b">
-                                <rect key="frame" x="334" y="64" width="690" height="704"/>
-                                <connections>
-                                    <segue destination="olh-5c-Sre" kind="embed" id="gCX-23-XI1"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -75,7 +75,7 @@
             <objects>
                 <tableViewController id="OVf-Dl-LjK" customClass="MainTableViewController" customModule="Mclass" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KJc-8q-OEa">
-                        <rect key="frame" x="0.0" y="0.0" width="314" height="704"/>
+                        <rect key="frame" x="0.0" y="0.0" width="314" height="640"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
