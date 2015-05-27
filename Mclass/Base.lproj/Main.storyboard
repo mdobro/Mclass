@@ -102,44 +102,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="690" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="VN2-Gg-4ce">
-                                <rect key="frame" x="221" y="638" width="248" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="244" id="PgU-2O-eKX"/>
-                                </constraints>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="VN2-Gg-4ce">
+                                <rect key="frame" x="231" y="485" width="248" height="31"/>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTj-Kv-5LU">
-                                <rect key="frame" x="133" y="642" width="82" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="82" id="7w5-vP-zEM"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Microphone Volume:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTj-Kv-5LU">
+                                <rect key="frame" x="54" y="489" width="162" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSS-yk-XBO">
-                                <rect key="frame" x="223" y="534" width="244" height="96"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="244" id="7mH-Hj-naz"/>
-                                    <constraint firstAttribute="height" constant="96" id="OFN-hB-LCl"/>
-                                </constraints>
-                                <state key="normal" title="Record">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSS-yk-XBO">
+                                <rect key="frame" x="239" y="164" width="238" height="90"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Recording Options"/>
                                 <connections>
                                     <action selector="recordButtonTap:" destination="olh-5c-Sre" eventType="touchUpInside" id="kof-Tl-cxU"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyE-CP-WcV">
+                                <rect key="frame" x="255" y="262" width="207" height="103"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Advanced Options">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="VN2-Gg-4ce" firstAttribute="top" secondItem="gSS-yk-XBO" secondAttribute="bottom" constant="8" symbolic="YES" id="Fkp-eQ-Ebf"/>
-                            <constraint firstItem="wg0-Fr-gbz" firstAttribute="top" secondItem="VN2-Gg-4ce" secondAttribute="bottom" constant="36" id="KSR-wx-nV3"/>
-                            <constraint firstItem="VN2-Gg-4ce" firstAttribute="centerX" secondItem="XRx-lk-a19" secondAttribute="centerX" id="L7J-ZE-qcN"/>
-                            <constraint firstItem="VN2-Gg-4ce" firstAttribute="leading" secondItem="aTj-Kv-5LU" secondAttribute="trailing" constant="8" symbolic="YES" id="Tco-M7-g7M"/>
-                            <constraint firstItem="VN2-Gg-4ce" firstAttribute="leading" secondItem="gSS-yk-XBO" secondAttribute="leading" id="VCD-6A-TcS"/>
-                            <constraint firstItem="wg0-Fr-gbz" firstAttribute="top" secondItem="aTj-Kv-5LU" secondAttribute="bottom" constant="41" id="amh-Wh-2tp"/>
-                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="jPl-bh-Vqq"/>

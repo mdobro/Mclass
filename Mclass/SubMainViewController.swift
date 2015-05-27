@@ -14,11 +14,12 @@ class SubMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.recordButton.frame = CGRectMake(100, 100, 100, 50)
-        self.recordButton.backgroundColor = UIColor.redColor()
+        //self.recordButton.frame = CGRectMake(0, 0, 50, 25)
+        //self.recordButton.backgroundColor = UIColor.blackColor()
         //self.recordButton.layer.borderColor = CGColor[UIColor.blueColor()]
         self.recordButton.layer.cornerRadius = 15
-        self.recordButton.setTitle("Recording Off", forState: UIControlState.Normal)
+        //self.recordButton.setTitle("Recording Options", forState: UIControlState.Normal)
+        //self.recordButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
     }
     
     @IBAction func recordButtonTap(sender: UIButton) {
