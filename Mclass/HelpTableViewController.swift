@@ -12,7 +12,7 @@ class HelpTableViewController: UITableViewController {
     
     var helpNow:Bool!
     
-    var problems: [String] = ["The laptop is dumb", "I broke something", "I don't even know", "it doesnt work", "Other"]
+    var problems: [String] = ["The projector won't turn on", "The projector isn't alligned correctly", "The view won't appear on screen", "The lectern isn't working", "The microphone isn't working", "The document camera isn't working", "Apple TV isn't working", "The microphone is missing", "The charging doc is missing", "Some cords are missing", "Other (Please specify)"]
     var selectedProb:String? = nil
     var selectedProbIndex:Int? = nil
     
@@ -136,7 +136,7 @@ class HelpTableViewController: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.accessoryType = .Checkmark
         
-        if (selectedProb == "Other") {
+        if (selectedProb == "Other (Please specify)") {
             Custom()
         }
     }
