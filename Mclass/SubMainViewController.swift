@@ -16,7 +16,7 @@ class SubMainViewController: UIViewController {
         super.viewDidLoad()
         self.recordButton.frame = CGRectMake(100, 100, 100, 50)
         self.recordButton.backgroundColor = UIColor.redColor()
-        self.recordButton.layer.borderColor = CGColor[UIColor.blueColor()]
+        //self.recordButton.layer.borderColor = CGColor[UIColor.blueColor()]
         self.recordButton.layer.cornerRadius = 15
         self.recordButton.setTitle("Recording Off", forState: UIControlState.Normal)
     }
