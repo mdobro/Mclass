@@ -63,7 +63,7 @@ class MainTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        //tableView.deselectRowAtIndexPath(indexPath, animated: false)
         
         //Other row is selected - need to deselect it
         if let index = selectedModeIndex {
@@ -78,7 +78,7 @@ class MainTableViewController: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         //cell?.accessoryType = .Checkmark
         
-        cell?.backgroundColor = UIColor(red:14/255, green:50/255, blue:100/255, alpha:0.4)
+        //cell?.backgroundColor = UIColor(red:14/255, green:50/255, blue:100/255, alpha:0.4)
     }
     
     

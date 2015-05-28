@@ -10,9 +10,19 @@ import UIKit
 
 class HelpViewController: UIViewController {
     
+    
+    @IBOutlet weak var GetHelpNow: UIButton!
+    
+    @IBOutlet weak var GetHelpLater: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        GetHelpNow.layer.borderWidth = 3
+        GetHelpNow.layer.borderColor = GetHelpNow.titleLabel?.textColor.CGColor
+        GetHelpNow.layer.cornerRadius = 10
+        GetHelpLater.layer.borderWidth = 3
+        GetHelpLater.layer.borderColor = GetHelpNow.titleLabel?.textColor.CGColor
+        GetHelpLater.layer.cornerRadius = 10
         self.navigationController?.navigationBar.tintColor = UIColor.yellowColor()
        
         // Do any additional setup after loading the view.
