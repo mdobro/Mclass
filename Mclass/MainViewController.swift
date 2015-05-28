@@ -10,12 +10,16 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    @IBOutlet weak var problemBarButton: UIBarButtonItem!
+    let buttonDict = [NSFontAttributeName: UIFont(name: "Arial", size: 30)!]
+    
     override func viewDidLoad() {
-        let logo = UIImage(named: "CAEN Logo")
-        //self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: logo))
+        
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(named: "Bar"), forBarMetrics:.Default)
         self.navigationController!.navigationBar.tintColor = UIColor.yellowColor()
         
+        let buttonDict = [NSFontAttributeName: UIFont(name: "Arial", size: 30)!]
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes(buttonDict, forState: UIControlState.Normal)
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -23,6 +27,13 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func ProblemBarButtonTap(sender: UIBarButtonItem) {
+        //Sets back button size and title for HelpViewController scene
+        let backBarButton = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: nil)
+        let buttonDict = [NSFontAttributeName: UIFont(name: "Arial", size: 30)!]
+        backBarButton.setTitleTextAttributes(buttonDict, forState: UIControlState.Normal)
+        self.navigationItem.backBarButtonItem = backBarButton
+        
+        //presents HelpViewController
         let storyboard = UIStoryboard(name: "Help", bundle: nil)
         let controller = storyboard.instantiateViewControllerWithIdentifier("HelpViewController") as! UIViewController
         self.navigationController!.pushViewController(controller, animated: true)

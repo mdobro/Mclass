@@ -10,14 +10,16 @@ import UIKit
 
 class SubMainViewController: UIViewController {
 
+    @IBOutlet weak var advancedButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.recordButton.layer.cornerRadius = 15
         //self.recordButton.frame = CGRectMake(0, 0, 50, 25)
         //self.recordButton.backgroundColor = UIColor.blackColor()
         //self.recordButton.layer.borderColor = CGColor[UIColor.blueColor()]
-        self.recordButton.layer.cornerRadius = 15
         //self.recordButton.setTitle("Recording Options", forState: UIControlState.Normal)
         //self.recordButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
     }
@@ -27,6 +29,7 @@ class SubMainViewController: UIViewController {
             let controller = storyboard.instantiateViewControllerWithIdentifier("CamViewSB") as! CamView
             self.addChildViewController(controller)
             self.view.addSubview(controller.view)
+            controller.didMoveToParentViewController(self)
     }
     
     override func didReceiveMemoryWarning() {

@@ -14,6 +14,7 @@ class HelpViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.tintColor = UIColor.yellowColor()
+       
         // Do any additional setup after loading the view.
     }
     
@@ -22,23 +23,16 @@ class HelpViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "help"){
+        if (segue.identifier == "helpNow"){
             let button = sender as! UIButton
             let issuevc = segue.destinationViewController as! HelpTableViewController
-            if (button.titleLabel?.text == "Get Help Now"){
-                issuevc.helpNow = true
-            }
-            else{
-                issuevc.helpNow = false
-            }
+            issuevc.helpNow = true
         }
-    }
-        
-    @IBAction func cancelButtonTap(sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! UIViewController
-        
-        self.presentViewController(controller, animated: true, completion: nil)
+        else if (segue.identifier == "helpLater"){
+            let button = sender as! UIButton
+            let issuevc = segue.destinationViewController as! HelpTableViewController
+            issuevc.helpNow = false
+        }
     }
     
     override func didReceiveMemoryWarning() {

@@ -83,15 +83,22 @@ class HelpTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let cancel = self.navigationItem.leftBarButtonItem
-        var negSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
-        negSpace.width = -90
-        self.navigationItem.leftBarButtonItems?.insert(negSpace, atIndex: 0)
-        self.navigationItem.rightBarButtonItems?.insert(negSpace, atIndex: 0)
+        let buttonDict = [NSFontAttributeName: UIFont(name: "Arial", size: 30)!]
         
-        let titleDict = [NSForegroundColorAttributeName: UIColor.yellowColor()]
+        let cancelBarButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "cancelButtonTap:")
+        cancelBarButton.setTitleTextAttributes(buttonDict, forState: UIControlState.Normal)
+        self.navigationItem.leftBarButtonItem = cancelBarButton
+        
+        let doneBarButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: "doneButtonTap:")
+        doneBarButton.setTitleTextAttributes(buttonDict, forState: UIControlState.Normal)
+        self.navigationItem.rightBarButtonItem = doneBarButton
+        
+        //changes button and title color to yellow, changes font size
+        let titleDict = [NSForegroundColorAttributeName: UIColor.yellowColor(), NSFontAttributeName: UIFont(name: "Arial", size: 25)!]
         self.navigationController?.navigationBar.titleTextAttributes = titleDict
         self.navigationController?.navigationBar.tintColor = UIColor.yellowColor()
+        //
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
