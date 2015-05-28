@@ -22,6 +22,9 @@
 		D9E618A41B0FD2E7007AFECB /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E618A31B0FD2E7007AFECB /* Help.storyboard */; };
 		D9EC82C21B14D22700E64B68 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82C11B14D22700E64B68 /* HelpViewController.swift */; };
 		D9EC82C61B1523B200E64B68 /* SubMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */; };
+		D9EC82C81B1796D700E64B68 /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EC82C71B1796D700E64B68 /* Settings.png */; };
+		D9EC82CE1B179BDE00E64B68 /* Gear.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EC82CD1B179BDE00E64B68 /* Gear.png */; };
+		D9EC82D01B179C7600E64B68 /* Gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EC82CF1B179C7600E64B68 /* Gear2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		D9E618A31B0FD2E7007AFECB /* Help.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
 		D9EC82C11B14D22700E64B68 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubMainViewController.swift; sourceTree = "<group>"; };
+		D9EC82C71B1796D700E64B68 /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
+		D9EC82CD1B179BDE00E64B68 /* Gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gear.png; sourceTree = "<group>"; };
+		D9EC82CF1B179C7600E64B68 /* Gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gear2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,9 @@
 		D9E6186F1B0F8914007AFECB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D9EC82CD1B179BDE00E64B68 /* Gear.png */,
+				D9EC82CF1B179C7600E64B68 /* Gear2.png */,
+				D9EC82C71B1796D700E64B68 /* Settings.png */,
 				D979CB6B1B16479F003C687A /* Bar.png */,
 				D979CB5D1B1630C7003C687A /* CAEN Logo.png */,
 				D9E618701B0F8914007AFECB /* Info.plist */,
@@ -249,8 +258,11 @@
 				D9E618A41B0FD2E7007AFECB /* Help.storyboard in Resources */,
 				D9E6187C1B0F8914007AFECB /* LaunchScreen.xib in Resources */,
 				D9E618791B0F8914007AFECB /* Images.xcassets in Resources */,
+				D9EC82D01B179C7600E64B68 /* Gear2.png in Resources */,
 				D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */,
+				D9EC82C81B1796D700E64B68 /* Settings.png in Resources */,
 				D979CB6C1B16479F003C687A /* Bar.png in Resources */,
+				D9EC82CE1B179BDE00E64B68 /* Gear.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

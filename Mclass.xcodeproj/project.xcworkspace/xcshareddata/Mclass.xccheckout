@@ -11,7 +11,7 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F7560F185766383F744F4372DCE67D94D2AE667E</key>
-		<string>https://github.com/mdobro/Mclass.git</string>
+		<string>http://www.github.com/mdobro/Mclass</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Mclass.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/mdobro/Mclass.git</string>
+	<string>http://www.github.com/mdobro/Mclass</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

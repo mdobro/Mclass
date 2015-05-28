@@ -98,8 +98,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1s-MK-Hc3">
+<<<<<<< Updated upstream
                                 <rect key="frame" x="16" y="0.0" width="56" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
+=======
+                                <rect key="frame" x="0.0" y="0.0" width="90" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+>>>>>>> Stashed changes
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

@@ -10,8 +10,8 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    @IBOutlet weak var settingsBarButton: UIBarButtonItem!
     @IBOutlet weak var problemBarButton: UIBarButtonItem!
-    let buttonDict = [NSFontAttributeName: UIFont(name: "Arial", size: 30)!]
     
     override func viewDidLoad() {
         
@@ -20,6 +20,10 @@ class MainViewController: UIViewController {
         
         let buttonDict = [NSFontAttributeName: UIFont(name: "Arial", size: 30)!]
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes(buttonDict, forState: UIControlState.Normal)
+        
+        let negSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        negSpace.width = -15
+        self.navigationItem.leftBarButtonItems?.insert(negSpace, atIndex: 0)
     }
     
     override func prefersStatusBarHidden() -> Bool {
