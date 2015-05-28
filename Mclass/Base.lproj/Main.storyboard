@@ -73,10 +73,19 @@
         <scene sceneID="zxw-nY-G3R">
             <objects>
                 <tableViewController id="OVf-Dl-LjK" customClass="MainTableViewController" customModule="Mclass" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KJc-8q-OEa">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="22" sectionFooterHeight="22" id="KJc-8q-OEa">
                         <rect key="frame" x="0.0" y="0.0" width="314" height="640"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ModeCell" rowHeight="125" id="Ie7-Lx-nG7">
+                                <rect key="frame" x="0.0" y="0.0" width="314" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ie7-Lx-nG7" id="wcu-8b-kMl">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="OVf-Dl-LjK" id="1rZ-nZ-YGn"/>
                             <outlet property="delegate" destination="OVf-Dl-LjK" id="WLV-wZ-5sH"/>
@@ -88,7 +97,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Yr-eV-TSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-229.5" y="1185"/>
+            <point key="canvasLocation" x="-230" y="1185"/>
         </scene>
         <!--subMain View Controller-->
         <scene sceneID="K1u-JZ-8Ox">
