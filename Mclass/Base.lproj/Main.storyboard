@@ -21,25 +21,39 @@
             </objects>
             <point key="canvasLocation" x="125" y="-759"/>
         </scene>
-        <!--Settings-->
+        <!--Settings Popover-->
         <scene sceneID="zwb-bU-rLL">
             <objects>
-                <viewController title="Settings" id="j7b-to-9hg" sceneMemberID="viewController">
+                <viewController title="Settings" id="j7b-to-9hg" userLabel="Settings Popover" customClass="SettingsViewController" customModule="Mclass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yWq-qS-vwG"/>
                         <viewControllerLayoutGuide type="bottom" id="rlf-gh-AQH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JwJ-7v-1QJ">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Allow protected content (HDCP):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nQ-D3-au0">
+                                <rect key="frame" x="29" y="39" width="250" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Rk6-sK-J6S">
+                                <rect key="frame" x="309" y="34" width="51" height="31"/>
+                                <connections>
+                                    <action selector="HDCPchange:" destination="j7b-to-9hg" eventType="valueChanged" id="Qbe-iQ-iFZ"/>
+                                </connections>
+                            </switch>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="300"/>
+                    <size key="freeformSize" width="400" height="100"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EkK-2G-7Es" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-892" y="840"/>
+            <point key="canvasLocation" x="-589" y="221"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -79,7 +93,7 @@
                     <navigationItem key="navigationItem" id="Pxa-al-v3E">
                         <barButtonItem key="leftBarButtonItem" image="Gear.png" id="ieP-1m-aqf" userLabel="Settings">
                             <connections>
-                                <segue destination="j7b-to-9hg" kind="popover" popoverAnchorBarButtonItem="ieP-1m-aqf" id="MLy-05-cBu">
+                                <segue destination="j7b-to-9hg" kind="popover" identifier="settingsPopover" popoverAnchorBarButtonItem="ieP-1m-aqf" id="MLy-05-cBu">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
@@ -127,7 +141,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Yr-eV-TSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-230" y="1185"/>
+            <point key="canvasLocation" x="-230" y="1270"/>
         </scene>
         <!--subMain View Controller-->
         <scene sceneID="K1u-JZ-8Ox">
@@ -147,24 +161,17 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="VN2-Gg-4ce">
+                                <rect key="frame" x="140" y="485" width="411" height="31"/>
+                            </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSS-yk-XBO">
-                                <rect key="frame" x="239" y="164" width="238" height="90"/>
+                                <rect key="frame" x="226" y="343" width="238" height="90"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Recording Options"/>
                                 <connections>
                                     <action selector="recordButtonTap:" destination="olh-5c-Sre" eventType="touchUpInside" id="kof-Tl-cxU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyE-CP-WcV">
-                                <rect key="frame" x="255" y="262" width="207" height="103"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Advanced Options">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="VN2-Gg-4ce">
-                                <rect key="frame" x="140" y="485" width="411" height="31"/>
-                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -176,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9f-Ub-mNz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="474" y="1373"/>
+            <point key="canvasLocation" x="464" y="1302"/>
         </scene>
     </scenes>
     <resources>

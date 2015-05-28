@@ -34,12 +34,10 @@ class HelpViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "helpNow"){
-            let button = sender as! UIButton
             let issuevc = segue.destinationViewController as! HelpTableViewController
             issuevc.helpNow = true
         }
         else if (segue.identifier == "helpLater"){
-            let button = sender as! UIButton
             let issuevc = segue.destinationViewController as! HelpTableViewController
             issuevc.helpNow = false
         }

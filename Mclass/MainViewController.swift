@@ -12,11 +12,12 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var settingsBarButton: UIBarButtonItem!
     @IBOutlet weak var problemBarButton: UIBarButtonItem!
+    var HDCPon = false
     
     override func viewDidLoad() {
-        
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(named: "Bar"), forBarMetrics:.Default)
-        self.navigationController!.navigationBar.tintColor = UIColor.yellowColor()
+
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "Bar"), forBarMetrics:.Default)
+        self.navigationController?.navigationBar.tintColor = UIColor.yellowColor()
         
         let buttonDict = [NSFontAttributeName: UIFont(name: "Arial", size: 30)!]
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes(buttonDict, forState: UIControlState.Normal)
@@ -24,6 +25,7 @@ class MainViewController: UIViewController {
         let negSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
         negSpace.width = -15
         self.navigationItem.leftBarButtonItems?.insert(negSpace, atIndex: 0)
+        
     }
     
     override func prefersStatusBarHidden() -> Bool {
