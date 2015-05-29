@@ -8,10 +8,12 @@
 
 import UIKit
 
-class SubMainViewController: UIViewController {
+class SubMainViewController: UIViewController,CamViewDelegate {
 
     @IBOutlet weak var advancedButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
+    
+    var camViewPauseButton:String = "Resume Recording" //will change to pause in camView viewDidLoad()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +26,18 @@ class SubMainViewController: UIViewController {
         //self.recordButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
     }
     
+    func pauseButtonDidChange(sender: CamView, paused: String) {
+        camViewPauseButton = paused
+    }
+    
     @IBAction func recordButtonTap(sender: UIButton) {
-            let storyboard = UIStoryboard(name: "CamView", bundle: nil)
-            let controller = storyboard.instantiateViewControllerWithIdentifier("CamViewSB") as! CamView
-            self.addChildViewController(controller)
-            self.view.addSubview(controller.view)
-            controller.didMoveToParentViewController(self)
+        let storyboard = UIStoryboard(name: "CamView", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier("CamViewSB") as! CamView
+        controller.delegate = self
+        controller.pauseButtonTemp = camViewPauseButton
+        self.addChildViewController(controller)
+        self.view.addSubview(controller.view)
+        controller.didMoveToParentViewController(self)
     }
     
     override func didReceiveMemoryWarning() {

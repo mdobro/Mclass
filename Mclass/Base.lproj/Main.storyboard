@@ -50,6 +50,9 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="400" height="100"/>
+                    <connections>
+                        <outlet property="HDCPslider" destination="Rk6-sK-J6S" id="44o-7P-bOm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EkK-2G-7Es" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,30 +8,46 @@
 
 import UIKit
 
+protocol CamViewDelegate{
+    var camViewPauseButton:String {get set}
+    func pauseButtonDidChange(sender:CamView, paused:String)
+}
+
 class CamView: UIViewController {
 
+    @IBOutlet weak var PauseButton: UIButton!
+    
+    var delegate:CamViewDelegate!
+    var pauseButtonTemp:String!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.PauseButton.backgroundColor = UIColor.redColor()
-        self.PauseButton.layer.cornerRadius = 15
-        self.PauseButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        
+        self.PauseButton.setTitle(pauseButtonTemp, forState: .Normal)
+         setPauseButton()
         // Do any additional setup after loading the view.
     }
-    @IBOutlet weak var PauseButton: UIButton!
    
     @IBAction func PauseButtonTouch(sender: UIButton) {
-            if self.PauseButton.titleForState(UIControlState.Normal) == "Pause Recording" {
-                self.PauseButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-                self.PauseButton.backgroundColor = UIColor.greenColor()
-                 self.PauseButton.layer.cornerRadius = 15
-                self.PauseButton.setTitle("Resume Recording", forState: UIControlState.Normal)
-            }
-            else {
-                self.PauseButton.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
-                self.PauseButton.backgroundColor = UIColor.redColor()
-                 self.PauseButton.layer.cornerRadius = 15
-                self.PauseButton.setTitle("Pause Recording", forState: UIControlState.Normal)
-                self.PauseButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        setPauseButton()
+    }
+    
+    func setPauseButton(){
+        if self.PauseButton.titleForState(UIControlState.Normal) == "Pause Recording" {
+            self.PauseButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            self.PauseButton.backgroundColor = UIColor.greenColor()
+            self.PauseButton.layer.cornerRadius = 15
+            self.PauseButton.setTitle("Resume Recording", forState: UIControlState.Normal)
+            delegate!.pauseButtonDidChange(self, paused: "Pause Recording")
+        }
+        else {
+            self.PauseButton.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
+            self.PauseButton.backgroundColor = UIColor.redColor()
+            self.PauseButton.layer.cornerRadius = 15
+            self.PauseButton.setTitle("Pause Recording", forState: UIControlState.Normal)
+            self.PauseButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            
+            delegate!.pauseButtonDidChange(self, paused: "Resume Recording")
         }
     }
 
@@ -43,6 +59,7 @@ class CamView: UIViewController {
     @IBAction func BackButton(sender: UIButton) {
         self.view.removeFromSuperview()
         self.removeFromParentViewController()
+        
     }
 
     /*

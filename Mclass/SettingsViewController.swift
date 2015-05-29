@@ -8,13 +8,18 @@
 
 import UIKit
 
+protocol SettingsViewControllerDelegate {
+    var SettingsHDCPon:Bool {get set}
+    func HDCPDidChange(controller: SettingsViewController, on:Bool)
+}
+
 class SettingsViewController: UIViewController {
-    
-    var HDCPon:Bool!
+    var delegate:SettingsViewControllerDelegate!
+    @IBOutlet weak var HDCPslider: UISwitch!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        HDCPslider.setOn(delegate!.SettingsHDCPon, animated: false)
         // Do any additional setup after loading the view.
     }
 
@@ -22,7 +27,7 @@ class SettingsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    //NEED DELEGATE TO PASS info between controllers
+    
     @IBAction func HDCPchange(sender: UISwitch) {
         if sender.on {
             let alert = UIAlertController(title: "WARNING!", message: "Projector output cannot be properly recorded when this setting is enabled. Are you sure you want to continue?", preferredStyle: UIAlertControllerStyle.Alert)
@@ -35,8 +40,8 @@ class SettingsViewController: UIViewController {
             }))
             
             self.presentViewController(alert, animated: true, completion: nil)
-            
         }
+        delegate!.HDCPDidChange(self, on: sender.on)
     }
 
     /*

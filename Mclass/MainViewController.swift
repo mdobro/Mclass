@@ -8,11 +8,12 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, SettingsViewControllerDelegate {
     
     @IBOutlet weak var settingsBarButton: UIBarButtonItem!
     @IBOutlet weak var problemBarButton: UIBarButtonItem!
-    var HDCPon = false
+    
+    var SettingsHDCPon = false
     
     override func viewDidLoad() {
 
@@ -26,6 +27,18 @@ class MainViewController: UIViewController {
         negSpace.width = -15
         self.navigationItem.leftBarButtonItems?.insert(negSpace, atIndex: 0)
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "settingsPopover" {
+            let dest = segue.destinationViewController as! SettingsViewController
+            dest.delegate = self
+        }
+    }
+
+    //passes slider button status from settingsViewController to mainViewController
+    func HDCPDidChange(controller: SettingsViewController, on: Bool) {
+        SettingsHDCPon = on
     }
     
     override func prefersStatusBarHidden() -> Bool {
