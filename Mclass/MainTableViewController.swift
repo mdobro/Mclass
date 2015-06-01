@@ -10,7 +10,7 @@ import UIKit
 
 class MainTableViewController: UITableViewController {
     
-    var modes: [String] = ["Laptop", "Document Camera", "Apple TV", "Hide Screen", "Projector On/Off"]
+    var modes: [String] = ["Laptop", "Document Camera", "Apple TV", "Hide Screen"]
     var selectedMode:String? = nil
     var selectedModeIndex:Int? = nil
 
