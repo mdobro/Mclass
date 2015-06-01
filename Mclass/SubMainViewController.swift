@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SubMainViewController: UIViewController,CamViewDelegate {
+class SubMainViewController: UIViewController, CamViewDelegate {
 
     @IBOutlet weak var advancedButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
@@ -36,7 +36,10 @@ class SubMainViewController: UIViewController,CamViewDelegate {
         controller.delegate = self
         controller.pauseButtonTemp = camViewPauseButton
         self.addChildViewController(controller)
-        self.view.addSubview(controller.view)
+        UIView.transitionWithView(self.view, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromRight, animations: {
+            self.view.addSubview(controller.view)
+        }, completion: nil)
+        //self.view.addSubview(controller.view)
         controller.didMoveToParentViewController(self)
     }
     

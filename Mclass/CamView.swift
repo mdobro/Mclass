@@ -57,8 +57,10 @@ class CamView: UIViewController {
     }
     
     @IBAction func BackButton(sender: UIButton) {
-        self.view.removeFromSuperview()
-        self.removeFromParentViewController()
+        UIView.transitionWithView(self.parentViewController!.view, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: {
+            self.view.removeFromSuperview()
+            self.removeFromParentViewController()
+        }, completion: nil)
         
     }
 
