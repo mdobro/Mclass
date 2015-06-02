@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, SettingsViewControllerDelegate {
+class MainViewController: UIViewController, PTChannelDelegate, SettingsViewControllerDelegate {
     
     @IBOutlet weak var settingsBarButton: UIBarButtonItem!
     @IBOutlet weak var problemBarButton: UIBarButtonItem!
@@ -27,6 +27,25 @@ class MainViewController: UIViewController, SettingsViewControllerDelegate {
         negSpace.width = -15
         self.navigationItem.leftBarButtonItems?.insert(negSpace, atIndex: 0)
         
+        //peertalk
+        
+        
+    }
+    
+    func ioFrameChannel(channel: PTChannel!, shouldAcceptFrameOfType type: UInt32, tag: UInt32, payloadSize: UInt32) -> Bool {
+        return true
+    }
+    
+    func ioFrameChannel(channel: PTChannel!, didReceiveFrameOfType type: UInt32, tag: UInt32, payload: PTData!) {
+        return
+    }
+    
+    func ioFrameChannel(channel: PTChannel!, didEndWithError error: NSError!) {
+        return
+    }
+    
+    func ioFrameChannel(channel: PTChannel!, didAcceptConnection otherChannel: PTChannel!, fromAddress address: PTAddress!) {
+        return
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
