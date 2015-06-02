@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D20341B0FB0CD00B0D613 /* CamView.swift */; };
 		089D20371B0FB14100B0D613 /* CamView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089D20361B0FB14100B0D613 /* CamView.storyboard */; };
+		0A456608A10D481E0162BEA7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4210125FC8E0AC39AC8FE79 /* libPods.a */; };
 		9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */; };
 		D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB5D1B1630C7003C687A /* CAEN Logo.png */; };
 		D979CB6C1B16479F003C687A /* Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB6B1B16479F003C687A /* Bar.png */; };
@@ -41,7 +42,9 @@
 /* Begin PBXFileReference section */
 		089D20341B0FB0CD00B0D613 /* CamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CamView.swift; sourceTree = "<group>"; };
 		089D20361B0FB14100B0D613 /* CamView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CamView.storyboard; sourceTree = "<group>"; };
+		4A052C36B3E27A745499993A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
+		9BD47C971B1E1DA200C57711 /* PeerTalk-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PeerTalk-Bridging-Header.h"; path = "../PeerTalk-Bridging-Header.h"; sourceTree = "<group>"; };
 		D979CB5D1B1630C7003C687A /* CAEN Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CAEN Logo.png"; sourceTree = SOURCE_ROOT; };
 		D979CB6B1B16479F003C687A /* Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bar.png; sourceTree = "<group>"; };
 		D9E6186C1B0F8914007AFECB /* Mclass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mclass.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +65,8 @@
 		D9EC82CD1B179BDE00E64B68 /* Gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gear.png; sourceTree = "<group>"; };
 		D9EC82CF1B179C7600E64B68 /* Gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gear2.png; sourceTree = "<group>"; };
 		D9EC82D11B17B98400E64B68 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		EBAC622E139FB1D4D158B782 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F4210125FC8E0AC39AC8FE79 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A456608A10D481E0162BEA7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,12 +88,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC2BBAACD15B61C62F27EF5C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4210125FC8E0AC39AC8FE79 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D2666AEE2D2C2C19D70C1A78 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EBAC622E139FB1D4D158B782 /* Pods.debug.xcconfig */,
+				4A052C36B3E27A745499993A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D9E618631B0F8914007AFECB = {
 			isa = PBXGroup;
 			children = (
 				D9E6186E1B0F8914007AFECB /* Mclass */,
 				D9E618841B0F8914007AFECB /* MclassTests */,
 				D9E6186D1B0F8914007AFECB /* Products */,
+				D2666AEE2D2C2C19D70C1A78 /* Pods */,
+				BC2BBAACD15B61C62F27EF5C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				D9E618991B0FCCC6007AFECB /* Main.storyboard */,
+				9BD47C971B1E1DA200C57711 /* PeerTalk-Bridging-Header.h */,
 				D9E6189C1B0FCEB4007AFECB /* MainViewController.swift */,
 				D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */,
 				D9EC82D11B17B98400E64B68 /* SettingsViewController.swift */,
@@ -182,9 +208,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9E6188B1B0F8914007AFECB /* Build configuration list for PBXNativeTarget "Mclass" */;
 			buildPhases = (
+				47C6E7203871E9DEC71A8270 /* Check Pods Manifest.lock */,
 				D9E618681B0F8914007AFECB /* Sources */,
 				D9E618691B0F8914007AFECB /* Frameworks */,
 				D9E6186A1B0F8914007AFECB /* Resources */,
+				9D7CDA507A4C5BC2C90CD9DF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -277,6 +305,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		47C6E7203871E9DEC71A8270 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9D7CDA507A4C5BC2C90CD9DF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D9E618681B0F8914007AFECB /* Sources */ = {
@@ -417,6 +478,7 @@
 		};
 		D9E6188C1B0F8914007AFECB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBAC622E139FB1D4D158B782 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -426,11 +488,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "PeerTalk-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		D9E6188D1B0F8914007AFECB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A052C36B3E27A745499993A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -440,6 +504,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "PeerTalk-Bridging-Header.h";
 			};
 			name = Release;
 		};
