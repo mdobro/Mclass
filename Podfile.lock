@@ -1,0 +1,10 @@
+PODS:
+  - PeerTalk (0.0.1)
+
+DEPENDENCIES:
+  - PeerTalk
+
+SPEC CHECKSUMS:
+  PeerTalk: 5e6843592fea14a4221a9829c43d92a309b7130b
+
+COCOAPODS: 0.37.2
