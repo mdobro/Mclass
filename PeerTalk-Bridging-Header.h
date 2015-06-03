@@ -9,5 +9,5 @@
 #import "PTChannel.h"
 #import "PTProtocol.h"
 #import "PTUSBHub.h"
-
-
+#import <ifaddrs.h>
+#import <netinet/in.h>

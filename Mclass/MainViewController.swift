@@ -8,10 +8,16 @@
 
 import UIKit
 
-class MainViewController: UIViewController, SettingsViewControllerDelegate {
+class MainViewController: UIViewController, SettingsViewControllerDelegate, PTChannelDelegate {
+    
+    func ioFrameChannel(channel: PTChannel, didReceiveFrameOfType type: UInt32, tag: UInt32, payload: PTData) {
+        
+    }
     
     @IBOutlet weak var settingsBarButton: UIBarButtonItem!
     @IBOutlet weak var problemBarButton: UIBarButtonItem!
+    weak var peerChannel: PTChannel!
+    weak var serverChannel: PTChannel!
     
     var SettingsHDCPon = false
     
@@ -27,6 +33,10 @@ class MainViewController: UIViewController, SettingsViewControllerDelegate {
         negSpace.width = -15
         self.navigationItem.leftBarButtonItems?.insert(negSpace, atIndex: 0)
         
+        let channel:PTChannel! = PTChannel(delegate: self)
+        channel.listenOnPort(2345, IPv4Address: UInt32(2130706433), callback: nil)
+        peerChannel = channel
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -34,7 +44,7 @@ class MainViewController: UIViewController, SettingsViewControllerDelegate {
             let dest = segue.destinationViewController as! SettingsViewController
             dest.delegate = self
         }
-    }
+    }            
 
     //passes slider button status from settingsViewController to mainViewController
     func HDCPDidChange(controller: SettingsViewController, on: Bool) {
