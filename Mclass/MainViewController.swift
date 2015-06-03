@@ -29,7 +29,6 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         
         //peertalk
         
-        
     }
     
     func ioFrameChannel(channel: PTChannel!, shouldAcceptFrameOfType type: UInt32, tag: UInt32, payloadSize: UInt32) -> Bool {
