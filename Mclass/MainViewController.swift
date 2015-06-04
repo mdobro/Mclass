@@ -88,7 +88,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         let screenSize = screen.bounds.size;
         let screenSizeDict = CGSizeCreateDictionaryRepresentation(screenSize);
         let device = UIDevice.currentDevice()
-        let info: [String: NSObject] = ["localizedModel": device.localizedModel, "multitasking supported":]
+        let info: [String: NSObject] = ["localizedModel": device.localizedModel, "multitasking supported": device.multitaskingSupported, "name": device.name, "orientation": (UIDeviceOrientationIsLandscape(device.orientation) ? "landscape" : "protrait"), "system name": device.systemName, "system version": device.systemVersion, "screen size": screenSizeDict, "screen scale": screen.scale]
         //let info: [NSObject: String] = [device.localizedModel: "localizedModel", device.multitaskingSupported: "multitaskingSupported", device.name: "name", (UIDeviceOrientationIsLandscape(device.orientation) ? "landscape" : "portrait"): "orientation", device.systemName: "systemName", device.systemVersion: "systemVersion", screenSizeDict: "screenSize", screen.scale: "screenScale"]
         let info2 = info as NSDictionary
         let payload = info2.createReferencingDispatchData()
