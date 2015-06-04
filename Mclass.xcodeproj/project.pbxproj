@@ -32,6 +32,7 @@
 		D9E897FE1B1F91AB00F421E2 /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D91B1E109300E64B68 /* PTProtocol.m */; };
 		D9E897FF1B1F91AB00F421E2 /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82DB1B1E109300E64B68 /* PTUSBHub.m */; };
 		D9E898011B1F973C00F421E2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9E898001B1F973C00F421E2 /* MainMenu.xib */; };
+		D9E898061B20D18800F421E2 /* objChelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E898051B20D18800F421E2 /* objChelper.m */; };
 		D9EC82C21B14D22700E64B68 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82C11B14D22700E64B68 /* HelpViewController.swift */; };
 		D9EC82C61B1523B200E64B68 /* SubMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */; };
 		D9EC82C81B1796D700E64B68 /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EC82C71B1796D700E64B68 /* Settings.png */; };
@@ -84,6 +85,8 @@
 		D9E897F91B1F8DF700F421E2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		D9E897FB1B1F8F7100F421E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
 		D9E898001B1F973C00F421E2 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = "../../peertalk-master/Peertalk Example/en.lproj/MainMenu.xib"; sourceTree = "<group>"; };
+		D9E898051B20D18800F421E2 /* objChelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = objChelper.m; sourceTree = "<group>"; };
+		D9E898071B20D1C100F421E2 /* objChelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = objChelper.h; sourceTree = "<group>"; };
 		D9EC82C11B14D22700E64B68 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubMainViewController.swift; sourceTree = "<group>"; };
 		D9EC82C71B1796D700E64B68 /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
@@ -205,6 +208,8 @@
 				D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */,
 				D9EC82D11B17B98400E64B68 /* SettingsViewController.swift */,
 				D9E618911B0FAFFF007AFECB /* MainTableViewController.swift */,
+				D9E898051B20D18800F421E2 /* objChelper.m */,
+				D9E898071B20D1C100F421E2 /* objChelper.h */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -410,6 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9E618921B0FAFFF007AFECB /* MainTableViewController.swift in Sources */,
+				D9E898061B20D18800F421E2 /* objChelper.m in Sources */,
 				D9EC82C61B1523B200E64B68 /* SubMainViewController.swift in Sources */,
 				D9EC82C21B14D22700E64B68 /* HelpViewController.swift in Sources */,
 				D9EC82DE1B1E109300E64B68 /* PTUSBHub.m in Sources */,

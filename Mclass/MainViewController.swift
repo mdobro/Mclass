@@ -89,7 +89,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         let screenSizeDict = CGSizeCreateDictionaryRepresentation(screenSize);
         let device = UIDevice.currentDevice()
         let info: [String: NSObject] = ["localizedModel": device.localizedModel, "multitasking supported": device.multitaskingSupported, "name": device.name, "orientation": (UIDeviceOrientationIsLandscape(device.orientation) ? "landscape" : "protrait"), "system name": device.systemName, "system version": device.systemVersion, "screen size": screenSizeDict, "screen scale": screen.scale]
-        //let info: [NSObject: String] = [device.localizedModel: "localizedModel", device.multitaskingSupported: "multitaskingSupported", device.name: "name", (UIDeviceOrientationIsLandscape(device.orientation) ? "landscape" : "portrait"): "orientation", device.systemName: "systemName", device.systemVersion: "systemVersion", screenSizeDict: "screenSize", screen.scale: "screenScale"]
+        
         let info2 = info as NSDictionary
         let payload = info2.createReferencingDispatchData()
         peerChannel_.sendFrameOfType(100, tag: 0, withPayload: payload) { (error) -> Void in
@@ -115,20 +115,23 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     }
     
     func ioFrameChannel(channel: PTChannel!, didReceiveFrameOfType type: UInt32, tag: UInt32, payload: PTData!) {
+        println("Recieved frame of type", type, "with tag", tag, "with payload", payload)
+        let help:objChelper = objChelper()
+        let message = help.helpioFrameChannel(channel, didReceiveFrameOfType: type, tag: tag, payload: payload, peerChannel: peerChannel_)
+        /*
         //NSLog(@"didReceiveFrameOfType: %u, %u, %@", type, tag, payload);
         if (type == 101) {
-            let payloadData = UnsafePointer<PTExampleTextFrame>(payload.data)
-            
-            //seg fault here
-            //var textFrame:PTExampleTextFrame! = payloadData.memory
-            
+            let payloadData = payload.data
+            //let textFrame:PTExampleTextFrame = payloadData.memory
+            //let length = textFrame.length
             //textFrame.length = textFrame.length.bigEndian;
             //let bytes = UnsafePointer<Void>(nilLiteral: textFrame.utf8text)
             //let message = NSString(bytes: bytes, length: Int(textFrame.length), encoding: NSUTF8StringEncoding)
-            //println(message)
+            //println(textFrame)
         } else if (type == 102) && (peerChannel_ != nil) {
             peerChannel_.sendFrameOfType(103, tag: tag, withPayload: nil, callback: nil)
         }
+        */
     }
     
     func ioFrameChannel(channel: PTChannel!, didEndWithError error: NSError!) {
