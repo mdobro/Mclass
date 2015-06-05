@@ -10,11 +10,14 @@
 		089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D20341B0FB0CD00B0D613 /* CamView.swift */; };
 		9B1528741B2224C900802E68 /* CAENViewClassTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9B1528731B2224C900802E68 /* CAENViewClassTest.csv */; };
 		9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */; };
+<<<<<<< HEAD
 		9BC7CCDC1B2228F200ABFC96 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9BC7CCDB1B2228F200ABFC96 /* .gitignore */; };
 		D96F78041B22297600699147 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E618A31B0FD2E7007AFECB /* Help.storyboard */; };
 		D96F78091B222C2200699147 /* CamView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96F78051B222BE500699147 /* CamView.storyboard */; };
 		D96F780C1B222C3000699147 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96F780A1B222C3000699147 /* Main.storyboard */; };
 		D96F780F1B222C4200699147 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D96F780D1B222C4200699147 /* LaunchScreen.xib */; };
+=======
+>>>>>>> 261b604623e4356524cfccdd3e590872b84a028d
 		D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB5D1B1630C7003C687A /* CAEN Logo.png */; };
 		D979CB6C1B16479F003C687A /* Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB6B1B16479F003C687A /* Bar.png */; };
 		D9E618721B0F8914007AFECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E618711B0F8914007AFECB /* AppDelegate.swift */; };
@@ -60,10 +63,13 @@
 		089D20341B0FB0CD00B0D613 /* CamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CamView.swift; sourceTree = "<group>"; };
 		9B1528731B2224C900802E68 /* CAENViewClassTest.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CAENViewClassTest.csv; sourceTree = SOURCE_ROOT; };
 		9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		9BC7CCDB1B2228F200ABFC96 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		D96F78051B222BE500699147 /* CamView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CamView.storyboard; sourceTree = "<group>"; };
 		D96F780B1B222C3000699147 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Mclass/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D96F780E1B222C4200699147 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Mclass/Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+=======
+>>>>>>> 261b604623e4356524cfccdd3e590872b84a028d
 		D979CB5D1B1630C7003C687A /* CAEN Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CAEN Logo.png"; sourceTree = SOURCE_ROOT; };
 		D979CB6B1B16479F003C687A /* Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bar.png; sourceTree = "<group>"; };
 		D9E6186C1B0F8914007AFECB /* Mclass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mclass.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,7 +166,11 @@
 			isa = PBXGroup;
 			children = (
 				9B1528731B2224C900802E68 /* CAENViewClassTest.csv */,
+<<<<<<< HEAD
 				9BC7CCDB1B2228F200ABFC96 /* .gitignore */,
+=======
+				9B1528751B2224F100802E68 /* CSV.swift */,
+>>>>>>> 261b604623e4356524cfccdd3e590872b84a028d
 				D9E618711B0F8914007AFECB /* AppDelegate.swift */,
 				D9E6189E1B0FCEF7007AFECB /* Main */,
 				D9E6189F1B0FCF05007AFECB /* Camview */,
@@ -381,11 +391,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				D96F780F1B222C4200699147 /* LaunchScreen.xib in Resources */,
 				D96F780C1B222C3000699147 /* Main.storyboard in Resources */,
 				D96F78091B222C2200699147 /* CamView.storyboard in Resources */,
 				9BC7CCDC1B2228F200ABFC96 /* .gitignore in Resources */,
 				D96F78041B22297600699147 /* Help.storyboard in Resources */,
+=======
+				089D20371B0FB14100B0D613 /* CamView.storyboard in Resources */,
+				D9E6189B1B0FCCC6007AFECB /* Main.storyboard in Resources */,
+				D9E618A41B0FD2E7007AFECB /* Help.storyboard in Resources */,
+				D9E6187C1B0F8914007AFECB /* LaunchScreen.xib in Resources */,
+>>>>>>> 261b604623e4356524cfccdd3e590872b84a028d
 				D9E618791B0F8914007AFECB /* Images.xcassets in Resources */,
 				D9EC82D01B179C7600E64B68 /* Gear2.png in Resources */,
 				9B1528741B2224C900802E68 /* CAENViewClassTest.csv in Resources */,
