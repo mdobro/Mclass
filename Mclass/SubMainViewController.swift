@@ -21,13 +21,20 @@ class SubMainViewController: UIViewController {
 
     @IBOutlet weak var advancedButton: UIButton!
     @IBOutlet weak var recordSettingsButton: UIButton!
+    @IBOutlet weak var DisplayTime: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.recordSettingsButton.layer.cornerRadius = 15
+         var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("RefreshTime"), userInfo: nil, repeats: true)
         
     }
+  func RefreshTime() {
+        let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
+        self.DisplayTime.text = timestamp;
+    }
+
     
     @IBAction func projectorPower(sender: UIButton) {
         if delegate!.subMainSettings.projector! {

@@ -186,12 +186,19 @@
                                     <action selector="projectorPower:" destination="olh-5c-Sre" eventType="touchUpInside" id="TZs-OD-tSO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZF-4F-iu0">
+                                <rect key="frame" x="496" y="0.0" width="194" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="jPl-bh-Vqq"/>
                     <connections>
+                        <outlet property="DisplayTime" destination="iZF-4F-iu0" id="GDe-9H-1U2"/>
                         <outlet property="recordSettingsButton" destination="gSS-yk-XBO" id="AhK-cX-5KJ"/>
                     </connections>
                 </viewController>
