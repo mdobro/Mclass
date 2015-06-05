@@ -34,7 +34,7 @@
         PTExampleTextFrame *textFrame = (PTExampleTextFrame*)payload.data;
         textFrame->length = ntohl(textFrame->length);
         NSString *message = [[NSString alloc] initWithBytes:textFrame->utf8text length:textFrame->length encoding:NSUTF8StringEncoding];
-        NSLog(@"%@ %@",channel.userInfo,message);
+        //NSLog(@"%@ %@",channel.userInfo,message);
         return message;
     } else if (type == PTExampleFrameTypePing && peerChannel_) {
         [peerChannel_ sendFrameOfType:PTExampleFrameTypePong tag:tag withPayload:nil callback:nil];

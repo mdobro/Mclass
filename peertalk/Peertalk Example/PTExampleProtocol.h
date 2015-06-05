@@ -19,7 +19,7 @@ typedef struct _PTExampleTextFrame {
 } PTExampleTextFrame;
 
 
-static dispatch_data_t PTExampleTextDispatchDataWithString(NSString *message) {
+dispatch_data_t PTExampleTextDispatchDataWithString(NSString *message) {
   // Use a custom struct
   const char *utf8text = [message cStringUsingEncoding:NSUTF8StringEncoding];
   size_t length = strlen(utf8text);

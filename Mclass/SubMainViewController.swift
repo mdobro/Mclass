@@ -8,38 +8,44 @@
 
 import UIKit
 
-class SubMainViewController: UIViewController, CamViewDelegate {
+protocol SubMainDelegate {
+    var subMainSettings:(projector:Bool!, volume: Int!) {get set}
+    var camViewSettings:(paused:Bool!, timeElapsed: Int!, timeRemaining: Int!) {get set}
+    
+    func camViewDidChange(sender: CamView, settings: (paused:Bool!, timeElapsed: Int!, timeRemaining: Int!))
+    func subMainDidChange(sender: SubMainViewController, settings: (projector:Bool!, volume: Int!))
+}
+
+class SubMainViewController: UIViewController {
+    var delegate:SubMainDelegate!
 
     @IBOutlet weak var advancedButton: UIButton!
-    @IBOutlet weak var recordButton: UIButton!
-    
-    var camViewPauseButton:String = "Resume Recording" //will change to pause in camView viewDidLoad()
+    @IBOutlet weak var recordSettingsButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.recordButton.layer.cornerRadius = 15
-        //self.recordButton.frame = CGRectMake(0, 0, 50, 25)
-        //self.recordButton.backgroundColor = UIColor.blackColor()
-        //self.recordButton.layer.borderColor = CGColor[UIColor.blueColor()]
-        //self.recordButton.setTitle("Recording Options", forState: UIControlState.Normal)
-        //self.recordButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        self.recordSettingsButton.layer.cornerRadius = 15
+        
     }
     
-    func pauseButtonDidChange(sender: CamView, paused: String) {
-        camViewPauseButton = paused
+    @IBAction func projectorPower(sender: UIButton) {
+        if delegate!.subMainSettings.projector! {
+            delegate!.subMainDidChange(self, settings: (false,0))
+        }
+        else {
+            delegate!.subMainDidChange(self, settings: (true,0))
+        }
     }
     
-    @IBAction func recordButtonTap(sender: UIButton) {
+    @IBAction func recordSettingsButtonTap(sender: UIButton) {
         let storyboard = UIStoryboard(name: "CamView", bundle: nil)
         let controller = storyboard.instantiateViewControllerWithIdentifier("CamViewSB") as! CamView
-        controller.delegate = self
-        controller.pauseButtonTemp = camViewPauseButton
+        controller.delegate = delegate
         self.addChildViewController(controller)
         UIView.transitionWithView(self.view, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromRight, animations: {
             self.view.addSubview(controller.view)
         }, completion: nil)
-        //self.view.addSubview(controller.view)
         controller.didMoveToParentViewController(self)
     }
     

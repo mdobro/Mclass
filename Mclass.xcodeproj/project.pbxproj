@@ -8,21 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D20341B0FB0CD00B0D613 /* CamView.swift */; };
-		089D20371B0FB14100B0D613 /* CamView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089D20361B0FB14100B0D613 /* CamView.storyboard */; };
 		9B1528741B2224C900802E68 /* CAENViewClassTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9B1528731B2224C900802E68 /* CAENViewClassTest.csv */; };
-		9B1528761B2224F100802E68 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1528751B2224F100802E68 /* CSV.swift */; };
 		9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */; };
 		9BC7CCDC1B2228F200ABFC96 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9BC7CCDB1B2228F200ABFC96 /* .gitignore */; };
+		D96F78041B22297600699147 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E618A31B0FD2E7007AFECB /* Help.storyboard */; };
+		D96F78091B222C2200699147 /* CamView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96F78051B222BE500699147 /* CamView.storyboard */; };
+		D96F780C1B222C3000699147 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96F780A1B222C3000699147 /* Main.storyboard */; };
+		D96F780F1B222C4200699147 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D96F780D1B222C4200699147 /* LaunchScreen.xib */; };
 		D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB5D1B1630C7003C687A /* CAEN Logo.png */; };
 		D979CB6C1B16479F003C687A /* Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB6B1B16479F003C687A /* Bar.png */; };
 		D9E618721B0F8914007AFECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E618711B0F8914007AFECB /* AppDelegate.swift */; };
 		D9E618791B0F8914007AFECB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E618781B0F8914007AFECB /* Images.xcassets */; };
-		D9E6187C1B0F8914007AFECB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9E6187A1B0F8914007AFECB /* LaunchScreen.xib */; };
 		D9E618881B0F8914007AFECB /* MclassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E618871B0F8914007AFECB /* MclassTests.swift */; };
 		D9E618921B0FAFFF007AFECB /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E618911B0FAFFF007AFECB /* MainTableViewController.swift */; };
-		D9E6189B1B0FCCC6007AFECB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E618991B0FCCC6007AFECB /* Main.storyboard */; };
 		D9E6189D1B0FCEB4007AFECB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E6189C1B0FCEB4007AFECB /* MainViewController.swift */; };
-		D9E618A41B0FD2E7007AFECB /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E618A31B0FD2E7007AFECB /* Help.storyboard */; };
 		D9E897EE1B1F8A7F00F421E2 /* Icon-1024.psd in Resources */ = {isa = PBXBuildFile; fileRef = D9E897E61B1F8A7F00F421E2 /* Icon-1024.psd */; };
 		D9E897EF1B1F8A7F00F421E2 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = D9E897E71B1F8A7F00F421E2 /* Icon.icns */; };
 		D9E897F01B1F8A7F00F421E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E897E81B1F8A7F00F421E2 /* main.m */; };
@@ -59,23 +58,22 @@
 
 /* Begin PBXFileReference section */
 		089D20341B0FB0CD00B0D613 /* CamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CamView.swift; sourceTree = "<group>"; };
-		089D20361B0FB14100B0D613 /* CamView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CamView.storyboard; sourceTree = "<group>"; };
 		9B1528731B2224C900802E68 /* CAENViewClassTest.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CAENViewClassTest.csv; sourceTree = SOURCE_ROOT; };
-		9B1528751B2224F100802E68 /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CSV.swift; path = "../../../Downloads/SwiftCSV-master/SwiftCSV/CSV.swift"; sourceTree = "<group>"; };
 		9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		9BC7CCDB1B2228F200ABFC96 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		D96F78051B222BE500699147 /* CamView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CamView.storyboard; sourceTree = "<group>"; };
+		D96F780B1B222C3000699147 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Mclass/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D96F780E1B222C4200699147 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Mclass/Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D979CB5D1B1630C7003C687A /* CAEN Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CAEN Logo.png"; sourceTree = SOURCE_ROOT; };
 		D979CB6B1B16479F003C687A /* Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bar.png; sourceTree = "<group>"; };
 		D9E6186C1B0F8914007AFECB /* Mclass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mclass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E618701B0F8914007AFECB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9E618711B0F8914007AFECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9E618781B0F8914007AFECB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D9E6187B1B0F8914007AFECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D9E618811B0F8914007AFECB /* MclassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MclassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E618861B0F8914007AFECB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9E618871B0F8914007AFECB /* MclassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MclassTests.swift; sourceTree = "<group>"; };
 		D9E618911B0FAFFF007AFECB /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
-		D9E6189A1B0FCCC6007AFECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D9E6189C1B0FCEB4007AFECB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D9E618A31B0FD2E7007AFECB /* Help.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
 		D9E897C61B1F88E000F421E2 /* PeertalkExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeertalkExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,13 +161,12 @@
 			children = (
 				9B1528731B2224C900802E68 /* CAENViewClassTest.csv */,
 				9BC7CCDB1B2228F200ABFC96 /* .gitignore */,
-				9B1528751B2224F100802E68 /* CSV.swift */,
 				D9E618711B0F8914007AFECB /* AppDelegate.swift */,
 				D9E6189E1B0FCEF7007AFECB /* Main */,
 				D9E6189F1B0FCF05007AFECB /* Camview */,
 				D9E618A01B0FCF0E007AFECB /* Help */,
 				D9E618781B0F8914007AFECB /* Images.xcassets */,
-				D9E6187A1B0F8914007AFECB /* LaunchScreen.xib */,
+				D96F780D1B222C4200699147 /* LaunchScreen.xib */,
 				D9E6186F1B0F8914007AFECB /* Supporting Files */,
 			);
 			path = Mclass;
@@ -211,7 +208,7 @@
 		D9E6189E1B0FCEF7007AFECB /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				D9E618991B0FCCC6007AFECB /* Main.storyboard */,
+				D96F780A1B222C3000699147 /* Main.storyboard */,
 				D9E6189C1B0FCEB4007AFECB /* MainViewController.swift */,
 				D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */,
 				D9EC82D11B17B98400E64B68 /* SettingsViewController.swift */,
@@ -223,7 +220,7 @@
 		D9E6189F1B0FCF05007AFECB /* Camview */ = {
 			isa = PBXGroup;
 			children = (
-				089D20361B0FB14100B0D613 /* CamView.storyboard */,
+				D96F78051B222BE500699147 /* CamView.storyboard */,
 				089D20341B0FB0CD00B0D613 /* CamView.swift */,
 			);
 			name = Camview;
@@ -384,11 +381,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				089D20371B0FB14100B0D613 /* CamView.storyboard in Resources */,
-				D9E6189B1B0FCCC6007AFECB /* Main.storyboard in Resources */,
-				D9E618A41B0FD2E7007AFECB /* Help.storyboard in Resources */,
-				D9E6187C1B0F8914007AFECB /* LaunchScreen.xib in Resources */,
+				D96F780F1B222C4200699147 /* LaunchScreen.xib in Resources */,
+				D96F780C1B222C3000699147 /* Main.storyboard in Resources */,
+				D96F78091B222C2200699147 /* CamView.storyboard in Resources */,
 				9BC7CCDC1B2228F200ABFC96 /* .gitignore in Resources */,
+				D96F78041B22297600699147 /* Help.storyboard in Resources */,
 				D9E618791B0F8914007AFECB /* Images.xcassets in Resources */,
 				D9EC82D01B179C7600E64B68 /* Gear2.png in Resources */,
 				9B1528741B2224C900802E68 /* CAENViewClassTest.csv in Resources */,
@@ -429,7 +426,6 @@
 				D9EC82C61B1523B200E64B68 /* SubMainViewController.swift in Sources */,
 				D9EC82C21B14D22700E64B68 /* HelpViewController.swift in Sources */,
 				D9EC82DE1B1E109300E64B68 /* PTUSBHub.m in Sources */,
-				9B1528761B2224F100802E68 /* CSV.swift in Sources */,
 				9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */,
 				D9EC82DC1B1E109300E64B68 /* PTChannel.m in Sources */,
 				089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */,
@@ -471,20 +467,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D9E6187A1B0F8914007AFECB /* LaunchScreen.xib */ = {
+		D96F780A1B222C3000699147 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D9E6187B1B0F8914007AFECB /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-		D9E618991B0FCCC6007AFECB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D9E6189A1B0FCCC6007AFECB /* Base */,
+				D96F780B1B222C3000699147 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		D96F780D1B222C4200699147 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D96F780E1B222C4200699147 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -653,7 +651,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "$(SCRoot)/Users/mdobro/Xcode/Mclass/Mclass/peertalk/Peertalk Example/Peertalk Example-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/peertalk/Peertalk Example/Peertalk Example-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -667,7 +665,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "$(SCRoot)/Users/mdobro/Xcode/Mclass/Mclass/peertalk/Peertalk Example/Peertalk Example-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/peertalk/Peertalk Example/Peertalk Example-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";

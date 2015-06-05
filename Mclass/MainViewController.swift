@@ -8,16 +8,20 @@
 
 import UIKit
 
-class MainViewController: UIViewController, PTChannelDelegate, SettingsViewControllerDelegate {
+class MainViewController: UIViewController, PTChannelDelegate, SettingsViewControllerDelegate, SubMainDelegate {
+    
     
     weak var serverChannel_:PTChannel!
     weak var peerChannel_:PTChannel!
     
     @IBOutlet weak var settingsBarButton: UIBarButtonItem!
     @IBOutlet weak var problemBarButton: UIBarButtonItem!
+    @IBOutlet weak var subMainContainer: UIView!
     
     var SettingsHDCPon = false
-    
+    var subMainSettings:(projector:Bool!, volume: Int!) = (false,0)
+    var camViewSettings:(paused:Bool!, timeElapsed: Int!, timeRemaining: Int!) = (false,0,0)
+
     override func viewDidLoad() {
 
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "Bar"), forBarMetrics:.Default)
@@ -32,7 +36,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         
         //peertalk
         let channel:PTChannel! = PTChannel(delegate: self)
-        let loopback:in_addr_t = 2130706433
+        let loopback:in_addr_t = 2130706433 //int representation of 127.0.0.1
         channel.listenOnPort(2345, IPv4Address: loopback, callback: { (error:NSError!) -> Void in
             if error != nil {
                 println("Failed to listen on 127.0.0.1")
@@ -44,36 +48,75 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         })
     }
     
-    //Functions for com with Mac
-    /*
-    (void)appendOutputMessage:(NSString*)message {
-    NSLog(@">> %@", message);
-    NSString *text = self.outputTextView.text;
-    if (text.length == 0) {
-    self.outputTextView.text = [text stringByAppendingString:message];
-    } else {
-    self.outputTextView.text = [text stringByAppendingFormat:@"\n%@", message];
-    [self.outputTextView scrollRangeToVisible:NSMakeRange(self.outputTextView.text.length, 0)];
-    }
-    }
-    
-    - (void)sendMessage:(NSString*)message {
-    if (peerChannel_) {
-    dispatch_data_t payload = PTExampleTextDispatchDataWithString(message);
-    [peerChannel_ sendFrameOfType:PTExampleFrameTypeTextMessage tag:PTFrameNoTag withPayload:payload callback:^(NSError *error) {
-    if (error) {
-    NSLog(@"Failed to send message: %@", error);
-    }
-    }];
-    [self appendOutputMessage:[NSString stringWithFormat:@"[you]: %@", message]];
-    } else {
-    [self appendOutputMessage:@"Can not send message — not connected"];
-    }
-    }
-    */
-    
-    func sendMessage(data: (String?,Bool?)){
+    @IBAction func ProblemBarButtonTap(sender: UIBarButtonItem) {
+        //Sets back button size and title for HelpViewController scene
+        let backBarButton = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: nil)
+        let buttonDict = [NSFontAttributeName: UIFont(name: "Arial", size: 30)!]
+        backBarButton.setTitleTextAttributes(buttonDict, forState: UIControlState.Normal)
+        self.navigationItem.backBarButtonItem = backBarButton
         
+        //presents HelpViewController
+        let storyboard = UIStoryboard(name: "Help", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier("HelpViewController") as! UIViewController
+        self.navigationController!.pushViewController(controller, animated: true)
+    }
+
+   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "settingsPopover" {
+            let dest = segue.destinationViewController as! SettingsViewController
+            dest.delegate = self
+        }
+        else if segue.identifier == "subMainLoad" {
+            let dest = segue.destinationViewController as! SubMainViewController
+            dest.delegate = self
+        }
+    }
+
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+//SubMainDelegate functions
+    func camViewDidChange(sender: CamView, settings: (paused: Bool!, timeElapsed: Int!, timeRemaining: Int!)) {
+        camViewSettings = settings
+    }
+    func subMainDidChange(sender: SubMainViewController, settings: (projector: Bool!, volume: Int!)) {
+        subMainSettings = settings
+        if settings.projector! {
+            sendMessage("Projector On")
+        }
+        else {
+            sendMessage("Projector Off")
+        }
+    }
+    
+//SettingsViewControllerDelegate functions
+    func HDCPDidChange(controller: SettingsViewController, on: Bool) {
+        SettingsHDCPon = on
+    }
+    
+//Functions for commuication with Mac
+    func sendMessage(message: String!){
+        if peerChannel_ != nil {
+            let payload = PTExampleTextDispatchDataWithString(message)
+            peerChannel_.sendFrameOfType(101, tag: 0, withPayload: payload, callback: { (error:NSError!) -> Void in
+                if error != nil {
+                    println("Failed to send message. Error: \(error)")
+                }
+                else {
+                    println("iPad sent message: \(message)")
+                }
+            })
+        }
+        else {
+            println("Mac is not connected - Unable to send message: \(message)")
+        }
     }
     
     func sendDeviceInfo() {
@@ -100,6 +143,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         }
     }
     
+//PTChannelDelegate functions
     func ioFrameChannel(channel: PTChannel!, shouldAcceptFrameOfType type: UInt32, tag: UInt32, payloadSize: UInt32) -> Bool {
         if (channel != peerChannel_) {
             // A previous channel that has been canceled but not yet ended. Ignore.
@@ -114,30 +158,22 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         return true;
     }
     
+    //iPad recieves a message from Mac
     func ioFrameChannel(channel: PTChannel!, didReceiveFrameOfType type: UInt32, tag: UInt32, payload: PTData!) {
-        println("Recieved frame of type", type, "with tag", tag, "with payload", payload)
-        let help:objChelper = objChelper()
-        let message = help.helpioFrameChannel(channel, didReceiveFrameOfType: type, tag: tag, payload: payload, peerChannel: peerChannel_)
-        /*
-        //NSLog(@"didReceiveFrameOfType: %u, %u, %@", type, tag, payload);
-        if (type == 101) {
-            let payloadData = payload.data
-            //let textFrame:PTExampleTextFrame = payloadData.memory
-            //let length = textFrame.length
-            //textFrame.length = textFrame.length.bigEndian;
-            //let bytes = UnsafePointer<Void>(nilLiteral: textFrame.utf8text)
-            //let message = NSString(bytes: bytes, length: Int(textFrame.length), encoding: NSUTF8StringEncoding)
-            //println(textFrame)
-        } else if (type == 102) && (peerChannel_ != nil) {
-            peerChannel_.sendFrameOfType(103, tag: tag, withPayload: nil, callback: nil)
+        //println("Recieved frame of type", type, "with tag", tag, "with payload", payload)
+        if type == 101 {
+            let help:objChelper = objChelper()
+            let message = help.helpioFrameChannel(channel, didReceiveFrameOfType: type, tag: tag, payload: payload, peerChannel: peerChannel_)
+            println("iPad recieved message: \(message)")
         }
-        */
     }
     
     func ioFrameChannel(channel: PTChannel!, didEndWithError error: NSError!) {
-        return
+        let help = objChelper()
+        help.helpioFrameChannel(channel, didEndWithError: error)
     }
     
+    //invoked when a new connection is possible
     func ioFrameChannel(channel: PTChannel!, didAcceptConnection otherChannel: PTChannel!, fromAddress address: PTAddress!) {
         // Cancel any other connection. We are FIFO, so the last connection
         // established will cancel any previous connection and "take its place".
@@ -154,54 +190,5 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         // Send some information about ourselves to the other end
         sendDeviceInfo()
     }
-    //end
-    
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "settingsPopover" {
-            let dest = segue.destinationViewController as! SettingsViewController
-            dest.delegate = self
-        }
-    }
-
-    //passes slider button status from settingsViewController to mainViewController
-    func HDCPDidChange(controller: SettingsViewController, on: Bool) {
-        SettingsHDCPon = on
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
-    @IBAction func ProblemBarButtonTap(sender: UIBarButtonItem) {
-        //Sets back button size and title for HelpViewController scene
-        let backBarButton = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: nil)
-        let buttonDict = [NSFontAttributeName: UIFont(name: "Arial", size: 30)!]
-        backBarButton.setTitleTextAttributes(buttonDict, forState: UIControlState.Normal)
-        self.navigationItem.backBarButtonItem = backBarButton
-        
-        //presents HelpViewController
-        let storyboard = UIStoryboard(name: "Help", bundle: nil)
-        let controller = storyboard.instantiateViewControllerWithIdentifier("HelpViewController") as! UIViewController
-        self.navigationController!.pushViewController(controller, animated: true)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-
-        
 }
 

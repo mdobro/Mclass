@@ -20,6 +20,7 @@ class MainTableViewController: UITableViewController {
         super.viewDidLoad()
         if let url = NSURL(string: "CAENViewClassTest.csv") {
             var error: NSErrorPointer = nil
+            /*
             if let csv = CSV(contentsOfURL: url, error: error) {
                 // Rows
                 let rows = csv.rows
@@ -32,6 +33,7 @@ class MainTableViewController: UITableViewController {
                 let names = csv.columns["name"]  //=> ["Alice", "Bob", "Charlie"]
                 let ages = csv.columns["age"]    //=> ["18", "19", "20"]*/
             }
+            */
         }
         
         // Uncomment the following line to preserve selection between presentations
