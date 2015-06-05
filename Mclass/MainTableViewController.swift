@@ -10,7 +10,7 @@ import UIKit
 
 class MainTableViewController: UITableViewController {
     
-    var modes: [String] = ["Laptop", "Document Camera", "Apple TV", "Hide Screen"]
+    var modes: [String] = ["Laptop", "Document Camera", "Apple TV", "Blank Screen", "OFF"]
     var selectedMode:String? = nil
     var selectedModeIndex:Int? = nil
 
@@ -18,7 +18,21 @@ class MainTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if let url = NSURL(string: "CAENViewClassTest.csv") {
+            var error: NSErrorPointer = nil
+            if let csv = CSV(contentsOfURL: url, error: error) {
+                // Rows
+                let rows = csv.rows
+                /*let headers = csv.headers  //=> ["id", "name", "age"]
+                let alice = csv.rows[0]    //=> ["id": "1", "name": "Alice", "age": "18"]
+                let bob = csv.rows[1]      //=> ["id": "2", "name": "Bob", "age": "19"]
+                
+                // Columns
+                let columns = csv.columns
+                let names = csv.columns["name"]  //=> ["Alice", "Bob", "Charlie"]
+                let ages = csv.columns["age"]    //=> ["18", "19", "20"]*/
+            }
+        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

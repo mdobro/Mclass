@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D20341B0FB0CD00B0D613 /* CamView.swift */; };
 		089D20371B0FB14100B0D613 /* CamView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089D20361B0FB14100B0D613 /* CamView.storyboard */; };
+		9B1528741B2224C900802E68 /* CAENViewClassTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9B1528731B2224C900802E68 /* CAENViewClassTest.csv */; };
+		9B1528761B2224F100802E68 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1528751B2224F100802E68 /* CSV.swift */; };
 		9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */; };
 		D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB5D1B1630C7003C687A /* CAEN Logo.png */; };
 		D979CB6C1B16479F003C687A /* Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB6B1B16479F003C687A /* Bar.png */; };
@@ -57,6 +59,8 @@
 /* Begin PBXFileReference section */
 		089D20341B0FB0CD00B0D613 /* CamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CamView.swift; sourceTree = "<group>"; };
 		089D20361B0FB14100B0D613 /* CamView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CamView.storyboard; sourceTree = "<group>"; };
+		9B1528731B2224C900802E68 /* CAENViewClassTest.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CAENViewClassTest.csv; sourceTree = SOURCE_ROOT; };
+		9B1528751B2224F100802E68 /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CSV.swift; path = "../../../Downloads/SwiftCSV-master/SwiftCSV/CSV.swift"; sourceTree = "<group>"; };
 		9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		D979CB5D1B1630C7003C687A /* CAEN Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CAEN Logo.png"; sourceTree = SOURCE_ROOT; };
 		D979CB6B1B16479F003C687A /* Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bar.png; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 		D9E6186E1B0F8914007AFECB /* Mclass */ = {
 			isa = PBXGroup;
 			children = (
+				9B1528731B2224C900802E68 /* CAENViewClassTest.csv */,
+				9B1528751B2224F100802E68 /* CSV.swift */,
 				D9E618711B0F8914007AFECB /* AppDelegate.swift */,
 				D9E6189E1B0FCEF7007AFECB /* Main */,
 				D9E6189F1B0FCF05007AFECB /* Camview */,
@@ -381,6 +387,7 @@
 				D9E6187C1B0F8914007AFECB /* LaunchScreen.xib in Resources */,
 				D9E618791B0F8914007AFECB /* Images.xcassets in Resources */,
 				D9EC82D01B179C7600E64B68 /* Gear2.png in Resources */,
+				9B1528741B2224C900802E68 /* CAENViewClassTest.csv in Resources */,
 				D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */,
 				D9EC82C81B1796D700E64B68 /* Settings.png in Resources */,
 				D979CB6C1B16479F003C687A /* Bar.png in Resources */,
@@ -418,6 +425,7 @@
 				D9EC82C61B1523B200E64B68 /* SubMainViewController.swift in Sources */,
 				D9EC82C21B14D22700E64B68 /* HelpViewController.swift in Sources */,
 				D9EC82DE1B1E109300E64B68 /* PTUSBHub.m in Sources */,
+				9B1528761B2224F100802E68 /* CSV.swift in Sources */,
 				9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */,
 				D9EC82DC1B1E109300E64B68 /* PTChannel.m in Sources */,
 				089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */,
@@ -700,6 +708,7 @@
 				D9E897E21B1F88E100F421E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
