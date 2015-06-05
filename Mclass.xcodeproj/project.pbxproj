@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D20341B0FB0CD00B0D613 /* CamView.swift */; };
-		089D20371B0FB14100B0D613 /* CamView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089D20361B0FB14100B0D613 /* CamView.storyboard */; };
 		9B1528741B2224C900802E68 /* CAENViewClassTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9B1528731B2224C900802E68 /* CAENViewClassTest.csv */; };
-		9B63D7A01B22363D00EBBBD2 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B63D79F1B22363D00EBBBD2 /* CSV.swift */; };
 		9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */; };
 		D96F78041B22297600699147 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E618A31B0FD2E7007AFECB /* Help.storyboard */; };
 		D96F78091B222C2200699147 /* CamView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96F78051B222BE500699147 /* CamView.storyboard */; };
@@ -60,7 +58,6 @@
 /* Begin PBXFileReference section */
 		089D20341B0FB0CD00B0D613 /* CamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CamView.swift; sourceTree = "<group>"; };
 		9B1528731B2224C900802E68 /* CAENViewClassTest.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CAENViewClassTest.csv; sourceTree = SOURCE_ROOT; };
-		9B63D79F1B22363D00EBBBD2 /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
 		9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		D96F78051B222BE500699147 /* CamView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CamView.storyboard; sourceTree = "<group>"; };
 		D96F780B1B222C3000699147 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Mclass/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -208,8 +205,7 @@
 		D9E6189E1B0FCEF7007AFECB /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				9B63D79F1B22363D00EBBBD2 /* CSV.swift */,
-				D9E618991B0FCCC6007AFECB /* Main.storyboard */,
+				D96F780A1B222C3000699147 /* Main.storyboard */,
 				D9E6189C1B0FCEB4007AFECB /* MainViewController.swift */,
 				D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */,
 				D9EC82D11B17B98400E64B68 /* SettingsViewController.swift */,
@@ -426,7 +422,6 @@
 				D9EC82C61B1523B200E64B68 /* SubMainViewController.swift in Sources */,
 				D9EC82C21B14D22700E64B68 /* HelpViewController.swift in Sources */,
 				D9EC82DE1B1E109300E64B68 /* PTUSBHub.m in Sources */,
-				9B63D7A01B22363D00EBBBD2 /* CSV.swift in Sources */,
 				9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */,
 				D9EC82DC1B1E109300E64B68 /* PTChannel.m in Sources */,
 				089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */,
