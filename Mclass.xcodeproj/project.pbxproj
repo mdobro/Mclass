@@ -73,20 +73,20 @@
 		D9E6189C1B0FCEB4007AFECB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D9E618A31B0FD2E7007AFECB /* Help.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
 		D9E897C61B1F88E000F421E2 /* PeertalkExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeertalkExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9E897E61B1F8A7F00F421E2 /* Icon-1024.psd */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Icon-1024.psd"; path = "../../peertalk-master/Peertalk Example/Icon-1024.psd"; sourceTree = "<group>"; };
-		D9E897E71B1F8A7F00F421E2 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = "../../peertalk-master/Peertalk Example/Icon.icns"; sourceTree = "<group>"; };
-		D9E897E81B1F8A7F00F421E2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "../../peertalk-master/Peertalk Example/main.m"; sourceTree = "<group>"; };
-		D9E897E91B1F8A7F00F421E2 /* Peertalk Example-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Peertalk Example-Info.plist"; path = "../../peertalk-master/Peertalk Example/Peertalk Example-Info.plist"; sourceTree = "<group>"; };
-		D9E897EA1B1F8A7F00F421E2 /* Peertalk Example-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Peertalk Example-Prefix.pch"; path = "../../peertalk-master/Peertalk Example/Peertalk Example-Prefix.pch"; sourceTree = "<group>"; };
-		D9E897EB1B1F8A7F00F421E2 /* PTAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTAppDelegate.h; path = "../../peertalk-master/Peertalk Example/PTAppDelegate.h"; sourceTree = "<group>"; };
-		D9E897EC1B1F8A7F00F421E2 /* PTAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTAppDelegate.m; path = "../../peertalk-master/Peertalk Example/PTAppDelegate.m"; sourceTree = "<group>"; };
-		D9E897ED1B1F8A7F00F421E2 /* PTExampleProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTExampleProtocol.h; path = "../../peertalk-master/Peertalk Example/PTExampleProtocol.h"; sourceTree = "<group>"; };
+		D9E897E61B1F8A7F00F421E2 /* Icon-1024.psd */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Icon-1024.psd"; path = "../peertalk-master/Peertalk Example/Icon-1024.psd"; sourceTree = "<group>"; };
+		D9E897E71B1F8A7F00F421E2 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = "../peertalk-master/Peertalk Example/Icon.icns"; sourceTree = "<group>"; };
+		D9E897E81B1F8A7F00F421E2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "../peertalk-master/Peertalk Example/main.m"; sourceTree = "<group>"; };
+		D9E897E91B1F8A7F00F421E2 /* Peertalk Example-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Peertalk Example-Info.plist"; path = "../peertalk-master/Peertalk Example/Peertalk Example-Info.plist"; sourceTree = "<group>"; };
+		D9E897EA1B1F8A7F00F421E2 /* Peertalk Example-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Peertalk Example-Prefix.pch"; path = "../peertalk-master/Peertalk Example/Peertalk Example-Prefix.pch"; sourceTree = "<group>"; };
+		D9E897EB1B1F8A7F00F421E2 /* PTAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTAppDelegate.h; path = "../peertalk-master/Peertalk Example/PTAppDelegate.h"; sourceTree = "<group>"; };
+		D9E897EC1B1F8A7F00F421E2 /* PTAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTAppDelegate.m; path = "../peertalk-master/Peertalk Example/PTAppDelegate.m"; sourceTree = "<group>"; };
+		D9E897ED1B1F8A7F00F421E2 /* PTExampleProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTExampleProtocol.h; path = "../peertalk-master/Peertalk Example/PTExampleProtocol.h"; sourceTree = "<group>"; };
 		D9E897F71B1F8DEF00F421E2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		D9E897F91B1F8DF700F421E2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		D9E897FB1B1F8F7100F421E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
-		D9E898001B1F973C00F421E2 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = "../../peertalk-master/Peertalk Example/en.lproj/MainMenu.xib"; sourceTree = "<group>"; };
-		D9E898051B20D18800F421E2 /* objChelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = objChelper.m; sourceTree = "<group>"; };
-		D9E898071B20D1C100F421E2 /* objChelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = objChelper.h; sourceTree = "<group>"; };
+		D9E898001B1F973C00F421E2 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = "../peertalk-master/Peertalk Example/en.lproj/MainMenu.xib"; sourceTree = "<group>"; };
+		D9E898051B20D18800F421E2 /* objChelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = objChelper.m; path = Mclass/objChelper.m; sourceTree = "<group>"; };
+		D9E898071B20D1C100F421E2 /* objChelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = objChelper.h; path = Mclass/objChelper.h; sourceTree = "<group>"; };
 		D9EC82C11B14D22700E64B68 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubMainViewController.swift; sourceTree = "<group>"; };
 		D9EC82C71B1796D700E64B68 /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
@@ -137,7 +137,6 @@
 			children = (
 				D9E6186E1B0F8914007AFECB /* Mclass */,
 				D9E618841B0F8914007AFECB /* MclassTests */,
-				D9E897C71B1F88E000F421E2 /* PeertalkExample - Mac */,
 				D9E6186D1B0F8914007AFECB /* Products */,
 				D9EC82DF1B1E10B200E64B68 /* Peertalk */,
 			);
@@ -208,8 +207,6 @@
 				D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */,
 				D9EC82D11B17B98400E64B68 /* SettingsViewController.swift */,
 				D9E618911B0FAFFF007AFECB /* MainTableViewController.swift */,
-				D9E898051B20D18800F421E2 /* objChelper.m */,
-				D9E898071B20D1C100F421E2 /* objChelper.h */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -233,7 +230,34 @@
 			name = Help;
 			sourceTree = "<group>";
 		};
-		D9E897C71B1F88E000F421E2 /* PeertalkExample - Mac */ = {
+		D9E898081B20E38B00F421E2 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D9E898051B20D18800F421E2 /* objChelper.m */,
+				D9E898071B20D1C100F421E2 /* objChelper.h */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		D9EC82DF1B1E10B200E64B68 /* Peertalk */ = {
+			isa = PBXGroup;
+			children = (
+				D9E898081B20E38B00F421E2 /* iOS */,
+				D9EC82E11B1E117900E64B68 /* OS X */,
+				D9EC82D31B1E109200E64B68 /* Mclass-Bridging-Header.h */,
+				D9EC82D41B1E109300E64B68 /* prefix.pch */,
+				D9EC82D51B1E109300E64B68 /* PTPrivate.h */,
+				D9EC82D61B1E109300E64B68 /* PTChannel.h */,
+				D9EC82D71B1E109300E64B68 /* PTChannel.m */,
+				D9EC82D81B1E109300E64B68 /* PTProtocol.h */,
+				D9EC82D91B1E109300E64B68 /* PTProtocol.m */,
+				D9EC82DA1B1E109300E64B68 /* PTUSBHub.h */,
+				D9EC82DB1B1E109300E64B68 /* PTUSBHub.m */,
+			);
+			name = Peertalk;
+			sourceTree = "<group>";
+		};
+		D9EC82E11B1E117900E64B68 /* OS X */ = {
 			isa = PBXGroup;
 			children = (
 				D9E897E61B1F8A7F00F421E2 /* Icon-1024.psd */,
@@ -245,31 +269,6 @@
 				D9E897EC1B1F8A7F00F421E2 /* PTAppDelegate.m */,
 				D9E897ED1B1F8A7F00F421E2 /* PTExampleProtocol.h */,
 				D9E898001B1F973C00F421E2 /* MainMenu.xib */,
-			);
-			name = "PeertalkExample - Mac";
-			path = PeertalkExample;
-			sourceTree = "<group>";
-		};
-		D9EC82DF1B1E10B200E64B68 /* Peertalk */ = {
-			isa = PBXGroup;
-			children = (
-				D9EC82E11B1E117900E64B68 /* OS X */,
-				D9EC82D41B1E109300E64B68 /* prefix.pch */,
-				D9EC82D51B1E109300E64B68 /* PTPrivate.h */,
-				D9EC82D61B1E109300E64B68 /* PTChannel.h */,
-				D9EC82D71B1E109300E64B68 /* PTChannel.m */,
-				D9EC82D81B1E109300E64B68 /* PTProtocol.h */,
-				D9EC82D91B1E109300E64B68 /* PTProtocol.m */,
-				D9EC82DA1B1E109300E64B68 /* PTUSBHub.h */,
-				D9EC82DB1B1E109300E64B68 /* PTUSBHub.m */,
-				D9EC82D31B1E109200E64B68 /* Mclass-Bridging-Header.h */,
-			);
-			name = Peertalk;
-			sourceTree = "<group>";
-		};
-		D9EC82E11B1E117900E64B68 /* OS X */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			name = "OS X";
 			sourceTree = "<group>";
