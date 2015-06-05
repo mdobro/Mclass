@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D20341B0FB0CD00B0D613 /* CamView.swift */; };
 		089D20371B0FB14100B0D613 /* CamView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089D20361B0FB14100B0D613 /* CamView.storyboard */; };
+		9B1528741B2224C900802E68 /* CAENViewClassTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9B1528731B2224C900802E68 /* CAENViewClassTest.csv */; };
+		9B1528761B2224F100802E68 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1528751B2224F100802E68 /* CSV.swift */; };
 		9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */; };
 		D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB5D1B1630C7003C687A /* CAEN Logo.png */; };
 		D979CB6C1B16479F003C687A /* Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB6B1B16479F003C687A /* Bar.png */; };
@@ -20,12 +22,28 @@
 		D9E6189B1B0FCCC6007AFECB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E618991B0FCCC6007AFECB /* Main.storyboard */; };
 		D9E6189D1B0FCEB4007AFECB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E6189C1B0FCEB4007AFECB /* MainViewController.swift */; };
 		D9E618A41B0FD2E7007AFECB /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E618A31B0FD2E7007AFECB /* Help.storyboard */; };
+		D9E897EE1B1F8A7F00F421E2 /* Icon-1024.psd in Resources */ = {isa = PBXBuildFile; fileRef = D9E897E61B1F8A7F00F421E2 /* Icon-1024.psd */; };
+		D9E897EF1B1F8A7F00F421E2 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = D9E897E71B1F8A7F00F421E2 /* Icon.icns */; };
+		D9E897F01B1F8A7F00F421E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E897E81B1F8A7F00F421E2 /* main.m */; };
+		D9E897F11B1F8A7F00F421E2 /* Peertalk Example-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9E897E91B1F8A7F00F421E2 /* Peertalk Example-Info.plist */; };
+		D9E897F21B1F8A7F00F421E2 /* PTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E897EC1B1F8A7F00F421E2 /* PTAppDelegate.m */; };
+		D9E897F81B1F8DEF00F421E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E897F71B1F8DEF00F421E2 /* Cocoa.framework */; };
+		D9E897FA1B1F8DF700F421E2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E897F91B1F8DF700F421E2 /* QuartzCore.framework */; };
+		D9E897FC1B1F8F7100F421E2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E897FB1B1F8F7100F421E2 /* AppKit.framework */; };
+		D9E897FD1B1F919900F421E2 /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D71B1E109300E64B68 /* PTChannel.m */; };
+		D9E897FE1B1F91AB00F421E2 /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D91B1E109300E64B68 /* PTProtocol.m */; };
+		D9E897FF1B1F91AB00F421E2 /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82DB1B1E109300E64B68 /* PTUSBHub.m */; };
+		D9E898011B1F973C00F421E2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9E898001B1F973C00F421E2 /* MainMenu.xib */; };
+		D9E898061B20D18800F421E2 /* objChelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E898051B20D18800F421E2 /* objChelper.m */; };
 		D9EC82C21B14D22700E64B68 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82C11B14D22700E64B68 /* HelpViewController.swift */; };
 		D9EC82C61B1523B200E64B68 /* SubMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */; };
 		D9EC82C81B1796D700E64B68 /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EC82C71B1796D700E64B68 /* Settings.png */; };
 		D9EC82CE1B179BDE00E64B68 /* Gear.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EC82CD1B179BDE00E64B68 /* Gear.png */; };
 		D9EC82D01B179C7600E64B68 /* Gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EC82CF1B179C7600E64B68 /* Gear2.png */; };
 		D9EC82D21B17B98400E64B68 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D11B17B98400E64B68 /* SettingsViewController.swift */; };
+		D9EC82DC1B1E109300E64B68 /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D71B1E109300E64B68 /* PTChannel.m */; };
+		D9EC82DD1B1E109300E64B68 /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D91B1E109300E64B68 /* PTProtocol.m */; };
+		D9EC82DE1B1E109300E64B68 /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82DB1B1E109300E64B68 /* PTUSBHub.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +59,8 @@
 /* Begin PBXFileReference section */
 		089D20341B0FB0CD00B0D613 /* CamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CamView.swift; sourceTree = "<group>"; };
 		089D20361B0FB14100B0D613 /* CamView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CamView.storyboard; sourceTree = "<group>"; };
+		9B1528731B2224C900802E68 /* CAENViewClassTest.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CAENViewClassTest.csv; sourceTree = SOURCE_ROOT; };
+		9B1528751B2224F100802E68 /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CSV.swift; path = "../../../Downloads/SwiftCSV-master/SwiftCSV/CSV.swift"; sourceTree = "<group>"; };
 		9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		D979CB5D1B1630C7003C687A /* CAEN Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CAEN Logo.png"; sourceTree = SOURCE_ROOT; };
 		D979CB6B1B16479F003C687A /* Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bar.png; sourceTree = "<group>"; };
@@ -56,12 +76,36 @@
 		D9E6189A1B0FCCC6007AFECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D9E6189C1B0FCEB4007AFECB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D9E618A31B0FD2E7007AFECB /* Help.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
+		D9E897C61B1F88E000F421E2 /* PeertalkExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeertalkExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9E897E61B1F8A7F00F421E2 /* Icon-1024.psd */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Icon-1024.psd"; path = "peertalk/Peertalk Example/Icon-1024.psd"; sourceTree = "<group>"; };
+		D9E897E71B1F8A7F00F421E2 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = "peertalk/Peertalk Example/Icon.icns"; sourceTree = "<group>"; };
+		D9E897E81B1F8A7F00F421E2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "peertalk/Peertalk Example/main.m"; sourceTree = "<group>"; };
+		D9E897E91B1F8A7F00F421E2 /* Peertalk Example-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Peertalk Example-Info.plist"; path = "peertalk/Peertalk Example/Peertalk Example-Info.plist"; sourceTree = "<group>"; };
+		D9E897EA1B1F8A7F00F421E2 /* Peertalk Example-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Peertalk Example-Prefix.pch"; path = "peertalk/Peertalk Example/Peertalk Example-Prefix.pch"; sourceTree = "<group>"; };
+		D9E897EB1B1F8A7F00F421E2 /* PTAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTAppDelegate.h; path = "peertalk/Peertalk Example/PTAppDelegate.h"; sourceTree = "<group>"; };
+		D9E897EC1B1F8A7F00F421E2 /* PTAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTAppDelegate.m; path = "peertalk/Peertalk Example/PTAppDelegate.m"; sourceTree = "<group>"; };
+		D9E897ED1B1F8A7F00F421E2 /* PTExampleProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTExampleProtocol.h; path = "peertalk/Peertalk Example/PTExampleProtocol.h"; sourceTree = "<group>"; };
+		D9E897F71B1F8DEF00F421E2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		D9E897F91B1F8DF700F421E2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		D9E897FB1B1F8F7100F421E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
+		D9E898001B1F973C00F421E2 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = "peertalk/Peertalk Example/en.lproj/MainMenu.xib"; sourceTree = "<group>"; };
+		D9E898051B20D18800F421E2 /* objChelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = objChelper.m; path = Mclass/objChelper.m; sourceTree = "<group>"; };
+		D9E898071B20D1C100F421E2 /* objChelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = objChelper.h; path = Mclass/objChelper.h; sourceTree = "<group>"; };
 		D9EC82C11B14D22700E64B68 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubMainViewController.swift; sourceTree = "<group>"; };
 		D9EC82C71B1796D700E64B68 /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
 		D9EC82CD1B179BDE00E64B68 /* Gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gear.png; sourceTree = "<group>"; };
 		D9EC82CF1B179C7600E64B68 /* Gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gear2.png; sourceTree = "<group>"; };
 		D9EC82D11B17B98400E64B68 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D9EC82D31B1E109200E64B68 /* Mclass-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mclass-Bridging-Header.h"; sourceTree = "<group>"; };
+		D9EC82D41B1E109300E64B68 /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = prefix.pch; path = peertalk/peertalk/prefix.pch; sourceTree = "<group>"; };
+		D9EC82D51B1E109300E64B68 /* PTPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTPrivate.h; path = peertalk/peertalk/PTPrivate.h; sourceTree = "<group>"; };
+		D9EC82D61B1E109300E64B68 /* PTChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTChannel.h; path = peertalk/peertalk/PTChannel.h; sourceTree = "<group>"; };
+		D9EC82D71B1E109300E64B68 /* PTChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTChannel.m; path = peertalk/peertalk/PTChannel.m; sourceTree = "<group>"; };
+		D9EC82D81B1E109300E64B68 /* PTProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTProtocol.h; path = peertalk/peertalk/PTProtocol.h; sourceTree = "<group>"; };
+		D9EC82D91B1E109300E64B68 /* PTProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTProtocol.m; path = peertalk/peertalk/PTProtocol.m; sourceTree = "<group>"; };
+		D9EC82DA1B1E109300E64B68 /* PTUSBHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTUSBHub.h; path = peertalk/peertalk/PTUSBHub.h; sourceTree = "<group>"; };
+		D9EC82DB1B1E109300E64B68 /* PTUSBHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PTUSBHub.m; path = peertalk/peertalk/PTUSBHub.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +123,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D9E897C31B1F88E000F421E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9E897FC1B1F8F7100F421E2 /* AppKit.framework in Frameworks */,
+				D9E897FA1B1F8DF700F421E2 /* QuartzCore.framework in Frameworks */,
+				D9E897F81B1F8DEF00F421E2 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -88,6 +142,7 @@
 				D9E6186E1B0F8914007AFECB /* Mclass */,
 				D9E618841B0F8914007AFECB /* MclassTests */,
 				D9E6186D1B0F8914007AFECB /* Products */,
+				D9EC82DF1B1E10B200E64B68 /* Peertalk */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +151,7 @@
 			children = (
 				D9E6186C1B0F8914007AFECB /* Mclass.app */,
 				D9E618811B0F8914007AFECB /* MclassTests.xctest */,
+				D9E897C61B1F88E000F421E2 /* PeertalkExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +159,8 @@
 		D9E6186E1B0F8914007AFECB /* Mclass */ = {
 			isa = PBXGroup;
 			children = (
+				9B1528731B2224C900802E68 /* CAENViewClassTest.csv */,
+				9B1528751B2224F100802E68 /* CSV.swift */,
 				D9E618711B0F8914007AFECB /* AppDelegate.swift */,
 				D9E6189E1B0FCEF7007AFECB /* Main */,
 				D9E6189F1B0FCF05007AFECB /* Camview */,
@@ -117,6 +175,9 @@
 		D9E6186F1B0F8914007AFECB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D9E897FB1B1F8F7100F421E2 /* AppKit.framework */,
+				D9E897F91B1F8DF700F421E2 /* QuartzCore.framework */,
+				D9E897F71B1F8DEF00F421E2 /* Cocoa.framework */,
 				D9EC82CD1B179BDE00E64B68 /* Gear.png */,
 				D9EC82CF1B179C7600E64B68 /* Gear2.png */,
 				D9EC82C71B1796D700E64B68 /* Settings.png */,
@@ -175,6 +236,49 @@
 			name = Help;
 			sourceTree = "<group>";
 		};
+		D9E898081B20E38B00F421E2 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D9E898051B20D18800F421E2 /* objChelper.m */,
+				D9E898071B20D1C100F421E2 /* objChelper.h */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		D9EC82DF1B1E10B200E64B68 /* Peertalk */ = {
+			isa = PBXGroup;
+			children = (
+				D9E898081B20E38B00F421E2 /* iOS */,
+				D9EC82E11B1E117900E64B68 /* OS X */,
+				D9EC82D31B1E109200E64B68 /* Mclass-Bridging-Header.h */,
+				D9EC82D41B1E109300E64B68 /* prefix.pch */,
+				D9EC82D51B1E109300E64B68 /* PTPrivate.h */,
+				D9EC82D61B1E109300E64B68 /* PTChannel.h */,
+				D9EC82D71B1E109300E64B68 /* PTChannel.m */,
+				D9EC82D81B1E109300E64B68 /* PTProtocol.h */,
+				D9EC82D91B1E109300E64B68 /* PTProtocol.m */,
+				D9EC82DA1B1E109300E64B68 /* PTUSBHub.h */,
+				D9EC82DB1B1E109300E64B68 /* PTUSBHub.m */,
+			);
+			name = Peertalk;
+			sourceTree = "<group>";
+		};
+		D9EC82E11B1E117900E64B68 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				D9E897E61B1F8A7F00F421E2 /* Icon-1024.psd */,
+				D9E897E71B1F8A7F00F421E2 /* Icon.icns */,
+				D9E897E81B1F8A7F00F421E2 /* main.m */,
+				D9E897E91B1F8A7F00F421E2 /* Peertalk Example-Info.plist */,
+				D9E897EA1B1F8A7F00F421E2 /* Peertalk Example-Prefix.pch */,
+				D9E897EB1B1F8A7F00F421E2 /* PTAppDelegate.h */,
+				D9E897EC1B1F8A7F00F421E2 /* PTAppDelegate.m */,
+				D9E897ED1B1F8A7F00F421E2 /* PTExampleProtocol.h */,
+				D9E898001B1F973C00F421E2 /* MainMenu.xib */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -213,6 +317,23 @@
 			productReference = D9E618811B0F8914007AFECB /* MclassTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D9E897C51B1F88E000F421E2 /* PeertalkExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9E897E01B1F88E100F421E2 /* Build configuration list for PBXNativeTarget "PeertalkExample" */;
+			buildPhases = (
+				D9E897C21B1F88E000F421E2 /* Sources */,
+				D9E897C31B1F88E000F421E2 /* Frameworks */,
+				D9E897C41B1F88E000F421E2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PeertalkExample;
+			productName = PeertalkExample;
+			productReference = D9E897C61B1F88E000F421E2 /* PeertalkExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -229,6 +350,9 @@
 					D9E618801B0F8914007AFECB = {
 						CreatedOnToolsVersion = 6.3.2;
 						TestTargetID = D9E6186B1B0F8914007AFECB;
+					};
+					D9E897C51B1F88E000F421E2 = {
+						CreatedOnToolsVersion = 6.3.2;
 					};
 				};
 			};
@@ -247,6 +371,7 @@
 			targets = (
 				D9E6186B1B0F8914007AFECB /* Mclass */,
 				D9E618801B0F8914007AFECB /* MclassTests */,
+				D9E897C51B1F88E000F421E2 /* PeertalkExample */,
 			);
 		};
 /* End PBXProject section */
@@ -262,6 +387,7 @@
 				D9E6187C1B0F8914007AFECB /* LaunchScreen.xib in Resources */,
 				D9E618791B0F8914007AFECB /* Images.xcassets in Resources */,
 				D9EC82D01B179C7600E64B68 /* Gear2.png in Resources */,
+				9B1528741B2224C900802E68 /* CAENViewClassTest.csv in Resources */,
 				D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */,
 				D9EC82C81B1796D700E64B68 /* Settings.png in Resources */,
 				D979CB6C1B16479F003C687A /* Bar.png in Resources */,
@@ -276,6 +402,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D9E897C41B1F88E000F421E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9E897EE1B1F8A7F00F421E2 /* Icon-1024.psd in Resources */,
+				D9E897F11B1F8A7F00F421E2 /* Peertalk Example-Info.plist in Resources */,
+				D9E897EF1B1F8A7F00F421E2 /* Icon.icns in Resources */,
+				D9E898011B1F973C00F421E2 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -284,13 +421,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9E618921B0FAFFF007AFECB /* MainTableViewController.swift in Sources */,
+				D9E898061B20D18800F421E2 /* objChelper.m in Sources */,
 				D9EC82C61B1523B200E64B68 /* SubMainViewController.swift in Sources */,
 				D9EC82C21B14D22700E64B68 /* HelpViewController.swift in Sources */,
+				D9EC82DE1B1E109300E64B68 /* PTUSBHub.m in Sources */,
+				9B1528761B2224F100802E68 /* CSV.swift in Sources */,
 				9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */,
+				D9EC82DC1B1E109300E64B68 /* PTChannel.m in Sources */,
 				089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */,
 				D9E618721B0F8914007AFECB /* AppDelegate.swift in Sources */,
 				D9E6189D1B0FCEB4007AFECB /* MainViewController.swift in Sources */,
 				D9EC82D21B17B98400E64B68 /* SettingsViewController.swift in Sources */,
+				D9EC82DD1B1E109300E64B68 /* PTProtocol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +441,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9E618881B0F8914007AFECB /* MclassTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9E897C21B1F88E000F421E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9E897FE1B1F91AB00F421E2 /* PTProtocol.m in Sources */,
+				D9E897FF1B1F91AB00F421E2 /* PTUSBHub.m in Sources */,
+				D9E897FD1B1F919900F421E2 /* PTChannel.m in Sources */,
+				D9E897F21B1F8A7F00F421E2 /* PTAppDelegate.m in Sources */,
+				D9E897F01B1F8A7F00F421E2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,12 +574,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = Mclass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mclass-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -434,12 +592,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = Mclass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mclass-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -477,6 +638,39 @@
 			};
 			name = Release;
 		};
+		D9E897E11B1F88E100F421E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "$(SCRoot)/Users/mdobro/Xcode/Mclass/Mclass/peertalk/Peertalk Example/Peertalk Example-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D9E897E21B1F88E100F421E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "$(SCRoot)/Users/mdobro/Xcode/Mclass/Mclass/peertalk/Peertalk Example/Peertalk Example-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -503,6 +697,15 @@
 			buildConfigurations = (
 				D9E6188F1B0F8914007AFECB /* Debug */,
 				D9E618901B0F8914007AFECB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9E897E01B1F88E100F421E2 /* Build configuration list for PBXNativeTarget "PeertalkExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9E897E11B1F88E100F421E2 /* Debug */,
+				D9E897E21B1F88E100F421E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

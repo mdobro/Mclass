@@ -8,7 +8,10 @@
 
 import UIKit
 
-class MainViewController: UIViewController, SettingsViewControllerDelegate {
+class MainViewController: UIViewController, PTChannelDelegate, SettingsViewControllerDelegate {
+    
+    weak var serverChannel_:PTChannel!
+    weak var peerChannel_:PTChannel!
     
     @IBOutlet weak var settingsBarButton: UIBarButtonItem!
     @IBOutlet weak var problemBarButton: UIBarButtonItem!
@@ -27,7 +30,132 @@ class MainViewController: UIViewController, SettingsViewControllerDelegate {
         negSpace.width = -15
         self.navigationItem.leftBarButtonItems?.insert(negSpace, atIndex: 0)
         
+        //peertalk
+        let channel:PTChannel! = PTChannel(delegate: self)
+        let loopback:in_addr_t = 2130706433
+        channel.listenOnPort(2345, IPv4Address: loopback, callback: { (error:NSError!) -> Void in
+            if error != nil {
+                println("Failed to listen on 127.0.0.1")
+            }
+            else {
+                println("Listening on 127.0.0.1")
+                self.serverChannel_ = channel
+            }
+        })
     }
+    
+    //Functions for com with Mac
+    /*
+    (void)appendOutputMessage:(NSString*)message {
+    NSLog(@">> %@", message);
+    NSString *text = self.outputTextView.text;
+    if (text.length == 0) {
+    self.outputTextView.text = [text stringByAppendingString:message];
+    } else {
+    self.outputTextView.text = [text stringByAppendingFormat:@"\n%@", message];
+    [self.outputTextView scrollRangeToVisible:NSMakeRange(self.outputTextView.text.length, 0)];
+    }
+    }
+    
+    - (void)sendMessage:(NSString*)message {
+    if (peerChannel_) {
+    dispatch_data_t payload = PTExampleTextDispatchDataWithString(message);
+    [peerChannel_ sendFrameOfType:PTExampleFrameTypeTextMessage tag:PTFrameNoTag withPayload:payload callback:^(NSError *error) {
+    if (error) {
+    NSLog(@"Failed to send message: %@", error);
+    }
+    }];
+    [self appendOutputMessage:[NSString stringWithFormat:@"[you]: %@", message]];
+    } else {
+    [self appendOutputMessage:@"Can not send message — not connected"];
+    }
+    }
+    */
+    
+    func sendMessage(data: (String?,Bool?)){
+        
+    }
+    
+    func sendDeviceInfo() {
+        if (peerChannel_ == nil) {
+            return;
+        }
+    
+        print("Sending device info over ")
+        println(peerChannel_)
+        
+        let screen = UIScreen.mainScreen()
+        let screenSize = screen.bounds.size;
+        let screenSizeDict = CGSizeCreateDictionaryRepresentation(screenSize);
+        let device = UIDevice.currentDevice()
+        let info: [String: NSObject] = ["localizedModel": device.localizedModel, "multitasking supported": device.multitaskingSupported, "name": device.name, "orientation": (UIDeviceOrientationIsLandscape(device.orientation) ? "landscape" : "protrait"), "system name": device.systemName, "system version": device.systemVersion, "screen size": screenSizeDict, "screen scale": screen.scale]
+        
+        let info2 = info as NSDictionary
+        let payload = info2.createReferencingDispatchData()
+        peerChannel_.sendFrameOfType(100, tag: 0, withPayload: payload) { (error) -> Void in
+            if error != nil {
+                print("Failed to send Device Info")
+                println(error)
+            }
+        }
+    }
+    
+    func ioFrameChannel(channel: PTChannel!, shouldAcceptFrameOfType type: UInt32, tag: UInt32, payloadSize: UInt32) -> Bool {
+        if (channel != peerChannel_) {
+            // A previous channel that has been canceled but not yet ended. Ignore.
+            return false
+        } else if (type != 101) {
+            if(type != 102) {
+                NSLog("Unexpected frame of type %u", type);
+                channel.close()
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    func ioFrameChannel(channel: PTChannel!, didReceiveFrameOfType type: UInt32, tag: UInt32, payload: PTData!) {
+        println("Recieved frame of type", type, "with tag", tag, "with payload", payload)
+        let help:objChelper = objChelper()
+        let message = help.helpioFrameChannel(channel, didReceiveFrameOfType: type, tag: tag, payload: payload, peerChannel: peerChannel_)
+        /*
+        //NSLog(@"didReceiveFrameOfType: %u, %u, %@", type, tag, payload);
+        if (type == 101) {
+            let payloadData = payload.data
+            //let textFrame:PTExampleTextFrame = payloadData.memory
+            //let length = textFrame.length
+            //textFrame.length = textFrame.length.bigEndian;
+            //let bytes = UnsafePointer<Void>(nilLiteral: textFrame.utf8text)
+            //let message = NSString(bytes: bytes, length: Int(textFrame.length), encoding: NSUTF8StringEncoding)
+            //println(textFrame)
+        } else if (type == 102) && (peerChannel_ != nil) {
+            peerChannel_.sendFrameOfType(103, tag: tag, withPayload: nil, callback: nil)
+        }
+        */
+    }
+    
+    func ioFrameChannel(channel: PTChannel!, didEndWithError error: NSError!) {
+        return
+    }
+    
+    func ioFrameChannel(channel: PTChannel!, didAcceptConnection otherChannel: PTChannel!, fromAddress address: PTAddress!) {
+        // Cancel any other connection. We are FIFO, so the last connection
+        // established will cancel any previous connection and "take its place".
+        if peerChannel_ != nil {
+            peerChannel_.cancel()
+        }
+        
+        // Weak pointer to current connection. Connection objects live by themselves
+        // (owned by its parent dispatch queue) until they are closed.
+        peerChannel_ = otherChannel;
+        peerChannel_.userInfo = address;
+        print("Connected to ")
+        println(address)
+        // Send some information about ourselves to the other end
+        sendDeviceInfo()
+    }
+    //end
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "settingsPopover" {
