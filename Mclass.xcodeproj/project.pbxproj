@@ -24,7 +24,6 @@
 		D9E897EE1B1F8A7F00F421E2 /* Icon-1024.psd in Resources */ = {isa = PBXBuildFile; fileRef = D9E897E61B1F8A7F00F421E2 /* Icon-1024.psd */; };
 		D9E897EF1B1F8A7F00F421E2 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = D9E897E71B1F8A7F00F421E2 /* Icon.icns */; };
 		D9E897F01B1F8A7F00F421E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E897E81B1F8A7F00F421E2 /* main.m */; };
-		D9E897F11B1F8A7F00F421E2 /* Peertalk Example-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9E897E91B1F8A7F00F421E2 /* Peertalk Example-Info.plist */; };
 		D9E897F21B1F8A7F00F421E2 /* PTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E897EC1B1F8A7F00F421E2 /* PTAppDelegate.m */; };
 		D9E897F81B1F8DEF00F421E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E897F71B1F8DEF00F421E2 /* Cocoa.framework */; };
 		D9E897FA1B1F8DF700F421E2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E897F91B1F8DF700F421E2 /* QuartzCore.framework */; };
@@ -404,7 +403,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9E897EE1B1F8A7F00F421E2 /* Icon-1024.psd in Resources */,
-				D9E897F11B1F8A7F00F421E2 /* Peertalk Example-Info.plist in Resources */,
 				D9E897EF1B1F8A7F00F421E2 /* Icon.icns in Resources */,
 				D9E898011B1F973C00F421E2 /* MainMenu.xib in Resources */,
 			);
