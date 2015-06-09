@@ -11,16 +11,24 @@ import UIKit
 class MainTableViewController: UITableViewController {
     
     var modes: [String] = ["Laptop", "Document Camera", "Apple TV", "Blank Screen", "OFF"]
-    var selectedMode:String? = nil
-    var selectedModeIndex:Int? = nil
+    var selectedMode = [String]?()
+    var selectedModeIndex = [Int]?()
+    var selectedProj = 0
+    var customSC:UISegmentedControl? = nil
+    var rowToSelect: NSIndexPath? = nil
 
     @IBOutlet var sourceTable: UITableView!
     
+    override func viewWillAppear(animated: Bool) {
+        self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedModeIndex![selectedProj] as Int, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.Bottom)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if let url = NSURL(string: "CAENViewClassTest.csv") {
             var error: NSErrorPointer = nil
-            /*
+            
             if let csv = CSV(contentsOfURL: url, error: error) {
                 // Rows
                 let rows = csv.rows
@@ -28,13 +36,35 @@ class MainTableViewController: UITableViewController {
                 let alice = csv.rows[0]    //=> ["id": "1", "name": "Alice", "age": "18"]
                 let bob = csv.rows[1]      //=> ["id": "2", "name": "Bob", "age": "19"]
                 
+                
                 // Columns
                 let columns = csv.columns
                 let names = csv.columns["name"]  //=> ["Alice", "Bob", "Charlie"]
                 let ages = csv.columns["age"]    //=> ["18", "19", "20"]*/
             }
-            */
+            
         }
+        // CSV Code for getting number of projectors based on room name will be above/here
+        let projectors: Int = 2
+        if projectors == 2 {
+            let items = ["Projector 1", "Projector 2"]
+            customSC = UISegmentedControl(items: items)
+            customSC!.selectedSegmentIndex = 0
+            
+            let frame = UIScreen.mainScreen().bounds
+            customSC!.frame = CGRectMake(frame.minX, frame.minY + 620,
+                frame.width - 710, frame.height*0.1)
+            
+            UISegmentedControl.appearance().setTitleTextAttributes(NSDictionary(objects: [UIFont.systemFontOfSize(25.0)], forKeys: [NSFontAttributeName]) as [NSObject : AnyObject], forState: UIControlState.Normal)
+            
+            customSC?.addTarget(self, action: "didselectsegment:", forControlEvents: .ValueChanged)
+            
+            selectedMode = ["OFF", "OFF"]
+            selectedModeIndex = [4, 4]
+            
+            self.view.addSubview(customSC!)
+        }
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -42,7 +72,20 @@ class MainTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
+    @IBAction func didselectsegment (sender: UISegmentedControl ) {
+        switch customSC!.selectedSegmentIndex
+        {
+        case 0:
+            selectedProj = 0
+            self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedModeIndex![selectedProj] as Int, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.Bottom)
+        case 1:
+            selectedProj = 1
+            self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedModeIndex![selectedProj] as Int, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.Bottom)
+        default:
+            println("Error")
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -82,15 +125,14 @@ class MainTableViewController: UITableViewController {
         //tableView.deselectRowAtIndexPath(indexPath, animated: false)
         
         //Other row is selected - need to deselect it
-        if let index = selectedModeIndex {
+        if let index = selectedModeIndex?[selectedProj] {
             let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0))
             cell?.backgroundColor = UIColor.clearColor()
         }
         
-        selectedModeIndex = indexPath.row
-        selectedMode = modes[indexPath.row]
+        selectedModeIndex?[selectedProj] = indexPath.row
+        selectedMode?[selectedProj] = modes[indexPath.row]
         
-        //update the checkmark for the current row
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         //cell?.accessoryType = .Checkmark
         
