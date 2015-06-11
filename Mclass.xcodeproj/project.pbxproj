@@ -17,6 +17,18 @@
 		D96F780F1B222C4200699147 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D96F780D1B222C4200699147 /* LaunchScreen.xib */; };
 		D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB5D1B1630C7003C687A /* CAEN Logo.png */; };
 		D979CB6C1B16479F003C687A /* Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB6B1B16479F003C687A /* Bar.png */; };
+		D97C69471B28BB6500590068 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97C69461B28BB6500590068 /* AppDelegate.swift */; };
+		D97C69491B28BB6500590068 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97C69481B28BB6500590068 /* ViewController.swift */; };
+		D97C694B1B28BB6500590068 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D97C694A1B28BB6500590068 /* Images.xcassets */; };
+		D97C694E1B28BB6500590068 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D97C694C1B28BB6500590068 /* Main.storyboard */; };
+		D97C695A1B28BB6500590068 /* Mac_HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97C69591B28BB6500590068 /* Mac_HelperTests.swift */; };
+		D97C69621B28BF9700590068 /* objChelper_mac.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C69611B28BF9700590068 /* objChelper_mac.m */; };
+		D97C696D1B28F7A800590068 /* PTChannel.h in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D61B1E109300E64B68 /* PTChannel.h */; };
+		D97C696E1B28F7A800590068 /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D71B1E109300E64B68 /* PTChannel.m */; };
+		D97C696F1B28F7A800590068 /* PTProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D81B1E109300E64B68 /* PTProtocol.h */; };
+		D97C69701B28F7A800590068 /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D91B1E109300E64B68 /* PTProtocol.m */; };
+		D97C69711B28F7A800590068 /* PTUSBHub.h in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82DA1B1E109300E64B68 /* PTUSBHub.h */; };
+		D97C69721B28F7A800590068 /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82DB1B1E109300E64B68 /* PTUSBHub.m */; };
 		D9E618721B0F8914007AFECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E618711B0F8914007AFECB /* AppDelegate.swift */; };
 		D9E618791B0F8914007AFECB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E618781B0F8914007AFECB /* Images.xcassets */; };
 		D9E618881B0F8914007AFECB /* MclassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E618871B0F8914007AFECB /* MclassTests.swift */; };
@@ -46,6 +58,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D97C69541B28BB6500590068 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9E618641B0F8914007AFECB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D97C69411B28BB6500590068;
+			remoteInfo = "Mac Helper";
+		};
 		D9E618821B0F8914007AFECB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D9E618641B0F8914007AFECB /* Project object */;
@@ -65,6 +84,18 @@
 		D96F780E1B222C4200699147 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Mclass/Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D979CB5D1B1630C7003C687A /* CAEN Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CAEN Logo.png"; sourceTree = SOURCE_ROOT; };
 		D979CB6B1B16479F003C687A /* Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bar.png; sourceTree = "<group>"; };
+		D97C69421B28BB6500590068 /* Mac Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mac Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D97C69451B28BB6500590068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D97C69461B28BB6500590068 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D97C69481B28BB6500590068 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D97C694A1B28BB6500590068 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D97C694D1B28BB6500590068 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D97C69531B28BB6500590068 /* Mac HelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mac HelperTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D97C69581B28BB6500590068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D97C69591B28BB6500590068 /* Mac_HelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mac_HelperTests.swift; sourceTree = "<group>"; };
+		D97C69611B28BF9700590068 /* objChelper_mac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = objChelper_mac.m; sourceTree = "<group>"; };
+		D97C69631B28BFA600590068 /* objChelper_mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = objChelper_mac.h; sourceTree = "<group>"; };
+		D97C69681B28D35300590068 /* Protocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Protocol.h; sourceTree = "<group>"; };
 		D9E6186C1B0F8914007AFECB /* Mclass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mclass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E618701B0F8914007AFECB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9E618711B0F8914007AFECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,8 +119,8 @@
 		D9E897F91B1F8DF700F421E2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		D9E897FB1B1F8F7100F421E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
 		D9E898001B1F973C00F421E2 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = "peertalk/Peertalk Example/en.lproj/MainMenu.xib"; sourceTree = "<group>"; };
-		D9E898051B20D18800F421E2 /* objChelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = objChelper.m; path = Mclass/objChelper.m; sourceTree = "<group>"; };
-		D9E898071B20D1C100F421E2 /* objChelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = objChelper.h; path = Mclass/objChelper.h; sourceTree = "<group>"; };
+		D9E898051B20D18800F421E2 /* objChelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = objChelper.m; sourceTree = "<group>"; };
+		D9E898071B20D1C100F421E2 /* objChelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = objChelper.h; sourceTree = "<group>"; };
 		D9EC82C11B14D22700E64B68 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubMainViewController.swift; sourceTree = "<group>"; };
 		D9EC82C71B1796D700E64B68 /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
@@ -108,6 +139,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D97C693F1B28BB6500590068 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D97C69501B28BB6500590068 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9E618691B0F8914007AFECB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -135,11 +180,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D97C69431B28BB6500590068 /* Mac Helper */ = {
+			isa = PBXGroup;
+			children = (
+				D97C69461B28BB6500590068 /* AppDelegate.swift */,
+				D97C69481B28BB6500590068 /* ViewController.swift */,
+				D97C694A1B28BB6500590068 /* Images.xcassets */,
+				D97C694C1B28BB6500590068 /* Main.storyboard */,
+				D97C69441B28BB6500590068 /* Supporting Files */,
+			);
+			path = "Mac Helper";
+			sourceTree = "<group>";
+		};
+		D97C69441B28BB6500590068 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D97C69451B28BB6500590068 /* Info.plist */,
+				D97C69611B28BF9700590068 /* objChelper_mac.m */,
+				D97C69631B28BFA600590068 /* objChelper_mac.h */,
+				D97C69681B28D35300590068 /* Protocol.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D97C69561B28BB6500590068 /* Mac HelperTests */ = {
+			isa = PBXGroup;
+			children = (
+				D97C69591B28BB6500590068 /* Mac_HelperTests.swift */,
+				D97C69571B28BB6500590068 /* Supporting Files */,
+			);
+			path = "Mac HelperTests";
+			sourceTree = "<group>";
+		};
+		D97C69571B28BB6500590068 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D97C69581B28BB6500590068 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		D9E618631B0F8914007AFECB = {
 			isa = PBXGroup;
 			children = (
 				D9E6186E1B0F8914007AFECB /* Mclass */,
 				D9E618841B0F8914007AFECB /* MclassTests */,
+				D97C69431B28BB6500590068 /* Mac Helper */,
+				D97C69561B28BB6500590068 /* Mac HelperTests */,
 				D9E6186D1B0F8914007AFECB /* Products */,
 				D9EC82DF1B1E10B200E64B68 /* Peertalk */,
 			);
@@ -151,6 +238,8 @@
 				D9E6186C1B0F8914007AFECB /* Mclass.app */,
 				D9E618811B0F8914007AFECB /* MclassTests.xctest */,
 				D9E897C61B1F88E000F421E2 /* PeertalkExample.app */,
+				D97C69421B28BB6500590068 /* Mac Helper.app */,
+				D97C69531B28BB6500590068 /* Mac HelperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -174,9 +263,8 @@
 		D9E6186F1B0F8914007AFECB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D9E897FB1B1F8F7100F421E2 /* AppKit.framework */,
-				D9E897F91B1F8DF700F421E2 /* QuartzCore.framework */,
-				D9E897F71B1F8DEF00F421E2 /* Cocoa.framework */,
+				D9E898051B20D18800F421E2 /* objChelper.m */,
+				D9E898071B20D1C100F421E2 /* objChelper.h */,
 				D9EC82CD1B179BDE00E64B68 /* Gear.png */,
 				D9EC82CF1B179C7600E64B68 /* Gear2.png */,
 				D9EC82C71B1796D700E64B68 /* Settings.png */,
@@ -235,20 +323,10 @@
 			name = Help;
 			sourceTree = "<group>";
 		};
-		D9E898081B20E38B00F421E2 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				D9E898051B20D18800F421E2 /* objChelper.m */,
-				D9E898071B20D1C100F421E2 /* objChelper.h */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
 		D9EC82DF1B1E10B200E64B68 /* Peertalk */ = {
 			isa = PBXGroup;
 			children = (
-				D9E898081B20E38B00F421E2 /* iOS */,
-				D9EC82E11B1E117900E64B68 /* OS X */,
+				D9EC82E11B1E117900E64B68 /* Example */,
 				D9EC82D31B1E109200E64B68 /* Mclass-Bridging-Header.h */,
 				D9EC82D41B1E109300E64B68 /* prefix.pch */,
 				D9EC82D51B1E109300E64B68 /* PTPrivate.h */,
@@ -258,11 +336,14 @@
 				D9EC82D91B1E109300E64B68 /* PTProtocol.m */,
 				D9EC82DA1B1E109300E64B68 /* PTUSBHub.h */,
 				D9EC82DB1B1E109300E64B68 /* PTUSBHub.m */,
+				D9E897FB1B1F8F7100F421E2 /* AppKit.framework */,
+				D9E897F91B1F8DF700F421E2 /* QuartzCore.framework */,
+				D9E897F71B1F8DEF00F421E2 /* Cocoa.framework */,
 			);
 			name = Peertalk;
 			sourceTree = "<group>";
 		};
-		D9EC82E11B1E117900E64B68 /* OS X */ = {
+		D9EC82E11B1E117900E64B68 /* Example */ = {
 			isa = PBXGroup;
 			children = (
 				D9E897E61B1F8A7F00F421E2 /* Icon-1024.psd */,
@@ -275,12 +356,47 @@
 				D9E897ED1B1F8A7F00F421E2 /* PTExampleProtocol.h */,
 				D9E898001B1F973C00F421E2 /* MainMenu.xib */,
 			);
-			name = "OS X";
+			name = Example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D97C69411B28BB6500590068 /* Mac Helper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D97C695F1B28BB6500590068 /* Build configuration list for PBXNativeTarget "Mac Helper" */;
+			buildPhases = (
+				D97C693E1B28BB6500590068 /* Sources */,
+				D97C693F1B28BB6500590068 /* Frameworks */,
+				D97C69401B28BB6500590068 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mac Helper";
+			productName = "Mac Helper";
+			productReference = D97C69421B28BB6500590068 /* Mac Helper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D97C69521B28BB6500590068 /* Mac HelperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D97C69601B28BB6500590068 /* Build configuration list for PBXNativeTarget "Mac HelperTests" */;
+			buildPhases = (
+				D97C694F1B28BB6500590068 /* Sources */,
+				D97C69501B28BB6500590068 /* Frameworks */,
+				D97C69511B28BB6500590068 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D97C69551B28BB6500590068 /* PBXTargetDependency */,
+			);
+			name = "Mac HelperTests";
+			productName = "Mac HelperTests";
+			productReference = D97C69531B28BB6500590068 /* Mac HelperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D9E6186B1B0F8914007AFECB /* Mclass */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9E6188B1B0F8914007AFECB /* Build configuration list for PBXNativeTarget "Mclass" */;
@@ -342,6 +458,13 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = CAENiOS;
 				TargetAttributes = {
+					D97C69411B28BB6500590068 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					D97C69521B28BB6500590068 = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = D97C69411B28BB6500590068;
+					};
 					D9E6186B1B0F8914007AFECB = {
 						CreatedOnToolsVersion = 6.3.2;
 						DevelopmentTeam = D9GZK3CLYY;
@@ -371,11 +494,29 @@
 				D9E6186B1B0F8914007AFECB /* Mclass */,
 				D9E618801B0F8914007AFECB /* MclassTests */,
 				D9E897C51B1F88E000F421E2 /* PeertalkExample */,
+				D97C69411B28BB6500590068 /* Mac Helper */,
+				D97C69521B28BB6500590068 /* Mac HelperTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D97C69401B28BB6500590068 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D97C694B1B28BB6500590068 /* Images.xcassets in Resources */,
+				D97C694E1B28BB6500590068 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D97C69511B28BB6500590068 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9E6186A1B0F8914007AFECB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,6 +555,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D97C693E1B28BB6500590068 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D97C696D1B28F7A800590068 /* PTChannel.h in Sources */,
+				D97C696E1B28F7A800590068 /* PTChannel.m in Sources */,
+				D97C696F1B28F7A800590068 /* PTProtocol.h in Sources */,
+				D97C69701B28F7A800590068 /* PTProtocol.m in Sources */,
+				D97C69711B28F7A800590068 /* PTUSBHub.h in Sources */,
+				D97C69721B28F7A800590068 /* PTUSBHub.m in Sources */,
+				D97C69491B28BB6500590068 /* ViewController.swift in Sources */,
+				D97C69621B28BF9700590068 /* objChelper_mac.m in Sources */,
+				D97C69471B28BB6500590068 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D97C694F1B28BB6500590068 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D97C695A1B28BB6500590068 /* Mac_HelperTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9E618681B0F8914007AFECB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -457,6 +622,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D97C69551B28BB6500590068 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D97C69411B28BB6500590068 /* Mac Helper */;
+			targetProxy = D97C69541B28BB6500590068 /* PBXContainerItemProxy */;
+		};
 		D9E618831B0F8914007AFECB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D9E6186B1B0F8914007AFECB /* Mclass */;
@@ -483,9 +653,95 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		D97C694C1B28BB6500590068 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D97C694D1B28BB6500590068 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D97C695B1B28BB6500590068 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Mac Helper/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Mclass-Bridging-Header.h";
+			};
+			name = Debug;
+		};
+		D97C695C1B28BB6500590068 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Mac Helper/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Mclass-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		D97C695D1B28BB6500590068 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Mac HelperTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mac Helper.app/Contents/MacOS/Mac Helper";
+			};
+			name = Debug;
+		};
+		D97C695E1B28BB6500590068 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Mac HelperTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mac Helper.app/Contents/MacOS/Mac Helper";
+			};
+			name = Release;
+		};
 		D9E618891B0F8914007AFECB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -526,6 +782,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Mclass-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -564,6 +821,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Mclass-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -674,6 +932,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D97C695F1B28BB6500590068 /* Build configuration list for PBXNativeTarget "Mac Helper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D97C695B1B28BB6500590068 /* Debug */,
+				D97C695C1B28BB6500590068 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D97C69601B28BB6500590068 /* Build configuration list for PBXNativeTarget "Mac HelperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D97C695D1B28BB6500590068 /* Debug */,
+				D97C695E1B28BB6500590068 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D9E618671B0F8914007AFECB /* Build configuration list for PBXProject "Mclass" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -116,7 +116,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
 //Functions for commuication with Mac
     func sendMessage(message: String!){
         if peerChannel_ != nil {
-            let payload = PTExampleTextDispatchDataWithString(message)
+            let payload = DispatchDataWithString(message)
             peerChannel_.sendFrameOfType(101, tag: 0, withPayload: payload, callback: { (error:NSError!) -> Void in
                 if error != nil {
                     println("Failed to send message. Error: \(error)")

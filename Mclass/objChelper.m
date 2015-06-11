@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "objChelper.h"
-#import "PTExampleProtocol.h"
+#import "Protocol.h"
 
 @implementation objChelper
 
@@ -18,7 +18,7 @@
     if (channel != peerChannel_) {
         // A previous channel that has been canceled but not yet ended. Ignore.
         return NO;
-    } else if (type != PTExampleFrameTypeTextMessage && type != PTExampleFrameTypePing) {
+    } else if (type != TextMessage && type != Ping) {
         NSLog(@"Unexpected frame of type %u", type);
         [channel close];
         return NO;
@@ -30,14 +30,14 @@
 // Invoked when a new frame has arrived on a channel.
 - (NSString*)helpioFrameChannel:(PTChannel*)channel didReceiveFrameOfType:(uint32_t)type tag:(uint32_t)tag payload:(PTData*)payload peerChannel:(PTChannel*)peerChannel_ {
     //NSLog(@"didReceiveFrameOfType: %u, %u, %@", type, tag, payload);
-    if (type == PTExampleFrameTypeTextMessage) {
-        PTExampleTextFrame *textFrame = (PTExampleTextFrame*)payload.data;
+    if (type == TextMessage) {
+        TextFrame *textFrame = (TextFrame*)payload.data;
         textFrame->length = ntohl(textFrame->length);
         NSString *message = [[NSString alloc] initWithBytes:textFrame->utf8text length:textFrame->length encoding:NSUTF8StringEncoding];
         //NSLog(@"%@ %@",channel.userInfo,message);
         return message;
-    } else if (type == PTExampleFrameTypePing && peerChannel_) {
-        [peerChannel_ sendFrameOfType:PTExampleFrameTypePong tag:tag withPayload:nil callback:nil];
+    } else if (type == Ping && peerChannel_) {
+        [peerChannel_ sendFrameOfType:Pong tag:tag withPayload:nil callback:nil];
     }
     return @"";
 }
