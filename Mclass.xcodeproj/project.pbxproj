@@ -247,9 +247,6 @@
 		D9E6186E1B0F8914007AFECB /* Mclass */ = {
 			isa = PBXGroup;
 			children = (
-				9B1528731B2224C900802E68 /* CAENViewClassTest.csv */,
-				9B89533B1B25EAF700509DA9 /* CSV.swift */,
-				D9E618711B0F8914007AFECB /* AppDelegate.swift */,
 				D9E6189E1B0FCEF7007AFECB /* Main */,
 				D9E6189F1B0FCF05007AFECB /* Camview */,
 				D9E618A01B0FCF0E007AFECB /* Help */,
@@ -265,6 +262,9 @@
 			children = (
 				D9E898051B20D18800F421E2 /* objChelper.m */,
 				D9E898071B20D1C100F421E2 /* objChelper.h */,
+				D9E618711B0F8914007AFECB /* AppDelegate.swift */,
+				9B89533B1B25EAF700509DA9 /* CSV.swift */,
+				9B1528731B2224C900802E68 /* CAENViewClassTest.csv */,
 				D9EC82CD1B179BDE00E64B68 /* Gear.png */,
 				D9EC82CF1B179C7600E64B68 /* Gear2.png */,
 				D9EC82C71B1796D700E64B68 /* Settings.png */,
