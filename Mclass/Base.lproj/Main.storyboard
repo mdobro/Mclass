@@ -82,7 +82,7 @@
                                     <constraint firstAttribute="width" constant="314" id="tb8-RX-q1u"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="OVf-Dl-LjK" kind="embed" id="sEm-YH-mDc"/>
+                                    <segue destination="OVf-Dl-LjK" kind="embed" identifier="mainTableLoad" id="sEm-YH-mDc"/>
                                 </connections>
                             </containerView>
                         </subviews>

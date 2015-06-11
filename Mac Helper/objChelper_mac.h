@@ -3,12 +3,14 @@
 
 #import <Foundation/Foundation.h>
 #import "PTChannel.h"
+@class ViewController;
+
 static const NSTimeInterval PTAppReconnectDelay = 1.0;
 
 
 @interface Ohelper : NSObject <PTChannelDelegate> {}
 
-- (void)startInit;
+- (void)startInit:(ViewController*)view;
 - (IBAction)sendMessage:(id)sender;
 - (void)presentMessage:(NSString*)message isStatus:(BOOL)isStatus;
 - (void)startListeningForDevices;
@@ -18,6 +20,12 @@ static const NSTimeInterval PTAppReconnectDelay = 1.0;
 - (void)connectToLocalIPv4Port;
 - (void)connectToUSBDevice;
 - (void)ping;
+
+//PTChannelDelegate
+- (BOOL)ioFrameChannel:(PTChannel*)channel shouldAcceptFrameOfType:(uint32_t)type tag:(uint32_t)tag payloadSize:(uint32_t)payloadSize;
+- (void)ioFrameChannel:(PTChannel*)channel didReceiveFrameOfType:(uint32_t)type tag:(uint32_t)tag payload:(PTData*)payload;
+- (void)ioFrameChannel:(PTChannel*)channel didEndWithError:(NSError*)error;
+
 
 @end
 

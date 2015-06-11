@@ -8,24 +8,25 @@
 
 import Cocoa
 
-class ViewController: NSViewController, PTChannelDelegate {
+@objc class ViewController: NSViewController {
     
     let helper = Ohelper()
     let buttons = ["Connection Status", "Projector 1 Source", "Projector 2 Source", "HDCP Status", "Problem Status", "Problem Message"]
+    var Statuses = ["Not Connected", "", "", "", "", ""] //initial status
     
     @IBOutlet weak var table: NSTableView!
     
-    override internal func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         self.table.gridStyleMask = NSTableViewGridLineStyle.SolidVerticalGridLineMask
         
-        helper.startInit()
+        helper.startInit(self)
         
         // Do any additional setup after loading the view.
     }
 
-    override internal var representedObject: AnyObject? {
+    override var representedObject: AnyObject? {
         didSet {
         // Update the view, if already loaded.
         }
@@ -37,21 +38,47 @@ class ViewController: NSViewController, PTChannelDelegate {
     
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         if tableColumn?.identifier == "Buttons" {
-            var cell = tableView.makeViewWithIdentifier("Buttons", owner: self) as! NSTableCellView
+            let cell = tableView.makeViewWithIdentifier("Buttons", owner: self) as! NSTableCellView
             cell.textField?.stringValue = buttons[row]
             return cell
         }
         else if tableColumn?.identifier == "Statuses"{
+            let cell = tableView.makeViewWithIdentifier("Statuses", owner: self) as! NSTableCellView
+            cell.textField?.stringValue = Statuses[row]
+            return cell
             
         }
         return nil
     }
     
-    //PTChannelDelegate
-    func ioFrameChannel(channel: PTChannel!, didReceiveFrameOfType type: UInt32, tag: UInt32, payload: PTData!) {
-        return
+    //Channel send/recieve
+    @objc func connected(connectionOn:Bool){
+        if connectionOn {
+            Statuses[0] = "Connected"
+        }
+        else {
+            Statuses = ["Not Connected", "", "", "", "", ""]
+        }
+        table.reloadData()
     }
-
+    
+    @objc func recievedP1source(source:String){
+        Statuses[1] = source
+        table.reloadData()
+    }
+    
+    @objc func recievedP2source(source:String){
+        Statuses[2] = source
+        table.reloadData()
+    }
+    
+    @objc func recievedHDCPchange(switchOn:Bool){
+        
+    }
+    
+    @objc func recievedProblem(problem:String){
+        
+    }
 
 }
 

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MainViewController: UIViewController, PTChannelDelegate, SettingsViewControllerDelegate, SubMainDelegate {
+class MainViewController: UIViewController, PTChannelDelegate, SettingsViewControllerDelegate, SubMainDelegate, MainTableViewDelegate {
     
-    
+    var queuedMessages:[(String, Int)] = []
     weak var serverChannel_:PTChannel!
     weak var peerChannel_:PTChannel!
     
@@ -71,6 +71,10 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
             let dest = segue.destinationViewController as! SubMainViewController
             dest.delegate = self
         }
+        else if segue.identifier == "mainTableLoad" {
+            let dest = segue.destinationViewController as! MainTableViewController
+            dest.delegate = self
+        }
     }
 
     override func prefersStatusBarHidden() -> Bool {
@@ -94,6 +98,26 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
 
     }
     
+//MainTableViewDelegate Functions
+    func projDidChange(projector:Int, source: String) {
+        if projector == 1 {
+            if peerChannel_ != nil {
+                sendMessage(source, type: UInt32(Projector1))
+            } else {
+                let message = (source, Projector1)
+                queuedMessages.append(message)
+            }
+        }
+        if projector == 2 {
+            if peerChannel_ != nil {
+                sendMessage(source, type: UInt32(Projector2))
+            } else {
+                let message = (source, Projector2)
+                queuedMessages.append(message)
+            }
+        }
+    }
+    
 //SubMainDelegate functions
     func camViewDidChange(sender: CamView, settings: (paused: Bool!, timeElapsed: Int!, timeRemaining: Int!)) {
         camViewSettings = settings
@@ -101,10 +125,10 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     func subMainDidChange(sender: SubMainViewController, settings: (projector: Bool!, volume: Int!)) {
         subMainSettings = settings
         if settings.projector! {
-            sendMessage("Projector On")
+            //sendMessage("Projector On")
         }
         else {
-            sendMessage("Projector Off")
+            //sendMessage("Projector Off")
         }
     }
     
@@ -114,10 +138,10 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     }
     
 //Functions for commuication with Mac
-    func sendMessage(message: String!){
+    func sendMessage(message: String!, type:UInt32){
         if peerChannel_ != nil {
             let payload = DispatchDataWithString(message)
-            peerChannel_.sendFrameOfType(101, tag: 0, withPayload: payload, callback: { (error:NSError!) -> Void in
+            peerChannel_.sendFrameOfType(type, tag: 0, withPayload: payload, callback: { (error:NSError!) -> Void in
                 if error != nil {
                     println("Failed to send message. Error: \(error)")
                 }
@@ -152,6 +176,12 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
                 print("Failed to send Device Info")
                 println(error)
             }
+        }
+    }
+    
+    func sendQueuedMessages(messages:[(String, Int)]){
+        for item in messages {
+            sendMessage(item.0, type: UInt32(item.1))
         }
     }
     
@@ -203,6 +233,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         println(address)
         // Send some information about ourselves to the other end
         sendDeviceInfo()
+        sendQueuedMessages(queuedMessages)
         lockScreen(false)
     }
 }

@@ -2,6 +2,7 @@
 #import "Protocol.h"
 #import "PTChannel.h"
 #import "objChelper_mac.h"
+#import "Mac_Helper-Swift.h"
 
 @interface Ohelper() {
     // If the remote connection is over USB transport...
@@ -17,13 +18,14 @@
 
 @property (readonly) NSNumber *connectedDeviceID;
 @property PTChannel *connectedChannel;
+@property ViewController* MainView;
 
 @end
 
 
 @implementation Ohelper
 
-- (void)startInit{
+- (void)startInit:(ViewController*)view {
     // We use a serial queue that we toggle depending on if we are connected or
     // not. When we are not connected to a peer, the queue is running to handle
     // "connect" tries. When we are connected to a peer, the queue is suspended
@@ -32,6 +34,7 @@
     [self startListeningForDevices];
     [self enqueueConnectToLocalIPv4Port];
     [self ping];
+    _MainView = view;
 }
 
 @synthesize connectedDeviceID = connectedDeviceID_;
@@ -119,9 +122,12 @@
 
 - (BOOL)ioFrameChannel:(PTChannel*)channel shouldAcceptFrameOfType:(uint32_t)type tag:(uint32_t)tag payloadSize:(uint32_t)payloadSize {
     if (   type != DeviceInfo
-        && type != TextMessage
+        && type != Problem
         && type != Ping
         && type != Pong
+        && type != Projector1
+        && type != Projector2
+        && type != HDCP
         && type != PTFrameTypeEndOfStream) {
         NSLog(@"Unexpected frame of type %u", type);
         [channel close];
@@ -131,18 +137,39 @@
     }
 }
 
+- (NSString*)unwrapFrame:(PTData*)payload channel:(PTChannel*)channel {
+    TextFrame *textFrame = (TextFrame*)payload.data;
+    textFrame->length = ntohl(textFrame->length);
+    NSString *message = [[NSString alloc] initWithBytes:textFrame->utf8text length:textFrame->length encoding:NSUTF8StringEncoding];
+    [self presentMessage:[NSString stringWithFormat:@"[%@]: %@", channel.userInfo, message] isStatus:NO];
+    return message;
+    
+}
+
 - (void)ioFrameChannel:(PTChannel*)channel didReceiveFrameOfType:(uint32_t)type tag:(uint32_t)tag payload:(PTData*)payload {
-    //NSLog(@"received %@, %u, %u, %@", channel, type, tag, payload);
+    NSLog(@"received %@, %u, %u, %@", channel, type, tag, payload);
     if (type == DeviceInfo) {
         NSDictionary *deviceInfo = [NSDictionary dictionaryWithContentsOfDispatchData:payload.dispatchData];
         [self presentMessage:[NSString stringWithFormat:@"Connected to %@", deviceInfo.description] isStatus:YES];
-    } else if (type == TextMessage) {
-        TextFrame *textFrame = (TextFrame*)payload.data;
-        textFrame->length = ntohl(textFrame->length);
-        NSString *message = [[NSString alloc] initWithBytes:textFrame->utf8text length:textFrame->length encoding:NSUTF8StringEncoding];
-        [self presentMessage:[NSString stringWithFormat:@"[%@]: %@", channel.userInfo, message] isStatus:NO];
+    } else if (type == Problem) {
+        //recieve problem string to display
+        [_MainView recievedProblem:[self unwrapFrame:payload channel:channel]];
     } else if (type == Pong) {
         [self pongWithTag:tag error:nil];
+    } else if (type == Projector1) {
+        [_MainView recievedP1source:[self unwrapFrame:payload channel:channel]];
+    } else if (type == Projector2) {
+        [_MainView recievedP2source:[self unwrapFrame:payload channel:channel]];
+    } else if (type == HDCP) {
+        bool change;
+        NSString *message = [self unwrapFrame:payload channel:channel];
+        if ([message isEqualToString:@"True"]) {
+            change = true;
+        }
+        else if([message isEqualToString:@"False"]){
+            change = false;
+        }
+        [_MainView recievedHDCPchange:change];
     }
 }
 
@@ -154,6 +181,7 @@
     if (connectedChannel_ == channel) {
         [self presentMessage:[NSString stringWithFormat:@"Disconnected from %@", channel.userInfo] isStatus:YES];
         self.connectedChannel = nil;
+        [_MainView connected:false];
     }
 }
 
@@ -237,6 +265,7 @@
             self.connectedChannel = channel;
             channel.userInfo = address;
             NSLog(@"Connected to %@", address);
+            [_MainView connected:true];
         }
         [self performSelector:@selector(enqueueConnectToLocalIPv4Port) withObject:nil afterDelay:PTAppReconnectDelay];
     }];

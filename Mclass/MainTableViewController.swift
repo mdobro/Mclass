@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol MainTableViewDelegate {
+    func projDidChange(projector: Int, source:String)
+}
+
 class MainTableViewController: UITableViewController {
+    var delegate:MainTableViewDelegate!
     
     var modes: [String] = ["Laptop", "Document Camera", "Apple TV", "Blank Screen", "OFF"]
     var selectedMode = [String]?()
@@ -62,8 +67,14 @@ class MainTableViewController: UITableViewController {
             selectedMode = ["OFF", "OFF"]
             selectedModeIndex = [4, 4]
             
+            delegate.projDidChange(2, source: "OFF")
+            
             self.view.addSubview(customSC!)
+            
         }
+        
+        delegate.projDidChange(1, source: "OFF")
+        
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -132,6 +143,9 @@ class MainTableViewController: UITableViewController {
         
         selectedModeIndex?[selectedProj] = indexPath.row
         selectedMode?[selectedProj] = modes[indexPath.row]
+        
+        delegate.projDidChange(selectedProj+1, source: modes[indexPath.row])
+
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         //cell?.accessoryType = .Checkmark
