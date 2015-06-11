@@ -1,0 +1,11 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "12076ead0c0fa80af85addc7282fe71b"
+inputs: 
+- "/Users/mdobro/XCode/Mclass/Mclass/Mclass/MainTableViewController.swift"
+- "/Users/mdobro/XCode/Mclass/Mclass/Mclass/SubMainViewController.swift"
+- "/Users/mdobro/XCode/Mclass/Mclass/Mclass/HelpViewController.swift"
+- "/Users/mdobro/XCode/Mclass/Mclass/Mclass/HelpTableViewController.swift"
+- "/Users/mdobro/XCode/Mclass/Mclass/Mclass/CamView.swift"
+- "/Users/mdobro/XCode/Mclass/Mclass/Mclass/AppDelegate.swift"
+- "/Users/mdobro/XCode/Mclass/Mclass/Mclass/MainViewController.swift"
+- "/Users/mdobro/XCode/Mclass/Mclass/Mclass/SettingsViewController.swift"

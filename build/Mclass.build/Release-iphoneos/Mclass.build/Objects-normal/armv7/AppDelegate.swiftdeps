@@ -1,0 +1,45 @@
+### Swift dependencies file v0 ###
+provides:
+- "AppDelegate"
+nominals:
+- "C6Mclass11AppDelegate"
+class-members:
+- "applicationWillTerminate"
+- "application"
+- "applicationDidEnterBackground"
+- "applicationWillResignActive"
+- "window"
+- "applicationDidBecomeActive"
+- "applicationWillEnterForeground"
+top-level:
+- "Bool"
+- "UIApplication"
+- "UIWindow"
+- "NSObject"
+- "AnyObject"
+- "UIApplicationDelegate"
+- "UIResponder"
+- !private "BooleanLiteralType"
+member-access:
+- "CSo8NSObject"
+- "PSo21UIApplicationDelegate"
+- "C6Mclass11AppDelegate"
+- "PSs9AnyObject"
+- "CSo11UIResponder"
+dynamic-lookup:
+cross-module:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/Swift.swiftmodule"
+- "/Users/mdobro/XCode/Mclass/Mclass/Mclass-Bridging-Header.h"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/Security.swiftmodule"
+- "/Users/mdobro/XCode/Mclass/Mclass/peertalk-master/peertalk/PTChannel.h"
+- "/Users/mdobro/XCode/Mclass/Mclass/peertalk-master/peertalk/PTProtocol.h"
+- "/Users/mdobro/XCode/Mclass/Mclass/peertalk-master/peertalk/PTUSBHub.h"
+- "/Users/mdobro/XCode/Mclass/Mclass/peertalk-master/peertalk/PTPrivate.h"
+- "/Users/mdobro/XCode/Mclass/peertalk-master/Peertalk Example/PTExampleProtocol.h"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/32/CoreImage.swiftmodule"
