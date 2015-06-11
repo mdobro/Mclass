@@ -317,8 +317,8 @@
 			isa = PBXGroup;
 			children = (
 				D9E618A31B0FD2E7007AFECB /* Help.storyboard */,
-				9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */,
 				D9EC82C11B14D22700E64B68 /* HelpViewController.swift */,
+				9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */,
 			);
 			name = Help;
 			sourceTree = "<group>";

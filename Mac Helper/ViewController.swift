@@ -77,7 +77,9 @@ import Cocoa
     }
     
     @objc func recievedProblem(problem:String){
-        
+        Statuses[5] = problem
+        Statuses[4] = "There is a problem in *insert room here*!"
+        table.reloadData()
     }
 
 }

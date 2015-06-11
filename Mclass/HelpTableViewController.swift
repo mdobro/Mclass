@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol HelpTableDelegate {
+    func sendProblem(igotaproblem:String)
+}
+
 class HelpTableViewController: UITableViewController {
+    var delegate:HelpTableDelegate!
     
     var helpNow:Bool!
     
@@ -36,16 +41,20 @@ class HelpTableViewController: UITableViewController {
             let help:String!
             if helpNow! {
                 help = "Help is on the way!"
+                //send help now
             }
             else {
                 help = "Help will arrive after class."
+                //send help later
             }
             let alert = UIAlertController(title: help, message: "", preferredStyle: UIAlertControllerStyle.Alert)
         
             alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler:{ (UIAlertAction)in
                 self.navigationController!.popToRootViewControllerAnimated(true)
             }))
-        
+            
+            delegate.sendProblem(selectedProb!)
+            
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }

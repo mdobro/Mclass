@@ -8,8 +8,12 @@
 
 import UIKit
 
+protocol HelpDelegate {
+    func whenToSendHelp(nowOrLater:String)
+}
+
 class HelpViewController: UIViewController {
-    
+    var delegate:HelpDelegate!
     
     @IBOutlet weak var GetHelpNow: UIButton!
     
@@ -36,10 +40,13 @@ class HelpViewController: UIViewController {
         if (segue.identifier == "helpNow"){
             let issuevc = segue.destinationViewController as! HelpTableViewController
             issuevc.helpNow = true
+            issuevc.delegate = self.delegate as! HelpTableDelegate
         }
         else if (segue.identifier == "helpLater"){
             let issuevc = segue.destinationViewController as! HelpTableViewController
             issuevc.helpNow = false
+            issuevc.delegate = self.delegate as! HelpTableDelegate
+
         }
     }
     

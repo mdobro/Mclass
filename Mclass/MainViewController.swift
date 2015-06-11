@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, PTChannelDelegate, SettingsViewControllerDelegate, SubMainDelegate, MainTableViewDelegate {
+class MainViewController: UIViewController, PTChannelDelegate, SettingsViewControllerDelegate, SubMainDelegate, MainTableViewDelegate, HelpDelegate, HelpTableDelegate {
     
     var queuedMessages:[(String, Int)] = []
     weak var serverChannel_:PTChannel!
@@ -58,7 +58,8 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         
         //presents HelpViewController
         let storyboard = UIStoryboard(name: "Help", bundle: nil)
-        let controller = storyboard.instantiateViewControllerWithIdentifier("HelpViewController") as! UIViewController
+        let controller = storyboard.instantiateViewControllerWithIdentifier("HelpViewController") as! HelpViewController
+        controller.delegate = self
         self.navigationController!.pushViewController(controller, animated: true)
     }
 
@@ -96,6 +97,21 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
             self.dismissViewControllerAnimated(true, completion: nil)
         }
 
+    }
+    
+//HelpDelegate
+    func whenToSendHelp(nowOrLater: String) {
+        //send message help
+    }
+    
+//HelpTableDelegate
+    func sendProblem(igotaproblem: String) {
+        if peerChannel_ != nil {
+            sendMessage(igotaproblem, type: UInt32(Problem))
+        } else {
+            let message = (igotaproblem, Problem)
+            queuedMessages.append(message)
+        }
     }
     
 //MainTableViewDelegate Functions
@@ -146,7 +162,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
                     println("Failed to send message. Error: \(error)")
                 }
                 else {
-                    println("iPad sent message: \(message)")
+                    println("iPad sent message: \(message) as frame type \(type)")
                 }
             })
         }
