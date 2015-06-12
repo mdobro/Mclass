@@ -72,13 +72,18 @@ import Cocoa
         table.reloadData()
     }
     
-    @objc func recievedHDCPchange(switchOn:Bool){
-        
+    @objc func recievedHDCPchange(switchOn:String){
+        Statuses[3] = switchOn
+        table.reloadData()
+    }
+    
+    @objc func recievedProblemRoom(nowOrLater:String) {
+        Statuses[4] = nowOrLater
+        table.reloadData()
     }
     
     @objc func recievedProblem(problem:String){
         Statuses[5] = problem
-        Statuses[4] = "There is a problem in *insert room here*!"
         table.reloadData()
     }
 

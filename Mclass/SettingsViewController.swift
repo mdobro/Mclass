@@ -34,14 +34,16 @@ class SettingsViewController: UIViewController {
             
             alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {(UIAlertAction) -> Void in
                 sender.setOn(true, animated: true)
+                self.delegate!.HDCPDidChange(self, on: sender.on)
             }))
             alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel, handler: {(UIAlertAction) -> Void in
                 sender.setOn(false, animated: true)
             }))
             
             self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            self.delegate!.HDCPDidChange(self, on: sender.on)
         }
-        delegate!.HDCPDidChange(self, on: sender.on)
     }
 
     /*

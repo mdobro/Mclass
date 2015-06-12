@@ -127,7 +127,7 @@
 		D9EC82CD1B179BDE00E64B68 /* Gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gear.png; sourceTree = "<group>"; };
 		D9EC82CF1B179C7600E64B68 /* Gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gear2.png; sourceTree = "<group>"; };
 		D9EC82D11B17B98400E64B68 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		D9EC82D31B1E109200E64B68 /* Mclass-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mclass-Bridging-Header.h"; sourceTree = "<group>"; };
+		D9EC82D31B1E109200E64B68 /* Mclass-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Mclass-Bridging-Header.h"; path = "../Mclass-Bridging-Header.h"; sourceTree = "<group>"; };
 		D9EC82D41B1E109300E64B68 /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = prefix.pch; path = peertalk/peertalk/prefix.pch; sourceTree = "<group>"; };
 		D9EC82D51B1E109300E64B68 /* PTPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTPrivate.h; path = peertalk/peertalk/PTPrivate.h; sourceTree = "<group>"; };
 		D9EC82D61B1E109300E64B68 /* PTChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PTChannel.h; path = peertalk/peertalk/PTChannel.h; sourceTree = "<group>"; };
@@ -199,6 +199,7 @@
 				D97C69611B28BF9700590068 /* objChelper_mac.m */,
 				D97C69631B28BFA600590068 /* objChelper_mac.h */,
 				D97C69681B28D35300590068 /* Protocol.h */,
+				D9EC82D31B1E109200E64B68 /* Mclass-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -327,7 +328,6 @@
 			isa = PBXGroup;
 			children = (
 				D9EC82E11B1E117900E64B68 /* Example */,
-				D9EC82D31B1E109200E64B68 /* Mclass-Bridging-Header.h */,
 				D9EC82D41B1E109300E64B68 /* prefix.pch */,
 				D9EC82D51B1E109300E64B68 /* PTPrivate.h */,
 				D9EC82D61B1E109300E64B68 /* PTChannel.h */,

@@ -128,6 +128,7 @@
         && type != Projector1
         && type != Projector2
         && type != HDCP
+        && type != ProblemRoom
         && type != PTFrameTypeEndOfStream) {
         NSLog(@"Unexpected frame of type %u", type);
         [channel close];
@@ -151,6 +152,7 @@
     if (type == DeviceInfo) {
         NSDictionary *deviceInfo = [NSDictionary dictionaryWithContentsOfDispatchData:payload.dispatchData];
         [self presentMessage:[NSString stringWithFormat:@"Connected to %@", deviceInfo.description] isStatus:YES];
+        [_MainView connected:true];
     } else if (type == Problem) {
         //recieve problem string to display
         [_MainView recievedProblem:[self unwrapFrame:payload channel:channel]];
@@ -161,15 +163,9 @@
     } else if (type == Projector2) {
         [_MainView recievedP2source:[self unwrapFrame:payload channel:channel]];
     } else if (type == HDCP) {
-        bool change;
-        NSString *message = [self unwrapFrame:payload channel:channel];
-        if ([message isEqualToString:@"True"]) {
-            change = true;
-        }
-        else if([message isEqualToString:@"False"]){
-            change = false;
-        }
-        [_MainView recievedHDCPchange:change];
+        [_MainView recievedHDCPchange:[self unwrapFrame:payload channel:channel]];
+    } else if (type == ProblemRoom) {
+        [_MainView recievedProblemRoom:[self unwrapFrame:payload channel:channel]];
     }
 }
 
@@ -265,7 +261,6 @@
             self.connectedChannel = channel;
             channel.userInfo = address;
             NSLog(@"Connected to %@", address);
-            [_MainView connected:true];
         }
         [self performSelector:@selector(enqueueConnectToLocalIPv4Port) withObject:nil afterDelay:PTAppReconnectDelay];
     }];

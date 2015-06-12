@@ -9,6 +9,9 @@
 import UIKit
 
 protocol HelpTableDelegate {
+    var helpMessage:String! {get}
+    var nowOrLater:String! {get}
+    func whenToSendHelp(nowOrLater:String)
     func sendProblem(igotaproblem:String)
 }
 
@@ -41,11 +44,11 @@ class HelpTableViewController: UITableViewController {
             let help:String!
             if helpNow! {
                 help = "Help is on the way!"
-                //send help now
+                delegate.whenToSendHelp("Now")
             }
             else {
                 help = "Help will arrive after class."
-                //send help later
+                delegate.whenToSendHelp("Later")
             }
             let alert = UIAlertController(title: help, message: "", preferredStyle: UIAlertControllerStyle.Alert)
         

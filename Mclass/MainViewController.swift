@@ -10,7 +10,6 @@ import UIKit
 
 class MainViewController: UIViewController, PTChannelDelegate, SettingsViewControllerDelegate, SubMainDelegate, MainTableViewDelegate, HelpDelegate, HelpTableDelegate {
     
-    var queuedMessages:[(String, Int)] = []
     weak var serverChannel_:PTChannel!
     weak var peerChannel_:PTChannel!
     
@@ -21,6 +20,10 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     var SettingsHDCPon = false
     var subMainSettings:(projector:Bool!, volume: Int!) = (false,0)
     var camViewSettings:(paused:Bool!, timeElapsed: Int!, timeRemaining: Int!) = (false,0,0)
+    var proj1source:String! = "Something went wrong"
+    var proj2source:String! = ""
+    var helpMessage:String! = ""
+    var nowOrLater:String! = ""
 
     override func viewDidLoad() {
 
@@ -37,7 +40,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         //peertalk
         let channel:PTChannel! = PTChannel(delegate: self)
         let loopback:in_addr_t = 2130706433 //int representation of 127.0.0.1
-        channel.listenOnPort(2345, IPv4Address: loopback, callback: { (error:NSError!) -> Void in
+        channel.listenOnPort(in_port_t(PTProtocolIPv4PortNumber), IPv4Address: loopback, callback: { (error:NSError!) -> Void in
             if error != nil {
                 println("Failed to listen on 127.0.0.1")
             }
@@ -99,19 +102,19 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
 
     }
     
-//HelpDelegate
-    func whenToSendHelp(nowOrLater: String) {
-        //send message help
-    }
-    
 //HelpTableDelegate
     func sendProblem(igotaproblem: String) {
         if peerChannel_ != nil {
             sendMessage(igotaproblem, type: UInt32(Problem))
-        } else {
-            let message = (igotaproblem, Problem)
-            queuedMessages.append(message)
         }
+        self.helpMessage = igotaproblem
+    }
+    
+    func whenToSendHelp(when: String) {
+        if peerChannel_ != nil {
+            sendMessage(when, type: UInt32(ProblemRoom))
+        }
+        self.nowOrLater = when
     }
     
 //MainTableViewDelegate Functions
@@ -119,24 +122,20 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         if projector == 1 {
             if peerChannel_ != nil {
                 sendMessage(source, type: UInt32(Projector1))
-            } else {
-                let message = (source, Projector1)
-                queuedMessages.append(message)
             }
+            self.proj1source = source
         }
         if projector == 2 {
             if peerChannel_ != nil {
                 sendMessage(source, type: UInt32(Projector2))
-            } else {
-                let message = (source, Projector2)
-                queuedMessages.append(message)
             }
+            self.proj2source = source
         }
     }
     
 //SubMainDelegate functions
     func camViewDidChange(sender: CamView, settings: (paused: Bool!, timeElapsed: Int!, timeRemaining: Int!)) {
-        camViewSettings = settings
+        self.camViewSettings = settings
     }
     func subMainDidChange(sender: SubMainViewController, settings: (projector: Bool!, volume: Int!)) {
         subMainSettings = settings
@@ -150,7 +149,13 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     
 //SettingsViewControllerDelegate functions
     func HDCPDidChange(controller: SettingsViewController, on: Bool) {
-        SettingsHDCPon = on
+        self.SettingsHDCPon = on
+        if SettingsHDCPon {
+            sendMessage("ON", type: UInt32(HDCP))
+        }
+        else {
+            sendMessage("OFF", type: UInt32(HDCP))
+        }
     }
     
 //Functions for commuication with Mac
@@ -168,6 +173,19 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         }
         else {
             println("Mac is not connected - Unable to send message: \(message)")
+        }
+    }
+    
+    //this will be called when mac app starts to correctly populate table
+    func macRequestedStatus() {
+        sendMessage(proj1source, type: UInt32(Projector1))
+        sendMessage(proj2source, type: UInt32(Projector2))
+        sendMessage(nowOrLater, type: UInt32(ProblemRoom))
+        sendMessage(helpMessage, type: UInt32(Problem))
+        if SettingsHDCPon {
+            sendMessage("ON", type: UInt32(HDCP))
+        } else {
+            sendMessage("OFF", type: UInt32(HDCP))
         }
     }
     
@@ -192,12 +210,6 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
                 print("Failed to send Device Info")
                 println(error)
             }
-        }
-    }
-    
-    func sendQueuedMessages(messages:[(String, Int)]){
-        for item in messages {
-            sendMessage(item.0, type: UInt32(item.1))
         }
     }
     
@@ -249,7 +261,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         println(address)
         // Send some information about ourselves to the other end
         sendDeviceInfo()
-        sendQueuedMessages(queuedMessages)
+        macRequestedStatus()
         lockScreen(false)
     }
 }

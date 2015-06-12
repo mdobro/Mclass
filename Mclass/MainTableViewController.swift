@@ -9,6 +9,8 @@
 import UIKit
 
 protocol MainTableViewDelegate {
+    var proj1source:String! {get}
+    var proj2source:String! {get}
     func projDidChange(projector: Int, source:String)
 }
 
@@ -50,6 +52,7 @@ class MainTableViewController: UITableViewController {
             
         }
         // CSV Code for getting number of projectors based on room name will be above/here
+        
         let projectors: Int = 2
         if projectors == 2 {
             let items = ["Projector 1", "Projector 2"]
