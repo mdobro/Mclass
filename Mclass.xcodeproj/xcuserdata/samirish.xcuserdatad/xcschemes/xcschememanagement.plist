@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Mac Helper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>Mclass.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -17,6 +22,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>D97C69411B28BB6500590068</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D97C69521B28BB6500590068</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D9E6186B1B0F8914007AFECB</key>
 		<dict>
 			<key>primary</key>

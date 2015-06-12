@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, PTChannelDelegate, SettingsViewControllerDelegate, SubMainDelegate, MainTableViewDelegate, HelpDelegate, HelpTableDelegate {
+class MainViewController: UIViewController, PTChannelDelegate, SettingsViewControllerDelegate, SubMainDelegate, MainTableViewDelegate, HelpTableDelegate {
     
     weak var serverChannel_:PTChannel!
     weak var peerChannel_:PTChannel!

@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol HelpDelegate {}
-
 class HelpViewController: UIViewController {
-    var delegate:HelpDelegate!
+    var delegate:HelpTableDelegate!
     
     @IBOutlet weak var GetHelpNow: UIButton!
+    
+    @IBOutlet weak var UndoHelp: UIButton!
     
     @IBOutlet weak var GetHelpLater: UIButton!
     
@@ -25,6 +25,9 @@ class HelpViewController: UIViewController {
         GetHelpLater.layer.borderWidth = 3
         GetHelpLater.layer.borderColor = GetHelpNow.titleLabel?.textColor.CGColor
         GetHelpLater.layer.cornerRadius = 10
+        UndoHelp.layer.borderWidth = 3
+        UndoHelp.layer.borderColor = UndoHelp.titleLabel?.textColor.CGColor
+        UndoHelp.layer.cornerRadius = 10
         self.navigationController?.navigationBar.tintColor = UIColor.yellowColor()
        
         // Do any additional setup after loading the view.
@@ -38,15 +41,20 @@ class HelpViewController: UIViewController {
         if (segue.identifier == "helpNow"){
             let issuevc = segue.destinationViewController as! HelpTableViewController
             issuevc.helpNow = true
-            issuevc.delegate = self.delegate as! HelpTableDelegate
+            issuevc.delegate = self.delegate
             
         }
         else if (segue.identifier == "helpLater"){
             let issuevc = segue.destinationViewController as! HelpTableViewController
             issuevc.helpNow = false
-            issuevc.delegate = self.delegate as! HelpTableDelegate
+            issuevc.delegate = self.delegate
 
         }
+    }
+    
+    @IBAction func Undo(sender: AnyObject) {
+        delegate.sendProblem("")
+        delegate.whenToSendHelp("")
     }
     
     override func didReceiveMemoryWarning() {
