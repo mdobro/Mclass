@@ -73,7 +73,7 @@ class HelpTableViewController: UITableViewController {
     }
     
     
-    func Custom () {
+    func Custom (table:UITableView) {
         var tField: UITextField!
         
         func configurationTextField(textField: UITextField!)
@@ -88,6 +88,8 @@ class HelpTableViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler:{ (UIAlertAction)in
             self.selectedProb = tField.text
+            self.problems[10] = "Other - \"\(self.selectedProb!)\""
+            table.reloadData()
         }))
         self.presentViewController(alert, animated: true, completion: nil)
     }
@@ -170,8 +172,8 @@ class HelpTableViewController: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.accessoryType = .Checkmark
         
-        if (selectedProb == "Other (Please specify)") {
-            Custom()
+        if (selectedProb == self.problems[10]) {
+            Custom(tableView)
         }
     }
     
