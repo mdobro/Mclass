@@ -176,16 +176,6 @@
                                     <action selector="recordSettingsButtonTap:" destination="olh-5c-Sre" eventType="touchUpInside" id="67G-B7-mQs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLQ-kk-tAN">
-                                <rect key="frame" x="229" y="316" width="233" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Projector On/Off">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="projectorPower:" destination="olh-5c-Sre" eventType="touchUpInside" id="TZs-OD-tSO"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZF-4F-iu0">
                                 <rect key="frame" x="496" y="0.0" width="194" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>

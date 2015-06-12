@@ -34,16 +34,6 @@ class SubMainViewController: UIViewController {
         let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
         self.DisplayTime.text = timestamp;
     }
-
-    
-    @IBAction func projectorPower(sender: UIButton) {
-        if delegate!.subMainSettings.projector! {
-            delegate!.subMainDidChange(self, settings: (false,0))
-        }
-        else {
-            delegate!.subMainDidChange(self, settings: (true,0))
-        }
-    }
     
     @IBAction func recordSettingsButtonTap(sender: UIButton) {
         let storyboard = UIStoryboard(name: "CamView", bundle: nil)

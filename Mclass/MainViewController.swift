@@ -139,12 +139,8 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     }
     func subMainDidChange(sender: SubMainViewController, settings: (projector: Bool!, volume: Int!)) {
         subMainSettings = settings
-        if settings.projector! {
-            //sendMessage("Projector On")
-        }
-        else {
-            //sendMessage("Projector Off")
-        }
+        //volume here
+        //possibly time / time remaining
     }
     
 //SettingsViewControllerDelegate functions
