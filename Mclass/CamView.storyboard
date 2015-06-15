@@ -121,15 +121,15 @@
             </objects>
             <point key="canvasLocation" x="450" y="81"/>
         </scene>
-        <!--View Controller-->
+        <!--Player Controller-->
         <scene sceneID="AEF-1q-2Z4">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BcL-zq-Fey" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BcL-zq-Fey" customClass="PlayerController" customModule="Mclass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kk4-qS-BhC"/>
                         <viewControllerLayoutGuide type="bottom" id="wNZ-Vt-6vr"/>
                     </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Acs-C5-ed2">
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Acs-C5-ed2" customClass="PlayerView" customModule="Mclass" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="530" height="353"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -138,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xD-ND-Ylz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1309.5" y="81"/>
+            <point key="canvasLocation" x="1149" y="-24.5"/>
         </scene>
     </scenes>
 </document>
