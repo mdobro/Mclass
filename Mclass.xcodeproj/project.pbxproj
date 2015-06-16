@@ -25,11 +25,8 @@
 		D97C694E1B28BB6500590068 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D97C694C1B28BB6500590068 /* Main.storyboard */; };
 		D97C695A1B28BB6500590068 /* Mac_HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97C69591B28BB6500590068 /* Mac_HelperTests.swift */; };
 		D97C69621B28BF9700590068 /* objChelper_mac.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C69611B28BF9700590068 /* objChelper_mac.m */; };
-		D97C696D1B28F7A800590068 /* PTChannel.h in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D61B1E109300E64B68 /* PTChannel.h */; };
 		D97C696E1B28F7A800590068 /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D71B1E109300E64B68 /* PTChannel.m */; };
-		D97C696F1B28F7A800590068 /* PTProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D81B1E109300E64B68 /* PTProtocol.h */; };
 		D97C69701B28F7A800590068 /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D91B1E109300E64B68 /* PTProtocol.m */; };
-		D97C69711B28F7A800590068 /* PTUSBHub.h in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82DA1B1E109300E64B68 /* PTUSBHub.h */; };
 		D97C69721B28F7A800590068 /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82DB1B1E109300E64B68 /* PTUSBHub.m */; };
 		D9E618721B0F8914007AFECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E618711B0F8914007AFECB /* AppDelegate.swift */; };
 		D9E618791B0F8914007AFECB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E618781B0F8914007AFECB /* Images.xcassets */; };
@@ -565,11 +562,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D97C696D1B28F7A800590068 /* PTChannel.h in Sources */,
 				D97C696E1B28F7A800590068 /* PTChannel.m in Sources */,
-				D97C696F1B28F7A800590068 /* PTProtocol.h in Sources */,
 				D97C69701B28F7A800590068 /* PTProtocol.m in Sources */,
-				D97C69711B28F7A800590068 /* PTUSBHub.h in Sources */,
 				D97C69721B28F7A800590068 /* PTUSBHub.m in Sources */,
 				D97C69491B28BB6500590068 /* ViewController.swift in Sources */,
 				D97C69621B28BF9700590068 /* objChelper_mac.m in Sources */,
