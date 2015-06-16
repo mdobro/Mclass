@@ -129,6 +129,7 @@
         && type != Projector2
         && type != HDCP
         && type != ProblemRoom
+        && type != SourceVolume
         && type != PTFrameTypeEndOfStream) {
         NSLog(@"Unexpected frame of type %u", type);
         [channel close];
@@ -166,6 +167,8 @@
         [_MainView recievedHDCPchange:[self unwrapFrame:payload channel:channel]];
     } else if (type == ProblemRoom) {
         [_MainView recievedProblemRoom:[self unwrapFrame:payload channel:channel]];
+    } else if (type == SourceVolume) {
+        [_MainView recievedVolume:[self unwrapFrame:payload channel:channel]];
     }
 }
 

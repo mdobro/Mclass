@@ -9,11 +9,12 @@
 import UIKit
 
 protocol SubMainDelegate {
-    var subMainSettings:(projector:Bool!, volume: Int!) {get set}
+    
     var camViewSettings:(paused:Bool!, timeElapsed: Int!, timeRemaining: Int!) {get set}
     
     func camViewDidChange(sender: CamView, settings: (paused:Bool!, timeElapsed: Int!, timeRemaining: Int!))
-    func subMainDidChange(sender: SubMainViewController, settings: (projector:Bool!, volume: Int!))
+    func subMainDidChange(sender: SubMainViewController, volume: Float!)
+    
 }
 
 class SubMainViewController: UIViewController {
@@ -30,6 +31,11 @@ class SubMainViewController: UIViewController {
          var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("RefreshTime"), userInfo: nil, repeats: true)
         
     }
+    
+    @IBAction func volumeChanged(sender: UISlider) {
+        delegate.subMainDidChange(self, volume: sender.value)
+    }
+    
   func RefreshTime() {
         let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
         self.DisplayTime.text = timestamp;

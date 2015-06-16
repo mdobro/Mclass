@@ -11,8 +11,8 @@ import Cocoa
 @objc class ViewController: NSViewController {
     
     let helper = Ohelper()
-    let buttons = ["Connection Status", "Projector 1 Source", "Projector 2 Source", "HDCP Status", "Problem Status", "Problem Message"]
-    var Statuses = ["Not Connected", "", "", "", "", ""] //initial status
+    let buttons = ["Connection Status", "Projector 1 Source", "Projector 2 Source", "HDCP Status", "Problem Status", "Problem Message","Source Volume"]
+    var Statuses = ["Not Connected", "", "", "", "", "",""] //initial status
     
     @IBOutlet weak var table: NSTableView!
     
@@ -85,6 +85,12 @@ import Cocoa
     @objc func recievedProblem(problem:String){
         Statuses[5] = problem
         table.reloadData()
+    }
+    
+    @objc func recievedVolume(vol:String) {
+        Statuses[6] = vol
+        table.reloadData()
+        
     }
 
 }

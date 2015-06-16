@@ -314,8 +314,8 @@
 			isa = PBXGroup;
 			children = (
 				D96F78051B222BE500699147 /* CamView.storyboard */,
-				9BB4D79E1B2F43B100F3E00B /* PlayerController.swift */,
 				089D20341B0FB0CD00B0D613 /* CamView.swift */,
+				9BB4D79E1B2F43B100F3E00B /* PlayerController.swift */,
 			);
 			name = Camview;
 			sourceTree = "<group>";

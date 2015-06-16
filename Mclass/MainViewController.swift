@@ -18,12 +18,12 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     @IBOutlet weak var subMainContainer: UIView!
     
     var SettingsHDCPon = false
-    var subMainSettings:(projector:Bool!, volume: Int!) = (false,0)
     var camViewSettings:(paused:Bool!, timeElapsed: Int!, timeRemaining: Int!) = (false,0,0)
     var proj1source:String! = "Something went wrong"
     var proj2source:String! = ""
     var helpMessage:String! = ""
     var nowOrLater:String! = ""
+    var sourceVol:String! = ".5"
 
     override func viewDidLoad() {
 
@@ -137,8 +137,9 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     func camViewDidChange(sender: CamView, settings: (paused: Bool!, timeElapsed: Int!, timeRemaining: Int!)) {
         self.camViewSettings = settings
     }
-    func subMainDidChange(sender: SubMainViewController, settings: (projector: Bool!, volume: Int!)) {
-        subMainSettings = settings
+    func subMainDidChange(sender: SubMainViewController, volume: Float!) {
+        sourceVol = String(stringInterpolationSegment: volume)
+        sendMessage("\(sourceVol)", type: UInt32(SourceVolume))
         //volume here
         //possibly time / time remaining
     }
@@ -178,6 +179,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         sendMessage(proj2source, type: UInt32(Projector2))
         sendMessage(nowOrLater, type: UInt32(ProblemRoom))
         sendMessage(helpMessage, type: UInt32(Problem))
+        sendMessage(sourceVol, type: UInt32(SourceVolume))
         if SettingsHDCPon {
             sendMessage("ON", type: UInt32(HDCP))
         } else {
