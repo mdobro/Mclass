@@ -57,7 +57,7 @@ import Cocoa
             Statuses[0] = "Connected"
         }
         else {
-            Statuses = ["Not Connected", "", "", "", "", ""]
+            Statuses = ["Not Connected", "", "", "", "", "", ""]
         }
         table.reloadData()
     }

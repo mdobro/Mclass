@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D20341B0FB0CD00B0D613 /* CamView.swift */; };
-		9B1528741B2224C900802E68 /* CAENViewClassTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 9B1528731B2224C900802E68 /* CAENViewClassTest.csv */; };
-		9B89533C1B25EAF700509DA9 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B89533B1B25EAF700509DA9 /* CSV.swift */; };
+		9B7C7AA41B3B3AB100727B65 /* CAENView-Classrooms.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9B7C7AA31B3B3AB100727B65 /* CAENView-Classrooms.txt */; };
 		9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */; };
 		9BB4D79F1B2F43B100F3E00B /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4D79E1B2F43B100F3E00B /* PlayerController.swift */; };
 		9BB4D7A11B2F440D00F3E00B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4D7A01B2F440D00F3E00B /* Player.swift */; };
@@ -75,8 +74,7 @@
 
 /* Begin PBXFileReference section */
 		089D20341B0FB0CD00B0D613 /* CamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CamView.swift; sourceTree = "<group>"; };
-		9B1528731B2224C900802E68 /* CAENViewClassTest.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CAENViewClassTest.csv; sourceTree = SOURCE_ROOT; };
-		9B89533B1B25EAF700509DA9 /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = SOURCE_ROOT; };
+		9B7C7AA31B3B3AB100727B65 /* CAENView-Classrooms.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CAENView-Classrooms.txt"; sourceTree = "<group>"; };
 		9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		9BB4D79E1B2F43B100F3E00B /* PlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
 		9BB4D7A01B2F440D00F3E00B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = SOURCE_ROOT; };
@@ -266,8 +264,7 @@
 				D9E898071B20D1C100F421E2 /* objChelper.h */,
 				D9E618711B0F8914007AFECB /* AppDelegate.swift */,
 				9BB4D7A01B2F440D00F3E00B /* Player.swift */,
-				9B89533B1B25EAF700509DA9 /* CSV.swift */,
-				9B1528731B2224C900802E68 /* CAENViewClassTest.csv */,
+				9B7C7AA31B3B3AB100727B65 /* CAENView-Classrooms.txt */,
 				D9EC82CD1B179BDE00E64B68 /* Gear.png */,
 				D9EC82CF1B179C7600E64B68 /* Gear2.png */,
 				D9EC82C71B1796D700E64B68 /* Settings.png */,
@@ -530,7 +527,7 @@
 				D96F78041B22297600699147 /* Help.storyboard in Resources */,
 				D9E618791B0F8914007AFECB /* Images.xcassets in Resources */,
 				D9EC82D01B179C7600E64B68 /* Gear2.png in Resources */,
-				9B1528741B2224C900802E68 /* CAENViewClassTest.csv in Resources */,
+				9B7C7AA41B3B3AB100727B65 /* CAENView-Classrooms.txt in Resources */,
 				D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */,
 				D9EC82C81B1796D700E64B68 /* Settings.png in Resources */,
 				D979CB6C1B16479F003C687A /* Bar.png in Resources */,
@@ -589,7 +586,6 @@
 				D9EC82C21B14D22700E64B68 /* HelpViewController.swift in Sources */,
 				9BB4D79F1B2F43B100F3E00B /* PlayerController.swift in Sources */,
 				D9EC82DE1B1E109300E64B68 /* PTUSBHub.m in Sources */,
-				9B89533C1B25EAF700509DA9 /* CSV.swift in Sources */,
 				9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */,
 				D9EC82DC1B1E109300E64B68 /* PTChannel.m in Sources */,
 				089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */,
