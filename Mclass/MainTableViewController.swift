@@ -23,6 +23,8 @@ class MainTableViewController: UITableViewController {
     var selectedProj = 0
     var customSC:UISegmentedControl? = nil
     var rowToSelect: NSIndexPath? = nil
+    var rooms = [String]?()
+    var projs = [String]?()
 
     @IBOutlet var sourceTable: UITableView!
     
@@ -32,29 +34,37 @@ class MainTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        if let url = NSURL(string: "CAENViewClassTest.csv") {
-            var error: NSErrorPointer = nil
-            
-            if let csv = CSV(contentsOfURL: url, error: error) {
-                // Rows
-                let rows = csv.rows
-                /*let headers = csv.headers  //=> ["id", "name", "age"]
-                let alice = csv.rows[0]    //=> ["id": "1", "name": "Alice", "age": "18"]
-                let bob = csv.rows[1]      //=> ["id": "2", "name": "Bob", "age": "19"]
-                
-                
-                // Columns
-                let columns = csv.columns
-                let names = csv.columns["name"]  //=> ["Alice", "Bob", "Charlie"]
-                let ages = csv.columns["age"]    //=> ["18", "19", "20"]*/
-            }
-            
-        }
-        // CSV Code for getting number of projectors based on room name will be above/here
         
-        let projectors: Int = 2
-        if projectors == 2 {
+        var projectors: String = "2"
+        
+        /* FILE INPUT STUFF */
+        if let aStreamReader = StreamReader(path: NSBundle.mainBundle().pathForResource("CAENView-Classrooms", ofType: "txt")! ) {
+            while let line = aStreamReader.nextLine() {
+                let fullNameArr = line.componentsSeparatedByString(",")
+                if (rooms?.append(fullNameArr[0]) == nil) {
+                    rooms = [fullNameArr[0]]
+                }
+                if (projs?.append(fullNameArr[1]) == nil) {
+                    projs = [fullNameArr[1]]
+                }
+            }
+            // You can close the underlying file explicitly. Otherwise it will be
+            // closed when the reader is deallocated.
+            aStreamReader.close()
+        }
+        
+        
+        selectedMode = ["OFF", "OFF"]
+        selectedModeIndex = [4, 4]
+        
+        var name = "Beyster1690"
+        for var i = 0; i < count(rooms!); i++ {
+            if rooms?[i] == name {
+                projectors = projs![i]
+            }
+        }
+        
+        if projectors == "2" {
             let items = ["Projector 1", "Projector 2"]
             customSC = UISegmentedControl(items: items)
             customSC!.selectedSegmentIndex = 0
@@ -66,9 +76,6 @@ class MainTableViewController: UITableViewController {
             UISegmentedControl.appearance().setTitleTextAttributes(NSDictionary(objects: [UIFont.systemFontOfSize(25.0)], forKeys: [NSFontAttributeName]) as [NSObject : AnyObject], forState: UIControlState.Normal)
             
             customSC?.addTarget(self, action: "didselectsegment:", forControlEvents: .ValueChanged)
-            
-            selectedMode = ["OFF", "OFF"]
-            selectedModeIndex = [4, 4]
             
             delegate.projDidChange(2, source: "OFF")
             
@@ -212,5 +219,88 @@ class MainTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    class StreamReader  {
+        
+        let encoding : UInt
+        let chunkSize : Int
+        
+        var fileHandle : NSFileHandle!
+        let buffer : NSMutableData!
+        let delimData : NSData!
+        var atEof : Bool = false
+        
+        init?(path: String, delimiter: String = "\n", encoding : UInt = NSUTF8StringEncoding, chunkSize : Int = 4096) {
+            self.chunkSize = chunkSize
+            self.encoding = encoding
+            
+            if let fileHandle = NSFileHandle(forReadingAtPath: path),
+                delimData = delimiter.dataUsingEncoding(encoding),
+                buffer = NSMutableData(capacity: chunkSize)
+            {
+                self.fileHandle = fileHandle
+                self.delimData = delimData
+                self.buffer = buffer
+            } else {
+                self.fileHandle = nil
+                self.delimData = nil
+                self.buffer = nil
+                return nil
+            }
+        }
+        
+        deinit {
+            self.close()
+        }
+        
+        /// Return next line, or nil on EOF.
+        func nextLine() -> String? {
+            precondition(fileHandle != nil, "Attempt to read from closed file")
+            
+            if atEof {
+                return nil
+            }
+            
+            // Read data chunks from file until a line delimiter is found:
+            var range = buffer.rangeOfData(delimData, options: nil, range: NSMakeRange(0, buffer.length))
+            while range.location == NSNotFound {
+                var tmpData = fileHandle.readDataOfLength(chunkSize)
+                if tmpData.length == 0 {
+                    // EOF or read error.
+                    atEof = true
+                    if buffer.length > 0 {
+                        // Buffer contains last line in file (not terminated by delimiter).
+                        let line = NSString(data: buffer, encoding: encoding)
+                        
+                        buffer.length = 0
+                        return line as String?
+                    }
+                    // No more lines.
+                    return nil
+                }
+                buffer.appendData(tmpData)
+                range = buffer.rangeOfData(delimData, options: nil, range: NSMakeRange(0, buffer.length))
+            }
+            
+            // Convert complete line (excluding the delimiter) to a string:
+            let line = NSString(data: buffer.subdataWithRange(NSMakeRange(0, range.location)),
+                encoding: encoding)
+            // Remove line (and the delimiter) from the buffer:
+            buffer.replaceBytesInRange(NSMakeRange(0, range.location + range.length), withBytes: nil, length: 0)
+            
+            return line as String?
+        }
+        
+        /// Start reading from the beginning of file.
+        func rewind() -> Void {
+            fileHandle.seekToFileOffset(0)
+            buffer.length = 0
+            atEof = false
+        }
+        
+        /// Close the underlying file. No reading must be done after calling this method.
+        func close() -> Void {
+            fileHandle?.closeFile()
+            fileHandle = nil
+        }
+    }
 }
