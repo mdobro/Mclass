@@ -17,6 +17,8 @@ class CamView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
          setPauseButton(false)
+        
+        //self.view.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.75)
         // Do any additional setup after loading the view.
     }
    
@@ -49,10 +51,12 @@ class CamView: UIViewController {
     }
     
     @IBAction func BackButton(sender: UIButton) {
+        let parent = self.parentViewController as! SubMainViewController
+        parent.makeAllClear(false)
         UIView.transitionWithView(self.parentViewController!.view, duration: 1.0, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: {
             self.view.removeFromSuperview()
             self.removeFromParentViewController()
-        }, completion: nil)
+            }, completion: nil)
         
     }
 

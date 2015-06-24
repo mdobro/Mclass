@@ -17,7 +17,6 @@
 		D96F78091B222C2200699147 /* CamView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96F78051B222BE500699147 /* CamView.storyboard */; };
 		D96F780C1B222C3000699147 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96F780A1B222C3000699147 /* Main.storyboard */; };
 		D96F780F1B222C4200699147 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D96F780D1B222C4200699147 /* LaunchScreen.xib */; };
-		D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB5D1B1630C7003C687A /* CAEN Logo.png */; };
 		D979CB6C1B16479F003C687A /* Bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D979CB6B1B16479F003C687A /* Bar.png */; };
 		D97C69471B28BB6500590068 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97C69461B28BB6500590068 /* AppDelegate.swift */; };
 		D97C69491B28BB6500590068 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97C69481B28BB6500590068 /* ViewController.swift */; };
@@ -28,6 +27,7 @@
 		D97C696E1B28F7A800590068 /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D71B1E109300E64B68 /* PTChannel.m */; };
 		D97C69701B28F7A800590068 /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D91B1E109300E64B68 /* PTProtocol.m */; };
 		D97C69721B28F7A800590068 /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82DB1B1E109300E64B68 /* PTUSBHub.m */; };
+		D9BAD0241B3B1C9900BAC859 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9BAD0231B3B1C9900BAC859 /* background.jpg */; };
 		D9E618721B0F8914007AFECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E618711B0F8914007AFECB /* AppDelegate.swift */; };
 		D9E618791B0F8914007AFECB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E618781B0F8914007AFECB /* Images.xcassets */; };
 		D9E618881B0F8914007AFECB /* MclassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E618871B0F8914007AFECB /* MclassTests.swift */; };
@@ -47,9 +47,7 @@
 		D9E898061B20D18800F421E2 /* objChelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E898051B20D18800F421E2 /* objChelper.m */; };
 		D9EC82C21B14D22700E64B68 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82C11B14D22700E64B68 /* HelpViewController.swift */; };
 		D9EC82C61B1523B200E64B68 /* SubMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */; };
-		D9EC82C81B1796D700E64B68 /* Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EC82C71B1796D700E64B68 /* Settings.png */; };
 		D9EC82CE1B179BDE00E64B68 /* Gear.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EC82CD1B179BDE00E64B68 /* Gear.png */; };
-		D9EC82D01B179C7600E64B68 /* Gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EC82CF1B179C7600E64B68 /* Gear2.png */; };
 		D9EC82D21B17B98400E64B68 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D11B17B98400E64B68 /* SettingsViewController.swift */; };
 		D9EC82DC1B1E109300E64B68 /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D71B1E109300E64B68 /* PTChannel.m */; };
 		D9EC82DD1B1E109300E64B68 /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D91B1E109300E64B68 /* PTProtocol.m */; };
@@ -83,7 +81,6 @@
 		D96F78051B222BE500699147 /* CamView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CamView.storyboard; sourceTree = "<group>"; };
 		D96F780B1B222C3000699147 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Mclass/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D96F780E1B222C4200699147 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Mclass/Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		D979CB5D1B1630C7003C687A /* CAEN Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CAEN Logo.png"; sourceTree = SOURCE_ROOT; };
 		D979CB6B1B16479F003C687A /* Bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bar.png; sourceTree = "<group>"; };
 		D97C69421B28BB6500590068 /* Mac Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mac Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D97C69451B28BB6500590068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +94,7 @@
 		D97C69611B28BF9700590068 /* objChelper_mac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = objChelper_mac.m; sourceTree = "<group>"; };
 		D97C69631B28BFA600590068 /* objChelper_mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = objChelper_mac.h; sourceTree = "<group>"; };
 		D97C69681B28D35300590068 /* Protocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Protocol.h; sourceTree = "<group>"; };
+		D9BAD0231B3B1C9900BAC859 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		D9E6186C1B0F8914007AFECB /* Mclass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mclass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E618701B0F8914007AFECB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9E618711B0F8914007AFECB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,9 +122,7 @@
 		D9E898071B20D1C100F421E2 /* objChelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = objChelper.h; sourceTree = "<group>"; };
 		D9EC82C11B14D22700E64B68 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubMainViewController.swift; sourceTree = "<group>"; };
-		D9EC82C71B1796D700E64B68 /* Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings.png; sourceTree = "<group>"; };
 		D9EC82CD1B179BDE00E64B68 /* Gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gear.png; sourceTree = "<group>"; };
-		D9EC82CF1B179C7600E64B68 /* Gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gear2.png; sourceTree = "<group>"; };
 		D9EC82D11B17B98400E64B68 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D9EC82D31B1E109200E64B68 /* Mclass-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Mclass-Bridging-Header.h"; path = "../Mclass-Bridging-Header.h"; sourceTree = "<group>"; };
 		D9EC82D41B1E109300E64B68 /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = prefix.pch; path = peertalk/peertalk/prefix.pch; sourceTree = "<group>"; };
@@ -268,11 +264,9 @@
 				9BB4D7A01B2F440D00F3E00B /* Player.swift */,
 				9B89533B1B25EAF700509DA9 /* CSV.swift */,
 				9B1528731B2224C900802E68 /* CAENViewClassTest.csv */,
+				D9BAD0231B3B1C9900BAC859 /* background.jpg */,
 				D9EC82CD1B179BDE00E64B68 /* Gear.png */,
-				D9EC82CF1B179C7600E64B68 /* Gear2.png */,
-				D9EC82C71B1796D700E64B68 /* Settings.png */,
 				D979CB6B1B16479F003C687A /* Bar.png */,
-				D979CB5D1B1630C7003C687A /* CAEN Logo.png */,
 				D9E618701B0F8914007AFECB /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -524,15 +518,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9BAD0241B3B1C9900BAC859 /* background.jpg in Resources */,
 				D96F780F1B222C4200699147 /* LaunchScreen.xib in Resources */,
 				D96F780C1B222C3000699147 /* Main.storyboard in Resources */,
 				D96F78091B222C2200699147 /* CamView.storyboard in Resources */,
 				D96F78041B22297600699147 /* Help.storyboard in Resources */,
 				D9E618791B0F8914007AFECB /* Images.xcassets in Resources */,
-				D9EC82D01B179C7600E64B68 /* Gear2.png in Resources */,
 				9B1528741B2224C900802E68 /* CAENViewClassTest.csv in Resources */,
-				D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */,
-				D9EC82C81B1796D700E64B68 /* Settings.png in Resources */,
 				D979CB6C1B16479F003C687A /* Bar.png in Resources */,
 				D9EC82CE1B179BDE00E64B68 /* Gear.png in Resources */,
 			);

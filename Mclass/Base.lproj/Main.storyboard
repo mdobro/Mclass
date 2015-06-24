@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="B6N-6v-rvL">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Main Navigation Controller-->
@@ -70,17 +69,14 @@
                         <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="65Q-UT-M3b">
-                                <rect key="frame" x="334" y="20" width="690" height="748"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="65Q-UT-M3b" userLabel="SubContainer">
+                                <rect key="frame" x="334" y="0.0" width="690" height="768"/>
                                 <connections>
                                     <segue destination="olh-5c-Sre" kind="embed" identifier="subMainLoad" id="gCX-23-XI1"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARH-0h-h6N">
-                                <rect key="frame" x="16" y="20" width="314" height="684"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="314" id="tb8-RX-q1u"/>
-                                </constraints>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARH-0h-h6N" userLabel="TableContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="334" height="704"/>
                                 <connections>
                                     <segue destination="OVf-Dl-LjK" kind="embed" identifier="mainTableLoad" id="sEm-YH-mDc"/>
                                 </connections>
@@ -88,9 +84,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ARH-0h-h6N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-4" id="AZu-bI-K3P"/>
-                            <constraint firstItem="ARH-0h-h6N" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="L0f-Cb-LpY"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ARH-0h-h6N" secondAttribute="bottom" id="g6Y-Mx-MVB"/>
+                            <constraint firstItem="ARH-0h-h6N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="67Q-Na-Bac"/>
+                            <constraint firstItem="ARH-0h-h6N" firstAttribute="top" secondItem="65Q-UT-M3b" secondAttribute="top" id="8Db-JJ-eNv"/>
+                            <constraint firstItem="ARH-0h-h6N" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="OiY-tw-me5"/>
+                            <constraint firstAttribute="trailing" secondItem="ARH-0h-h6N" secondAttribute="trailing" constant="690" id="Rug-8o-b3L"/>
+                            <constraint firstItem="65Q-UT-M3b" firstAttribute="leading" secondItem="ARH-0h-h6N" secondAttribute="trailing" id="RzP-Qj-nZ3"/>
+                            <constraint firstItem="ARH-0h-h6N" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="q7O-ei-bbd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Pxa-al-v3E">
@@ -110,7 +109,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="settingsBarButton" destination="ieP-1m-aqf" id="PSm-CV-1rA"/>
-                        <outlet property="subMainContainer" destination="65Q-UT-M3b" id="9vZ-hp-5iM"/>
+                        <outlet property="subMainContainer" destination="65Q-UT-M3b" id="lTd-iM-S5v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -122,7 +121,7 @@
             <objects>
                 <tableViewController title="Inputs" id="OVf-Dl-LjK" customClass="MainTableViewController" customModule="Mclass" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="123" sectionHeaderHeight="22" sectionFooterHeight="22" id="KJc-8q-OEa">
-                        <rect key="frame" x="0.0" y="0.0" width="314" height="684"/>
+                        <rect key="frame" x="0.0" y="0.0" width="334" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -156,7 +155,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wg0-Fr-gbz"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XRx-lk-a19">
-                        <rect key="frame" x="0.0" y="0.0" width="690" height="748"/>
+                        <rect key="frame" x="0.0" y="0.0" width="690" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Source Volume:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTj-Kv-5LU">
@@ -193,6 +192,7 @@
                     <connections>
                         <outlet property="DisplayTime" destination="iZF-4F-iu0" id="GDe-9H-1U2"/>
                         <outlet property="recordSettingsButton" destination="gSS-yk-XBO" id="AhK-cX-5KJ"/>
+                        <outlet property="volSlider" destination="VN2-Gg-4ce" id="TEj-pU-bVZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9f-Ub-mNz" userLabel="First Responder" sceneMemberID="firstResponder"/>

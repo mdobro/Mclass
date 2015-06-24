@@ -26,6 +26,8 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     var sourceVol:String! = ".5"
 
     override func viewDidLoad() {
+        let background = UIImage(named: "background.jpg")
+        self.view.backgroundColor = UIColor(patternImage: background!)
 
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "Bar"), forBarMetrics:.Default)
         self.navigationController?.navigationBar.tintColor = UIColor.yellowColor()
@@ -74,10 +76,13 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         else if segue.identifier == "subMainLoad" {
             let dest = segue.destinationViewController as! SubMainViewController
             dest.delegate = self
+            dest.view.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.75) // only set background alpha to allow camView to be solid
         }
         else if segue.identifier == "mainTableLoad" {
             let dest = segue.destinationViewController as! MainTableViewController
             dest.delegate = self
+            dest.view.alpha = 0.75 // set entire view's alpha because we want the cells and all to be opaque
+
         }
     }
 

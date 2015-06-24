@@ -12,7 +12,7 @@ import Cocoa
     
     let helper = Ohelper()
     let buttons = ["Connection Status", "Projector 1 Source", "Projector 2 Source", "HDCP Status", "Problem Status", "Problem Message","Source Volume"]
-    var Statuses = ["Not Connected", "", "", "", "", "",""] //initial status
+    var Statuses = ["Not Connected", "", "", "", "", "", ""] //initial status
     
     @IBOutlet weak var table: NSTableView!
     
@@ -57,7 +57,7 @@ import Cocoa
             Statuses[0] = "Connected"
         }
         else {
-            Statuses = ["Not Connected", "", "", "", "", ""]
+            Statuses = ["Not Connected", "", "", "", "", "", ""]
         }
         table.reloadData()
     }

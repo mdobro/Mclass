@@ -13,11 +13,12 @@
                         <viewControllerLayoutGuide type="bottom" id="42B-Qd-pWu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xea-dk-13i">
-                        <rect key="frame" x="0.0" y="0.0" width="690" height="696"/>
+                        <rect key="frame" x="0.0" y="0.0" width="690" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RRv-AM-eRC">
                                 <rect key="frame" x="144" y="145" width="530" height="353"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="BcL-zq-Fey" kind="embed" id="ehM-JF-loz"/>
                                 </connections>
@@ -108,11 +109,11 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.75" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="690" height="696"/>
+                    <size key="freeformSize" width="690" height="768"/>
                     <connections>
                         <outlet property="PauseButton" destination="3ie-5q-4cC" id="3b3-tT-36y"/>
                     </connections>
