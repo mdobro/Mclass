@@ -521,14 +521,14 @@
 				D96F78091B222C2200699147 /* CamView.storyboard in Resources */,
 				D96F78041B22297600699147 /* Help.storyboard in Resources */,
 				D9E618791B0F8914007AFECB /* Images.xcassets in Resources */,
-<<<<<<< HEAD
-				9B1528741B2224C900802E68 /* CAENViewClassTest.csv in Resources */,
-=======
+
+
+
 				D9EC82D01B179C7600E64B68 /* Gear2.png in Resources */,
 				9B7C7AA41B3B3AB100727B65 /* CAENView-Classrooms.txt in Resources */,
 				D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */,
 				D9EC82C81B1796D700E64B68 /* Settings.png in Resources */,
->>>>>>> 96a22deb4a8ee1b6692471c270f58602d978f1f9
+
 				D979CB6C1B16479F003C687A /* Bar.png in Resources */,
 				D9EC82CE1B179BDE00E64B68 /* Gear.png in Resources */,
 			);
