@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="B6N-6v-rvL">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Main Navigation Controller-->
@@ -69,7 +70,7 @@
                         <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="65Q-UT-M3b" userLabel="SubContainer">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="65Q-UT-M3b" userLabel="SubContainer">
                                 <rect key="frame" x="334" y="0.0" width="690" height="768"/>
                                 <connections>
                                     <segue destination="olh-5c-Sre" kind="embed" identifier="subMainLoad" id="gCX-23-XI1"/>
@@ -86,9 +87,11 @@
                         <constraints>
                             <constraint firstItem="ARH-0h-h6N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="67Q-Na-Bac"/>
                             <constraint firstItem="ARH-0h-h6N" firstAttribute="top" secondItem="65Q-UT-M3b" secondAttribute="top" id="8Db-JJ-eNv"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="65Q-UT-M3b" secondAttribute="bottom" constant="-64" id="D9r-3X-wZF"/>
                             <constraint firstItem="ARH-0h-h6N" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="OiY-tw-me5"/>
                             <constraint firstAttribute="trailing" secondItem="ARH-0h-h6N" secondAttribute="trailing" constant="690" id="Rug-8o-b3L"/>
                             <constraint firstItem="65Q-UT-M3b" firstAttribute="leading" secondItem="ARH-0h-h6N" secondAttribute="trailing" id="RzP-Qj-nZ3"/>
+                            <constraint firstAttribute="trailing" secondItem="65Q-UT-M3b" secondAttribute="trailing" id="dGc-60-UfL"/>
                             <constraint firstItem="ARH-0h-h6N" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="q7O-ei-bbd"/>
                         </constraints>
                     </view>
@@ -159,31 +162,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Source Volume:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTj-Kv-5LU">
-                                <rect key="frame" x="242" y="441" width="233" height="36"/>
+                                <rect key="frame" x="259" y="535" width="173" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="VN2-Gg-4ce">
-                                <rect key="frame" x="140" y="485" width="411" height="31"/>
+                                <rect key="frame" x="140" y="579" width="411" height="31"/>
                                 <connections>
                                     <action selector="volumeChanged:" destination="olh-5c-Sre" eventType="valueChanged" id="KmU-yj-NqB"/>
                                 </connections>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZF-4F-iu0">
+                                <rect key="frame" x="435" y="0.0" width="255" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiK-Vh-MXB">
+                                <rect key="frame" x="298" y="617" width="94" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Mute">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="muteButtonTap:" destination="olh-5c-Sre" eventType="touchUpInside" id="FA4-Fw-9bz"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSS-yk-XBO">
-                                <rect key="frame" x="226" y="343" width="238" height="90"/>
+                                <rect key="frame" x="226" y="437" width="238" height="90"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Recording Options"/>
                                 <connections>
                                     <action selector="recordSettingsButtonTap:" destination="olh-5c-Sre" eventType="touchUpInside" id="67G-B7-mQs"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZF-4F-iu0">
-                                <rect key="frame" x="496" y="0.0" width="194" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -191,7 +204,9 @@
                     <navigationItem key="navigationItem" id="jPl-bh-Vqq"/>
                     <connections>
                         <outlet property="DisplayTime" destination="iZF-4F-iu0" id="GDe-9H-1U2"/>
+                        <outlet property="muteButton" destination="uiK-Vh-MXB" id="IAK-zm-Ecy"/>
                         <outlet property="recordSettingsButton" destination="gSS-yk-XBO" id="AhK-cX-5KJ"/>
+                        <outlet property="volLabel" destination="aTj-Kv-5LU" id="Dp6-Dh-sDT"/>
                         <outlet property="volSlider" destination="VN2-Gg-4ce" id="TEj-pU-bVZ"/>
                     </connections>
                 </viewController>

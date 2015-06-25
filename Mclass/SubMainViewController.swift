@@ -23,16 +23,23 @@ class SubMainViewController: UIViewController {
     @IBOutlet weak var recordSettingsButton: UIButton!
     @IBOutlet weak var DisplayTime: UILabel!
     @IBOutlet weak var volSlider: UISlider!
+    @IBOutlet weak var muteButton: UIButton!
+    @IBOutlet weak var volLabel: UILabel!
+    
+    var savedVol:Float?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.recordSettingsButton.layer.cornerRadius = 15
-         var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("RefreshTime"), userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("RefreshTime"), userInfo: nil, repeats: true)
         
     }
     
     @IBAction func volumeChanged(sender: UISlider) {
+        if muteButton.titleLabel!.text == "Unmute" {
+            muteButton.setTitle("Mute", forState: .Normal)
+        }
         delegate.subMainDidChange(self, volume: sender.value)
     }
     
@@ -42,17 +49,22 @@ class SubMainViewController: UIViewController {
     }
     
     func makeAllClear(task:Bool) {
+        //func to fade out buttons and object on sub screen when switching to cam view
         if task {
             self.view.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0)
             self.recordSettingsButton.alpha = 0
             self.DisplayTime.alpha = 0
             self.volSlider.alpha = 0
+            self.muteButton.alpha = 0
+            self.volLabel.alpha = 0
         }
         else {
             self.view.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.75)
             self.recordSettingsButton.alpha = 1
             self.DisplayTime.alpha = 1
             self.volSlider.alpha = 1
+            self.muteButton.alpha = 1
+            self.volLabel.alpha = 1
         }
     }
     
@@ -66,6 +78,19 @@ class SubMainViewController: UIViewController {
             self.view.addSubview(controller.view)
             }, completion: nil)
         controller.didMoveToParentViewController(self)
+    }
+    
+    @IBAction func muteButtonTap(sender: UIButton) {
+        if sender.titleLabel!.text == "Mute" {
+            sender.setTitle("Unmute", forState: .Normal)
+            savedVol = self.volSlider.value
+            self.volSlider.value = 0
+            delegate.subMainDidChange(self, volume: 0)
+        } else {
+            sender.setTitle("Mute", forState: .Normal)
+            self.volSlider.value = savedVol!
+            delegate.subMainDidChange(self, volume: savedVol)
+        }
     }
     
     override func didReceiveMemoryWarning() {

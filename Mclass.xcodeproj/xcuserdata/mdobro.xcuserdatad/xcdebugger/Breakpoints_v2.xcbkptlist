@@ -52,19 +52,12 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.AddressBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mac Helper/objChelper_mac.m"
-            timestampString = "456166787.9335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
-            landmarkName = "-connectToLocalIPv4Port"
-            landmarkType = "5">
+            symbolName = "*0x10192fa97">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

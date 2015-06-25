@@ -145,7 +145,6 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     func subMainDidChange(sender: SubMainViewController, volume: Float!) {
         sourceVol = String(stringInterpolationSegment: volume)
         sendMessage("\(sourceVol)", type: UInt32(SourceVolume))
-        //volume here
         //possibly time / time remaining
     }
     
