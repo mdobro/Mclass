@@ -27,6 +27,9 @@
 		D97C69701B28F7A800590068 /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D91B1E109300E64B68 /* PTProtocol.m */; };
 		D97C69721B28F7A800590068 /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82DB1B1E109300E64B68 /* PTUSBHub.m */; };
 		D9BAD0241B3B1C9900BAC859 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9BAD0231B3B1C9900BAC859 /* background.jpg */; };
+		D9DEF81E1B43138800A81E36 /* objChelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E898051B20D18800F421E2 /* objChelper.m */; };
+		D9DEF81F1B4313AD00A81E36 /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D71B1E109300E64B68 /* PTChannel.m */; };
+		D9DEF8201B4313B100A81E36 /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D91B1E109300E64B68 /* PTProtocol.m */; };
 		D9E618721B0F8914007AFECB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E618711B0F8914007AFECB /* AppDelegate.swift */; };
 		D9E618791B0F8914007AFECB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E618781B0F8914007AFECB /* Images.xcassets */; };
 		D9E618881B0F8914007AFECB /* MclassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E618871B0F8914007AFECB /* MclassTests.swift */; };
@@ -43,14 +46,10 @@
 		D9E897FE1B1F91AB00F421E2 /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D91B1E109300E64B68 /* PTProtocol.m */; };
 		D9E897FF1B1F91AB00F421E2 /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82DB1B1E109300E64B68 /* PTUSBHub.m */; };
 		D9E898011B1F973C00F421E2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9E898001B1F973C00F421E2 /* MainMenu.xib */; };
-		D9E898061B20D18800F421E2 /* objChelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E898051B20D18800F421E2 /* objChelper.m */; };
 		D9EC82C21B14D22700E64B68 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82C11B14D22700E64B68 /* HelpViewController.swift */; };
 		D9EC82C61B1523B200E64B68 /* SubMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82C51B1523B200E64B68 /* SubMainViewController.swift */; };
 		D9EC82CE1B179BDE00E64B68 /* Gear.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EC82CD1B179BDE00E64B68 /* Gear.png */; };
 		D9EC82D21B17B98400E64B68 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D11B17B98400E64B68 /* SettingsViewController.swift */; };
-		D9EC82DC1B1E109300E64B68 /* PTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D71B1E109300E64B68 /* PTChannel.m */; };
-		D9EC82DD1B1E109300E64B68 /* PTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82D91B1E109300E64B68 /* PTProtocol.m */; };
-		D9EC82DE1B1E109300E64B68 /* PTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EC82DB1B1E109300E64B68 /* PTUSBHub.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -449,7 +448,8 @@
 		D9E618641B0F8914007AFECB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = CAENiOS;
 				TargetAttributes = {
 					D97C69411B28BB6500590068 = {
@@ -521,14 +521,7 @@
 				D96F78091B222C2200699147 /* CamView.storyboard in Resources */,
 				D96F78041B22297600699147 /* Help.storyboard in Resources */,
 				D9E618791B0F8914007AFECB /* Images.xcassets in Resources */,
-<<<<<<< HEAD
-				9B1528741B2224C900802E68 /* CAENViewClassTest.csv in Resources */,
-=======
-				D9EC82D01B179C7600E64B68 /* Gear2.png in Resources */,
 				9B7C7AA41B3B3AB100727B65 /* CAENView-Classrooms.txt in Resources */,
-				D979CB5E1B1630C7003C687A /* CAEN Logo.png in Resources */,
-				D9EC82C81B1796D700E64B68 /* Settings.png in Resources */,
->>>>>>> 96a22deb4a8ee1b6692471c270f58602d978f1f9
 				D979CB6C1B16479F003C687A /* Bar.png in Resources */,
 				D9EC82CE1B179BDE00E64B68 /* Gear.png in Resources */,
 			);
@@ -580,19 +573,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9E618921B0FAFFF007AFECB /* MainTableViewController.swift in Sources */,
-				D9E898061B20D18800F421E2 /* objChelper.m in Sources */,
 				D9EC82C61B1523B200E64B68 /* SubMainViewController.swift in Sources */,
 				D9EC82C21B14D22700E64B68 /* HelpViewController.swift in Sources */,
 				9BB4D79F1B2F43B100F3E00B /* PlayerController.swift in Sources */,
-				D9EC82DE1B1E109300E64B68 /* PTUSBHub.m in Sources */,
 				9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */,
-				D9EC82DC1B1E109300E64B68 /* PTChannel.m in Sources */,
 				089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */,
+				D9DEF81E1B43138800A81E36 /* objChelper.m in Sources */,
+				D9DEF8201B4313B100A81E36 /* PTProtocol.m in Sources */,
+				D9DEF81F1B4313AD00A81E36 /* PTChannel.m in Sources */,
 				D9E618721B0F8914007AFECB /* AppDelegate.swift in Sources */,
 				D9E6189D1B0FCEB4007AFECB /* MainViewController.swift in Sources */,
 				D9EC82D21B17B98400E64B68 /* SettingsViewController.swift in Sources */,
 				9BB4D7A11B2F440D00F3E00B /* Player.swift in Sources */,
-				D9EC82DD1B1E109300E64B68 /* PTProtocol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,6 +668,7 @@
 				INFOPLIST_FILE = "Mac Helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "CAEN.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_INSTALL_OBJC_HEADER = YES;
@@ -693,6 +686,7 @@
 				INFOPLIST_FILE = "Mac Helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "CAEN.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_INSTALL_OBJC_HEADER = YES;
@@ -717,6 +711,7 @@
 				INFOPLIST_FILE = "Mac HelperTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "CAEN.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mac Helper.app/Contents/MacOS/Mac Helper";
@@ -735,6 +730,7 @@
 				INFOPLIST_FILE = "Mac HelperTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "CAEN.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mac Helper.app/Contents/MacOS/Mac Helper";
@@ -762,6 +758,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -837,6 +834,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = Mclass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CAENiOS.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mclass-Bridging-Header.h";
@@ -855,6 +853,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = Mclass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CAENiOS.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mclass-Bridging-Header.h";
@@ -875,6 +874,7 @@
 				);
 				INFOPLIST_FILE = MclassTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CAENiOS.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mclass.app/Mclass";
 			};
@@ -890,6 +890,7 @@
 				);
 				INFOPLIST_FILE = MclassTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CAENiOS.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mclass.app/Mclass";
 			};
@@ -909,6 +910,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/peertalk/Peertalk Example/Peertalk Example-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.rsms.peertalk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -923,6 +925,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/peertalk/Peertalk Example/Peertalk Example-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.rsms.peertalk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};

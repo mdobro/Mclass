@@ -18,7 +18,7 @@
 
 @property (readonly) NSNumber *connectedDeviceID;
 @property PTChannel *connectedChannel;
-@property ViewController* MainView;
+//@property ViewController* MainView;
 
 @end
 

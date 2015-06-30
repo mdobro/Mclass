@@ -28,7 +28,7 @@ class SubMainViewController: UIViewController {
         super.viewDidLoad()
         
         self.recordSettingsButton.layer.cornerRadius = 15
-         var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("RefreshTime"), userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("RefreshTime"), userInfo: nil, repeats: true)
         
     }
     

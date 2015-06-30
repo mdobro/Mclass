@@ -57,8 +57,8 @@ class MainTableViewController: UITableViewController {
         selectedMode = ["OFF", "OFF"]
         selectedModeIndex = [4, 4]
         
-        var name = "Beyster1690"
-        for var i = 0; i < count(rooms!); i++ {
+        let name = "Beyster1690"
+        for var i = 0; i < rooms?.count; i++ {
             if rooms?[i] == name {
                 projectors = projs![i]
             }
@@ -104,7 +104,7 @@ class MainTableViewController: UITableViewController {
             selectedProj = 1
             self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedModeIndex![selectedProj] as Int, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.Bottom)
         default:
-            println("Error")
+            print("Error", true)
         }
     }
     override func didReceiveMemoryWarning() {
@@ -127,7 +127,7 @@ class MainTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ModeCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ModeCell", forIndexPath: indexPath) as UITableViewCell
         cell.textLabel?.text = modes[indexPath.row]
         
         // Configure the cell...
@@ -157,7 +157,7 @@ class MainTableViewController: UITableViewController {
         delegate.projDidChange(selectedProj+1, source: modes[indexPath.row])
 
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        //let cell = tableView.cellForRowAtIndexPath(indexPath)
         //cell?.accessoryType = .Checkmark
         
         //cell?.backgroundColor = UIColor(red:14/255, green:50/255, blue:100/255, alpha:0.4)
@@ -261,9 +261,9 @@ class MainTableViewController: UITableViewController {
             }
             
             // Read data chunks from file until a line delimiter is found:
-            var range = buffer.rangeOfData(delimData, options: nil, range: NSMakeRange(0, buffer.length))
+            var range = buffer.rangeOfData(delimData!, options: NSDataSearchOptions(), range: NSMakeRange(0, buffer.length))
             while range.location == NSNotFound {
-                var tmpData = fileHandle.readDataOfLength(chunkSize)
+                let tmpData = fileHandle.readDataOfLength(chunkSize)
                 if tmpData.length == 0 {
                     // EOF or read error.
                     atEof = true
@@ -278,7 +278,7 @@ class MainTableViewController: UITableViewController {
                     return nil
                 }
                 buffer.appendData(tmpData)
-                range = buffer.rangeOfData(delimData, options: nil, range: NSMakeRange(0, buffer.length))
+                range = buffer.rangeOfData(delimData, options: NSDataSearchOptions(), range: NSMakeRange(0, buffer.length))
             }
             
             // Convert complete line (excluding the delimiter) to a string:
