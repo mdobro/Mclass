@@ -58,7 +58,7 @@ class MainTableViewController: UITableViewController {
         selectedModeIndex = [4, 4]
         
         var name = "Beyster1670"
-        for var i = 0; i < count(rooms!); i++ {
+        for var i = 0; i < rooms!.count; i++ {
             if rooms?[i] == name {
                 projectors = projs![i]
             }
