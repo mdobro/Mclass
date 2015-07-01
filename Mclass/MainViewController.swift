@@ -44,10 +44,10 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         let loopback:in_addr_t = 2130706433 //int representation of 127.0.0.1
         channel.listenOnPort(in_port_t(PTProtocolIPv4PortNumber), IPv4Address: loopback, callback: { (error:NSError!) -> Void in
             if error != nil {
-                println("Failed to listen on 127.0.0.1")
+                print("Failed to listen on 127.0.0.1", true)
             }
             else {
-                println("Listening on 127.0.0.1")
+                print("Listening on 127.0.0.1", true)
                 self.serverChannel_ = channel
             }
         })
@@ -165,15 +165,15 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
             let payload = DispatchDataWithString(message)
             peerChannel_.sendFrameOfType(type, tag: 0, withPayload: payload, callback: { (error:NSError!) -> Void in
                 if error != nil {
-                    println("Failed to send message. Error: \(error)")
+                    print("Failed to send message. Error: \(error)", true)
                 }
                 else {
-                    println("iPad sent message: \(message) as frame type \(type)")
+                    print("iPad sent message: \(message) as frame type \(type)", true)
                 }
             })
         }
         else {
-            println("Mac is not connected - Unable to send message: \(message)")
+            print("Mac is not connected - Unable to send message: \(message)", true)
         }
     }
     
@@ -197,7 +197,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         }
     
         print("Sending device info over ")
-        println(peerChannel_)
+        print(peerChannel_, appendNewline: true)
         
         let screen = UIScreen.mainScreen()
         let screenSize = screen.bounds.size;
@@ -210,7 +210,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         peerChannel_.sendFrameOfType(100, tag: 0, withPayload: payload) { (error) -> Void in
             if error != nil {
                 print("Failed to send Device Info")
-                println(error)
+                print(error, true)
             }
         }
     }
@@ -236,7 +236,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         if type == 101 {
             let help:objChelper = objChelper()
             let message = help.helpioFrameChannel(channel, didReceiveFrameOfType: type, tag: tag, payload: payload, peerChannel: peerChannel_)
-            println("iPad recieved message: \(message)")
+            print("iPad recieved message: \(message)", true)
         }
     }
     
@@ -260,7 +260,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         peerChannel_ = otherChannel;
         peerChannel_.userInfo = address;
         print("Connected to ")
-        println(address)
+        print(address, true)
         // Send some information about ourselves to the other end
         sendDeviceInfo()
         macRequestedStatus()

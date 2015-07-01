@@ -8,7 +8,10 @@
 static const NSTimeInterval PTAppReconnectDelay = 1.0;
 
 
-@interface Ohelper : NSObject <PTChannelDelegate> {}
+@interface Ohelper : NSObject <PTChannelDelegate> {
+    //ViewController* MainView;
+}
+@property ViewController* MainView;
 
 - (void)startInit:(ViewController*)view;
 - (IBAction)sendMessage:(id)sender;

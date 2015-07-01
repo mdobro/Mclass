@@ -29,7 +29,7 @@ import Foundation
 import AVFoundation
 import CoreGraphics
 
-public enum PlaybackState: Int, Printable {
+public enum PlaybackState: Int, CustomStringConvertible {
     case Stopped = 0
     case Playing
     case Paused
@@ -51,7 +51,7 @@ public enum PlaybackState: Int, Printable {
     }
 }
 
-public enum BufferingState: Int, Printable {
+public enum BufferingState:Int, CustomStringConvertible {
     case Unknown = 0
     case Ready
     case Delayed
@@ -122,16 +122,14 @@ public class Player: UIViewController {
             self.setupPlayerItem(nil)
 
             filepath = newValue
-            var remoteUrl: NSURL? = NSURL(string: newValue)
+            let remoteUrl: NSURL? = NSURL(string: newValue)
             if remoteUrl != nil && remoteUrl?.scheme != nil {
-                if let asset = AVURLAsset(URL: remoteUrl, options: .None) {
-                    self.setupAsset(asset)
-                }
+                let asset = AVURLAsset(URL: remoteUrl!, options: .None)
+                self.setupAsset(asset)
             } else {
-                var localURL: NSURL? = NSURL(fileURLWithPath: newValue)
-                if let asset = AVURLAsset(URL: localURL, options: .None) {
-                    self.setupAsset(asset)
-                }
+                let localURL: NSURL? = NSURL(fileURLWithPath: newValue)
+                let asset = AVURLAsset(URL: localURL!, options: .None)
+                self.setupAsset(asset)
             }
         }
     }
@@ -192,7 +190,7 @@ public class Player: UIViewController {
         self.init(nibName: nil, bundle: nil)
         self.player = AVPlayer()
         self.player.actionAtItemEnd = .Pause
-        self.player.addObserver(self, forKeyPath: PlayerRateKey, options: (NSKeyValueObservingOptions.New | NSKeyValueObservingOptions.Old) , context: &PlayerObserverContext)
+        self.player.addObserver(self, forKeyPath: PlayerRateKey, options: [NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old] , context: &PlayerObserverContext)
 
         self.playbackLoops = false
         self.playbackFreezesAtEnd = false
@@ -230,7 +228,7 @@ public class Player: UIViewController {
         self.playerView.fillMode = AVLayerVideoGravityResizeAspect
         self.playerView.playerLayer.hidden = true
         self.view = self.playerView
-        self.playerView.layer.addObserver(self, forKeyPath: PlayerReadyForDisplay, options: (NSKeyValueObservingOptions.New | NSKeyValueObservingOptions.Old), context: &PlayerLayerObserverContext)
+        self.playerView.layer.addObserver(self, forKeyPath: PlayerReadyForDisplay, options: [NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old], context: &PlayerLayerObserverContext)
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: UIApplication.sharedApplication())
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: UIApplication.sharedApplication())
@@ -290,7 +288,7 @@ public class Player: UIViewController {
         self.delegate?.playerBufferingStateDidChange(self)
 
         self.asset = asset
-        if let updatedAsset = self.asset {
+        if (self.asset != nil) {
             self.setupPlayerItem(nil)
         }
 
@@ -337,9 +335,9 @@ public class Player: UIViewController {
         self.playerItem = item
 
         if item != nil {
-            self.playerItem?.addObserver(self, forKeyPath: PlayerEmptyBufferKey, options: (NSKeyValueObservingOptions.New | NSKeyValueObservingOptions.Old), context: &PlayerItemObserverContext)
-            self.playerItem?.addObserver(self, forKeyPath: PlayerKeepUp, options: (NSKeyValueObservingOptions.New | NSKeyValueObservingOptions.Old), context: &PlayerItemObserverContext)
-            self.playerItem?.addObserver(self, forKeyPath: PlayerStatusKey, options: (NSKeyValueObservingOptions.New | NSKeyValueObservingOptions.Old), context: &PlayerItemObserverContext)
+            self.playerItem?.addObserver(self, forKeyPath: PlayerEmptyBufferKey, options: [NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old], context: &PlayerItemObserverContext)
+            self.playerItem?.addObserver(self, forKeyPath: PlayerKeepUp, options: [NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old], context: &PlayerItemObserverContext)
+            self.playerItem?.addObserver(self, forKeyPath: PlayerStatusKey, options: [NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old], context: &PlayerItemObserverContext)
 
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemDidPlayToEndTime:", name: AVPlayerItemDidPlayToEndTimeNotification, object: self.playerItem)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemFailedToPlayToEndTime:", name: AVPlayerItemFailedToPlayToEndTimeNotification, object: self.playerItem)
@@ -384,68 +382,65 @@ public class Player: UIViewController {
     }
 
     // MARK: KVO
-
-    public override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-
+    override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [NSObject : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         switch (keyPath, context) {
-            case (PlayerRateKey, &PlayerObserverContext):
-                true
-            case (PlayerStatusKey, &PlayerItemObserverContext):
-                true
-            case (PlayerKeepUp, &PlayerItemObserverContext):
-                if let item = self.playerItem {
-                    self.bufferingState = .Ready
-                    self.delegate?.playerBufferingStateDidChange(self)
-
-                    if item.playbackLikelyToKeepUp && self.playbackState == .Playing {
-                        self.playFromCurrentTime()
-                    }
+        case (PlayerRateKey?, &PlayerObserverContext):
+            true
+        case (PlayerStatusKey?, &PlayerItemObserverContext):
+            true
+        case (PlayerKeepUp?, &PlayerItemObserverContext):
+            if let item = self.playerItem {
+                self.bufferingState = .Ready
+                self.delegate?.playerBufferingStateDidChange(self)
+                
+                if item.playbackLikelyToKeepUp && self.playbackState == .Playing {
+                    self.playFromCurrentTime()
                 }
-
-                let status = (change[NSKeyValueChangeNewKey] as! NSNumber).integerValue as AVPlayerStatus.RawValue
-
-                switch (status) {
-                    case AVPlayerStatus.ReadyToPlay.rawValue:
-                        self.playerView.playerLayer.player = self.player
-                        self.playerView.playerLayer.hidden = false
-                    case AVPlayerStatus.Failed.rawValue:
-                        self.playbackState = PlaybackState.Failed
-                        self.delegate?.playerPlaybackStateDidChange(self)
-                    default:
-                        true
-                }
-            case (PlayerEmptyBufferKey, &PlayerItemObserverContext):
-                if let item = self.playerItem {
-                    if item.playbackBufferEmpty {
-                        self.bufferingState = .Delayed
-                        self.delegate?.playerBufferingStateDidChange(self)
-                    }
-                }
-
-                let status = (change[NSKeyValueChangeNewKey] as! NSNumber).integerValue as AVPlayerStatus.RawValue
-
-                switch (status) {
-                    case AVPlayerStatus.ReadyToPlay.rawValue:
-                        self.playerView.playerLayer.player = self.player
-                        self.playerView.playerLayer.hidden = false
-                    case AVPlayerStatus.Failed.rawValue:
-                        self.playbackState = PlaybackState.Failed
-                        self.delegate?.playerPlaybackStateDidChange(self)
-                    default:
-                        true
-                }
-            case (PlayerReadyForDisplay, &PlayerLayerObserverContext):
-                if self.playerView.playerLayer.readyForDisplay {
-                    self.delegate?.playerReady(self)
-                }
+            }
+            
+            let status = (change?[NSKeyValueChangeNewKey] as! NSNumber).integerValue
+            switch (status) {
+            case AVPlayerStatus.ReadyToPlay.rawValue:
+                self.playerView.playerLayer.player = self.player
+                self.playerView.playerLayer.hidden = false
+            case AVPlayerStatus.Failed.rawValue:
+                self.playbackState = PlaybackState.Failed
+                self.delegate?.playerPlaybackStateDidChange(self)
             default:
-                super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
-
+                true
+            }
+        case (PlayerEmptyBufferKey?, &PlayerItemObserverContext):
+            if let item = self.playerItem {
+                if item.playbackBufferEmpty {
+                    self.bufferingState = .Delayed
+                    self.delegate?.playerBufferingStateDidChange(self)
+                }
+            }
+            
+            let status = (change?[NSKeyValueChangeNewKey] as! NSNumber).integerValue as AVPlayerStatus.RawValue
+            
+            switch (status) {
+            case AVPlayerStatus.ReadyToPlay.rawValue:
+                self.playerView.playerLayer.player = self.player
+                self.playerView.playerLayer.hidden = false
+            case AVPlayerStatus.Failed.rawValue:
+                self.playbackState = PlaybackState.Failed
+                self.delegate?.playerPlaybackStateDidChange(self)
+            default:
+                true
+            }
+        case (PlayerReadyForDisplay?, &PlayerLayerObserverContext):
+            if self.playerView.playerLayer.readyForDisplay {
+                self.delegate?.playerReady(self)
+            }
+        default:
+            super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+            
         }
-
+        
     }
-
-}
+    
+    }
 
 extension Player {
 
@@ -490,13 +485,12 @@ internal class PlayerView: UIView {
 
     convenience init() {
         self.init(frame: CGRectZero)
-        self.playerLayer.backgroundColor = UIColor.blackColor().CGColor!
+        self.playerLayer.backgroundColor = UIColor.blackColor().CGColor
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.playerLayer.backgroundColor = UIColor.blackColor().CGColor!
-    }
+        self.playerLayer.backgroundColor = UIColor.blackColor().CGColor    }
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
