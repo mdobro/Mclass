@@ -8,7 +8,7 @@
 static const NSTimeInterval PTAppReconnectDelay = 1.0;
 
 
-@interface Ohelper : NSObject <PTChannelDelegate> {
+@interface USBhelper : NSObject <PTChannelDelegate> {
     //ViewController* MainView;
 }
 @property ViewController* MainView;
@@ -31,5 +31,7 @@ static const NSTimeInterval PTAppReconnectDelay = 1.0;
 
 
 @end
+
+
 
 #endif

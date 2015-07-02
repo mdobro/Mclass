@@ -10,7 +10,7 @@ import Cocoa
 
 @objc class ViewController: NSViewController {
     
-    let helper = Ohelper()
+    let USBHelper = USBhelper()
     let buttons = ["Connection Status", "Projector 1 Source", "Projector 2 Source", "HDCP Status", "Problem Status", "Problem Message","Source Volume"]
     var Statuses = ["Not Connected", "", "", "", "", "", ""] //initial status
     
@@ -21,7 +21,7 @@ import Cocoa
 
         self.table.gridStyleMask = NSTableViewGridLineStyle.SolidVerticalGridLineMask
         
-        helper.startInit(self)
+        USBHelper.startInit(self)
         
         // Do any additional setup after loading the view.
     }

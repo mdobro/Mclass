@@ -4,7 +4,7 @@
 #import "objChelper_mac.h"
 #import "Mac_Helper-Swift.h"
 
-@interface Ohelper() {
+@interface USBhelper() {
     // If the remote connection is over USB transport...
     NSNumber *connectingToDeviceID_;
     NSNumber *connectedDeviceID_;
@@ -23,7 +23,7 @@
 @end
 
 
-@implementation Ohelper
+@implementation USBhelper
 
 - (void)startInit:(ViewController*)view {
     // We use a serial queue that we toggle depending on if we are connected or
