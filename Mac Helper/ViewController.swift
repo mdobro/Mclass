@@ -11,8 +11,14 @@ import Cocoa
 @objc class ViewController: NSViewController {
     
     let USBHelper = USBhelper()
-    let buttons = ["Connection Status", "Projector 1 Source", "Projector 2 Source", "HDCP Status", "Problem Status", "Problem Message","Source Volume"]
-    var Statuses = ["Not Connected", "", "", "", "", "", ""] //initial status
+    
+    var PROJ1:PJProjector!
+    let PROJ1IP = "127.0.0.1"
+    let PJLINKPORT = 4352
+    
+    let buttons = ["Connection Status", "Projector 1 Source", "Projector 2 Source", "HDCP Status", "Problem Status", "Problem Message", "Source Volume", "Projector 1 Connection Status", "Projector 1 Power"]
+    //Proj1 connection at Statuses[7]
+    var Statuses:[String]!
     
     @IBOutlet weak var table: NSTableView!
     
@@ -20,6 +26,12 @@ import Cocoa
         super.viewDidLoad()
 
         self.table.gridStyleMask = NSTableViewGridLineStyle.SolidVerticalGridLineMask
+        
+        NSURLProtocol.registerClass(PJURLProtocolRunLoop)
+        PROJ1 = PJProjector(host: PROJ1IP, port: PJLINKPORT)
+        Statuses = ["Not Connected", "", "", "", "", "", "", "Not Connected", ""]
+        self.subToNotifications()
+        PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
         
         USBHelper.startInit(self)
         
@@ -51,7 +63,7 @@ import Cocoa
         return nil
     }
     
-    //Channel send/recieve
+    //USB Channel send/recieve
     @objc func connected(connectionOn:Bool){
         if connectionOn {
             Statuses[0] = "Connected"
@@ -91,6 +103,42 @@ import Cocoa
         Statuses[6] = vol
         table.reloadData()
         
+    }
+    
+    //Proj Send/Recieve
+    func subToNotifications() {
+        let center = NSNotificationCenter.defaultCenter()
+        center.addObserver(self, selector: "projRequestBegin:", name: PJProjectorRequestDidBeginNotification, object: nil)
+        center.addObserver(self, selector: "projRequestEnd:", name: PJProjectorRequestDidEndNotification, object: nil)
+        center.addObserver(self, selector: "projDidChange:", name: PJProjectorDidChangeNotification, object: nil)
+        center.addObserver(self, selector: "projConnectionChange:", name: PJProjectorConnectionStateDidChangeNotification, object: nil)
+    }
+    
+    func unsubFromNotifications() {
+        let center = NSNotificationCenter.defaultCenter()
+        center.removeObserver(self, name: PJProjectorRequestDidBeginNotification, object: nil)
+        center.removeObserver(self, name: PJProjectorRequestDidEndNotification, object: nil)
+        center.removeObserver(self, name: PJProjectorDidChangeNotification, object: nil)
+        center.removeObserver(self, name: PJProjectorConnectionStateDidChangeNotification, object: nil)
+    }
+    
+    func projRequestBegin(notification:NSNotification) {
+        //they just started a loading animation here
+    }
+    
+    func projRequestEnd(notification:NSNotification) {
+        //ended animation
+    }
+    
+    func projDidChange(notification:NSNotification) {
+        //reload tabledata that deals with button status etc
+        Statuses[8] = PJResponseInfoPowerStatusQuery.stringForPowerStatus(PROJ1.powerStatus)
+    }
+    
+    func projConnectionChange(notification:NSNotification) {
+        //reload tabledata that deals with connection
+        Statuses[7] = PJProjector.stringForConnectionState(PROJ1.connectionState)
+        table.reloadData()
     }
 
 }

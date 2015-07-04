@@ -3,7 +3,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+//USB COM to IPAD
 #import "PTChannel.h"
 #import "PTProtocol.h"
 #import "PTUSBHub.h"
@@ -11,3 +11,8 @@
 #import "objChelper.h"
 #import "Protocol.h"
 #import "objChelper_mac.h"
+//Ethernet COM to Proj
+#import "PJProjector.h"
+#import "PJResponseInfo.h"
+#import "PJInputInfo.h"
+#import "PJURLProtocolRunLoop.h"

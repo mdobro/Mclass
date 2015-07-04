@@ -295,7 +295,7 @@
 				D97C69561B28BB6500590068 /* Mac HelperTests */,
 				D9E6186D1B0F8914007AFECB /* Products */,
 				D9EC82DF1B1E10B200E64B68 /* Peertalk */,
-				D9FA03181B45D0C800849E0C /* PJTalk */,
+				D9FA03181B45D0C800849E0C /* PJLink */,
 			);
 			sourceTree = "<group>";
 		};
@@ -424,17 +424,19 @@
 			name = Example;
 			sourceTree = "<group>";
 		};
-		D9FA03181B45D0C800849E0C /* PJTalk */ = {
+		D9FA03181B45D0C800849E0C /* PJLink */ = {
 			isa = PBXGroup;
 			children = (
+				D9FA03AA1B45D57400849E0C /* CocoaAsyncSocket */,
+				D9FA03991B45D53E00849E0C /* AFNetworking */,
 				D9FA03451B45D13B00849E0C /* AFPJLinkClient.h */,
 				D9FA03461B45D13B00849E0C /* AFPJLinkClient.m */,
 				D9FA03471B45D13B00849E0C /* AFPJLinkRequestOperation.h */,
 				D9FA03481B45D13B00849E0C /* AFPJLinkRequestOperation.m */,
 				D9FA03491B45D13B00849E0C /* NSString+Utils.h */,
+				D9FA034C1B45D13B00849E0C /* NSURL+Utils.m */,
 				D9FA034A1B45D13B00849E0C /* NSString+Utils.m */,
 				D9FA034B1B45D13B00849E0C /* NSURL+Utils.h */,
-				D9FA034C1B45D13B00849E0C /* NSURL+Utils.m */,
 				D9FA034D1B45D13B00849E0C /* PJDefinitions.h */,
 				D9FA034E1B45D13B00849E0C /* PJInputInfo.h */,
 				D9FA034F1B45D13B00849E0C /* PJInputInfo.m */,
@@ -448,10 +450,8 @@
 				D9FA03571B45D13B00849E0C /* PJResponseInfo.m */,
 				D9FA03581B45D13B00849E0C /* PJURLProtocolRunLoop.h */,
 				D9FA03591B45D13B00849E0C /* PJURLProtocolRunLoop.m */,
-				D9FA03AA1B45D57400849E0C /* CocoaAsyncSocket */,
-				D9FA03991B45D53E00849E0C /* AFNetworking */,
 			);
-			name = PJTalk;
+			name = PJLink;
 			sourceTree = "<group>";
 		};
 		D9FA03991B45D53E00849E0C /* AFNetworking */ = {

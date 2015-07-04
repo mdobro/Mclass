@@ -8,26 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
-static NSString* const kPJLinkScheme;
-static NSString* const kPJLinkPOWR;
-static NSString* const kPJLinkINPT;
-static NSString* const kPJLinkAVMT;
-static NSString* const kPJLinkERST;
-static NSString* const kPJLinkLAMP;
-static NSString* const kPJLinkINST;
-static NSString* const kPJLinkNAME;
-static NSString* const kPJLinkINF1;
-static NSString* const kPJLinkINF2;
-static NSString* const kPJLinkINFO;
-static NSString* const kPJLinkCLSS;
-static NSString* const kPJLinkOK;
-static NSString* const kPJLinkERR1;
-static NSString* const kPJLinkERR2;
-static NSString* const kPJLinkERR3;
-static NSString* const kPJLinkERR4;
-static NSString* const kPJLinkHeaderClass;
-static NSString* const PJLinkErrorDomain;
-static NSString* const kPJLinkCR;
+static NSString* const kPJLinkScheme      = @"pjlink";
+static NSString* const kPJLinkPOWR        = @"POWR";
+static NSString* const kPJLinkINPT        = @"INPT";
+static NSString* const kPJLinkAVMT        = @"AVMT";
+static NSString* const kPJLinkERST        = @"ERST";
+static NSString* const kPJLinkLAMP        = @"LAMP";
+static NSString* const kPJLinkINST        = @"INST";
+static NSString* const kPJLinkNAME        = @"NAME";
+static NSString* const kPJLinkINF1        = @"INF1";
+static NSString* const kPJLinkINF2        = @"INF2";
+static NSString* const kPJLinkINFO        = @"INFO";
+static NSString* const kPJLinkCLSS        = @"CLSS";
+static NSString* const kPJLinkOK          = @"OK";
+static NSString* const kPJLinkERR1        = @"ERR1";
+static NSString* const kPJLinkERR2        = @"ERR2";
+static NSString* const kPJLinkERR3        = @"ERR3";
+static NSString* const kPJLinkERR4        = @"ERR4";
+static NSString* const kPJLinkHeaderClass = @"%1";
+static NSString* const kPJLinkCR          = @"\r";
+static NSString* const PJLinkErrorDomain  = @"PJLinkErrorDomain";
 
 enum {
     PJLinkErrorUnknown                  = -1,

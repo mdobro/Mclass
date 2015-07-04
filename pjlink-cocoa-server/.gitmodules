@@ -1,0 +1,6 @@
+[submodule "ThirdParty/CocoaAsyncSocket"]
+	path = ThirdParty/CocoaAsyncSocket
+	url = git@github.com:robbiehanson/CocoaAsyncSocket.git
+[submodule "ThirdParty/CocoaLumberjack"]
+	path = ThirdParty/CocoaLumberjack
+	url = git@github.com:robbiehanson/CocoaLumberjack.git

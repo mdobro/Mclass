@@ -10,6 +10,7 @@
 #import "AsyncSocket.h"
 #import <CommonCrypto/CommonDigest.h>
 
+/*
 static NSString* const kPJLinkScheme      = @"pjlink";
 static NSString* const kPJLinkPOWR        = @"POWR";
 static NSString* const kPJLinkINPT        = @"INPT";
@@ -30,6 +31,7 @@ static NSString* const kPJLinkERR4        = @"ERR4";
 static NSString* const kPJLinkHeaderClass = @"%1";
 static NSString* const kPJLinkCR          = @"\r";
 static NSString* const PJLinkErrorDomain  = @"PJLinkErrorDomain";
+ */
 
 NSString* const kPJLinkQuerySuffix     = @" ?";
 NSString* const kPJLinkPowerOnSuffix   = @" 1";
