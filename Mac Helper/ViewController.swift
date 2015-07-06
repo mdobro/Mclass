@@ -8,7 +8,7 @@
 
 import Cocoa
 
-@objc class ViewController: NSViewController {
+@objc class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     
     let USBHelper = USBhelper()
     
@@ -16,7 +16,7 @@ import Cocoa
     let PROJ1IP = "127.0.0.1"
     let PJLINKPORT = 4352
     
-    let buttons = ["Connection Status", "Projector 1 Source", "Projector 2 Source", "HDCP Status", "Problem Status", "Problem Message", "Source Volume", "Projector 1 Connection Status", "Projector 1 Power"]
+    let buttons = ["Connection Status", "Projector 1 Source", "Projector 2 Source", "HDCP Status", "Problem Status", "Problem Message", "Source Volume", "Projector 1 Connection Status", "Projector 1 Power", "Projector 1 Input Input"]
     //Proj1 connection at Statuses[7]
     var Statuses:[String]!
     
@@ -29,7 +29,7 @@ import Cocoa
         
         NSURLProtocol.registerClass(PJURLProtocolRunLoop)
         PROJ1 = PJProjector(host: PROJ1IP, port: PJLINKPORT)
-        Statuses = ["Not Connected", "", "", "", "", "", "", "Not Connected", ""]
+        Statuses = ["Not Connected", "", "", "", "", "", "", "Not Connected", "", ""]
         self.subToNotifications()
         PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
         
@@ -42,6 +42,10 @@ import Cocoa
         didSet {
         // Update the view, if already loaded.
         }
+    }
+    
+    @IBAction func refresh(sender: NSButton) {
+        PROJ1.refreshAllQueriesForReason(PJRefreshReason.UserInteraction)
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
@@ -75,7 +79,19 @@ import Cocoa
     }
     
     @objc func recievedP1source(source:String){
+        //make enum with proj inputs from epson and hp and request change
         Statuses[1] = source
+        if (source == "OFF") {
+            PROJ1.requestPowerStateChange(false)
+        }
+        else {
+            PROJ1.requestPowerStateChange(true)
+            //PROJ1.requestInputChangeToInputIndex(INT)
+            
+            //makeEquivilent()
+            //will continue to check and try to make ipad and proj agree
+        }
+        
         table.reloadData()
     }
     
@@ -133,6 +149,8 @@ import Cocoa
     func projDidChange(notification:NSNotification) {
         //reload tabledata that deals with button status etc
         Statuses[8] = PJResponseInfoPowerStatusQuery.stringForPowerStatus(PROJ1.powerStatus)
+        Statuses[9] = "\(PROJ1.activeInputIndex)" //need to find out what numbers correspond to inputs on different projs
+        table.reloadData()
     }
     
     func projConnectionChange(notification:NSNotification) {
