@@ -8,13 +8,19 @@
 
 import Cocoa
 
+enum EPSONINPUTS {
+    case Computer, BNC, Video, SVideo, HDMI, DisplayPort, LAN, HDBaseT
+}
+
 @objc class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     
     let USBHelper = USBhelper()
     
     var PROJ1:PJProjector!
-    let PROJ1IP = "127.0.0.1"
+    let PROJ1IP = "10.160.10.242"
     let PJLINKPORT = 4352
+    var inputDict:[String: EPSONINPUTS]!
+    var equivalentQueue = false;
     
     let buttons = ["Connection Status", "Projector 1 Source", "Projector 2 Source", "HDCP Status", "Problem Status", "Problem Message", "Source Volume", "Projector 1 Connection Status", "Projector 1 Power", "Projector 1 Input Input"]
     //Proj1 connection at Statuses[7]
@@ -29,9 +35,11 @@ import Cocoa
         
         NSURLProtocol.registerClass(PJURLProtocolRunLoop)
         PROJ1 = PJProjector(host: PROJ1IP, port: PJLINKPORT)
-        Statuses = ["Not Connected", "", "", "", "", "", "", "Not Connected", "", ""]
+        Statuses = ["Not Connected", "", "", "", "", "", "", "", "", ""]
         self.subToNotifications()
         PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+        inputDict = ["Laptop" : EPSONINPUTS.Computer, "Document Camera" : EPSONINPUTS.DisplayPort, "Apple TV" : EPSONINPUTS.HDMI, "Blank Screen" : EPSONINPUTS.LAN]
+        NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "refreshProjStatus", userInfo: nil, repeats: true)
         
         USBHelper.startInit(self)
         
@@ -44,8 +52,20 @@ import Cocoa
         }
     }
     
-    @IBAction func refresh(sender: NSButton) {
-        PROJ1.refreshAllQueriesForReason(PJRefreshReason.UserInteraction)
+    func refreshProjStatus() {
+        PROJ1.refreshAllQueriesForReason(PJRefreshReason.Timed)
+    }
+    
+    func makeEquivalent() {
+        equivalentQueue = false
+        if let input = inputDict[Statuses[1]]?.hashValue {
+            PROJ1.requestInputChangeToInputIndex(UInt(input))
+            equivalentQueue = true
+        } else {
+            PROJ1.requestPowerStateChange(false)
+            //this hasnt failed on first run yet, setting equivalent to true may cause problems here
+        }
+        
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
@@ -67,13 +87,15 @@ import Cocoa
         return nil
     }
     
-    //USB Channel send/recieve
+    //USB Channel
     @objc func connected(connectionOn:Bool){
         if connectionOn {
             Statuses[0] = "Connected"
         }
         else {
+            let projStatus = Statuses[7..<(Statuses.count)]
             Statuses = ["Not Connected", "", "", "", "", "", ""]
+            Statuses! += Array(projStatus)
         }
         table.reloadData()
     }
@@ -81,17 +103,17 @@ import Cocoa
     @objc func recievedP1source(source:String){
         //make enum with proj inputs from epson and hp and request change
         Statuses[1] = source
+        if PROJ1.powerStatus != PJPowerStatus.PJPowerStatusLampOn {
+            equivalentQueue = true
+        }
         if (source == "OFF") {
             PROJ1.requestPowerStateChange(false)
         }
         else {
             PROJ1.requestPowerStateChange(true)
-            //PROJ1.requestInputChangeToInputIndex(INT)
-            
-            //makeEquivilent()
-            //will continue to check and try to make ipad and proj agree
+            let inputDict = ["Laptop" : EPSONINPUTS.Computer, "Document Camera" : EPSONINPUTS.DisplayPort, "Apple TV" : EPSONINPUTS.HDMI, "Blank Screen" : EPSONINPUTS.LAN]
+            PROJ1.requestInputChangeToInputIndex(UInt(inputDict[source]!.hashValue))
         }
-        
         table.reloadData()
     }
     
@@ -151,6 +173,10 @@ import Cocoa
         Statuses[8] = PJResponseInfoPowerStatusQuery.stringForPowerStatus(PROJ1.powerStatus)
         Statuses[9] = "\(PROJ1.activeInputIndex)" //need to find out what numbers correspond to inputs on different projs
         table.reloadData()
+        
+        if equivalentQueue {
+            makeEquivalent()
+        }
     }
     
     func projConnectionChange(notification:NSNotification) {

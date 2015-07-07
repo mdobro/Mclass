@@ -141,29 +141,31 @@ class MainTableViewController: UITableViewController {
         return cell
     }
     
+    func selectionHelper(indexPath:NSIndexPath) {
+        selectedModeIndex?[selectedProj] = indexPath.row
+        selectedMode?[selectedProj] = modes[indexPath.row]
+        delegate.projDidChange(selectedProj+1, source: modes[indexPath.row])
+    }
+    
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //tableView.deselectRowAtIndexPath(indexPath, animated: false)
         
-        //Other row is selected - need to deselect it
-        if let index = selectedModeIndex?[selectedProj] {
-            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0))
-            cell?.backgroundColor = UIColor.clearColor()
+        if indexPath.row == 4 {
+        //show alert if turning off projector
+        let turnOffAlert = UIAlertController(title: "Are you sure you'd like to turn off the projector?", message: "The projector will take a minute to turn on again after being turned off.", preferredStyle: UIAlertControllerStyle.Alert)
+            turnOffAlert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) in
+                self.selectionHelper(indexPath)
+            }))
+            turnOffAlert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel, handler: { (UIAlertAction) in
+                let index = NSIndexPath(forRow: (self.selectedModeIndex?[self.selectedProj])!, inSection: 0)
+                self.sourceTable.selectRowAtIndexPath(index, animated: false, scrollPosition: UITableViewScrollPosition.None)
+            }))
+            self.presentViewController(turnOffAlert, animated: true, completion: nil)
+        } else {
+            selectionHelper(indexPath)
         }
-        
-        selectedModeIndex?[selectedProj] = indexPath.row
-        selectedMode?[selectedProj] = modes[indexPath.row]
-        
-        delegate.projDidChange(selectedProj+1, source: modes[indexPath.row])
-
-        
-        //let cell = tableView.cellForRowAtIndexPath(indexPath)
-        //cell?.accessoryType = .Checkmark
-        
-        //cell?.backgroundColor = UIColor(red:14/255, green:50/255, blue:100/255, alpha:0.4)
     }
-    
-    
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

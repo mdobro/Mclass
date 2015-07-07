@@ -429,7 +429,6 @@
 			children = (
 				D9FA03AA1B45D57400849E0C /* CocoaAsyncSocket */,
 				D9FA03991B45D53E00849E0C /* AFNetworking */,
-				D9FA03451B45D13B00849E0C /* AFPJLinkClient.h */,
 				D9FA03461B45D13B00849E0C /* AFPJLinkClient.m */,
 				D9FA03471B45D13B00849E0C /* AFPJLinkRequestOperation.h */,
 				D9FA03481B45D13B00849E0C /* AFPJLinkRequestOperation.m */,
@@ -457,6 +456,7 @@
 		D9FA03991B45D53E00849E0C /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				D9FA03451B45D13B00849E0C /* AFPJLinkClient.h */,
 				D9FA03741B45D53200849E0C /* AFHTTPClient.h */,
 				D9FA03751B45D53200849E0C /* AFHTTPClient.m */,
 				D9FA03761B45D53200849E0C /* AFHTTPRequestOperation.h */,
