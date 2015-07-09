@@ -15,6 +15,10 @@ enum EPSONINPUTS {
 @objc class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     
     let USBHelper = USBhelper()
+
+    var socket: GCDAsyncSocket!
+    var MUTESTATUS: Bool!
+    let TESIRAPORT:UInt16 = 32
     
     var PROJ1:PJProjector!
     //let EPSONTESTIP = "10.160.10.242"
@@ -45,6 +49,7 @@ enum EPSONINPUTS {
         USBHelper.startInit(self)
         
         // Do any additional setup after loading the view.
+        socket = GCDAsyncSocket(delegate: AppDelegate.self, delegateQueue: dispatch_get_main_queue())
     }
 
     override var representedObject: AnyObject? {
@@ -140,6 +145,41 @@ enum EPSONINPUTS {
     
     @objc func recievedVolume(vol:String) {
         Statuses[6] = vol
+        var revised: String!
+        if (vol == "0.0") {
+            MUTESTATUS = true
+        }
+        else {
+            var finalstep: String!
+            if (MUTESTATUS != nil) {
+                if (MUTESTATUS == true) {
+                    let unmute = "\"ProgramVolume\" set mute 1 false"
+                    print(unmute)
+                    socket.writeData(unmute.dataUsingEncoding(NSUTF8StringEncoding), withTimeout: -1.0, tag: 0)
+                }
+            }
+            MUTESTATUS = false
+            let stepone: Int = Int(round(Double(vol)!*52 + (-40)))
+            if (stepone > -1 && stepone < 10) {
+                finalstep = "0" + String(stepone)
+            }
+            else if (stepone > -10 && stepone < 0) {
+                finalstep = "-0" + String(-stepone)
+            }
+            else {
+                finalstep = String(stepone)
+            }
+            revised = "\"ProgramVolume\" set level 1 \(finalstep)"
+            print(revised)
+            
+        }
+        if (MUTESTATUS! == true) {
+            revised = "\"ProgramVolume\" set mute 1 true"
+            print(revised)
+        }
+        let data:NSData = revised.dataUsingEncoding(NSUTF8StringEncoding)!
+        socket.writeData(data, withTimeout: -1.0, tag: 0)
+        socket.readDataWithTimeout(-1.0, tag: 0)
         table.reloadData()
         
     }
