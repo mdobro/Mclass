@@ -261,6 +261,11 @@ enum EPSONINPUTS {
             }
         }
         table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(9..<(Statuses.count))), columnIndexes: NSIndexSet(index: 1))
+        
+        if Statuses[9] == "Connected" {
+            NSNotificationCenter.defaultCenter().postNotificationName(PJProjectorDidChangeNotification, object: nil)
+            PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+        }
     }
 
 }
