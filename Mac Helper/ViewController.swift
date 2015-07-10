@@ -205,14 +205,13 @@ enum EPSONINPUTS {
         center.addObserver(self, selector: "projRequestEnd:", name: PJProjectorRequestDidEndNotification, object: nil)
         center.addObserver(self, selector: "projDidChange:", name: PJProjectorDidChangeNotification, object: nil)
         center.addObserver(self, selector: "projConnectionChange:", name: PJProjectorConnectionStateDidChangeNotification, object: nil)
+        center.addObserver(self, selector: "projHasWarning:", name: PJProjectorHasWarning, object: nil)
+        center.addObserver(self, selector: "projHasError:", name: PJProjectorHasError, object: nil)
     }
     
     func unsubFromNotifications() {
         let center = NSNotificationCenter.defaultCenter()
-        center.removeObserver(self, name: PJProjectorRequestDidBeginNotification, object: nil)
-        center.removeObserver(self, name: PJProjectorRequestDidEndNotification, object: nil)
-        center.removeObserver(self, name: PJProjectorDidChangeNotification, object: nil)
-        center.removeObserver(self, name: PJProjectorConnectionStateDidChangeNotification, object: nil)
+        center.removeObserver(self)
     }
     
     func projRequestBegin(notification:NSNotification) {
@@ -250,6 +249,14 @@ enum EPSONINPUTS {
         if equivalentQueue {
             makeEquivalent()
         }
+    }
+    
+    func projHasWarning(notification: NSNotification) {
+        
+    }
+    
+    func projHasError(notification: NSNotification) {
+        
     }
     
     func projConnectionChange(notification:NSNotification) {
