@@ -22,12 +22,12 @@ enum EPSONINPUTS {
     
     var PROJ1:PJProjector!
     //let EPSONTESTIP = "10.160.10.242"
-    let PROJ1IP = "127.0.0.1"
+    var PROJ1IP = "127.0.0.1" //default IP; repetative with statuses[8], delete after testing period
     let PJLINKPORT = 4352
     var inputDict:[String: EPSONINPUTS]!
     var equivalentQueue = false;
     
-    let buttons = ["iPad Connection Status", "Projector 1 Source on iPad", "Projector 2 Source on iPad", "HDCP Status on iPad", "Problem Status on iPad", "Problem Message on iPad", "Source Volume on iPad", "", "Projector 1 Connection Status", "Projector 1 Name", "Projector 1 Manufacturer", "Projector 1 Product", "Projector 1 Power", "Projector 1 Input", "ERRORS [fan, lamp, temp, cover, filter, other]", "" /*end filler line*/]
+    let buttons = ["iPad Connection Status", "Projector 1 Source on iPad", "Projector 2 Source on iPad", "HDCP Status on iPad", "Problem Status on iPad", "Problem Message on iPad", "Source Volume on iPad", "", "Projector 1 IP (`click to edit)", "Projector 1 Connection Status", "Projector 1 Name", "Projector 1 Manufacturer", "Projector 1 Product", "Projector 1 Power", "Projector 1 Input", "ERRORS [fan, lamp, temp, cover, filter, other]", "" /*end filler line*/]
     //Proj1 connection at Statuses[8]
     var Statuses:[String]!
     
@@ -38,9 +38,11 @@ enum EPSONINPUTS {
 
         self.table.gridStyleMask = NSTableViewGridLineStyle.SolidVerticalGridLineMask
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "cellWasEdited:", name: NSControlTextDidEndEditingNotification, object: nil)
+        
         NSURLProtocol.registerClass(PJURLProtocolRunLoop)
         PROJ1 = PJProjector(host: PROJ1IP, port: PJLINKPORT)
-        Statuses = ["Not Connected", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""/*end filler line*/]
+        Statuses = ["Not Connected", "", "", "", "", "", "", "", "\(PROJ1IP)", "", "", "", "", "", "", "", ""/*end filler line*/]
         self.subToNotifications()
         PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
         inputDict = ["Laptop" : EPSONINPUTS.Computer, "Document Camera" : EPSONINPUTS.DisplayPort, "Apple TV" : EPSONINPUTS.HDMI, "Blank Screen" : EPSONINPUTS.LAN]
@@ -87,10 +89,22 @@ enum EPSONINPUTS {
         else if tableColumn?.identifier == "Statuses"{
             let cell = tableView.makeViewWithIdentifier("Statuses", owner: self) as! NSTableCellView
             cell.textField?.stringValue = Statuses[row]
+            if row == 8 {
+                cell.textField!.editable = true
+            }
             return cell
-            
         }
         return nil
+    }
+    
+    func cellWasEdited(notification: NSNotification) {
+        let p1celltext = (table.viewAtColumn(1, row: 8, makeIfNecessary: false) as! NSTableCellView).textField!.stringValue
+        if p1celltext != Statuses[8] {
+            Statuses[8] = p1celltext
+            PROJ1IP = p1celltext
+            PROJ1 = PJProjector(host: PROJ1IP, port: PJLINKPORT)
+        }
+        
     }
     
     //USB Channel
@@ -211,11 +225,11 @@ enum EPSONINPUTS {
     
     func projDidChange(notification:NSNotification) {
         //reload tabledata that deals with button status etc
-        Statuses[9] = PROJ1.projectorName
-        Statuses[10] = PROJ1.manufacturerName
-        Statuses[11] = PROJ1.productName
-        Statuses[12] = PJResponseInfoPowerStatusQuery.stringForPowerStatus(PROJ1.powerStatus)
-        Statuses[13] = "\(PROJ1.activeInputIndex)"
+        Statuses[10] = PROJ1.projectorName
+        Statuses[11] = PROJ1.manufacturerName
+        Statuses[12] = PROJ1.productName
+        Statuses[13] = PJResponseInfoPowerStatusQuery.stringForPowerStatus(PROJ1.powerStatus)
+        Statuses[14] = "\(PROJ1.activeInputIndex)"
         
         let Errors = [PJResponseInfoErrorStatusQuery.stringForErrorStatus(PROJ1.fanErrorStatus),
         PJResponseInfoErrorStatusQuery.stringForErrorStatus(PROJ1.lampErrorStatus),
@@ -223,15 +237,15 @@ enum EPSONINPUTS {
         PJResponseInfoErrorStatusQuery.stringForErrorStatus(PROJ1.coverOpenErrorStatus),
         PJResponseInfoErrorStatusQuery.stringForErrorStatus(PROJ1.filterErrorStatus),
             PJResponseInfoErrorStatusQuery.stringForErrorStatus(PROJ1.otherErrorStatus)]
-        Statuses[14] = ""
+        Statuses[15] = ""
         for (index,error) in Errors.enumerate() {
-            Statuses[14] += error
+            Statuses[15] += error
             if index != Errors.count - 1 {
-                Statuses[14] += ","
+                Statuses[15] += ","
             }
         }
         
-        table.reloadData()
+        table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(10..<(Statuses.count))), columnIndexes: NSIndexSet(index: 1))
         
         if equivalentQueue {
             makeEquivalent()
@@ -240,8 +254,13 @@ enum EPSONINPUTS {
     
     func projConnectionChange(notification:NSNotification) {
         //reload tabledata that deals with connection
-        Statuses[8] = PJProjector.stringForConnectionState(PROJ1.connectionState)
-        table.reloadData()
+        Statuses[9] = PJProjector.stringForConnectionState(PROJ1.connectionState)
+        if Statuses[9] == "Connecting" || Statuses[9] == "Connection Error"{
+            for var i = 10; i < Statuses.count; ++i {
+                Statuses[i] = ""
+            }
+        }
+        table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(9..<(Statuses.count))), columnIndexes: NSIndexSet(index: 1))
     }
 
 }
