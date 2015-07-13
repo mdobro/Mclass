@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8121.20" systemVersion="15A204h" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8121.20" systemVersion="15A216g" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8121.20"/>
@@ -650,16 +650,16 @@
         <window title="PJLinkCocoaServer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="888" height="739"/>
+            <rect key="contentRect" x="335" y="390" width="421" height="569"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <value key="minSize" type="size" width="888" height="739"/>
             <value key="maxSize" type="size" width="888" height="739"/>
             <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="888" height="739"/>
+                <rect key="frame" x="0.0" y="0.0" width="421" height="569"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="536">
-                        <rect key="frame" x="21" y="702" width="83" height="17"/>
+                        <rect key="frame" x="21" y="530" width="83" height="17"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Power status" id="537">
                             <font key="font" metaFont="system"/>
@@ -668,7 +668,7 @@
                         </textFieldCell>
                     </textField>
                     <segmentedControl verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="540">
-                        <rect key="frame" x="117" y="698" width="286" height="24"/>
+                        <rect key="frame" x="117" y="526" width="286" height="24"/>
                         <animations/>
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="541">
                             <font key="font" metaFont="system"/>
@@ -685,7 +685,7 @@
                         </connections>
                     </segmentedControl>
                     <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="585">
-                        <rect key="frame" x="28" y="572" width="26" height="17"/>
+                        <rect key="frame" x="28" y="400" width="26" height="17"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Fan" id="586">
                             <font key="font" metaFont="system"/>
@@ -694,7 +694,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="589">
-                        <rect key="frame" x="28" y="547" width="39" height="17"/>
+                        <rect key="frame" x="28" y="375" width="39" height="17"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lamp" id="590">
                             <font key="font" metaFont="system"/>
@@ -703,7 +703,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="593">
-                        <rect key="frame" x="28" y="522" width="85" height="17"/>
+                        <rect key="frame" x="28" y="350" width="85" height="17"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Temperature" id="594">
                             <font key="font" metaFont="system"/>
@@ -712,7 +712,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="599">
-                        <rect key="frame" x="28" y="497" width="78" height="17"/>
+                        <rect key="frame" x="28" y="325" width="78" height="17"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Cover Open" id="600">
                             <font key="font" metaFont="system"/>
@@ -721,7 +721,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="604">
-                        <rect key="frame" x="28" y="472" width="36" height="17"/>
+                        <rect key="frame" x="28" y="300" width="36" height="17"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Filter" id="605">
                             <font key="font" metaFont="system"/>
@@ -730,7 +730,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="611">
-                        <rect key="frame" x="28" y="447" width="40" height="17"/>
+                        <rect key="frame" x="28" y="275" width="40" height="17"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Other" id="612">
                             <font key="font" metaFont="system"/>
@@ -739,7 +739,7 @@
                         </textFieldCell>
                     </textField>
                     <segmentedControl verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="616">
-                        <rect key="frame" x="117" y="518" width="191" height="24"/>
+                        <rect key="frame" x="117" y="346" width="191" height="24"/>
                         <animations/>
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="617">
                             <font key="font" metaFont="system"/>
@@ -755,7 +755,7 @@
                         </connections>
                     </segmentedControl>
                     <segmentedControl verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="622">
-                        <rect key="frame" x="117" y="568" width="191" height="24"/>
+                        <rect key="frame" x="117" y="396" width="191" height="24"/>
                         <animations/>
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="623">
                             <font key="font" metaFont="system"/>
@@ -771,7 +771,7 @@
                         </connections>
                     </segmentedControl>
                     <segmentedControl verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="630">
-                        <rect key="frame" x="117" y="543" width="191" height="24"/>
+                        <rect key="frame" x="117" y="371" width="191" height="24"/>
                         <animations/>
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="631">
                             <font key="font" metaFont="system"/>
@@ -787,7 +787,7 @@
                         </connections>
                     </segmentedControl>
                     <segmentedControl verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="637">
-                        <rect key="frame" x="117" y="493" width="191" height="24"/>
+                        <rect key="frame" x="117" y="321" width="191" height="24"/>
                         <animations/>
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="638">
                             <font key="font" metaFont="system"/>
@@ -803,7 +803,7 @@
                         </connections>
                     </segmentedControl>
                     <segmentedControl verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="643">
-                        <rect key="frame" x="117" y="468" width="191" height="24"/>
+                        <rect key="frame" x="117" y="296" width="191" height="24"/>
                         <animations/>
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="644">
                             <font key="font" metaFont="system"/>
@@ -819,7 +819,7 @@
                         </connections>
                     </segmentedControl>
                     <segmentedControl verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="649">
-                        <rect key="frame" x="117" y="443" width="191" height="24"/>
+                        <rect key="frame" x="117" y="271" width="191" height="24"/>
                         <animations/>
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="650">
                             <font key="font" metaFont="system"/>
@@ -834,201 +834,8 @@
                             <binding destination="494" name="selectedIndex" keyPath="projector.otherError" id="1047"/>
                         </connections>
                     </segmentedControl>
-                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="758">
-                        <rect key="frame" x="28" y="246" width="101" height="17"/>
-                        <animations/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Projector Name" id="759">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="786">
-                        <rect key="frame" x="28" y="221" width="129" height="17"/>
-                        <animations/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Manufacturer Name" id="787">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="773">
-                        <rect key="frame" x="163" y="243" width="258" height="22"/>
-                        <animations/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Projector1" drawsBackground="YES" id="774">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <action selector="projectorNameTextFieldChanged:" target="494" id="968"/>
-                            <binding destination="494" name="value" keyPath="projector.projectorName" id="1011"/>
-                        </connections>
-                    </textField>
-                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="792">
-                        <rect key="frame" x="163" y="218" width="258" height="22"/>
-                        <animations/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Manufacturer1" drawsBackground="YES" id="794">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <action selector="manufacturerNameTextFieldChanged:" target="494" id="970"/>
-                            <binding destination="494" name="value" keyPath="projector.manufacturerName" id="1014"/>
-                        </connections>
-                    </textField>
-                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="822">
-                        <rect key="frame" x="28" y="196" width="93" height="17"/>
-                        <animations/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Product Name" id="823">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="826">
-                        <rect key="frame" x="163" y="193" width="258" height="22"/>
-                        <animations/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="PJLinkCocoaServer" drawsBackground="YES" id="827">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <action selector="productNameTextFieldChanged:" target="494" id="972"/>
-                            <binding destination="494" name="value" keyPath="projector.productName" id="1017"/>
-                        </connections>
-                    </textField>
-                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="833">
-                        <rect key="frame" x="28" y="169" width="69" height="17"/>
-                        <animations/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Other Info" id="834">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="839">
-                        <rect key="frame" x="163" y="166" width="258" height="22"/>
-                        <animations/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="None" drawsBackground="YES" id="840">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <action selector="otherInfoTextFieldChanged:" target="494" id="974"/>
-                            <binding destination="494" name="value" keyPath="projector.otherInformation" id="1020"/>
-                        </connections>
-                    </textField>
-                    <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="857">
-                        <rect key="frame" x="28" y="130" width="147" height="18"/>
-                        <animations/>
-                        <buttonCell key="cell" type="check" title="Class-2 Compatible" bezelStyle="regularSquare" imagePosition="left" inset="2" id="858">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="class2CheckButtonChanged:" target="494" id="977"/>
-                            <binding destination="494" name="value" keyPath="projector.class2Compatible" id="1029"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="865">
-                        <rect key="frame" x="24" y="13" width="193" height="32"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="181" id="988"/>
-                        </constraints>
-                        <animations/>
-                        <buttonCell key="cell" type="push" title="Start Server" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="866">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="startStopButtonPressed:" target="494" id="983"/>
-                        </connections>
-                    </button>
-                    <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="884">
-                        <rect key="frame" x="28" y="103" width="141" height="18"/>
-                        <animations/>
-                        <buttonCell key="cell" type="check" title="Use Authentication" bezelStyle="regularSquare" imagePosition="left" inset="2" id="885">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="useAuthenticationCheckButton:" target="494" id="979"/>
-                            <binding destination="494" name="value" keyPath="projector.usePassword" id="1026"/>
-                        </connections>
-                    </button>
-                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="889">
-                        <rect key="frame" x="109" y="69" width="197" height="22"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="197" id="904"/>
-                        </constraints>
-                        <animations/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="pjlink" drawsBackground="YES" id="890">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <action selector="passwordTextFieldChanged:" target="494" id="981"/>
-                            <binding destination="494" name="value" keyPath="projector.password" id="1023"/>
-                        </connections>
-                    </textField>
-                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="895">
-                        <rect key="frame" x="30" y="72" width="62" height="17"/>
-                        <animations/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Password" id="896">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <scrollView ambiguous="YES" misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="914">
-                        <rect key="frame" x="455" y="20" width="413" height="664"/>
-                        <clipView key="contentView" ambiguous="YES" id="Xsh-wa-KLu">
-                            <rect key="frame" x="1" y="1" width="411" height="662"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <textView ambiguous="YES" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="915">
-                                    <rect key="frame" x="0.0" y="0.0" width="411" height="662"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <animations/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="411" height="662"/>
-                                    <size key="maxSize" width="463" height="10000000"/>
-                                    <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="411" height="662"/>
-                                    <size key="maxSize" width="463" height="10000000"/>
-                                </textView>
-                            </subviews>
-                            <animations/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </clipView>
-                        <animations/>
-                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="916">
-                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <animations/>
-                        </scroller>
-                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="917">
-                            <rect key="frame" x="396" y="1" width="16" height="662"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <animations/>
-                        </scroller>
-                    </scrollView>
-                    <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="926">
-                        <rect key="frame" x="645" y="704" width="33" height="17"/>
-                        <animations/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Logs" id="927">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XTB-t4-QLh">
-                        <rect key="frame" x="117" y="615" width="103" height="18"/>
+                        <rect key="frame" x="117" y="443" width="103" height="18"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="Audio Muted" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0yU-7z-cjS">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1039,7 +846,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fE9-PG-yTd">
-                        <rect key="frame" x="234" y="615" width="102" height="18"/>
+                        <rect key="frame" x="234" y="443" width="102" height="18"/>
                         <animations/>
                         <buttonCell key="cell" type="check" title="Video Muted" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OYA-gr-cRG">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1050,7 +857,7 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vaD-mT-MoY">
-                        <rect key="frame" x="23" y="654" width="80" height="17"/>
+                        <rect key="frame" x="23" y="482" width="80" height="17"/>
                         <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Active Input" id="XdE-I6-O7X">
                             <font key="font" metaFont="system"/>
@@ -1059,7 +866,7 @@
                         </textFieldCell>
                     </textField>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TUS-1I-Zpc">
-                        <rect key="frame" x="117" y="648" width="129" height="26"/>
+                        <rect key="frame" x="117" y="476" width="129" height="26"/>
                         <animations/>
                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="DsL-05-P1a" id="2nf-uw-LkQ">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1076,10 +883,161 @@
                             <binding destination="494" name="selectedIndex" keyPath="projector.activeInputIndex" id="qhd-oY-iEy"/>
                         </connections>
                     </popUpButton>
+                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="758">
+                        <rect key="frame" x="13" y="246" width="101" height="17"/>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Projector Name" id="759">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="786">
+                        <rect key="frame" x="13" y="221" width="129" height="17"/>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Manufacturer Name" id="787">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="773">
+                        <rect key="frame" x="148" y="243" width="258" height="22"/>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Projector1" drawsBackground="YES" id="774">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <action selector="projectorNameTextFieldChanged:" target="494" id="968"/>
+                            <binding destination="494" name="value" keyPath="projector.projectorName" id="1011"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="792">
+                        <rect key="frame" x="148" y="218" width="258" height="22"/>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Manufacturer1" drawsBackground="YES" id="794">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <action selector="manufacturerNameTextFieldChanged:" target="494" id="970"/>
+                            <binding destination="494" name="value" keyPath="projector.manufacturerName" id="1014"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="822">
+                        <rect key="frame" x="13" y="196" width="93" height="17"/>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Product Name" id="823">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="826">
+                        <rect key="frame" x="148" y="193" width="258" height="22"/>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="PJLinkCocoaServer" drawsBackground="YES" id="827">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <action selector="productNameTextFieldChanged:" target="494" id="972"/>
+                            <binding destination="494" name="value" keyPath="projector.productName" id="1017"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="833">
+                        <rect key="frame" x="13" y="169" width="69" height="17"/>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Other Info" id="834">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="839">
+                        <rect key="frame" x="148" y="166" width="258" height="22"/>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="None" drawsBackground="YES" id="840">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <action selector="otherInfoTextFieldChanged:" target="494" id="974"/>
+                            <binding destination="494" name="value" keyPath="projector.otherInformation" id="1020"/>
+                        </connections>
+                    </textField>
+                    <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="857">
+                        <rect key="frame" x="13" y="130" width="147" height="18"/>
+                        <animations/>
+                        <buttonCell key="cell" type="check" title="Class-2 Compatible" bezelStyle="regularSquare" imagePosition="left" inset="2" id="858">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="class2CheckButtonChanged:" target="494" id="977"/>
+                            <binding destination="494" name="value" keyPath="projector.class2Compatible" id="1029"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="865">
+                        <rect key="frame" x="9" y="13" width="193" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="181" id="988"/>
+                        </constraints>
+                        <animations/>
+                        <buttonCell key="cell" type="push" title="Start Server" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="866">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="startStopButtonPressed:" target="494" id="983"/>
+                        </connections>
+                    </button>
+                    <button ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="884">
+                        <rect key="frame" x="13" y="103" width="141" height="18"/>
+                        <animations/>
+                        <buttonCell key="cell" type="check" title="Use Authentication" bezelStyle="regularSquare" imagePosition="left" inset="2" id="885">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="useAuthenticationCheckButton:" target="494" id="979"/>
+                            <binding destination="494" name="value" keyPath="projector.usePassword" id="1026"/>
+                        </connections>
+                    </button>
+                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="889">
+                        <rect key="frame" x="94" y="69" width="197" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="197" id="904"/>
+                        </constraints>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="pjlink" drawsBackground="YES" id="890">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <action selector="passwordTextFieldChanged:" target="494" id="981"/>
+                            <binding destination="494" name="value" keyPath="projector.password" id="1023"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="895">
+                        <rect key="frame" x="15" y="72" width="62" height="17"/>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Password" id="896">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="540" firstAttribute="baseline" secondItem="536" secondAttribute="baseline" id="544"/>
-                    <constraint firstItem="536" firstAttribute="top" secondItem="372" secondAttribute="top" constant="20" symbolic="YES" id="555"/>
+                    <constraint firstItem="536" firstAttribute="top" secondItem="372" secondAttribute="top" constant="22" id="555"/>
                     <constraint firstItem="589" firstAttribute="top" secondItem="585" secondAttribute="bottom" constant="8" symbolic="YES" id="592"/>
                     <constraint firstItem="593" firstAttribute="top" secondItem="589" secondAttribute="bottom" constant="8" symbolic="YES" id="595"/>
                     <constraint firstItem="589" firstAttribute="leading" secondItem="585" secondAttribute="leading" id="597"/>
@@ -1092,7 +1050,7 @@
                     <constraint firstItem="611" firstAttribute="leading" secondItem="604" secondAttribute="leading" id="615"/>
                     <constraint firstItem="616" firstAttribute="leading" secondItem="593" secondAttribute="trailing" constant="8" symbolic="YES" id="620"/>
                     <constraint firstItem="616" firstAttribute="baseline" secondItem="593" secondAttribute="baseline" id="621"/>
-                    <constraint firstItem="622" firstAttribute="top" secondItem="372" secondAttribute="top" constant="181" id="627"/>
+                    <constraint firstItem="622" firstAttribute="top" secondItem="372" secondAttribute="top" constant="150" id="627"/>
                     <constraint firstItem="622" firstAttribute="baseline" secondItem="585" secondAttribute="baseline" id="629"/>
                     <constraint firstItem="630" firstAttribute="baseline" secondItem="589" secondAttribute="baseline" id="634"/>
                     <constraint firstItem="630" firstAttribute="leading" secondItem="616" secondAttribute="leading" id="635"/>
@@ -1109,7 +1067,7 @@
                     <constraint firstItem="773" firstAttribute="leading" secondItem="792" secondAttribute="leading" id="812"/>
                     <constraint firstItem="792" firstAttribute="leading" secondItem="786" secondAttribute="trailing" constant="8" symbolic="YES" id="813"/>
                     <constraint firstItem="773" firstAttribute="trailing" secondItem="792" secondAttribute="trailing" id="814"/>
-                    <constraint firstItem="792" firstAttribute="top" secondItem="372" secondAttribute="top" constant="499" id="821"/>
+                    <constraint firstItem="792" firstAttribute="top" secondItem="372" secondAttribute="top" constant="329" id="821"/>
                     <constraint firstItem="822" firstAttribute="top" secondItem="786" secondAttribute="bottom" constant="8" symbolic="YES" id="824"/>
                     <constraint firstItem="826" firstAttribute="leading" secondItem="792" secondAttribute="leading" id="828"/>
                     <constraint firstItem="826" firstAttribute="centerY" secondItem="822" secondAttribute="centerY" id="829"/>
@@ -1119,26 +1077,22 @@
                     <constraint firstItem="826" firstAttribute="trailing" secondItem="839" secondAttribute="trailing" id="844"/>
                     <constraint firstItem="833" firstAttribute="centerY" secondItem="839" secondAttribute="centerY" id="847"/>
                     <constraint firstItem="786" firstAttribute="centerY" secondItem="792" secondAttribute="centerY" id="848"/>
-                    <constraint firstItem="839" firstAttribute="top" secondItem="372" secondAttribute="top" constant="551" id="849"/>
+                    <constraint firstItem="839" firstAttribute="top" secondItem="372" secondAttribute="top" constant="381" id="849"/>
                     <constraint firstItem="857" firstAttribute="leading" secondItem="833" secondAttribute="leading" id="862"/>
                     <constraint firstItem="884" firstAttribute="leading" secondItem="865" secondAttribute="leading" id="886"/>
                     <constraint firstItem="889" firstAttribute="centerY" secondItem="895" secondAttribute="centerY" id="900"/>
-                    <constraint firstItem="889" firstAttribute="trailing" secondItem="649" secondAttribute="trailing" id="903"/>
-                    <constraint firstItem="889" firstAttribute="top" secondItem="372" secondAttribute="top" constant="648" id="905"/>
-                    <constraint firstItem="865" firstAttribute="top" secondItem="372" secondAttribute="top" constant="698" id="907"/>
+                    <constraint firstItem="889" firstAttribute="trailing" secondItem="649" secondAttribute="trailing" constant="-15" id="903"/>
+                    <constraint firstItem="889" firstAttribute="top" secondItem="372" secondAttribute="top" constant="478" id="905"/>
+                    <constraint firstItem="865" firstAttribute="top" secondItem="372" secondAttribute="top" constant="528" id="907"/>
                     <constraint firstItem="833" firstAttribute="leading" secondItem="822" secondAttribute="leading" id="910"/>
                     <constraint firstItem="857" firstAttribute="leading" secondItem="884" secondAttribute="leading" id="911"/>
-                    <constraint firstItem="857" firstAttribute="top" secondItem="372" secondAttribute="top" constant="593" id="912"/>
-                    <constraint firstItem="884" firstAttribute="top" secondItem="372" secondAttribute="top" constant="620" id="913"/>
-                    <constraint firstItem="914" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="455" id="921"/>
-                    <constraint firstAttribute="trailing" secondItem="914" secondAttribute="trailing" constant="20" symbolic="YES" id="923"/>
-                    <constraint firstAttribute="bottom" secondItem="914" secondAttribute="bottom" constant="20" symbolic="YES" id="924"/>
-                    <constraint firstItem="926" firstAttribute="centerX" secondItem="914" secondAttribute="centerX" id="928"/>
-                    <constraint firstItem="926" firstAttribute="top" secondItem="540" secondAttribute="top" id="929"/>
+                    <constraint firstItem="857" firstAttribute="top" secondItem="372" secondAttribute="top" constant="423" id="912"/>
+                    <constraint firstItem="884" firstAttribute="top" secondItem="372" secondAttribute="top" constant="450" id="913"/>
                     <constraint firstItem="536" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="23" id="985"/>
                 </constraints>
                 <animations/>
             </view>
+            <point key="canvasLocation" x="11.5" y="376.5"/>
         </window>
         <customObject id="494" customClass="PJAppDelegate">
             <connections>
@@ -1148,7 +1102,6 @@
                 <outlet property="filterErrorSegmentedControl" destination="643" id="947"/>
                 <outlet property="inputsPopUpButton" destination="TUS-1I-Zpc" id="1Sb-CX-Qbl"/>
                 <outlet property="lampErrorSegmentedControl" destination="630" id="941"/>
-                <outlet property="logScrollView" destination="914" id="984"/>
                 <outlet property="manufacturerNameTextField" destination="792" id="969"/>
                 <outlet property="otherErrorSegmentedControl" destination="649" id="949"/>
                 <outlet property="otherInfoTextField" destination="839" id="973"/>

@@ -21,14 +21,21 @@ enum EPSONINPUTS {
     let TESIRAPORT:UInt16 = 32
     
     var PROJ1:PJProjector!
+    var PROJ2:PJProjector!
     //let EPSONTESTIP = "10.160.10.242"
     var PROJ1IP = "127.0.0.1" //default IP; repetative with statuses[8], delete after testing period
+    var PROJ2IP = "127.0.0.2" //Delete after testing
     let PJLINKPORT = 4352
     var inputDict:[String: EPSONINPUTS]!
     var equivalentQueue = false;
     
-    let buttons = ["iPad Connection Status", "Projector 1 Source on iPad", "Projector 2 Source on iPad", "HDCP Status on iPad", "Problem Status on iPad", "Problem Message on iPad", "Source Volume on iPad", "", "Projector 1 IP (`click to edit)", "Projector 1 Connection Status", "Projector 1 Name", "Projector 1 Manufacturer", "Projector 1 Product", "Projector 1 Power", "Projector 1 Input", "ERRORS [fan, lamp, temp, cover, filter, other]", "" /*end filler line*/]
-    //Proj1 connection at Statuses[8]
+    let buttons = ["iPad Connection Status", "Projector 1 Source on iPad", "Projector 2 Source on iPad", "HDCP Status on iPad", "Problem Status on iPad", "Problem Message on iPad", "Source Volume on iPad", "",
+        //Proj1 IP at Statuses[8]
+        "Projector 1 IP (click to edit)", "Projector 1 Connection Status", "Projector 1 Name", "Projector 1 Manufacturer", "Projector 1 Product", "Projector 1 Power", "Projector 1 Input", "ERRORS [fan, lamp, temp, cover, filter, other]", "",
+        //Proj2 IP at Statuses[17]
+        "Projector 2 IP", "Projector 2 Connection Status", "Projector 2 Name", "Projector 2 Manufacturer", "Projector 2 Product", "Projector 2 Power", "Projector 2 Input", "ERRORS [fan, lamp, temp, cover, filter, other]",
+        //end filler at Statuses[25]
+        "" /*end filler line*/]
     var Statuses:[String]!
     
     @IBOutlet weak var table: NSTableView!
@@ -42,11 +49,14 @@ enum EPSONINPUTS {
         
         NSURLProtocol.registerClass(PJURLProtocolRunLoop)
         PROJ1 = PJProjector(host: PROJ1IP, port: PJLINKPORT)
-        Statuses = ["Not Connected", "", "", "", "", "", "", "", "\(PROJ1IP)", "", "", "", "", "", "", "", ""/*end filler line*/]
+        PROJ2 = PJProjector(host: PROJ2IP, port: PJLINKPORT)
+        Statuses = ["Not Connected", "", "", "", "", "", "", "", "\(PROJ1IP)"/* 8 */, "", "", "", "", "", "", "", "", "\(PROJ2IP)" /* 17 */, "", "", "", "", "", "", "", ""/*end filler line*/]
         self.subToNotifications()
         PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+        PROJ2.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
         inputDict = ["Laptop" : EPSONINPUTS.Computer, "Document Camera" : EPSONINPUTS.DisplayPort, "Apple TV" : EPSONINPUTS.HDMI, "Blank Screen" : EPSONINPUTS.LAN]
         NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "refreshProjStatus", userInfo: nil, repeats: true)
+        
         
         USBHelper.startInit(self)
         
@@ -61,7 +71,8 @@ enum EPSONINPUTS {
     }
     
     func refreshProjStatus() {
-        PROJ1.refreshAllQueriesForReason(PJRefreshReason.Timed)
+        PROJ1.refreshAllQueriesForReason(.Timed)
+        PROJ2.refreshAllQueriesForReason(.Timed)
     }
     
     func makeEquivalent() {
@@ -222,32 +233,42 @@ enum EPSONINPUTS {
         //ended animation
     }
     
-    func projDidChange(notification:NSNotification) {
-        //reload tabledata that deals with button status etc
-        Statuses[10] = PROJ1.projectorName
-        Statuses[11] = PROJ1.manufacturerName
-        Statuses[12] = PROJ1.productName
-        Statuses[13] = PJResponseInfoPowerStatusQuery.stringForPowerStatus(PROJ1.powerStatus)
-        Statuses[14] = "\(PROJ1.activeInputIndex)"
+    func changeHelper(proj:PJProjector, index:Int) {
+        Statuses[index] = proj.projectorName
+        Statuses[index + 1] = proj.manufacturerName
+        Statuses[index + 2] = proj.productName
+        Statuses[index + 3] = PJResponseInfoPowerStatusQuery.stringForPowerStatus(proj.powerStatus)
+        Statuses[index + 4] = "\(proj.activeInputIndex)"
         
-        let Errors = [PJResponseInfoErrorStatusQuery.stringForErrorStatus(PROJ1.fanErrorStatus),
-        PJResponseInfoErrorStatusQuery.stringForErrorStatus(PROJ1.lampErrorStatus),
-        PJResponseInfoErrorStatusQuery.stringForErrorStatus(PROJ1.temperatureErrorStatus),
-        PJResponseInfoErrorStatusQuery.stringForErrorStatus(PROJ1.coverOpenErrorStatus),
-        PJResponseInfoErrorStatusQuery.stringForErrorStatus(PROJ1.filterErrorStatus),
-            PJResponseInfoErrorStatusQuery.stringForErrorStatus(PROJ1.otherErrorStatus)]
-        Statuses[15] = ""
-        for (index,error) in Errors.enumerate() {
-            Statuses[15] += error
-            if index != Errors.count - 1 {
-                Statuses[15] += ","
+        let Errors = [PJResponseInfoErrorStatusQuery.stringForErrorStatus(proj.fanErrorStatus),
+            PJResponseInfoErrorStatusQuery.stringForErrorStatus(proj.lampErrorStatus),
+            PJResponseInfoErrorStatusQuery.stringForErrorStatus(proj.temperatureErrorStatus),
+            PJResponseInfoErrorStatusQuery.stringForErrorStatus(proj.coverOpenErrorStatus),
+            PJResponseInfoErrorStatusQuery.stringForErrorStatus(proj.filterErrorStatus),
+            PJResponseInfoErrorStatusQuery.stringForErrorStatus(proj.otherErrorStatus)]
+        Statuses[index + 5] = ""
+        for (i,error) in Errors.enumerate() {
+            Statuses[index + 5] += error
+            if i != Errors.count - 1 {
+                Statuses[index + 5] += ","
             }
         }
         
-        table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(10..<(Statuses.count))), columnIndexes: NSIndexSet(index: 1))
+        table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(index...(index + 7))), columnIndexes: NSIndexSet(index: 1))
         
         if equivalentQueue {
             makeEquivalent()
+        }
+   
+    }
+    
+    func projDidChange(notification:NSNotification) {
+        //reload tabledata that deals with button status etc
+        let currentProj = notification.object as! PJProjector
+        if currentProj.host == PROJ1IP {
+            changeHelper(currentProj, index: 10)
+         } else {
+            changeHelper(currentProj, index: 19)
         }
     }
     
@@ -259,21 +280,32 @@ enum EPSONINPUTS {
         
     }
     
-    func projConnectionChange(notification:NSNotification) {
-        //reload tabledata that deals with connection
-        Statuses[9] = PJProjector.stringForConnectionState(PROJ1.connectionState)
-        if Statuses[9] == "Connecting" || Statuses[9] == "Connection Error"{
-            for var i = 10; i < Statuses.count; ++i {
+    func connectionHelper(proj:PJProjector, index:Int) {
+        Statuses[index] = PJProjector.stringForConnectionState(proj.connectionState)
+        if Statuses[index] == "Connecting" || Statuses[index] == "Connection Error"{
+            for var i = index + 1; i < index + 8; ++i {
                 Statuses[i] = ""
             }
         }
-        table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(9..<(Statuses.count))), columnIndexes: NSIndexSet(index: 1))
+        table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(index...(index + 8))), columnIndexes: NSIndexSet(index: 1))
         
-        if Statuses[9] == "Connected" {
-            NSNotificationCenter.defaultCenter().postNotificationName(PJProjectorDidChangeNotification, object: nil)
-            PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+        if Statuses[index] == "Connected" {
+            NSNotificationCenter.defaultCenter().postNotificationName(PJProjectorDidChangeNotification, object: proj)
+            proj.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+        }
+
+    }
+    
+    func projConnectionChange(notification:NSNotification) {
+        //reload tabledata that deals with connection
+        let currentProj = notification.object as! PJProjector
+        if currentProj.host == PROJ1IP {
+            //9 for proj1
+            connectionHelper(currentProj, index: 9)
+        }
+        else {
+            //18 for proj2
+            connectionHelper(currentProj, index: 18)
         }
     }
-
 }
-
