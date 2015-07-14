@@ -151,7 +151,7 @@ enum EPSONINPUTS {
             Statuses = ["Not Connected", "", "", "", "", "", "", ""]
             Statuses! += Array(projStatus)
         }
-        table.reloadData()
+        table.reloadDataForRowIndexes(NSIndexSet(index: 0), columnIndexes: NSIndexSet(index: 1))
     }
     
     @objc func recievedP1source(source:String){
@@ -249,8 +249,6 @@ enum EPSONINPUTS {
         center.addObserver(self, selector: "projRequestEnd:", name: PJProjectorRequestDidEndNotification, object: nil)
         center.addObserver(self, selector: "projDidChange:", name: PJProjectorDidChangeNotification, object: nil)
         center.addObserver(self, selector: "projConnectionChange:", name: PJProjectorConnectionStateDidChangeNotification, object: nil)
-        center.addObserver(self, selector: "projHasWarning:", name: PJProjectorHasWarning, object: nil)
-        center.addObserver(self, selector: "projHasError:", name: PJProjectorHasError, object: nil)
     }
     
     func unsubFromNotifications() {
@@ -281,6 +279,9 @@ enum EPSONINPUTS {
             PJResponseInfoErrorStatusQuery.stringForErrorStatus(proj.otherErrorStatus)]
         Statuses[index + 5] = ""
         for (i,error) in Errors.enumerate() {
+            if error == "Error" {
+                projHasError(i)
+            }
             Statuses[index + 5] += error
             if i != Errors.count - 1 {
                 Statuses[index + 5] += ","
@@ -309,8 +310,18 @@ enum EPSONINPUTS {
         
     }
     
-    func projHasError(notification: NSNotification) {
-        
+    func projHasError(index:Int) {
+        //send error to iPad to lock it
+        let error:String!
+        switch index {
+        case 0: error = "Fan"
+        case 1: error = "Lamp"
+        case 2: error = "Temperature"
+        case 3: error = "Cover Open"
+        case 4: error = "Filter"
+        case 5: error = "Other"
+        }
+        USBHelper.sendMessage(error)
     }
     
     func connectionHelper(proj:PJProjector, index:Int) {

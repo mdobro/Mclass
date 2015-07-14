@@ -51,7 +51,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
                 self.serverChannel_ = channel
             }
         })
-        lockScreen(true)
+        lockScreen("present-Connection")
     }
     
     @IBAction func ProblemBarButtonTap(sender: UIBarButtonItem) {
@@ -96,10 +96,12 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         // Dispose of any resources that can be recreated.
     }
     
-    func lockScreen(connected: Bool){
-        if connected {
+    func lockScreen(action: String){
+        if action == "present-Connection" {
             let alert = UIAlertController(title: "CONNECTION LOST!", message: "For help please contact CAEN:\n\nPhone: (734)-764-CAEN\nEmail: caen@umich.edu", preferredStyle: UIAlertControllerStyle.Alert)
             self.presentViewController(alert, animated: true, completion: nil)
+        } else if action == "present-Error"{
+            
         }
         else {
             self.dismissViewControllerAnimated(true, completion: nil)
@@ -121,6 +123,8 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         }
         self.nowOrLater = when
     }
+    
+    
     
 //MainTableViewDelegate Functions
     func projDidChange(projector:Int, source: String) {
@@ -243,7 +247,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     func ioFrameChannel(channel: PTChannel!, didEndWithError error: NSError!) {
         let help = objChelper()
         help.helpioFrameChannel(channel, didEndWithError: error)
-        lockScreen(true)
+        lockScreen("present-Connection")
         
     }
     
@@ -264,7 +268,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         // Send some information about ourselves to the other end
         sendDeviceInfo()
         macRequestedStatus()
-        lockScreen(false)
+        lockScreen("remove from view")
     }
 }
 

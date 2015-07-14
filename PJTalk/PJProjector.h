@@ -14,8 +14,6 @@ extern NSString* const PJProjectorRequestDidBeginNotification;
 extern NSString* const PJProjectorRequestDidEndNotification;
 extern NSString* const PJProjectorDidChangeNotification;
 extern NSString* const PJProjectorConnectionStateDidChangeNotification;
-extern NSString* const PJProjectorHasWarning;
-extern NSString* const PJProjectorHasError;
 // User Info dictionary key names
 extern NSString* const PJProjectorErrorKey;
 
