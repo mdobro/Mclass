@@ -22,9 +22,6 @@ enum EPSONINPUTS {
     
     var PROJ1:PJProjector!
     var PROJ2:PJProjector!
-    //let EPSONTESTIP = "10.160.10.242"
-    var PROJ1IP = "127.0.0.1" //default IP; repetative with statuses[8], delete after testing period
-    var PROJ2IP = "127.0.0.2" //Delete after testing
     let PJLINKPORT = 4352
     var inputDict:[String: EPSONINPUTS]!
     var equivalentQueue = false;
@@ -33,10 +30,11 @@ enum EPSONINPUTS {
         //Proj1 IP at Statuses[8]
         "Projector 1 IP (click to edit)", "Projector 1 Connection Status", "Projector 1 Name", "Projector 1 Manufacturer", "Projector 1 Product", "Projector 1 Power", "Projector 1 Input", "ERRORS [fan, lamp, temp, cover, filter, other]", "",
         //Proj2 IP at Statuses[17]
-        "Projector 2 IP", "Projector 2 Connection Status", "Projector 2 Name", "Projector 2 Manufacturer", "Projector 2 Product", "Projector 2 Power", "Projector 2 Input", "ERRORS [fan, lamp, temp, cover, filter, other]",
+        "Projector 2 IP (click to edit)", "Projector 2 Connection Status", "Projector 2 Name", "Projector 2 Manufacturer", "Projector 2 Product", "Projector 2 Power", "Projector 2 Input", "ERRORS [fan, lamp, temp, cover, filter, other]",
         //end filler at Statuses[25]
         "" /*end filler line*/]
     var Statuses:[String]!
+    
     
     @IBOutlet weak var table: NSTableView!
     
@@ -48,12 +46,21 @@ enum EPSONINPUTS {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "cellWasEdited:", name: NSControlTextDidEndEditingNotification, object: nil)
         
         NSURLProtocol.registerClass(PJURLProtocolRunLoop)
-        PROJ1 = PJProjector(host: PROJ1IP, port: PJLINKPORT)
-        PROJ2 = PJProjector(host: PROJ2IP, port: PJLINKPORT)
-        Statuses = ["Not Connected", "", "", "", "", "", "", "", "\(PROJ1IP)"/* 8 */, "", "", "", "", "", "", "", "", "\(PROJ2IP)" /* 17 */, "", "", "", "", "", "", "", ""/*end filler line*/]
+        Statuses = ["Not Connected", "", "", "", "", "", "", "",
+            ""/* 8 */, "", "", "", "", "", "", "", "",
+            ""/* 17*/, "", "", "", "", "", "", "", ""/*end filler line*/]
+        
+        //delete after testing
+        Statuses[8] = "127.0.0.1"
+        Statuses[17] = "10.160.10.242"
+        //
+        PROJ1 = PJProjector(host: Statuses[8], port: PJLINKPORT)
+        PROJ2 = PJProjector(host: Statuses[17], port: PJLINKPORT)
         self.subToNotifications()
         PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
         PROJ2.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+        
+        //set dicts up to be based off manufactuer name
         inputDict = ["Laptop" : EPSONINPUTS.Computer, "Document Camera" : EPSONINPUTS.DisplayPort, "Apple TV" : EPSONINPUTS.HDMI, "Blank Screen" : EPSONINPUTS.LAN]
         NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "refreshProjStatus", userInfo: nil, repeats: true)
         
@@ -78,11 +85,20 @@ enum EPSONINPUTS {
     func makeEquivalent() {
         equivalentQueue = false
         if let input = inputDict[Statuses[1]]?.hashValue {
+            PROJ1.requestPowerStateChange(true)
             PROJ1.requestInputChangeToInputIndex(UInt(input))
             equivalentQueue = true
         } else {
             PROJ1.requestPowerStateChange(false)
             //this hasnt failed on first run yet, setting equivalent to true may cause problems here
+        }
+        
+        if let input = inputDict[Statuses[2]]?.hashValue {
+            PROJ2.requestPowerStateChange(true)
+            PROJ2.requestInputChangeToInputIndex(UInt(input))
+            equivalentQueue = true
+        } else {
+            PROJ2.requestPowerStateChange(false)
         }
         
     }
@@ -100,7 +116,7 @@ enum EPSONINPUTS {
         else if tableColumn?.identifier == "Statuses"{
             let cell = tableView.makeViewWithIdentifier("Statuses", owner: self) as! NSTableCellView
             cell.textField?.stringValue = Statuses[row]
-            if row == 8 {
+            if row == 8 || row == 17 {
                 cell.textField!.editable = true
             }
             return cell
@@ -109,16 +125,23 @@ enum EPSONINPUTS {
     }
     
     func cellWasEdited(notification: NSNotification) {
-        let p1celltext = (table.viewAtColumn(1, row: 8, makeIfNecessary: false) as! NSTableCellView).textField!.stringValue
-        if p1celltext != Statuses[8] {
-            Statuses[8] = p1celltext
-            PROJ1IP = p1celltext
-            PROJ1 = PJProjector(host: PROJ1IP, port: PJLINKPORT)
-        }
+        let p1CellString = (table.viewAtColumn(1, row: 8, makeIfNecessary: false) as! NSTableCellView).textField!.stringValue
+        let p2CellString = (table.viewAtColumn(1, row: 17, makeIfNecessary: false) as! NSTableCellView).textField!.stringValue
+
         
+        if p1CellString != Statuses[8] {
+            Statuses[8] = p1CellString
+            PROJ1 = PJProjector(host: p1CellString)
+            
+        } else if p2CellString != Statuses[17] {
+            Statuses[17] = p2CellString
+            PROJ2 = PJProjector(host: p2CellString)
+        }
     }
     
     //USB Channel
+    
+    
     @objc func connected(connectionOn:Bool){
         if connectionOn {
             Statuses[0] = "Connected"
@@ -132,7 +155,6 @@ enum EPSONINPUTS {
     }
     
     @objc func recievedP1source(source:String){
-        //make enum with proj inputs from epson and hp and request change
         Statuses[1] = source
         if PROJ1.powerStatus != PJPowerStatus.PJPowerStatusLampOn {
             equivalentQueue = true
@@ -142,15 +164,24 @@ enum EPSONINPUTS {
         }
         else {
             PROJ1.requestPowerStateChange(true)
-            let inputDict = ["Laptop" : EPSONINPUTS.Computer, "Document Camera" : EPSONINPUTS.DisplayPort, "Apple TV" : EPSONINPUTS.HDMI, "Blank Screen" : EPSONINPUTS.LAN]
             PROJ1.requestInputChangeToInputIndex(UInt(inputDict[source]!.hashValue))
         }
-        table.reloadData()
+        table.reloadDataForRowIndexes(NSIndexSet(index: 1), columnIndexes: NSIndexSet(index: 1))
     }
     
     @objc func recievedP2source(source:String){
         Statuses[2] = source
-        table.reloadData()
+        if PROJ2.powerStatus != PJPowerStatus.PJPowerStatusLampOn {
+            equivalentQueue = true
+        }
+        if (source == "OFF") {
+            PROJ2.requestPowerStateChange(false)
+        }
+        else {
+            PROJ2.requestPowerStateChange(true)
+            PROJ2.requestInputChangeToInputIndex(UInt(inputDict[source]!.hashValue))
+        }
+        table.reloadDataForRowIndexes(NSIndexSet(index: 2), columnIndexes: NSIndexSet(index: 1))
     }
     
     @objc func recievedHDCPchange(switchOn:String){
@@ -210,6 +241,8 @@ enum EPSONINPUTS {
     }
     
     //Proj Send/Recieve
+    
+    
     func subToNotifications() {
         let center = NSNotificationCenter.defaultCenter()
         center.addObserver(self, selector: "projRequestBegin:", name: PJProjectorRequestDidBeginNotification, object: nil)
@@ -254,7 +287,7 @@ enum EPSONINPUTS {
             }
         }
         
-        table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(index...(index + 7))), columnIndexes: NSIndexSet(index: 1))
+        table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(index...(index + 6))), columnIndexes: NSIndexSet(index: 1))
         
         if equivalentQueue {
             makeEquivalent()
@@ -265,7 +298,7 @@ enum EPSONINPUTS {
     func projDidChange(notification:NSNotification) {
         //reload tabledata that deals with button status etc
         let currentProj = notification.object as! PJProjector
-        if currentProj.host == PROJ1IP {
+        if currentProj.host == Statuses[8] {
             changeHelper(currentProj, index: 10)
          } else {
             changeHelper(currentProj, index: 19)
@@ -287,7 +320,7 @@ enum EPSONINPUTS {
                 Statuses[i] = ""
             }
         }
-        table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(index...(index + 8))), columnIndexes: NSIndexSet(index: 1))
+        table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(index...(index + 7))), columnIndexes: NSIndexSet(index: 1))
         
         if Statuses[index] == "Connected" {
             NSNotificationCenter.defaultCenter().postNotificationName(PJProjectorDidChangeNotification, object: proj)
@@ -299,7 +332,7 @@ enum EPSONINPUTS {
     func projConnectionChange(notification:NSNotification) {
         //reload tabledata that deals with connection
         let currentProj = notification.object as! PJProjector
-        if currentProj.host == PROJ1IP {
+        if currentProj.host == Statuses[8] {
             //9 for proj1
             connectionHelper(currentProj, index: 9)
         }
