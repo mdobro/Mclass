@@ -68,7 +68,13 @@ enum EPSONINPUTS {
         USBHelper.startInit(self)
         
         // Do any additional setup after loading the view.
-        socket = GCDAsyncSocket(delegate: AppDelegate.self, delegateQueue: dispatch_get_main_queue())
+        do {
+            socket = GCDAsyncSocket(delegate: AppDelegate.self, delegateQueue: dispatch_get_main_queue())
+            try socket.connectToHost(DSPIP, onPort: TESIRAPORT)
+        }
+        catch {
+            print("error)")
+        }
     }
 
     override var representedObject: AnyObject? {
