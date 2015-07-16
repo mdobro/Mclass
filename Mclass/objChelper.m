@@ -33,16 +33,14 @@
     
     //UNCOMMENT THIS TO ACCEPT FRAMES TO IPAD
     
-    
-    /*
-    if (type == TextMessage ) {
+    if (type == Problem ) {
         TextFrame *textFrame = (TextFrame*)payload.data;
         textFrame->length = ntohl(textFrame->length);
         NSString *message = [[NSString alloc] initWithBytes:textFrame->utf8text length:textFrame->length encoding:NSUTF8StringEncoding];
         //NSLog(@"%@ %@",channel.userInfo,message);
         return message;
      }
-     */
+    
     if (type == Ping && peerChannel_) {
         [peerChannel_ sendFrameOfType:Pong tag:tag withPayload:nil callback:nil];
     }

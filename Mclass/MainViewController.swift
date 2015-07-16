@@ -100,11 +100,12 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         if action == "present-Connection" {
             let alert = UIAlertController(title: "CONNECTION LOST!", message: "For help please contact CAEN:\n\nPhone: (734)-764-CAEN\nEmail: caen@umich.edu", preferredStyle: UIAlertControllerStyle.Alert)
             self.presentViewController(alert, animated: true, completion: nil)
-        } else if action == "present-Error"{
-            
+        } else if action == "dismiss" || action == "errorsClear"{
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
         else {
-            self.dismissViewControllerAnimated(true, completion: nil)
+            let alert = UIAlertController(title: "PROJECTOR \(action) ERROR!", message: "For help please contact CAEN:\n\nPhone: (734)-764-CAEN\nEmail: caen@umich.edu", preferredStyle: UIAlertControllerStyle.Alert)
+            self.presentViewController(alert, animated: true, completion: nil)
         }
 
     }
@@ -240,7 +241,8 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         if type == 101 {
             let help:objChelper = objChelper()
             let message = help.helpioFrameChannel(channel, didReceiveFrameOfType: type, tag: tag, payload: payload, peerChannel: peerChannel_)
-            print("iPad recieved message: \(message)", true)
+            print("iPad recieved projector error message: \(message)", true)
+            lockScreen(message)
         }
     }
     
@@ -268,7 +270,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         // Send some information about ourselves to the other end
         sendDeviceInfo()
         macRequestedStatus()
-        lockScreen("remove from view")
+        lockScreen("dismiss")
     }
 }
 

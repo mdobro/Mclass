@@ -38,18 +38,19 @@
 }
 
 @synthesize connectedDeviceID = connectedDeviceID_;
-- (IBAction)sendMessage:(id)sender {
-    /*
+
+- (IBAction)sendMessage:(NSString*)message {
+    
     if (connectedChannel_) {
         dispatch_data_t payload = DispatchDataWithString(message);
-        [connectedChannel_ sendFrameOfType:PTExampleFrameTypeTextMessage tag:PTFrameNoTag withPayload:payload callback:^(NSError *error) {
+        [connectedChannel_ sendFrameOfType:Problem tag:PTFrameNoTag withPayload:payload callback:^(NSError *error) {
             if (error) {
                 NSLog(@"Failed to send message: %@", error);
             }
         }];
         [self presentMessage:[NSString stringWithFormat:@"[you]: %@", message] isStatus:NO];
      }
-     */
+    
 }
 
 

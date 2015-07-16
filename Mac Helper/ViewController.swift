@@ -16,10 +16,12 @@ enum EPSONINPUTS {
     
     let USBHelper = USBhelper()
 
+    //Audio DSP
     var socket: GCDAsyncSocket!
     var MUTESTATUS: Bool!
     let TESIRAPORT:UInt16 = 32
     
+    //PJLink
     var PROJ1:PJProjector!
     var PROJ2:PJProjector!
     let PJLINKPORT = 4352
@@ -70,7 +72,7 @@ enum EPSONINPUTS {
         // Do any additional setup after loading the view.
         do {
             socket = GCDAsyncSocket(delegate: AppDelegate.self, delegateQueue: dispatch_get_main_queue())
-            try socket.connectToHost(DSPIP, onPort: TESIRAPORT)
+            //try socket.connectToHost(DSPIP, onPort: TESIRAPORT)
         }
         catch {
             print("error)")
@@ -284,16 +286,20 @@ enum EPSONINPUTS {
             PJResponseInfoErrorStatusQuery.stringForErrorStatus(proj.filterErrorStatus),
             PJResponseInfoErrorStatusQuery.stringForErrorStatus(proj.otherErrorStatus)]
         Statuses[index + 5] = ""
+        var hasError = false
         for (i,error) in Errors.enumerate() {
             if error == "Error" {
                 projHasError(i)
+                hasError = true
             }
             Statuses[index + 5] += error
             if i != Errors.count - 1 {
                 Statuses[index + 5] += ","
             }
         }
-        
+        if !hasError {
+            USBHelper.sendMessage("errorsClear")
+        }
         table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(index...(index + 6))), columnIndexes: NSIndexSet(index: 1))
         
         if equivalentQueue {
@@ -326,6 +332,7 @@ enum EPSONINPUTS {
         case 3: error = "Cover Open"
         case 4: error = "Filter"
         case 5: error = "Other"
+        default: error = ""
         }
         USBHelper.sendMessage(error)
     }
