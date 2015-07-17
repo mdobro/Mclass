@@ -23,7 +23,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     var proj2source:String! = ""
     var helpMessage:String! = ""
     var nowOrLater:String! = ""
-    var sourceVol:String! = ".5"
+    var sourceVol:String! = ".76923076923"
     
 
     override func viewDidLoad() {

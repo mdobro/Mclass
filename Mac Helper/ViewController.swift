@@ -229,15 +229,15 @@ enum EPSONINPUTS {
             MUTESTATUS = false
             let stepone: Int = Int(round(Double(vol)!*52 + (-40)))
             if (stepone > -1 && stepone < 10) {
-                finalstep = "0" + String(stepone)
+                finalstep = String(stepone)
             }
             else if (stepone > -10 && stepone < 0) {
-                finalstep = "-0" + String(-stepone)
+                finalstep = "-" + String(-stepone)
             }
             else {
                 finalstep = String(stepone)
             }
-            revised = "SET 1 FDRLVL \"Program volume\" 1 \(revised)"
+            revised = "SET 1 FDRLVL \"Program volume\" 1 \(finalstep)"
             print(revised)
             
         }
