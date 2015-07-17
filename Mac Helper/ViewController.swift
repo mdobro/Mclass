@@ -19,7 +19,8 @@ enum EPSONINPUTS {
     //Audio DSP
     var socket: GCDAsyncSocket!
     var MUTESTATUS: Bool!
-    let TESIRAPORT:UInt16 = 32
+    let DSPPORT:UInt16 = 32
+    let DSPIP = "10.160.10.184"
     
     //PJLink
     var PROJ1:PJProjector!
@@ -72,11 +73,14 @@ enum EPSONINPUTS {
         // Do any additional setup after loading the view.
         do {
             socket = GCDAsyncSocket(delegate: AppDelegate.self, delegateQueue: dispatch_get_main_queue())
-            //try socket.connectToHost(DSPIP, onPort: TESIRAPORT)
+            try socket.connectToHost(DSPIP, onPort: DSPPORT)
         }
         catch {
             print("error)")
         }
+        
+        let data = "RECALL 0 PRESET 1001"
+        socket.writeData(data.dataUsingEncoding(NSUTF8StringEncoding)!, withTimeout: -1.0, tag: 0)
     }
 
     override var representedObject: AnyObject? {
@@ -217,7 +221,7 @@ enum EPSONINPUTS {
             var finalstep: String!
             if (MUTESTATUS != nil) {
                 if (MUTESTATUS == true) {
-                    let unmute = "\"ProgramVolume\" set mute 1 false"
+                    let unmute = "SET 1 FDRMUTE \"Program volume\" 1 0"
                     print(unmute)
                     socket.writeData(unmute.dataUsingEncoding(NSUTF8StringEncoding), withTimeout: -1.0, tag: 0)
                 }
@@ -233,12 +237,12 @@ enum EPSONINPUTS {
             else {
                 finalstep = String(stepone)
             }
-            revised = "\"ProgramVolume\" set level 1 \(finalstep)"
+            revised = "SET 1 FDRLVL \"Program volume\" 1 \(revised)"
             print(revised)
             
         }
         if (MUTESTATUS! == true) {
-            revised = "\"ProgramVolume\" set mute 1 true"
+            revised = "SET 1 FDRMUTE \"Program volume\" 1 1"
             print(revised)
         }
         let data:NSData = revised.dataUsingEncoding(NSUTF8StringEncoding)!

@@ -163,7 +163,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="690" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="VN2-Gg-4ce">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.76923076923" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="VN2-Gg-4ce">
                                 <rect key="frame" x="140" y="579" width="411" height="31"/>
                                 <connections>
                                     <action selector="volumeChanged:" destination="olh-5c-Sre" eventType="valueChanged" id="KmU-yj-NqB"/>
