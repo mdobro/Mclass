@@ -59,30 +59,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mac Helper/ViewController.swift"
-            timestampString = "458841732.779035"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
-            landmarkName = "projHasError(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Mclass/MainViewController.swift"
-            timestampString = "458840526.729411"
+            timestampString = "458845075.724755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
-            landmarkName = "ioFrameChannel(_:didReceiveFrameOfType:tag:payload:)"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "lockScreen(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mclass.MainViewController.lockScreen (Mclass.MainViewController)(Swift.String) -&gt; ()"
+                  moduleName = "Mclass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mdobro/XCode/Mclass/Mclass/Mclass/MainViewController.swift"
+                  timestampString = "458845161.047324"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "1554">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mclass.MainViewController.(lockScreen (Mclass.MainViewController) -&gt; (Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "Mclass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mdobro/XCode/Mclass/Mclass/Mclass/MainViewController.swift"
+                  timestampString = "458845161.047624"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
