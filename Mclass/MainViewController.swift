@@ -24,6 +24,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     var helpMessage:String! = ""
     var nowOrLater:String! = ""
     var sourceVol:String! = ".5"
+    
 
     override func viewDidLoad() {
         let background = UIImage(named: "background.jpg")
@@ -104,7 +105,8 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
             self.dismissViewControllerAnimated(true, completion: nil)
         }
         else {
-            let alert = UIAlertController(title: "PROJECTOR \(action) ERROR!", message: "For help please contact CAEN:\n\nPhone: (734)-764-CAEN\nEmail: caen@umich.edu", preferredStyle: UIAlertControllerStyle.Alert)
+            self.dismissViewControllerAnimated(false, completion: nil)
+            let alert = UIAlertController(title: "PROJECTOR \(action)ERROR!", message: "For help please contact CAEN:\n\nPhone: (734)-764-CAEN\nEmail: caen@umich.edu", preferredStyle: UIAlertControllerStyle.Alert)
             self.presentViewController(alert, animated: true, completion: nil)
         }
 

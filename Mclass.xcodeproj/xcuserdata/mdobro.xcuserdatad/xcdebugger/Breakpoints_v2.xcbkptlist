@@ -59,28 +59,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Mclass/MainViewController.swift"
-            timestampString = "458770964.152554"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "lockScreen(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Mac Helper/ViewController.swift"
-            timestampString = "458770873.115971"
+            timestampString = "458841732.779035"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
+            startingLineNumber = "331"
+            endingLineNumber = "331"
             landmarkName = "projHasError(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -92,11 +76,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mclass/MainViewController.swift"
-            timestampString = "458770964.152554"
+            timestampString = "458840526.729411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "ioFrameChannel(_:didReceiveFrameOfType:tag:payload:)"
             landmarkType = "5">
          </BreakpointContent>

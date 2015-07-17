@@ -287,9 +287,11 @@ enum EPSONINPUTS {
             PJResponseInfoErrorStatusQuery.stringForErrorStatus(proj.otherErrorStatus)]
         Statuses[index + 5] = ""
         var hasError = false
+        var errorsToSend = ""
+        
         for (i,error) in Errors.enumerate() {
             if error == "Error" {
-                projHasError(i)
+                errorsToSend += projHasError(i) + " "
                 hasError = true
             }
             Statuses[index + 5] += error
@@ -299,6 +301,8 @@ enum EPSONINPUTS {
         }
         if !hasError {
             USBHelper.sendMessage("errorsClear")
+        } else {
+            USBHelper.sendMessage(errorsToSend)
         }
         table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(index...(index + 6))), columnIndexes: NSIndexSet(index: 1))
         
@@ -322,7 +326,7 @@ enum EPSONINPUTS {
         
     }
     
-    func projHasError(index:Int) {
+    func projHasError(index:Int) -> String! {
         //send error to iPad to lock it
         let error:String!
         switch index {
@@ -334,7 +338,7 @@ enum EPSONINPUTS {
         case 5: error = "Other"
         default: error = ""
         }
-        USBHelper.sendMessage(error)
+        return error;
     }
     
     func connectionHelper(proj:PJProjector, index:Int) {
