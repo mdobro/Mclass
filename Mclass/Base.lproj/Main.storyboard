@@ -149,7 +149,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Yr-eV-TSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-70" y="1270"/>
+            <point key="canvasLocation" x="-347" y="1255"/>
         </scene>
         <!--subMain View Controller-->
         <scene sceneID="K1u-JZ-8Ox">
@@ -163,12 +163,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="690" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.76923076923" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="VN2-Gg-4ce">
-                                <rect key="frame" x="140" y="579" width="411" height="31"/>
-                                <connections>
-                                    <action selector="volumeChanged:" destination="olh-5c-Sre" eventType="valueChanged" id="KmU-yj-NqB"/>
-                                </connections>
-                            </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiK-Vh-MXB">
                                 <rect key="frame" x="298" y="617" width="94" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -194,11 +188,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Source Volume:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTj-Kv-5LU">
-                                <rect key="frame" x="259" y="535" width="188" height="36"/>
+                                <rect key="frame" x="197" y="551" width="188" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3a2-zh-09j">
+                                <rect key="frame" x="393" y="535" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="Inc:" destination="olh-5c-Sre" eventType="touchUpInside" id="B6W-fg-hdT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6i-e1-NZa">
+                                <rect key="frame" x="393" y="573" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="66"/>
+                                <state key="normal" title="-"/>
+                                <connections>
+                                    <action selector="Dec:" destination="olh-5c-Sre" eventType="touchUpInside" id="Xsc-N4-NkX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -206,15 +216,16 @@
                     <navigationItem key="navigationItem" id="jPl-bh-Vqq"/>
                     <connections>
                         <outlet property="DisplayTime" destination="iZF-4F-iu0" id="GDe-9H-1U2"/>
+                        <outlet property="MinusVol" destination="y6i-e1-NZa" id="gMh-Zf-iCS"/>
+                        <outlet property="PlusVol" destination="3a2-zh-09j" id="8Zr-yn-AMa"/>
                         <outlet property="muteButton" destination="uiK-Vh-MXB" id="IAK-zm-Ecy"/>
                         <outlet property="recordSettingsButton" destination="gSS-yk-XBO" id="AhK-cX-5KJ"/>
                         <outlet property="volLabel" destination="aTj-Kv-5LU" id="Dp6-Dh-sDT"/>
-                        <outlet property="volSlider" destination="VN2-Gg-4ce" id="TEj-pU-bVZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9f-Ub-mNz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="464" y="1302"/>
+            <point key="canvasLocation" x="228" y="1230"/>
         </scene>
     </scenes>
     <resources>

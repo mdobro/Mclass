@@ -18,8 +18,8 @@ enum EPSONINPUTS {
 
     //Audio DSP
     var socket: GCDAsyncSocket!
-    var MUTESTATUS: Bool!
-    let DSPPORT:UInt16 = 32
+    var MUTESTATUS: Bool = true
+    let DSPPORT:UInt16 = 23
     let DSPIP = "10.160.10.184"
     
     //PJLink
@@ -72,15 +72,16 @@ enum EPSONINPUTS {
         
         // Do any additional setup after loading the view.
         do {
-            socket = GCDAsyncSocket(delegate: AppDelegate.self, delegateQueue: dispatch_get_main_queue())
+            socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
             try socket.connectToHost(DSPIP, onPort: DSPPORT)
         }
         catch {
             print("error)")
         }
         
-        let data = "RECALL 0 PRESET 1001"
+        let data = "RECALL 0 PRESET 1001\n"
         socket.writeData(data.dataUsingEncoding(NSUTF8StringEncoding)!, withTimeout: -1.0, tag: 0)
+        socket.readDataWithTimeout(-1.0, tag: 0)
     }
 
     override var representedObject: AnyObject? {
@@ -151,6 +152,12 @@ enum EPSONINPUTS {
         }
     }
     
+    //Socket check
+    func socket(socket : GCDAsyncSocket, didReadData data:NSData, withTag tag:UInt16)
+    {
+        print("Received Response")
+    }
+    
     //USB Channel
     
     
@@ -214,36 +221,15 @@ enum EPSONINPUTS {
     @objc func recievedVolume(vol:String) {
         Statuses[6] = vol
         var revised: String!
-        if (vol == "0.0") {
-            MUTESTATUS = true
+        if (vol == "10000") {
+            revised = "SET 1 FDRMUTE \"Program volume\" 1 0\n"
+        }
+        else if (vol == "-10000") {
+            revised = "SET 1 FDRMUTE \"Program volume\" 1 1\n"
         }
         else {
-            var finalstep: String!
-            if (MUTESTATUS != nil) {
-                if (MUTESTATUS == true) {
-                    let unmute = "SET 1 FDRMUTE \"Program volume\" 1 0"
-                    print(unmute)
-                    socket.writeData(unmute.dataUsingEncoding(NSUTF8StringEncoding), withTimeout: -1.0, tag: 0)
-                }
-            }
-            MUTESTATUS = false
-            let stepone: Int = Int(round(Double(vol)!*52 + (-40)))
-            if (stepone > -1 && stepone < 10) {
-                finalstep = String(stepone)
-            }
-            else if (stepone > -10 && stepone < 0) {
-                finalstep = "-" + String(-stepone)
-            }
-            else {
-                finalstep = String(stepone)
-            }
-            revised = "SET 1 FDRLVL \"Program volume\" 1 \(finalstep)"
-            print(revised)
-            
-        }
-        if (MUTESTATUS! == true) {
-            revised = "SET 1 FDRMUTE \"Program volume\" 1 1"
-            print(revised)
+            print(vol)
+            revised = "SET 1 FDRLVL \"Program volume\" 1 \(vol)\n"
         }
         let data:NSData = revised.dataUsingEncoding(NSUTF8StringEncoding)!
         socket.writeData(data, withTimeout: -1.0, tag: 0)

@@ -13,7 +13,7 @@ protocol SubMainDelegate {
     var camViewSettings:(paused:Bool!, timeElapsed: Int!, timeRemaining: Int!) {get set}
     
     func camViewDidChange(sender: CamView, settings: (paused:Bool!, timeElapsed: Int!, timeRemaining: Int!))
-    func subMainDidChange(sender: SubMainViewController, volume: Float!)
+    func subMainDidChange(sender: SubMainViewController, volume: Int!)
     
 }
 
@@ -22,11 +22,11 @@ class SubMainViewController: UIViewController {
 
     @IBOutlet weak var recordSettingsButton: UIButton!
     @IBOutlet weak var DisplayTime: UILabel!
-    @IBOutlet weak var volSlider: UISlider!
     @IBOutlet weak var muteButton: UIButton!
     @IBOutlet weak var volLabel: UILabel!
-    
-    var savedVol:Float?
+    @IBOutlet weak var MinusVol: UIButton!
+    @IBOutlet weak var PlusVol: UIButton!
+    var VOLUME: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +36,21 @@ class SubMainViewController: UIViewController {
         
     }
     
-    @IBAction func volumeChanged(sender: UISlider) {
-        if muteButton.titleLabel!.text == "Unmute" {
-            muteButton.setTitle("Mute", forState: .Normal)
+
+    @IBAction func Inc(sender: UIButton) {
+        if (VOLUME < 12) {
+            VOLUME = VOLUME + 3
         }
-        delegate.subMainDidChange(self, volume: sender.value)
+        delegate.subMainDidChange(self, volume: VOLUME)
     }
+        
+    @IBAction func Dec(sender: UIButton) {
+        if (VOLUME > -39) {
+            VOLUME = VOLUME - 3
+        }
+        delegate.subMainDidChange(self, volume: VOLUME)
+    }
+
     
     func RefreshTime() {
         let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
@@ -54,17 +63,19 @@ class SubMainViewController: UIViewController {
             self.view.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0)
             self.recordSettingsButton.alpha = 0
             self.DisplayTime.alpha = 0
-            self.volSlider.alpha = 0
             self.muteButton.alpha = 0
             self.volLabel.alpha = 0
+            self.MinusVol.alpha = 0
+            self.PlusVol.alpha = 0
         }
         else {
             self.view.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.75)
             self.recordSettingsButton.alpha = 1
             self.DisplayTime.alpha = 1
-            self.volSlider.alpha = 1
             self.muteButton.alpha = 1
             self.volLabel.alpha = 1
+            self.MinusVol.alpha = 1
+            self.PlusVol.alpha = 1
         }
     }
     
@@ -83,13 +94,10 @@ class SubMainViewController: UIViewController {
     @IBAction func muteButtonTap(sender: UIButton) {
         if sender.titleLabel!.text == "Mute" {
             sender.setTitle("Unmute", forState: .Normal)
-            savedVol = self.volSlider.value
-            self.volSlider.value = 0
-            delegate.subMainDidChange(self, volume: 0)
+            delegate.subMainDidChange(self, volume: -10000)
         } else {
             sender.setTitle("Mute", forState: .Normal)
-            self.volSlider.value = savedVol!
-            delegate.subMainDidChange(self, volume: savedVol)
+            delegate.subMainDidChange(self, volume: 10000)
         }
     }
     

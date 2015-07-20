@@ -23,7 +23,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     var proj2source:String! = ""
     var helpMessage:String! = ""
     var nowOrLater:String! = ""
-    var sourceVol:String! = ".76923076923"
+    var sourceVol:String! = "0.0"
     
 
     override func viewDidLoad() {
@@ -152,7 +152,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     func camViewDidChange(sender: CamView, settings: (paused: Bool!, timeElapsed: Int!, timeRemaining: Int!)) {
         self.camViewSettings = settings
     }
-    func subMainDidChange(sender: SubMainViewController, volume: Float!) {
+    func subMainDidChange(sender: SubMainViewController, volume: Int!) {
         sourceVol = String(stringInterpolationSegment: volume)
         sendMessage("\(sourceVol)", type: UInt32(SourceVolume))
         //possibly time / time remaining
