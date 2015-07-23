@@ -12,21 +12,34 @@ enum EPSONINPUTS {
     case Computer, BNC, Video, SVideo, HDMI, DisplayPort, LAN, HDBaseT
 }
 
+enum AVINPUTS:Int {
+    //make cases return input number on av controller
+    case blankScreen = -1
+}
+
 @objc class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     
     let USBHelper = USBhelper()
 
     //Audio DSP
-    var socket: GCDAsyncSocket!
+    var dspSocket: GCDAsyncSocket!
     var MUTESTATUS: Bool = true
     let DSPPORT:UInt16 = 23
     let DSPIP = "10.160.10.184"
+    
+    //AV Controller
+    var avSocket: GCDAsyncSocket!
+    var BLANKSTATUS = false
+    let HTTPPORT:UInt16 = 80
+    var avIP = "*Insert IP here*"
+    let avDefaultInput = 0
+    var inputDict:[String: EPSONINPUTS]! //need to change EPSONINPUTS
     
     //PJLink
     var PROJ1:PJProjector!
     var PROJ2:PJProjector!
     let PJLINKPORT = 4352
-    var inputDict:[String: EPSONINPUTS]!
+    let projDefaultInput:UInt = 0
     var equivalentQueue = false;
     
     let buttons = ["iPad Connection Status", "Projector 1 Source on iPad", "Projector 2 Source on iPad", "HDCP Status on iPad", "Problem Status on iPad", "Problem Message on iPad", "Source Volume on iPad", "",
@@ -70,50 +83,27 @@ enum EPSONINPUTS {
         
         USBHelper.startInit(self)
         
-        // Do any additional setup after loading the view.
+        //socket connection to AUDIO DSP
         do {
-            socket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-            try socket.connectToHost(DSPIP, onPort: DSPPORT)
+            dspSocket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
+            try dspSocket.connectToHost(DSPIP, onPort: DSPPORT)
         }
         catch {
-            print("error)")
+            print("error with dspSocket")
         }
         
         let data = "RECALL 0 PRESET 1001\n"
-        socket.writeData(data.dataUsingEncoding(NSUTF8StringEncoding)!, withTimeout: -1.0, tag: 0)
-        socket.readDataWithTimeout(-1.0, tag: 0)
+        dspSocket.writeData(data.dataUsingEncoding(NSUTF8StringEncoding)!, withTimeout: -1.0, tag: 0)
+        dspSocket.readDataWithTimeout(-1.0, tag: 0)
+        
+        //socket AVController
+        changeAVInput(avDefaultInput)
     }
 
     override var representedObject: AnyObject? {
         didSet {
         // Update the view, if already loaded.
         }
-    }
-    
-    func refreshProjStatus() {
-        PROJ1.refreshAllQueriesForReason(.Timed)
-        PROJ2.refreshAllQueriesForReason(.Timed)
-    }
-    
-    func makeEquivalent() {
-        equivalentQueue = false
-        if let input = inputDict[Statuses[1]]?.hashValue {
-            PROJ1.requestPowerStateChange(true)
-            PROJ1.requestInputChangeToInputIndex(UInt(input))
-            equivalentQueue = true
-        } else {
-            PROJ1.requestPowerStateChange(false)
-            //this hasnt failed on first run yet, setting equivalent to true may cause problems here
-        }
-        
-        if let input = inputDict[Statuses[2]]?.hashValue {
-            PROJ2.requestPowerStateChange(true)
-            PROJ2.requestInputChangeToInputIndex(UInt(input))
-            equivalentQueue = true
-        } else {
-            PROJ2.requestPowerStateChange(false)
-        }
-        
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
@@ -183,7 +173,8 @@ enum EPSONINPUTS {
         }
         else {
             PROJ1.requestPowerStateChange(true)
-            PROJ1.requestInputChangeToInputIndex(UInt(inputDict[source]!.hashValue))
+            //PROJ1.requestInputChangeToInputIndex(UInt(inputDict[source]!.hashValue))
+            changeAVInput(inputDict[source]!.hashValue)
         }
         table.reloadDataForRowIndexes(NSIndexSet(index: 1), columnIndexes: NSIndexSet(index: 1))
     }
@@ -198,13 +189,15 @@ enum EPSONINPUTS {
         }
         else {
             PROJ2.requestPowerStateChange(true)
-            PROJ2.requestInputChangeToInputIndex(UInt(inputDict[source]!.hashValue))
+            //PROJ2.requestInputChangeToInputIndex(UInt(inputDict[source]!.hashValue))
+            //change AV input on proj 2 somehow
         }
         table.reloadDataForRowIndexes(NSIndexSet(index: 2), columnIndexes: NSIndexSet(index: 1))
     }
     
     @objc func recievedHDCPchange(switchOn:String){
         Statuses[3] = switchOn
+        
         table.reloadData()
     }
     
@@ -232,14 +225,44 @@ enum EPSONINPUTS {
             revised = "SET 1 FDRLVL \"Program volume\" 1 \(vol)\n"
         }
         let data:NSData = revised.dataUsingEncoding(NSUTF8StringEncoding)!
-        socket.writeData(data, withTimeout: -1.0, tag: 0)
-        socket.readDataWithTimeout(-1.0, tag: 0)
+        dspSocket.writeData(data, withTimeout: -1.0, tag: 0)
+        dspSocket.readDataWithTimeout(-1.0, tag: 0)
         table.reloadData()
         
     }
     
     //Proj Send/Recieve
     
+    func refreshProjStatus() {
+        PROJ1.refreshAllQueriesForReason(.Timed)
+        PROJ2.refreshAllQueriesForReason(.Timed)
+    }
+    
+    func makeEquivalent() {
+        equivalentQueue = false
+        
+        //if input is not off for proj 1...
+        if let _ = inputDict[Statuses[1]]?.hashValue {
+            PROJ1.requestPowerStateChange(true)
+            PROJ1.requestInputChangeToInputIndex(projDefaultInput)
+            //changeAVInput(input) //might have a bug where blank screen gets called twice and gets canceled
+            equivalentQueue = true
+        } else {
+            PROJ1.requestPowerStateChange(false)
+            //this hasnt failed on first run yet, setting equivalent to true may cause problems here
+        }
+        
+        //if input is not off for proj 2...
+        if let _ = inputDict[Statuses[2]]?.hashValue {
+            PROJ2.requestPowerStateChange(true)
+            PROJ2.requestInputChangeToInputIndex(projDefaultInput)
+            //not really sure how to change av input # 2 with this. need to experiment
+            equivalentQueue = true
+        } else {
+            PROJ2.requestPowerStateChange(false)
+        }
+        
+    }
     
     func subToNotifications() {
         let center = NSNotificationCenter.defaultCenter()
@@ -260,6 +283,26 @@ enum EPSONINPUTS {
     
     func projRequestEnd(notification:NSNotification) {
         //ended animation
+    }
+    
+    func projHasWarning(notification: NSNotification) {
+        //send warning to CAEN
+    }
+    
+    func projHasError(index:Int) -> String! {
+        //send error to iPad to lock it
+        let error:String!
+        switch index {
+        case 0: error = "Fan"
+        case 1: error = "Lamp"
+        case 2: error = "Temperature"
+        case 3: error = "Cover Open"
+        case 4: error = "Filter"
+        case 5: error = "Other"
+        default: error = ""
+        }
+        //send error to CAEN
+        return error;
     }
     
     func changeHelper(proj:PJProjector, index:Int) {
@@ -312,25 +355,6 @@ enum EPSONINPUTS {
         }
     }
     
-    func projHasWarning(notification: NSNotification) {
-        
-    }
-    
-    func projHasError(index:Int) -> String! {
-        //send error to iPad to lock it
-        let error:String!
-        switch index {
-        case 0: error = "Fan"
-        case 1: error = "Lamp"
-        case 2: error = "Temperature"
-        case 3: error = "Cover Open"
-        case 4: error = "Filter"
-        case 5: error = "Other"
-        default: error = ""
-        }
-        return error;
-    }
-    
     func connectionHelper(proj:PJProjector, index:Int) {
         Statuses[index] = PJProjector.stringForConnectionState(proj.connectionState)
         if Statuses[index] == "Connecting" || Statuses[index] == "Connection Error"{
@@ -358,5 +382,40 @@ enum EPSONINPUTS {
             //18 for proj2
             connectionHelper(currentProj, index: 18)
         }
+    }
+    
+    
+    //AV CONTROLLER
+    
+    func changeAVInput(input:Int) {
+        //socket connection to AV Controller
+        //might have to try a new connection for every command
+        do {
+            avSocket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
+            try avSocket.connectToHost(avIP, onPort: HTTPPORT)
+        }
+        catch {
+            print("error with avSocket")
+            //lockipad and retry until connected
+        }
+        let data:String!
+        if input != -1 {
+            //change input
+            data = "GET /aj.shtml?a=SCAFUN&i=0&f=0&v=\(input)&_=1437409735732 HTTP/1.1\n"
+            
+        } else {
+            //blank screen
+            if BLANKSTATUS {
+                data = "GET /aj.shtml?a=SCAFUN&i=0&f=127&v=0&_=1437417334157 HTTP/1.1\n"
+            } else {
+                data = "GET /aj.shtml?a=SCAFUN&i=0&f=127&v=1&_=1437417262858 HTTP/1.1\n"
+            }
+        }
+        avSocket.writeData(data.dataUsingEncoding(NSUTF8StringEncoding)!, withTimeout: -1.0, tag: 0)
+        avSocket.readDataWithTimeout(-1.0, tag: 0)
+    }
+    
+    func changeAVHDCP(action:Bool) {
+        //need to find http commands for this depending on current input
     }
 }
