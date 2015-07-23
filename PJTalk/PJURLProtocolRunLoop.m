@@ -94,7 +94,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
         _timeout = [request timeoutInterval];
     }
 
-    NSLog(@"PJURLProtocolRunLoop[%p] initWithRequest:%@ cachedResponse:%@ client:%@", self, request, cachedResponse, client);
+    //NSLOG(@"PJURLProtocolRunLoop[%p] initWithRequest:%@ cachedResponse:%@ client:%@", self, request, cachedResponse, client);
     
     return self;
 }
@@ -115,7 +115,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
         }
     }
 
-    NSLog(@"PJURLProtocolRunLoop canInitWithRequest:%@ returns %u", request, ret);
+    //NSLOG(@"PJURLProtocolRunLoop canInitWithRequest:%@ returns %u", request, ret);
     
     return ret;
 }
@@ -134,7 +134,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
                                                    timeoutInterval:[request timeoutInterval]];
     [tmp setHTTPBody:cmdData];
 
-    NSLog(@"PJURLProtocolRunLoop canonicalRequestForRequest:%@ returns %@", request, tmp);
+    //NSLOG(@"PJURLProtocolRunLoop canonicalRequestForRequest:%@ returns %@", request, tmp);
     
     return [tmp copy];
 }
@@ -150,13 +150,13 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
     
     BOOL cacheEquivalent = [aURL isEqual:bURL] && [aValidCommands isEqualToArray:bValidCommands];
 
-    NSLog(@"PJURLProtocolRunLoop requestIsCacheEquivalent:%@ toRequest:%@ returns %u", a, b, cacheEquivalent);
+    //NSLOG(@"PJURLProtocolRunLoop requestIsCacheEquivalent:%@ toRequest:%@ returns %u", a, b, cacheEquivalent);
 
     return cacheEquivalent;
 }
 
 - (void)startLoading {
-    NSLog(@"PJURLProtocolRunLoop[%p]: startLoading", self);
+    //NSLOG(@"PJURLProtocolRunLoop[%p]: startLoading", self);
     // Get the PJLink requests
     _requests = [PJURLProtocolRunLoop pjlinkRequestsFromRequest:[self request]];
     // Make sure we actually have some requests - otherwise fail.
@@ -176,8 +176,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
         // Create the socket
         _socket = [[AsyncSocket alloc] initWithDelegate:self];
         // Connect to the host
-        NSLog(@"PJURLProtocolRunLoop[%p] calling socket connectToHost:%@ onPort:%u withTimeout:%.1f error:",
-              self, host, port16, _timeout);
+        //NSLOG(@"PJURLProtocolRunLoop[%p] calling socket connectToHost:%@ onPort:%u withTimeout:%.1f error:", self, host, port16, _timeout);
         NSError* connectError = nil;
         BOOL connectRet = [_socket connectToHost:host
                                           onPort:4352
@@ -198,7 +197,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 }
 
 - (void)stopLoading {
-    NSLog(@"PJURLProtocolRunLoop[%p]: stopLoading", self);
+    //NSLOG(@"PJURLProtocolRunLoop[%p]: stopLoading", self);
     // Close the socket
     [self closeSocket];
     // We do not call back to the client after this, as the
@@ -225,20 +224,19 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 #pragma mark AsyncSocketDelegate methods
 
 - (void)onSocket:(AsyncSocket *)sock willDisconnectWithError:(NSError *)err {
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ willDisconnectWithError:%@", self, sock, err);
+    //NSLOG(@"PJURLProtocolRunLoop[%p]: onSocket:%@ willDisconnectWithError:%@", self, sock, err);
     _error = err;
 }
 
 - (void)onSocketDidDisconnect:(AsyncSocket *)sock {
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocketDidDisconnect:%@", self, sock);
+    //NSLOG(@"PJURLProtocolRunLoop[%p]: onSocketDidDisconnect:%@", self, sock);
     [[self client] URLProtocol:self didFailWithError:_error];
 }
 
 - (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didConnectToHost:%@ port:%@", self, sock, host, @(port));
+    //NSLOG(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didConnectToHost:%@ port:%@", self, sock, host, @(port));
     // Read the initial challenge from the projector
-    NSLog(@"PJURLProtocolRunLoop[%p] calling readDataToData:withTimeout:%@ tag:%@",
-          self, @(_timeout), @(kPJLinkTagReadProjectorChallenge));
+    //NSLOG(@"PJURLProtocolRunLoop[%p] calling readDataToData:withTimeout:%@ tag:%@", self, @(_timeout), @(kPJLinkTagReadProjectorChallenge));
     [_socket readDataToData:[AsyncSocket CRData]
                 withTimeout:_timeout
                         tag:kPJLinkTagReadProjectorChallenge];
@@ -246,7 +244,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 
 - (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
     NSString* dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didReadData:\"%@\" withTag:%ld", self, sock, dataStr, tag);
+    //NSLOG(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didReadData:\"%@\" withTag:%ld", self, sock, dataStr, tag);
     // Switch on tag
     BOOL     handled = YES;
     NSError* error   = nil;
@@ -273,11 +271,10 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 }
 
 - (void)onSocket:(AsyncSocket *)sock didWriteDataWithTag:(long)tag {
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didWriteDataWithTag:%@", self, sock, @(tag));
+    //NSLOG(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didWriteDataWithTag:%@", self, sock, @(tag));
     if (tag == kPJLinkTagWriteRequest) {
         // Read data up to and including the carriage return
-        NSLog(@"PJURLProtocolRunLoop[%p] calling readDataToData:withTimeout:%@ tag:%@",
-              self, @(_timeout), @(kPJLinkTagReadCommandResponse));
+        //NSLOG(@"PJURLProtocolRunLoop[%p] calling readDataToData:withTimeout:%@ tag:%@", self, @(_timeout), @(kPJLinkTagReadCommandResponse));
         [_socket readDataToData:[AsyncSocket CRData]
                     withTimeout:_timeout
                             tag:kPJLinkTagReadCommandResponse];
@@ -288,8 +285,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
   shouldTimeoutReadWithTag:(long)tag
                    elapsed:(NSTimeInterval)elapsed
                  bytesDone:(NSUInteger)length {
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ shouldTimeoutReadWithTag:%@ elapsed:%@ bytesDone:%@",
-          self, sock, @(tag), @(elapsed), @(length));
+    //NSLOG(@"PJURLProtocolRunLoop[%p]: onSocket:%@ shouldTimeoutReadWithTag:%@ elapsed:%@ bytesDone:%@", self, sock, @(tag), @(elapsed), @(length));
     return 0.0;
 }
 
@@ -298,8 +294,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
                    elapsed:(NSTimeInterval)elapsed
                  bytesDone:(NSUInteger)length {
     
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ shouldTimeoutWriteWithTag:%@ elapsed:%@ bytesDone:%@",
-          self, sock, @(tag), @(elapsed), @(length));
+    //NSLOG(@"PJURLProtocolRunLoop[%p]: onSocket:%@ shouldTimeoutWriteWithTag:%@ elapsed:%@ bytesDone:%@", self, sock, @(tag), @(elapsed), @(length));
     return 0.0;
 }
 
@@ -447,7 +442,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 }
 
 - (void)callClientDidFailWithError:(NSError*) error {
-    NSLog(@"PJURLProtocolRunLoop[%p]: calling URLProtocol:didFailWithError:%@", self, error);
+    //NSLOG(@"PJURLProtocolRunLoop[%p]: calling URLProtocol:didFailWithError:%@", self, error);
     [[self client] URLProtocol:self didFailWithError:error];
 }
 
@@ -457,18 +452,17 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
                                                         MIMEType:@"text/plain"
                                            expectedContentLength:0
                                                 textEncodingName:nil];
-    NSLog(@"PJURLProtocolRunLoop[%p]: calling URLProtocol:didReceiveResponse:%@ cacheStoragePolicy:%lu",
-          self, response, (unsigned long)NSURLCacheStorageNotAllowed);
+    //NSLOG(@"PJURLProtocolRunLoop[%p]: calling URLProtocol:didReceiveResponse:%@ cacheStoragePolicy:%lu", self, response, (unsigned long)NSURLCacheStorageNotAllowed);
     [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
 }
 
 - (void)callClientDidLoadData:(NSData*) data {
-    NSLog(@"PJURLProtocolRunLoop[%p]: calling URLProtocol:didLoadData:%@", self, data);
+    //NSLOG(@"PJURLProtocolRunLoop[%p]: calling URLProtocol:didLoadData:%@", self, data);
     [[self client] URLProtocol:self didLoadData:data];
 }
 
 - (void)callClientDidFinishLoading {
-    NSLog(@"PJURLProtocolRunLoop[%p]: calling URLProtocol:didFinishLoading", self);
+    //NSLOG(@"PJURLProtocolRunLoop[%p]: calling URLProtocol:didFinishLoading", self);
     [[self client] URLProtocolDidFinishLoading:self];
 }
 
@@ -497,7 +491,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
                                                                                                       error:nil
                                                                                                      sender:self];
     // Call to the protocol client
-    NSLog(@"PJURLProtocolRunLoop[%p]: calling URLProtocol:didReceiveAuthenticationChallenge:%@", self, challenge);
+    //NSLOG(@"PJURLProtocolRunLoop[%p]: calling URLProtocol:didReceiveAuthenticationChallenge:%@", self, challenge);
     [[self client] URLProtocol:self didReceiveAuthenticationChallenge:challenge];
 }
 
@@ -638,8 +632,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
         // Encode as UTF8
         NSData* nextRequestData = [nextRequest dataUsingEncoding:NSUTF8StringEncoding];
         // Write the request to the socket
-        NSLog(@"PJURLProtocolRunLoop[%p] calling writeData:withTimeout:%@ tag:%@ dataStr=\"%@\"",
-              self, @(_timeout), @(kPJLinkTagWriteRequest), nextRequest);
+        //NSLOG(@"PJURLProtocolRunLoop[%p] calling writeData:withTimeout:%@ tag:%@ dataStr=\"%@\"", self, @(_timeout), @(kPJLinkTagWriteRequest), nextRequest);
         [_socket writeData:nextRequestData
                withTimeout:_timeout
                        tag:kPJLinkTagWriteRequest];

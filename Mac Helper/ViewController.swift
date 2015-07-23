@@ -8,15 +8,6 @@
 
 import Cocoa
 
-enum EPSONINPUTS {
-    case Computer, BNC, Video, SVideo, HDMI, DisplayPort, LAN, HDBaseT
-}
-
-enum AVINPUTS:Int {
-    //make cases return input number on av controller
-    case blankScreen = -1
-}
-
 @objc class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     
     let USBHelper = USBhelper()
@@ -28,12 +19,12 @@ enum AVINPUTS:Int {
     let DSPIP = "10.160.10.184"
     
     //AV Controller
-    var avSocket: GCDAsyncSocket!
+    var avSocket: GCDAsyncUdpSocket!
     var BLANKSTATUS = false
-    let HTTPPORT:UInt16 = 80
-    var avIP = "*Insert IP here*"
-    let avDefaultInput = 0
-    var inputDict:[String: EPSONINPUTS]! //need to change EPSONINPUTS
+    let AVPORT:UInt16 = 50000
+    var avIP = "10.160.10.186"
+    let avDefaultInput = 2
+    var inputDict:[String: Int]!
     
     //PJLink
     var PROJ1:PJProjector!
@@ -67,7 +58,7 @@ enum AVINPUTS:Int {
             ""/* 17*/, "", "", "", "", "", "", "", ""/*end filler line*/]
         
         //delete after testing
-        Statuses[8] = "127.0.0.1"
+        Statuses[8] = "10.160.10.185"
         Statuses[17] = "10.160.10.242"
         //
         PROJ1 = PJProjector(host: Statuses[8], port: PJLINKPORT)
@@ -77,7 +68,7 @@ enum AVINPUTS:Int {
         PROJ2.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
         
         //set dicts up to be based off manufactuer name
-        inputDict = ["Laptop" : EPSONINPUTS.Computer, "Document Camera" : EPSONINPUTS.DisplayPort, "Apple TV" : EPSONINPUTS.HDMI, "Blank Screen" : EPSONINPUTS.LAN]
+        inputDict = ["Laptop" : 2, "Document Camera" : 3, "Apple TV" : 1, "Blank Screen" : -1] //hdmi inputs start at 0
         NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "refreshProjStatus", userInfo: nil, repeats: true)
         
         
@@ -97,13 +88,9 @@ enum AVINPUTS:Int {
         dspSocket.readDataWithTimeout(-1.0, tag: 0)
         
         //socket AVController
-        changeAVInput(avDefaultInput)
-    }
+        avSocket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
 
-    override var representedObject: AnyObject? {
-        didSet {
-        // Update the view, if already loaded.
-        }
+        changeAVInput(avDefaultInput)
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
@@ -160,7 +147,7 @@ enum AVINPUTS:Int {
             Statuses = ["Not Connected", "", "", "", "", "", "", ""]
             Statuses! += Array(projStatus)
         }
-        table.reloadDataForRowIndexes(NSIndexSet(index: 0), columnIndexes: NSIndexSet(index: 1))
+        table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(0...7)), columnIndexes: NSIndexSet(index: 1))
     }
     
     @objc func recievedP1source(source:String){
@@ -173,8 +160,8 @@ enum AVINPUTS:Int {
         }
         else {
             PROJ1.requestPowerStateChange(true)
-            //PROJ1.requestInputChangeToInputIndex(UInt(inputDict[source]!.hashValue))
-            changeAVInput(inputDict[source]!.hashValue)
+            //PROJ1.requestInputChangeToInputIndex(UInt(inputDict[source]!))
+            changeAVInput(inputDict[source]!)
         }
         table.reloadDataForRowIndexes(NSIndexSet(index: 1), columnIndexes: NSIndexSet(index: 1))
     }
@@ -189,7 +176,7 @@ enum AVINPUTS:Int {
         }
         else {
             PROJ2.requestPowerStateChange(true)
-            //PROJ2.requestInputChangeToInputIndex(UInt(inputDict[source]!.hashValue))
+            //PROJ2.requestInputChangeToInputIndex(UInt(inputDict[source]!))
             //change AV input on proj 2 somehow
         }
         table.reloadDataForRowIndexes(NSIndexSet(index: 2), columnIndexes: NSIndexSet(index: 1))
@@ -242,7 +229,7 @@ enum AVINPUTS:Int {
         equivalentQueue = false
         
         //if input is not off for proj 1...
-        if let _ = inputDict[Statuses[1]]?.hashValue {
+        if let _ = inputDict[Statuses[1]] {
             PROJ1.requestPowerStateChange(true)
             PROJ1.requestInputChangeToInputIndex(projDefaultInput)
             //changeAVInput(input) //might have a bug where blank screen gets called twice and gets canceled
@@ -253,7 +240,7 @@ enum AVINPUTS:Int {
         }
         
         //if input is not off for proj 2...
-        if let _ = inputDict[Statuses[2]]?.hashValue {
+        if let _ = inputDict[Statuses[2]] {
             PROJ2.requestPowerStateChange(true)
             PROJ2.requestInputChangeToInputIndex(projDefaultInput)
             //not really sure how to change av input # 2 with this. need to experiment
@@ -384,38 +371,38 @@ enum AVINPUTS:Int {
         }
     }
     
-    
     //AV CONTROLLER
     
     func changeAVInput(input:Int) {
-        //socket connection to AV Controller
-        //might have to try a new connection for every command
-        do {
-            avSocket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-            try avSocket.connectToHost(avIP, onPort: HTTPPORT)
-        }
-        catch {
-            print("error with avSocket")
-            //lockipad and retry until connected
-        }
         let data:String!
         if input != -1 {
             //change input
-            data = "GET /aj.shtml?a=SCAFUN&i=0&f=0&v=\(input)&_=1437409735732 HTTP/1.1\n"
+            if BLANKSTATUS {
+                //unblank screen if muted
+                BLANKSTATUS = false
+                let subdata = "#VMUTE 1,0\r"
+                avSocket.sendData(subdata.dataUsingEncoding(NSUTF8StringEncoding)!, toHost: avIP, port: AVPORT, withTimeout: 2, tag: 0)
+            }
+            data = "#ROUTE 12,1,\(input)\r"
             
         } else {
             //blank screen
-            if BLANKSTATUS {
-                data = "GET /aj.shtml?a=SCAFUN&i=0&f=127&v=0&_=1437417334157 HTTP/1.1\n"
-            } else {
-                data = "GET /aj.shtml?a=SCAFUN&i=0&f=127&v=1&_=1437417262858 HTTP/1.1\n"
-            }
+            data = "#VMUTE 1,1\r"
+            BLANKSTATUS = true
         }
-        avSocket.writeData(data.dataUsingEncoding(NSUTF8StringEncoding)!, withTimeout: -1.0, tag: 0)
-        avSocket.readDataWithTimeout(-1.0, tag: 0)
+        avSocket.sendData(data.dataUsingEncoding(NSUTF8StringEncoding)!, toHost: avIP, port: AVPORT, withTimeout: 2, tag: 0)
     }
     
     func changeAVHDCP(action:Bool) {
-        //need to find http commands for this depending on current input
+        var data:String!
+        if action {
+            //turns HDCP ON
+            data = "HDCP-MOD 0,2,1" //only turns on laptop input
+        } else {
+            //turns HDCP OFF
+            data = "HDCP-MOD 0,2,0"
+        }
+        avSocket.sendData(data.dataUsingEncoding(NSUTF8StringEncoding)!, toHost: avIP, port: AVPORT, withTimeout: 2, tag: 0)
+
     }
 }

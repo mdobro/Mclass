@@ -40,6 +40,10 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         negSpace.width = -15
         self.navigationItem.leftBarButtonItems?.insert(negSpace, atIndex: 0)
         
+            }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         //peertalk
         let channel:PTChannel! = PTChannel(delegate: self)
         let loopback:in_addr_t = 2130706433 //int representation of 127.0.0.1
