@@ -10,6 +10,7 @@
 		089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089D20341B0FB0CD00B0D613 /* CamView.swift */; };
 		9B7C7AA41B3B3AB100727B65 /* CAENView-Classrooms.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9B7C7AA31B3B3AB100727B65 /* CAENView-Classrooms.txt */; };
 		9B8CA9271B0FA1F200A6DD72 /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */; };
+		9BA2D72E1B681C4000EFA4B6 /* Streamreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2D72D1B681C4000EFA4B6 /* Streamreader.swift */; };
 		9BB4D79F1B2F43B100F3E00B /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4D79E1B2F43B100F3E00B /* PlayerController.swift */; };
 		9BB4D7A11B2F440D00F3E00B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4D7A01B2F440D00F3E00B /* Player.swift */; };
 		D96F78041B22297600699147 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E618A31B0FD2E7007AFECB /* Help.storyboard */; };
@@ -96,6 +97,7 @@
 		089D20341B0FB0CD00B0D613 /* CamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CamView.swift; sourceTree = "<group>"; };
 		9B7C7AA31B3B3AB100727B65 /* CAENView-Classrooms.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CAENView-Classrooms.txt"; sourceTree = "<group>"; };
 		9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
+		9BA2D72D1B681C4000EFA4B6 /* Streamreader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Streamreader.swift; sourceTree = "<group>"; };
 		9BB4D79E1B2F43B100F3E00B /* PlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
 		9BB4D7A01B2F440D00F3E00B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = SOURCE_ROOT; };
 		D96F78051B222BE500699147 /* CamView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CamView.storyboard; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				D9E898051B20D18800F421E2 /* objChelper.m */,
+				9BA2D72D1B681C4000EFA4B6 /* Streamreader.swift */,
 				D9E898071B20D1C100F421E2 /* objChelper.h */,
 				D9E618711B0F8914007AFECB /* AppDelegate.swift */,
 				9BB4D7A01B2F440D00F3E00B /* Player.swift */,
@@ -746,6 +749,7 @@
 				089D20351B0FB0CD00B0D613 /* CamView.swift in Sources */,
 				D9DEF81E1B43138800A81E36 /* objChelper.m in Sources */,
 				D9DEF8201B4313B100A81E36 /* PTProtocol.m in Sources */,
+				9BA2D72E1B681C4000EFA4B6 /* Streamreader.swift in Sources */,
 				D9DEF81F1B4313AD00A81E36 /* PTChannel.m in Sources */,
 				D9E618721B0F8914007AFECB /* AppDelegate.swift in Sources */,
 				D9E6189D1B0FCEB4007AFECB /* MainViewController.swift in Sources */,
