@@ -40,10 +40,12 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         negSpace.width = -15
         self.navigationItem.leftBarButtonItems?.insert(negSpace, atIndex: 0)
         
-            }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "appWillBecomeActive:", name: UIApplicationDidBecomeActiveNotification, object: nil)
+        appWillBecomeActive(nil)
+        
+    }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    func appWillBecomeActive(notification: NSNotification?) {
         //peertalk
         let channel:PTChannel! = PTChannel(delegate: self)
         let loopback:in_addr_t = 2130706433 //int representation of 127.0.0.1
