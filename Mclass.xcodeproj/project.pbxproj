@@ -13,6 +13,8 @@
 		9BA2D72E1B681C4000EFA4B6 /* Streamreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2D72D1B681C4000EFA4B6 /* Streamreader.swift */; };
 		9BB4D79F1B2F43B100F3E00B /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4D79E1B2F43B100F3E00B /* PlayerController.swift */; };
 		9BB4D7A11B2F440D00F3E00B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4D7A01B2F440D00F3E00B /* Player.swift */; };
+		D9243B171B680A7300D52C52 /* CAENClassroomIPList.txt in Resources */ = {isa = PBXBuildFile; fileRef = D9243B161B680A7300D52C52 /* CAENClassroomIPList.txt */; };
+		D9243B181B681E2F00D52C52 /* Streamreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2D72D1B681C4000EFA4B6 /* Streamreader.swift */; };
 		D96F78041B22297600699147 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E618A31B0FD2E7007AFECB /* Help.storyboard */; };
 		D96F78091B222C2200699147 /* CamView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96F78051B222BE500699147 /* CamView.storyboard */; };
 		D96F780C1B222C3000699147 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96F780A1B222C3000699147 /* Main.storyboard */; };
@@ -95,11 +97,12 @@
 
 /* Begin PBXFileReference section */
 		089D20341B0FB0CD00B0D613 /* CamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CamView.swift; sourceTree = "<group>"; };
-		9B7C7AA31B3B3AB100727B65 /* CAENView-Classrooms.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CAENView-Classrooms.txt"; sourceTree = "<group>"; };
+		9B7C7AA31B3B3AB100727B65 /* CAENView-Classrooms.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "CAENView-Classrooms.txt"; path = "Mclass/CAENView-Classrooms.txt"; sourceTree = "<group>"; };
 		9B8CA9261B0FA1F200A6DD72 /* HelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		9BA2D72D1B681C4000EFA4B6 /* Streamreader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Streamreader.swift; sourceTree = "<group>"; };
 		9BB4D79E1B2F43B100F3E00B /* PlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
 		9BB4D7A01B2F440D00F3E00B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = SOURCE_ROOT; };
+		D9243B161B680A7300D52C52 /* CAENClassroomIPList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CAENClassroomIPList.txt; sourceTree = SOURCE_ROOT; };
 		D96F78051B222BE500699147 /* CamView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CamView.storyboard; sourceTree = "<group>"; };
 		D96F780B1B222C3000699147 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Mclass/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D96F780E1B222C4200699147 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Mclass/Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 		D9E618631B0F8914007AFECB = {
 			isa = PBXGroup;
 			children = (
+				9B7C7AA31B3B3AB100727B65 /* CAENView-Classrooms.txt */,
+				D9243B161B680A7300D52C52 /* CAENClassroomIPList.txt */,
 				D9E6186E1B0F8914007AFECB /* Mclass */,
 				D9E618841B0F8914007AFECB /* MclassTests */,
 				D97C69431B28BB6500590068 /* Mac Helper */,
@@ -335,7 +340,6 @@
 				D9E618711B0F8914007AFECB /* AppDelegate.swift */,
 				9BB4D7A01B2F440D00F3E00B /* Player.swift */,
 				D9BAD0231B3B1C9900BAC859 /* background.jpg */,
-				9B7C7AA31B3B3AB100727B65 /* CAENView-Classrooms.txt */,
 				D9EC82CD1B179BDE00E64B68 /* Gear.png */,
 				D979CB6B1B16479F003C687A /* Bar.png */,
 				D9E618701B0F8914007AFECB /* Info.plist */,
@@ -645,6 +649,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9243B171B680A7300D52C52 /* CAENClassroomIPList.txt in Resources */,
 				D97C694B1B28BB6500590068 /* Images.xcassets in Resources */,
 				D97C694E1B28BB6500590068 /* Main.storyboard in Resources */,
 			);
@@ -719,6 +724,7 @@
 				D9FA03A91B45D56A00849E0C /* AsyncUdpSocket.m in Sources */,
 				D9FA03691B45D13B00849E0C /* PJRequestInfo.m in Sources */,
 				D9FA03881B45D53200849E0C /* AFHTTPClient.m in Sources */,
+				D9243B181B681E2F00D52C52 /* Streamreader.swift in Sources */,
 				D9FA03651B45D13B00849E0C /* PJLampStatus.m in Sources */,
 				D9FA035D1B45D13B00849E0C /* AFPJLinkRequestOperation.m in Sources */,
 				D97C69471B28BB6500590068 /* AppDelegate.swift in Sources */,

@@ -39,11 +39,11 @@
 
 @synthesize connectedDeviceID = connectedDeviceID_;
 
-- (IBAction)sendMessage:(NSString*)message {
+- (void)sendMessage:(id)message ofType:(int)type {
     
     if (connectedChannel_) {
         dispatch_data_t payload = DispatchDataWithString(message);
-        [connectedChannel_ sendFrameOfType:Problem tag:PTFrameNoTag withPayload:payload callback:^(NSError *error) {
+        [connectedChannel_ sendFrameOfType:type tag:PTFrameNoTag withPayload:payload callback:^(NSError *error) {
             if (error) {
                 NSLog(@"Failed to send message: %@", error);
             }
@@ -131,6 +131,7 @@
         && type != HDCP
         && type != ProblemRoom
         && type != SourceVolume
+        && type != ClassName
         && type != PTFrameTypeEndOfStream) {
         NSLog(@"Unexpected frame of type %u", type);
         [channel close];
@@ -170,6 +171,8 @@
         [_MainView recievedProblemRoom:[self unwrapFrame:payload channel:channel]];
     } else if (type == SourceVolume) {
         [_MainView recievedVolume:[self unwrapFrame:payload channel:channel]];
+    } else if (type == ClassName) {
+        [_MainView recievedClassName:[self unwrapFrame:payload channel:channel]];
     }
 }
 

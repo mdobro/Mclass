@@ -14,7 +14,7 @@ static const NSTimeInterval PTAppReconnectDelay = 1.0;
 @property ViewController* MainView;
 
 - (void)startInit:(ViewController*)view;
-- (IBAction)sendMessage:(id)sender;
+- (void)sendMessage:(id)sender ofType:(int)type;
 - (void)presentMessage:(NSString*)message isStatus:(BOOL)isStatus;
 - (void)startListeningForDevices;
 - (void)didDisconnectFromDevice:(NSNumber*)deviceID;

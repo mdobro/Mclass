@@ -18,7 +18,7 @@
     if (channel != peerChannel_) {
         // A previous channel that has been canceled but not yet ended. Ignore.
         return NO;
-    } else if (type < 100 || type > 106) {
+    } else if (type < 100 || type > 109) {
         NSLog(@"Unexpected frame of type %u", type);
         [channel close];
         return NO;
@@ -33,7 +33,7 @@
     
     //UNCOMMENT THIS TO ACCEPT FRAMES TO IPAD
     
-    if (type == Problem ) {
+    if (type == Problem || type == ClassName) {
         TextFrame *textFrame = (TextFrame*)payload.data;
         textFrame->length = ntohl(textFrame->length);
         NSString *message = [[NSString alloc] initWithBytes:textFrame->utf8text length:textFrame->length encoding:NSUTF8StringEncoding];

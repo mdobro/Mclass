@@ -31,6 +31,9 @@ extern NSString* const PJProjectorErrorKey;
 @property(nonatomic,assign,readonly)                           PJErrorStatus coverOpenErrorStatus;
 @property(nonatomic,assign,readonly)                           PJErrorStatus filterErrorStatus;
 @property(nonatomic,assign,readonly)                           PJErrorStatus otherErrorStatus;
+//error bool
+@property                                                      BOOL          PJProjectorHasErrors;
+
 @property(nonatomic,copy,readonly)                             NSArray*      lampStatus; // NSArray of PJLampStatus
 @property(nonatomic,copy,readonly)                             NSArray*      inputs;     // NSArray of PJInputInfo
 @property(nonatomic,assign,readonly)                           NSUInteger    activeInputIndex; // Which input is active

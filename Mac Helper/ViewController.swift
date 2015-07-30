@@ -9,20 +9,24 @@
 import Cocoa
 
 @objc class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
+    //classroomIP help
+    var CLASSROOMNAME:String?
+    var IPDictionary:[String: String]? = nil
     
+    //USB
     let USBHelper = USBhelper()
 
     //Audio DSP
     var dspSocket: GCDAsyncSocket!
     var MUTESTATUS: Bool = true
     let DSPPORT:UInt16 = 23
-    let DSPIP = "10.160.10.184"
+    let DSPIP = "*"
     
     //AV Controller
     var avSocket: GCDAsyncUdpSocket!
     var BLANKSTATUS = false
     let AVPORT:UInt16 = 50000
-    var avIP = "10.160.10.186"
+    var avIP = "*"
     let avDefaultInput = 2
     var inputDict:[String: Int]!
     
@@ -53,14 +57,24 @@ import Cocoa
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "cellWasEdited:", name: NSControlTextDidEndEditingNotification, object: nil)
         
         NSURLProtocol.registerClass(PJURLProtocolRunLoop)
+        
         Statuses = ["Not Connected", "", "", "", "", "", "", "",
             ""/* 8 */, "", "", "", "", "", "", "", "",
             ""/* 17*/, "", "", "", "", "", "", "", ""/*end filler line*/]
+        
+        USBHelper.startInit(self)
+        
+        //uncomment to erase stored room value
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("currentRoom")    }
+    
+    func setupIPs() {
+        self.USBHelper.sendMessage(CLASSROOMNAME, ofType: CInt(ClassName))
         
         //delete after testing
         Statuses[8] = "10.160.10.185"
         Statuses[17] = "10.160.10.242"
         //
+        
         PROJ1 = PJProjector(host: Statuses[8], port: PJLINKPORT)
         PROJ2 = PJProjector(host: Statuses[17], port: PJLINKPORT)
         self.subToNotifications()
@@ -70,9 +84,6 @@ import Cocoa
         //set dicts up to be based off manufactuer name
         inputDict = ["Laptop" : 2, "Document Camera" : 3, "Apple TV" : 1, "Blank Screen" : -1] //hdmi inputs start at 0
         NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "refreshProjStatus", userInfo: nil, repeats: true)
-        
-        
-        USBHelper.startInit(self)
         
         //socket connection to AUDIO DSP
         do {
@@ -89,8 +100,41 @@ import Cocoa
         
         //socket AVController
         avSocket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-
+        
         changeAVInput(avDefaultInput)
+    }
+    
+    func findRoomIPs(name:String) -> [String:String]? {
+        if let classListPath =  NSBundle.mainBundle().pathForResource("CAENClassroomIPList", ofType: "txt") {
+            let reader = StreamReader(path: classListPath)
+            while let line = reader?.nextLine() {
+                if Array(arrayLiteral: line)[0] == "#" {
+                    continue
+                } else if line == name {
+                    var list:[String] = []
+                    while let ips = reader?.nextLine() {
+                        if ips == "#" {
+                            break
+                        } else if Array(arrayLiteral: ips)[0] == "*" {
+                            list.append("*")
+                        } else {
+                            list.append(ips)
+                        }
+                    } // while
+                    
+                    //now make array into dictionary
+                    var dictionary = ["AV" : list[0], "Audio" : list[1]]
+                    for i in 2..<list.count {
+                        let proj = "Projector\(i)"
+                        dictionary[proj] = list[i]
+                    }
+                    return dictionary
+                } // else if
+            } // while
+        } else {
+            print("Classroom file not found!")
+        }
+        return nil
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
@@ -106,27 +150,9 @@ import Cocoa
         else if tableColumn?.identifier == "Statuses"{
             let cell = tableView.makeViewWithIdentifier("Statuses", owner: self) as! NSTableCellView
             cell.textField?.stringValue = Statuses[row]
-            if row == 8 || row == 17 {
-                cell.textField!.editable = true
-            }
             return cell
         }
         return nil
-    }
-    
-    func cellWasEdited(notification: NSNotification) {
-        let p1CellString = (table.viewAtColumn(1, row: 8, makeIfNecessary: false) as! NSTableCellView).textField!.stringValue
-        let p2CellString = (table.viewAtColumn(1, row: 17, makeIfNecessary: false) as! NSTableCellView).textField!.stringValue
-
-        
-        if p1CellString != Statuses[8] {
-            Statuses[8] = p1CellString
-            PROJ1 = PJProjector(host: p1CellString)
-            
-        } else if p2CellString != Statuses[17] {
-            Statuses[17] = p2CellString
-            PROJ2 = PJProjector(host: p2CellString)
-        }
     }
     
     //Socket check
@@ -141,6 +167,15 @@ import Cocoa
     @objc func connected(connectionOn:Bool){
         if connectionOn {
             Statuses[0] = "Connected"
+            
+            //gathers necessary IP addresses
+            let defaults = NSUserDefaults.standardUserDefaults()
+            if let name = defaults.stringForKey("currentRoom") {
+                self.CLASSROOMNAME = name
+                self.setupIPs()
+            } else {
+                self.USBHelper.sendMessage("request", ofType: CInt(ClassName))
+            }
         }
         else {
             let projStatus = Statuses[8..<(Statuses.count)]
@@ -216,6 +251,21 @@ import Cocoa
         dspSocket.readDataWithTimeout(-1.0, tag: 0)
         table.reloadData()
         
+    }
+    
+    @objc func recievedClassName(name:String) {
+        IPDictionary = findRoomIPs(name)
+        if IPDictionary == nil {
+            //ask proj for another name if we get a nil dictionary
+            print("Room name not found in list!")
+            self.USBHelper.sendMessage("request", ofType: CInt(ClassName))
+        } else {
+            //write this class name
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(name, forKey: "currentRoom")
+            self.CLASSROOMNAME = name
+            self.setupIPs()
+        }
     }
     
     //Proj Send/Recieve
@@ -320,9 +370,13 @@ import Cocoa
             }
         }
         if !hasError {
-            USBHelper.sendMessage("errorsClear")
+            if proj.PJProjectorHasErrors {
+                self.USBHelper.sendMessage("errorsClear", ofType: CInt(Problem))
+                proj.PJProjectorHasErrors = false
+            }
         } else {
-            USBHelper.sendMessage(errorsToSend)
+            self.USBHelper.sendMessage(errorsToSend, ofType: CInt(Problem))
+            proj.PJProjectorHasErrors = true
         }
         table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(index...(index + 6))), columnIndexes: NSIndexSet(index: 1))
         

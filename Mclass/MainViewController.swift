@@ -9,6 +9,8 @@
 import UIKit
 
 class MainViewController: UIViewController, PTChannelDelegate, SettingsViewControllerDelegate, SubMainDelegate, MainTableViewDelegate, HelpTableDelegate {
+    var CLASSNAME:String!
+    var tableViewController:MainTableViewController!
     
     weak var serverChannel_:PTChannel!
     weak var peerChannel_:PTChannel!
@@ -88,6 +90,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         else if segue.identifier == "mainTableLoad" {
             let dest = segue.destinationViewController as! MainTableViewController
             dest.delegate = self
+            tableViewController = dest
             dest.view.alpha = 0.75 // set entire view's alpha because we want the cells and all to be opaque
 
         }
@@ -119,6 +122,19 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
             self.presentViewController(alert, animated: true, completion: nil)
         }
 
+    }
+    
+    func promptUserForClassRoomName() {
+        let alert = UIAlertController(title: "Please enter a classroom name", message: "This should be entered by CAEN staff only!\nFor help please contact CAEN:\n\nPhone: (734)-764-CAEN\nEmail: caen@umich.edu", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addTextFieldWithConfigurationHandler({ (textField) in
+            textField.text = "For use by CAEN staff only!"
+        })
+        alert.addAction(UIAlertAction(title: "Enter", style: .Default, handler: { _ in
+            //when enter is pressed the textField is sent to mac to try to find room ips
+            let textField = alert.textFields![0] as UITextField
+            self.sendMessage(textField.text!.uppercaseString, type: UInt32(ClassName))
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
 //HelpTableDelegate
@@ -236,7 +252,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         if (channel != peerChannel_) {
             // A previous channel that has been canceled but not yet ended. Ignore.
             return false
-        } else if (type != 101) {
+        } else if (type != 101 && type != UInt32(ClassName)) {
             if(type != 102) {
                 NSLog("Unexpected frame of type %u", type);
                 channel.close()
@@ -248,12 +264,20 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     
     //iPad recieves a message from Mac
     func ioFrameChannel(channel: PTChannel!, didReceiveFrameOfType type: UInt32, tag: UInt32, payload: PTData!) {
-        //println("Recieved frame of type", type, "with tag", tag, "with payload", payload)
+        //print("Recieved frame of \(type)", true)
         if type == 101 {
-            let help:objChelper = objChelper()
-            let message = help.helpioFrameChannel(channel, didReceiveFrameOfType: type, tag: tag, payload: payload, peerChannel: peerChannel_)
+            let message = objChelper().helpioFrameChannel(channel, didReceiveFrameOfType: type, tag: tag, payload: payload, peerChannel: peerChannel_)
             print("iPad recieved projector error message: \(message)", true)
             lockScreen(message)
+        } else if type == 109 {
+            let message = objChelper().helpioFrameChannel(channel, didReceiveFrameOfType: type, tag: tag, payload: payload, peerChannel: peerChannel_)
+            if message == "request" {
+                print("iPad recieved request for classroom name")
+                promptUserForClassRoomName()
+            } else {
+                tableViewController.tableSetup(message)
+                macRequestedStatus()
+            }
         }
     }
     
@@ -278,9 +302,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         peerChannel_.userInfo = address;
         print("Connected to ")
         print(address, true)
-        // Send some information about ourselves to the other end
         sendDeviceInfo()
-        macRequestedStatus()
         lockScreen("dismiss")
     }
 }

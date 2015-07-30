@@ -35,6 +35,19 @@ class MainTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        selectedMode = ["OFF", "OFF", "OFF", "OFF"]
+        selectedModeIndex = [4, 4, 4, 4]
+
+        delegate.projDidChange(1, source: "OFF")
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func tableSetup(name:String) {
         var projectors: String = "0"
         
         /* FILE INPUT STUFF */
@@ -53,17 +66,13 @@ class MainTableViewController: UITableViewController {
             aStreamReader.close()
         }
         
-        
-        selectedMode = ["OFF", "OFF", "OFF", "OFF"]
-        selectedModeIndex = [4, 4, 4, 4]
-        
-        let name = "BEYSTER1670"
         for var i = 0; i < rooms!.count; i++ {
             if rooms?[i] == name {
                 projectors = projs![i]
+                break
             }
         }
-
+        
         if projectors == "2" {
             let items = ["Projector 1", "Projector 2"]
             customSC = UISegmentedControl(items: items)
@@ -80,7 +89,6 @@ class MainTableViewController: UITableViewController {
             delegate.projDidChange(2, source: "OFF")
             
             self.view.addSubview(customSC!)
-            
         }
         
         if projectors == "3" {
@@ -120,16 +128,6 @@ class MainTableViewController: UITableViewController {
             self.view.addSubview(customSC!)
             
         }
-        
-        delegate.projDidChange(1, source: "OFF")
-        
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     @IBAction func didselectsegment (sender: UISegmentedControl ) {

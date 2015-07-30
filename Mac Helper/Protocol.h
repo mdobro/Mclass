@@ -12,7 +12,7 @@
 static const int PTProtocolIPv4PortNumber = 2345;
 
 enum {
-    DeviceInfo = 100, Problem = 101, Ping = 102, Pong = 103, Projector1 = 104, Projector2 = 105, HDCP = 106, ProblemRoom = 107, SourceVolume = 108
+    DeviceInfo = 100, Problem = 101, Ping = 102, Pong = 103, Projector1 = 104, Projector2 = 105, HDCP = 106, ProblemRoom = 107, SourceVolume = 108, ClassName = 109
 };
 
 typedef struct _TextFrame {

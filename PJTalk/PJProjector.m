@@ -103,6 +103,7 @@ NSString* const kPJProjectorArchiveKeyPassword               = @"PJProjectorPass
         self.mutableManufacturerName = [NSMutableString string];
         self.mutableProductName      = [NSMutableString string];
         self.mutableOtherInformation = [NSMutableString string];
+        self.PJProjectorHasErrors    = false;
         // Decode members
         self.powerStatus            = [aDecoder decodeIntegerForKey:kPJProjectorArchiveKeyPowerStatus];
         self.audioMuted             = [aDecoder decodeBoolForKey:kPJProjectorArchiveKeyAudioMuted];
