@@ -409,7 +409,6 @@ import Cocoa
             NSNotificationCenter.defaultCenter().postNotificationName(PJProjectorDidChangeNotification, object: proj)
             proj.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
         }
-
     }
     
     func projConnectionChange(notification:NSNotification) {
