@@ -33,17 +33,13 @@ import Cocoa
     //PJLink
     var PROJ1:PJProjector!
     var PROJ2:PJProjector!
+    var PROJ3:PJProjector!
+    var PROJ4:PJProjector!
     let PJLINKPORT = 4352
     let projDefaultInput:UInt = 0
     var equivalentQueue = false;
     
-    let buttons = ["iPad Connection Status", "Projector 1 Source on iPad", "Projector 2 Source on iPad", "HDCP Status on iPad", "Problem Status on iPad", "Problem Message on iPad", "Source Volume on iPad", "",
-        //Proj1 IP at Statuses[8]
-        "Projector 1 IP (click to edit)", "Projector 1 Connection Status", "Projector 1 Name", "Projector 1 Manufacturer", "Projector 1 Product", "Projector 1 Power", "Projector 1 Input", "ERRORS [fan, lamp, temp, cover, filter, other]", "",
-        //Proj2 IP at Statuses[17]
-        "Projector 2 IP (click to edit)", "Projector 2 Connection Status", "Projector 2 Name", "Projector 2 Manufacturer", "Projector 2 Product", "Projector 2 Power", "Projector 2 Input", "ERRORS [fan, lamp, temp, cover, filter, other]",
-        //end filler at Statuses[25]
-        "" /*end filler line*/]
+    var buttons = ["iPad Connection Status", "Projector 1 Source on iPad", "Projector 2 Source on iPad", "Projector 3 Source on iPad", "Projector 4 Source on Ipad", "HDCP Status on iPad", "Problem Status on iPad", "Problem Message on iPad", "Source Volume on iPad", ""]
     var Statuses:[String]!
     
     
@@ -59,27 +55,88 @@ import Cocoa
         NSURLProtocol.registerClass(PJURLProtocolRunLoop)
         
         Statuses = ["Not Connected", "", "", "", "", "", "", "",
-            ""/* 8 */, "", "", "", "", "", "", "", "",
-            ""/* 17*/, "", "", "", "", "", "", "", ""/*end filler line*/]
+            ""/* 10 */, "", "", "", "", "", "", "", "",
+            ""/* 19 */, "", "", "", "", "", "", "", "",
+            ""/* 28 */, "", "", "", "", "", "", "", "",
+            ""/* 37 */, "", "", "", "", "", "", "", ""/*end filler line*/]
         
         USBHelper.startInit(self)
         
         //uncomment to erase stored room value
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("currentRoom")    }
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("currentRoom")
+    }
     
     func setupIPs() {
         self.USBHelper.sendMessage(CLASSROOMNAME, ofType: CInt(ClassName))
         
-        //delete after testing
-        Statuses[8] = "10.160.10.185"
-        Statuses[17] = "10.160.10.242"
-        //
+        if (IPDictionary!.count - 2) == 1 {
+            
+            //delete after testing
+            Statuses[10] = IPDictionary!["Projector1"]!
+            
+            PROJ1 = PJProjector(host: Statuses[10], port: PJLINKPORT)
+            self.subToNotifications()
+            PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+            
+        }
         
-        PROJ1 = PJProjector(host: Statuses[8], port: PJLINKPORT)
-        PROJ2 = PJProjector(host: Statuses[17], port: PJLINKPORT)
-        self.subToNotifications()
-        PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
-        PROJ2.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+        else if (IPDictionary!.count - 2) == 2 {
+        
+            //delete after testing
+            Statuses[10] = IPDictionary!["Projector1"]!
+            Statuses[19] = IPDictionary!["Projector2"]!
+            //
+        
+            PROJ1 = PJProjector(host: Statuses[10], port: PJLINKPORT)
+            PROJ2 = PJProjector(host: Statuses[19], port: PJLINKPORT)
+            self.subToNotifications()
+            PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+            PROJ2.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+            
+        }
+        
+        else if (IPDictionary!.count - 2) == 3 {
+            
+            //delete after testing
+            Statuses[10] = IPDictionary!["Projector1"]!
+            Statuses[19] = IPDictionary!["Projector2"]!
+            Statuses[28] = IPDictionary!["Projector3"]!
+            //
+            
+            PROJ1 = PJProjector(host: Statuses[10], port: PJLINKPORT)
+            PROJ2 = PJProjector(host: Statuses[19], port: PJLINKPORT)
+            PROJ3 = PJProjector(host: Statuses[28], port: PJLINKPORT)
+            self.subToNotifications()
+            PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+            PROJ2.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+            PROJ3.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+            
+        }
+        
+        else {
+            
+            //delete after testing
+            Statuses[10] = IPDictionary!["Projector1"]!
+            Statuses[19] = IPDictionary!["Projector2"]!
+            Statuses[28] = IPDictionary!["Projector3"]!
+            Statuses[37] = IPDictionary!["Projector4"]!
+            //
+            
+            PROJ1 = PJProjector(host: Statuses[10], port: PJLINKPORT)
+            PROJ2 = PJProjector(host: Statuses[19], port: PJLINKPORT)
+            PROJ3 = PJProjector(host: Statuses[28], port: PJLINKPORT)
+            PROJ4 = PJProjector(host: Statuses[37], port: PJLINKPORT)
+            self.subToNotifications()
+            PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+            PROJ2.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+            PROJ3.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+            PROJ4.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+            
+        }
+        
+        for i in 1..<IPDictionary!.count-2 {
+            buttons += ["Projector \(i) IP (click to edit)", "Projector \(i) Connection Status", "Projector \(i) Name", "Projector \(i) Manufacturer", "Projector \(i) Product", "Projector \(i) Power", "Projector \(i) Input", "ERRORS [fan, lamp, temp, cover, filter, other]", ""]
+        }
         
         //set dicts up to be based off manufactuer name
         inputDict = ["Laptop" : 2, "Document Camera" : 3, "Apple TV" : 1, "Blank Screen" : -1] //hdmi inputs start at 0
@@ -125,7 +182,7 @@ import Cocoa
                     //now make array into dictionary
                     var dictionary = ["AV" : list[0], "Audio" : list[1]]
                     for i in 2..<list.count {
-                        let proj = "Projector\(i)"
+                        let proj = "Projector\((i - 1))"
                         dictionary[proj] = list[i]
                     }
                     return dictionary
