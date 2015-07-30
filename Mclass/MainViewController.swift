@@ -212,7 +212,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     //this will be called when mac app starts to correctly populate table
     func macRequestedStatus() {
         sendMessage(proj1source, type: UInt32(Projector1))
-        sendMessage(proj2source, type: UInt32(Projector2))
+        //sendMessage(proj2source, type: UInt32(Projector2))
         sendMessage(nowOrLater, type: UInt32(ProblemRoom))
         sendMessage(helpMessage, type: UInt32(Problem))
         sendMessage(sourceVol, type: UInt32(SourceVolume))
