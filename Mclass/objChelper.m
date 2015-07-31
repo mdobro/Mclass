@@ -18,7 +18,7 @@
     if (channel != peerChannel_) {
         // A previous channel that has been canceled but not yet ended. Ignore.
         return NO;
-    } else if (type < 100 || type > 109) {
+    } else if (type < 100 || type > 111) {
         NSLog(@"Unexpected frame of type %u", type);
         [channel close];
         return NO;

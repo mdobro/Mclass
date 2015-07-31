@@ -22,7 +22,9 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     var SettingsHDCPon = false
     var camViewSettings:(paused:Bool!, timeElapsed: Int!, timeRemaining: Int!) = (false,0,0)
     var proj1source:String! = "Something went wrong"
-    var proj2source:String! = ""
+    var proj2source:String?
+    var proj3source:String?
+    var proj4source:String?
     var helpMessage:String! = ""
     var nowOrLater:String! = ""
     var sourceVol:String! = "0.0"
@@ -168,6 +170,20 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
             }
             self.proj2source = source
         }
+        if projector == 3 {
+            if peerChannel_ != nil {
+                //need to create proj 3 tag
+                sendMessage(source, type: UInt32(Projector3))
+            }
+            self.proj3source = source
+        }
+        if projector == 4 {
+            if peerChannel_ != nil {
+                //need to create proj 4 tag
+                sendMessage(source, type: UInt32(Projector4))
+            }
+            self.proj4source = source
+        }
     }
     
 //SubMainDelegate functions
@@ -212,7 +228,15 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     //this will be called when mac app starts to correctly populate table
     func macRequestedStatus() {
         sendMessage(proj1source, type: UInt32(Projector1))
-        //sendMessage(proj2source, type: UInt32(Projector2))
+        if proj2source != nil {
+            sendMessage(proj2source, type: UInt32(Projector2))
+        }
+        if proj3source != nil {
+            sendMessage(proj3source, type: UInt32(Projector3))
+        }
+        if proj4source != nil {
+            sendMessage(proj4source, type: UInt32(Projector4))
+        }
         sendMessage(nowOrLater, type: UInt32(ProblemRoom))
         sendMessage(helpMessage, type: UInt32(Problem))
         sendMessage(sourceVol, type: UInt32(SourceVolume))
