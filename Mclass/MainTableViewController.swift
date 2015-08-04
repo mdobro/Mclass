@@ -73,7 +73,7 @@ class MainTableViewController: UITableViewController {
             }
         }
         
-        delegate.projDidChange(1, source: "OFF") //there is always at least 1 projector
+        delegate.projDidChange(1, source: (selectedMode?[0])!) //there is always at least 1 projector
         
         if projectors == "2" {
             let items = ["Projector 1", "Projector 2"]
@@ -88,7 +88,7 @@ class MainTableViewController: UITableViewController {
             
             customSC?.addTarget(self, action: "didselectsegment:", forControlEvents: .ValueChanged)
             
-            delegate.projDidChange(2, source: "OFF")
+            delegate.projDidChange(2, source: (selectedMode?[1])!)
             
             self.view.addSubview(customSC!)
         }
@@ -106,8 +106,8 @@ class MainTableViewController: UITableViewController {
             
             customSC?.addTarget(self, action: "didselectsegment:", forControlEvents: .ValueChanged)
             
-            delegate.projDidChange(2, source: "OFF")
-            delegate.projDidChange(3, source: "OFF")
+            delegate.projDidChange(2, source: (selectedMode?[1])!)
+            delegate.projDidChange(3, source: (selectedMode?[2])!)
 
             
             self.view.addSubview(customSC!)
@@ -127,9 +127,9 @@ class MainTableViewController: UITableViewController {
             
             customSC?.addTarget(self, action: "didselectsegment:", forControlEvents: .ValueChanged)
             
-            delegate.projDidChange(2, source: "OFF")
-            delegate.projDidChange(3, source: "OFF")
-            delegate.projDidChange(4, source: "OFF")
+            delegate.projDidChange(2, source: (selectedMode?[1])!)
+            delegate.projDidChange(3, source: (selectedMode?[2])!)
+            delegate.projDidChange(4, source: (selectedMode?[3])!)
             
             self.view.addSubview(customSC!)
             

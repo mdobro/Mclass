@@ -36,8 +36,8 @@ import Cocoa
     var PROJ3:PJProjector!
     var PROJ4:PJProjector!
     let PJLINKPORT = 4352
-    let projDefaultInput:UInt = 0
-    var equivalentQueue = false;
+    let projDefaultInput:UInt = 4
+    //Epson inputs from 0 up: computer, bnc, video, svideo, hdmi, displayport, lan, hdbaseT
     
     var buttons = ["iPad Connection Status", "Projector 1 Source on iPad", "Projector 2 Source on iPad", "Projector 3 Source on iPad", "Projector 4 Source on iPad", "HDCP Status on iPad", "Problem Status on iPad", "Problem Message on iPad", "Source Volume on iPad", ""]
     var Statuses:[String]!
@@ -63,7 +63,7 @@ import Cocoa
         USBHelper.startInit(self)
         
         //uncomment to erase stored room value
-        NSUserDefaults.standardUserDefaults().removeObjectForKey("currentRoom")
+        //NSUserDefaults.standardUserDefaults().removeObjectForKey("currentRoom")
     }
     
     func setupIPs() {
@@ -160,7 +160,9 @@ import Cocoa
         //socket AVController
         avSocket = GCDAsyncUdpSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
         avIP = IPDictionary!["AV"]!
-        changeAVInput(avDefaultInput)
+        changeAVInput(avDefaultInput, output: 1)
+        changeAVInput(avDefaultInput, output: 2)
+        //need to add 3 & 4
     }
     
     func findRoomIPs(name:String) -> [String:String]? {
@@ -251,44 +253,37 @@ import Cocoa
     
     @objc func recievedP1source(source:String){
         Statuses[1] = source
-        if PROJ1.powerStatus != PJPowerStatus.PJPowerStatusLampOn {
-            equivalentQueue = true
-        }
         if (source == "OFF") {
             PROJ1.requestPowerStateChange(false)
         }
         else {
             PROJ1.requestPowerStateChange(true)
-            //PROJ1.requestInputChangeToInputIndex(UInt(inputDict[source]!))
-            changeAVInput(inputDict[source]!)
+            PROJ1.requestInputChangeToInputIndex(projDefaultInput)
+            changeAVInput(inputDict[source]!, output: 1)
         }
         table.reloadDataForRowIndexes(NSIndexSet(index: 1), columnIndexes: NSIndexSet(index: 1))
     }
     
     @objc func recievedP2source(source:String){
         Statuses[2] = source
-        if PROJ2.powerStatus != PJPowerStatus.PJPowerStatusLampOn {
-            equivalentQueue = true
-        }
         if (source == "OFF") {
             PROJ2.requestPowerStateChange(false)
         }
         else {
             PROJ2.requestPowerStateChange(true)
-            //change AV input on proj 2 somehow
+            PROJ2.requestInputChangeToInputIndex(projDefaultInput)
+            changeAVInput(inputDict[source]!, output: 2)
         }
         table.reloadDataForRowIndexes(NSIndexSet(index: 2), columnIndexes: NSIndexSet(index: 1))
     }
     
     @objc func recievedP3source(source:String) {
         Statuses[3] = source
-        if PROJ3.powerStatus != PJPowerStatus.PJPowerStatusLampOn {
-            equivalentQueue = true
-        }
         if (source == "OFF") {
             PROJ3.requestPowerStateChange(false)
         }
         else {
+            PROJ3.requestInputChangeToInputIndex(projDefaultInput)
             PROJ3.requestPowerStateChange(true)
             //change AV input on proj 3 somehow
         }
@@ -297,13 +292,11 @@ import Cocoa
     
     @objc func recievedP4source(source:String) {
         Statuses[4] = source
-        if PROJ4.powerStatus != PJPowerStatus.PJPowerStatusLampOn {
-            equivalentQueue = true
-        }
         if (source == "OFF") {
             PROJ4.requestPowerStateChange(false)
         }
         else {
+            PROJ4.requestInputChangeToInputIndex(projDefaultInput)
             PROJ4.requestPowerStateChange(true)
             //change AV input on proj 4 somehow
         }
@@ -312,7 +305,11 @@ import Cocoa
     
     @objc func recievedHDCPchange(switchOn:String){
         Statuses[5] = switchOn
-        
+        if switchOn == "ON" {
+            changeAVHDCP(true)
+        } else {
+            changeAVHDCP(false)
+        }
         table.reloadData()
     }
     
@@ -359,57 +356,6 @@ import Cocoa
             self.CLASSROOMNAME = name
             self.setupIPs()
         }
-    }
-    
-    //Proj Send/Recieve
-    func makeEquivalent() {
-        equivalentQueue = false
-        if PROJ1 != nil {
-            //if input is not off for proj 1...
-            if let _ = inputDict[Statuses[1]] {
-                PROJ1.requestPowerStateChange(true)
-                PROJ1.requestInputChangeToInputIndex(projDefaultInput)
-                equivalentQueue = true
-            } else {
-                PROJ1.requestPowerStateChange(false)
-                //this hasnt failed on first run yet, setting equivalent to true may cause problems here
-            }
-        }
-        
-        if PROJ2 != nil {
-            //if input is not off for proj 2...
-            if let _ = inputDict[Statuses[2]] {
-                PROJ2.requestPowerStateChange(true)
-                PROJ2.requestInputChangeToInputIndex(projDefaultInput)
-                //not really sure how to change av input # 2 with this. need to experiment
-                equivalentQueue = true
-            } else {
-                PROJ2.requestPowerStateChange(false)
-            }
-        }
-        
-        if PROJ3 != nil {
-            //if input is not off for proj 3...
-            if let _ = inputDict[Statuses[3]] {
-                PROJ3.requestPowerStateChange(true)
-                PROJ3.requestInputChangeToInputIndex(projDefaultInput)
-                equivalentQueue = true
-            } else {
-                PROJ3.requestPowerStateChange(false)
-            }
-        }
-        
-        if PROJ4 != nil {
-            //if input is not off for proj 4...
-            if let _ = inputDict[Statuses[4]] {
-                PROJ4.requestPowerStateChange(true)
-                PROJ4.requestInputChangeToInputIndex(projDefaultInput)
-                equivalentQueue = true
-            } else {
-                PROJ4.requestPowerStateChange(false)
-            }
-        }
-        
     }
     
     func subToNotifications() {
@@ -490,14 +436,18 @@ import Cocoa
             self.USBHelper.sendMessage(errorsToSend, ofType: CInt(Problem))
             proj.PJProjectorHasErrors = true
         }
-        table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(index...(index + 6))), columnIndexes: NSIndexSet(index: 1))
+        table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(index...(index + 5))), columnIndexes: NSIndexSet(index: 1))
         
-        if equivalentQueue {
-            makeEquivalent()
+        if let _ = inputDict[Statuses[2]] {
+            proj.requestPowerStateChange(true)
+            if proj.activeInputIndex != projDefaultInput {
+                proj.requestInputChangeToInputIndex(projDefaultInput)
+            }
+        } else {
+            proj.requestPowerStateChange(false)
         }
-   
     }
-    
+
     func projDidChange(notification:NSNotification) {
         //reload tabledata that deals with button status etc
         let currentProj = notification.object as! PJProjector
@@ -544,7 +494,7 @@ import Cocoa
     
     //AV CONTROLLER
     
-    func changeAVInput(input:Int) {
+    func changeAVInput(input:Int, output:Int) {
         let data:String!
         if input != -1 {
             //change input
@@ -554,24 +504,30 @@ import Cocoa
                 let subdata = "#VMUTE 1,0\r"
                 avSocket.sendData(subdata.dataUsingEncoding(NSUTF8StringEncoding)!, toHost: avIP, port: AVPORT, withTimeout: 2, tag: 0)
             }
-            data = "#ROUTE 12,1,\(input)\r"
+            if output <= 2 {
+                data = "#ROUTE 12,\(output),\(input)\r"
+            } else {
+                print("need to add support for more than 2 projectors output")
+                data = "nonsense"
+                //i think we will use 2 av switches. will need to add code to support 2nd if need be.
+            }
             
         } else {
             //blank screen
             data = "#VMUTE 1,1\r"
             BLANKSTATUS = true
         }
-        avSocket.sendData(data.dataUsingEncoding(NSUTF8StringEncoding)!, toHost: avIP, port: AVPORT, withTimeout: 2, tag: 0)
+        avSocket.sendData(data!.dataUsingEncoding(NSUTF8StringEncoding)!, toHost: avIP, port: AVPORT, withTimeout: 2, tag: 0)
     }
     
     func changeAVHDCP(action:Bool) {
         var data:String!
         if action {
             //turns HDCP ON
-            data = "HDCP-MOD 0,2,1" //only turns on laptop input
+            data = "#HDCP-MOD 0,2,1\r" //only turns on laptop input
         } else {
             //turns HDCP OFF
-            data = "HDCP-MOD 0,2,0"
+            data = "#HDCP-MOD 0,2,0\r"
         }
         avSocket.sendData(data.dataUsingEncoding(NSUTF8StringEncoding)!, toHost: avIP, port: AVPORT, withTimeout: 2, tag: 0)
 

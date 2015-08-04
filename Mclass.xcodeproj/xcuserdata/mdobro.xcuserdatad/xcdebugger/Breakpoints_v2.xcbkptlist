@@ -60,11 +60,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mac Helper/ViewController.swift"
-            timestampString = "460398100.620732"
+            timestampString = "460405820.316682"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "455"
-            endingLineNumber = "455"
+            startingLineNumber = "401"
+            endingLineNumber = "401"
             landmarkName = "ViewController"
             landmarkType = "3">
          </BreakpointContent>
