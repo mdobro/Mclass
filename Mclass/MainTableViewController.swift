@@ -10,7 +10,9 @@ import UIKit
 
 protocol MainTableViewDelegate {
     var proj1source:String! {get}
-    var proj2source:String! {get}
+    var proj2source:String? {get}
+    var proj3source:String? {get}
+    var proj4source:String? {get}
     func projDidChange(projector: Int, source:String)
 }
 
@@ -37,8 +39,6 @@ class MainTableViewController: UITableViewController {
         
         selectedMode = ["OFF", "OFF", "OFF", "OFF"]
         selectedModeIndex = [4, 4, 4, 4]
-
-        delegate.projDidChange(1, source: "OFF")
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -47,7 +47,7 @@ class MainTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    func tableSetup(name:String) {
+    func tableSetup(name:String) -> Int {
         var projectors: String = "0"
         
         /* FILE INPUT STUFF */
@@ -72,6 +72,8 @@ class MainTableViewController: UITableViewController {
                 break
             }
         }
+        
+        delegate.projDidChange(1, source: "OFF") //there is always at least 1 projector
         
         if projectors == "2" {
             let items = ["Projector 1", "Projector 2"]
@@ -105,6 +107,8 @@ class MainTableViewController: UITableViewController {
             customSC?.addTarget(self, action: "didselectsegment:", forControlEvents: .ValueChanged)
             
             delegate.projDidChange(2, source: "OFF")
+            delegate.projDidChange(3, source: "OFF")
+
             
             self.view.addSubview(customSC!)
             
@@ -124,10 +128,13 @@ class MainTableViewController: UITableViewController {
             customSC?.addTarget(self, action: "didselectsegment:", forControlEvents: .ValueChanged)
             
             delegate.projDidChange(2, source: "OFF")
+            delegate.projDidChange(3, source: "OFF")
+            delegate.projDidChange(4, source: "OFF")
             
             self.view.addSubview(customSC!)
             
         }
+        return Int(projectors)!
     }
     
     @IBAction func didselectsegment (sender: UISegmentedControl ) {

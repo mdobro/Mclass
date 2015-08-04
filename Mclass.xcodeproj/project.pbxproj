@@ -335,8 +335,8 @@
 			isa = PBXGroup;
 			children = (
 				D9E898051B20D18800F421E2 /* objChelper.m */,
-				9BA2D72D1B681C4000EFA4B6 /* Streamreader.swift */,
 				D9E898071B20D1C100F421E2 /* objChelper.h */,
+				9BA2D72D1B681C4000EFA4B6 /* Streamreader.swift */,
 				D9E618711B0F8914007AFECB /* AppDelegate.swift */,
 				9BB4D7A01B2F440D00F3E00B /* Player.swift */,
 				D9BAD0231B3B1C9900BAC859 /* background.jpg */,

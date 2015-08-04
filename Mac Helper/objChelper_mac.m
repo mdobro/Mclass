@@ -128,6 +128,8 @@
         && type != Pong
         && type != Projector1
         && type != Projector2
+        && type != Projector3
+        && type != Projector4
         && type != HDCP
         && type != ProblemRoom
         && type != SourceVolume
@@ -165,6 +167,10 @@
         [_MainView recievedP1source:[self unwrapFrame:payload channel:channel]];
     } else if (type == Projector2) {
         [_MainView recievedP2source:[self unwrapFrame:payload channel:channel]];
+    } else if (type == Projector3) {
+        [_MainView recievedP3source:[self unwrapFrame:payload channel:channel]];
+    } else if (type == Projector4) {
+        [_MainView recievedP4source:[self unwrapFrame:payload channel:channel]];
     } else if (type == HDCP) {
         [_MainView recievedHDCPchange:[self unwrapFrame:payload channel:channel]];
     } else if (type == ProblemRoom) {
