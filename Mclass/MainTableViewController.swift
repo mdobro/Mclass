@@ -141,15 +141,23 @@ class MainTableViewController: UITableViewController {
         switch customSC!.selectedSegmentIndex
         {
         case 0:
+            customSC!.selectedSegmentIndex = -1
+            customSC!.selectedSegmentIndex = 0
             selectedProj = 0
             self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedModeIndex![selectedProj] as Int, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.Bottom)
         case 1:
+            customSC!.selectedSegmentIndex = -1
+            customSC!.selectedSegmentIndex = 1
             selectedProj = 1
             self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedModeIndex![selectedProj] as Int, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.Bottom)
         case 2:
+            customSC!.selectedSegmentIndex = -1
+            customSC!.selectedSegmentIndex = 2
             selectedProj = 2
             self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedModeIndex![selectedProj] as Int, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.Bottom)
         case 3:
+            customSC!.selectedSegmentIndex = -1
+            customSC!.selectedSegmentIndex = 3
             selectedProj = 3
             self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedModeIndex![selectedProj] as Int, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.Bottom)
         default:

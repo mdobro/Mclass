@@ -63,7 +63,7 @@ import Cocoa
         USBHelper.startInit(self)
         
         //uncomment to erase stored room value
-        //NSUserDefaults.standardUserDefaults().removeObjectForKey("currentRoom")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("currentRoom")
     }
     
     func setupIPs() {
