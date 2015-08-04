@@ -364,43 +364,50 @@ import Cocoa
     //Proj Send/Recieve
     func makeEquivalent() {
         equivalentQueue = false
-        
-        //if input is not off for proj 1...
-        if let _ = inputDict[Statuses[1]] {
-            PROJ1.requestPowerStateChange(true)
-            PROJ1.requestInputChangeToInputIndex(projDefaultInput)
-            equivalentQueue = true
-        } else {
-            PROJ1.requestPowerStateChange(false)
-            //this hasnt failed on first run yet, setting equivalent to true may cause problems here
+        if PROJ1 != nil {
+            //if input is not off for proj 1...
+            if let _ = inputDict[Statuses[1]] {
+                PROJ1.requestPowerStateChange(true)
+                PROJ1.requestInputChangeToInputIndex(projDefaultInput)
+                equivalentQueue = true
+            } else {
+                PROJ1.requestPowerStateChange(false)
+                //this hasnt failed on first run yet, setting equivalent to true may cause problems here
+            }
         }
         
-        //if input is not off for proj 2...
-        if let _ = inputDict[Statuses[2]] {
-            PROJ2.requestPowerStateChange(true)
-            PROJ2.requestInputChangeToInputIndex(projDefaultInput)
-            //not really sure how to change av input # 2 with this. need to experiment
-            equivalentQueue = true
-        } else {
-            PROJ2.requestPowerStateChange(false)
+        if PROJ2 != nil {
+            //if input is not off for proj 2...
+            if let _ = inputDict[Statuses[2]] {
+                PROJ2.requestPowerStateChange(true)
+                PROJ2.requestInputChangeToInputIndex(projDefaultInput)
+                //not really sure how to change av input # 2 with this. need to experiment
+                equivalentQueue = true
+            } else {
+                PROJ2.requestPowerStateChange(false)
+            }
         }
         
-        //if input is not off for proj 3...
-        if let _ = inputDict[Statuses[3]] {
-            PROJ3.requestPowerStateChange(true)
-            PROJ3.requestInputChangeToInputIndex(projDefaultInput)
-            equivalentQueue = true
-        } else {
-            PROJ3.requestPowerStateChange(false)
+        if PROJ3 != nil {
+            //if input is not off for proj 3...
+            if let _ = inputDict[Statuses[3]] {
+                PROJ3.requestPowerStateChange(true)
+                PROJ3.requestInputChangeToInputIndex(projDefaultInput)
+                equivalentQueue = true
+            } else {
+                PROJ3.requestPowerStateChange(false)
+            }
         }
         
-        //if input is not off for proj 4...
-        if let _ = inputDict[Statuses[4]] {
-            PROJ4.requestPowerStateChange(true)
-            PROJ4.requestInputChangeToInputIndex(projDefaultInput)
-            equivalentQueue = true
-        } else {
-            PROJ4.requestPowerStateChange(false)
+        if PROJ4 != nil {
+            //if input is not off for proj 4...
+            if let _ = inputDict[Statuses[4]] {
+                PROJ4.requestPowerStateChange(true)
+                PROJ4.requestInputChangeToInputIndex(projDefaultInput)
+                equivalentQueue = true
+            } else {
+                PROJ4.requestPowerStateChange(false)
+            }
         }
         
     }
