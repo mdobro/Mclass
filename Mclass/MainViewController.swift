@@ -110,12 +110,18 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
     
     func lockScreen(action: String){
         if action == "present-Connection" {
+            if tableViewController.customSC != nil {
+                tableViewController.customSC!.removeAllSegments()
+            }
             let alert = UIAlertController(title: "CONNECTION LOST!", message: "For help please contact CAEN:\n\nPhone: (734)-764-CAEN\nEmail: caen@umich.edu", preferredStyle: UIAlertControllerStyle.Alert)
             self.presentViewController(alert, animated: true, completion: nil)
         } else if action == "dismiss" || action == "errorsClear"{
             self.dismissViewControllerAnimated(true, completion: nil)
         }
         else {
+            if tableViewController.customSC != nil {
+                tableViewController.customSC!.removeAllSegments()
+            }
             self.dismissViewControllerAnimated(false, completion: { _ in
                 let alert = UIAlertController(title: "PROJECTOR \(action)ERROR!", message: "For help please contact CAEN:\n\nPhone: (734)-764-CAEN\nEmail: caen@umich.edu", preferredStyle: UIAlertControllerStyle.Alert)
                 self.presentViewController(alert, animated: true, completion: nil)
