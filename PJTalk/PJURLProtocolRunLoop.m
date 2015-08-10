@@ -230,6 +230,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 
 - (void)onSocketDidDisconnect:(AsyncSocket *)sock {
     //NSLOG(@"PJURLProtocolRunLoop[%p]: onSocketDidDisconnect:%@", self, sock);
+    //SonyError
     [[self client] URLProtocol:self didFailWithError:_error];
 }
 
