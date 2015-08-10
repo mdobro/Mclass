@@ -26,20 +26,24 @@ class SubMainViewController: UIViewController {
     @IBOutlet weak var volLabel: UILabel!
     @IBOutlet weak var MinusVol: UIButton!
     @IBOutlet weak var PlusVol: UIButton!
-    var VOLUME: Int = 0
+    @IBOutlet weak var VOL_DSP: UIProgressView!
     
+    var VOLUME: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.recordSettingsButton.layer.cornerRadius = 15
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("RefreshTime"), userInfo: nil, repeats: true)
         
+        let barVal = Float((VOLUME+40))/52
+        VOL_DSP.setProgress(barVal, animated: true)
     }
-    
 
     @IBAction func Inc(sender: UIButton) {
         if (VOLUME < 12) {
             VOLUME = VOLUME + 3
+            let barVal = Float((VOLUME+40))/52
+            VOL_DSP.setProgress(barVal, animated: true)
         }
         delegate.subMainDidChange(self, volume: VOLUME)
     }
@@ -47,6 +51,8 @@ class SubMainViewController: UIViewController {
     @IBAction func Dec(sender: UIButton) {
         if (VOLUME > -39) {
             VOLUME = VOLUME - 3
+            let barVal = Float((VOLUME+40))/52
+            VOL_DSP.setProgress(barVal, animated: true)
         }
         delegate.subMainDidChange(self, volume: VOLUME)
     }
