@@ -78,6 +78,7 @@ import Cocoa
             PROJ1 = PJProjector(host: Statuses[10], port: PJLINKPORT)
             PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
             PROJ1.refreshTimerOn = true
+            PROJ1.refreshTimerInterval = 5
             
         }
         
@@ -92,7 +93,7 @@ import Cocoa
             PROJ1.refreshTimerInterval = 5
             PROJ2 = PJProjector(host: Statuses[19], port: PJLINKPORT)
             PROJ2.refreshTimerOn = true
-            PROJ2.refreshTimerInterval = 5
+            PROJ2.refreshTimerInterval = 6
             PROJ2.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
 
         }
@@ -109,11 +110,11 @@ import Cocoa
             PROJ1.refreshTimerInterval = 5
             PROJ2 = PJProjector(host: Statuses[19], port: PJLINKPORT)
             PROJ2.refreshTimerOn = true
-            PROJ2.refreshTimerInterval = 5
+            PROJ2.refreshTimerInterval = 6
             PROJ2.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
             PROJ3 = PJProjector(host: Statuses[28], port: PJLINKPORT)
             PROJ3.refreshTimerOn = true
-            PROJ3.refreshTimerInterval = 5
+            PROJ3.refreshTimerInterval = 7
             PROJ3.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
         }
         
@@ -130,15 +131,15 @@ import Cocoa
             PROJ1.refreshTimerInterval = 5
             PROJ2 = PJProjector(host: Statuses[19], port: PJLINKPORT)
             PROJ2.refreshTimerOn = true
-            PROJ2.refreshTimerInterval = 5
+            PROJ2.refreshTimerInterval = 6
             PROJ2.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
             PROJ3 = PJProjector(host: Statuses[28], port: PJLINKPORT)
             PROJ3.refreshTimerOn = true
-            PROJ3.refreshTimerInterval = 5
+            PROJ3.refreshTimerInterval = 7
             PROJ3.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
             PROJ4 = PJProjector(host: Statuses[37], port: PJLINKPORT)
             PROJ4.refreshTimerOn = true
-            PROJ4.refreshTimerInterval = 5
+            PROJ4.refreshTimerInterval = 8
             PROJ4.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
 
             
