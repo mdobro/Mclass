@@ -37,6 +37,8 @@ class SubMainViewController: UIViewController {
         
         let barVal = Float((VOLUME+40))/52
         VOL_DSP.setProgress(barVal, animated: true)
+        let transform = CGAffineTransformMakeScale(1, 15)
+        VOL_DSP.transform = transform
     }
 
     @IBAction func Inc(sender: UIButton) {
