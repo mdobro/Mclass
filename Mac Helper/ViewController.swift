@@ -148,6 +148,7 @@ import Cocoa
         for i in 1...IPDictionary!.count-2 {
             buttons += ["Projector \(i) IP (click to edit)", "Projector \(i) Connection Status", "Projector \(i) Name", "Projector \(i) Manufacturer", "Projector \(i) Product", "Projector \(i) Power", "Projector \(i) Input", "ERRORS [fan, lamp, temp, cover, filter, other]", ""]
         }
+        self.table.reloadData()
         
         //set dicts up to be based off manufactuer name
         inputDict = ["Laptop" : 2, "Document Camera" : 3, "Apple TV" : 1, "Blank Screen" : -1]//hdmi inputs start at 0
@@ -456,7 +457,10 @@ import Cocoa
         default:
             ipadIndex = 0
         }
-        if Statuses[index - 1] == "Connected" {
+        
+        //was causing onSocketDidDisconnect crash
+        /*
+        if Statuses[index + 3] == "Lamp On" {
             if let _ = inputDict[Statuses[ipadIndex]] {
                 proj.requestPowerStateChange(true)
                 if proj.manufacturerName == "EPSON" {
@@ -472,6 +476,7 @@ import Cocoa
                 proj.requestPowerStateChange(false)
             }
         }
+        */
     }
 
     func projDidChange(notification:NSNotification) {

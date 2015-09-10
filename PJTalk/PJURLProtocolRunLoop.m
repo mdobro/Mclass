@@ -170,9 +170,9 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
         // Get the host and port
         NSString* host = [url host];
         // Get the port
-        NSNumber* portNum = [url port];
+        //NSNumber* portNum = [url port];
         // Get the port number
-        uint16_t port16 = [portNum unsignedShortValue];
+        //uint16_t port16 = [portNum unsignedShortValue];
         // Create the socket
         _socket = [[AsyncSocket alloc] initWithDelegate:self];
         // Connect to the host
@@ -244,7 +244,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 }
 
 - (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-    NSString* dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    //NSString* dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     //NSLOG(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didReadData:\"%@\" withTag:%ld", self, sock, dataStr, tag);
     // Switch on tag
     BOOL     handled = YES;
