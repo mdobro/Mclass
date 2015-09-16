@@ -164,6 +164,7 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
         }
     } else {
         NSLog(@"PJResponseInfo: response is too short.");
+        ret = 0;
     }
 
     return ret;
