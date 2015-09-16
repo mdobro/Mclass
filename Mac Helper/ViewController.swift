@@ -130,6 +130,7 @@ import Cocoa
         }
         
         let data = "RECALL 0 PRESET 1001\n"
+        //if tesira class let data = "\"ProgramVolume\" recallPresetByName Default\n"
         dspSocket.writeData(data.dataUsingEncoding(NSUTF8StringEncoding)!, withTimeout: -1.0, tag: 0)
         dspSocket.readDataWithTimeout(-1.0, tag: 0)
         
@@ -311,13 +312,16 @@ import Cocoa
         var revised: String!
         if (vol == "10000") {
             revised = "SET 1 FDRMUTE \"Program volume\" 1 0\n"
+            //if tesira class... revised = "\"ProgramVolume\" set mute 1 false\n"
         }
         else if (vol == "-10000") {
             revised = "SET 1 FDRMUTE \"Program volume\" 1 1\n"
+            //if tesira class... revised = "\"ProgramVolume\" set mute 1 true\n"
         }
         else {
             print(vol)
             revised = "SET 1 FDRLVL \"Program volume\" 1 \(vol)\n"
+            //if tesira class... revised = "\"ProgramVolume\" set level 1 \(vol)\n"
         }
         let data:NSData = revised.dataUsingEncoding(NSUTF8StringEncoding)!
         dspSocket.writeData(data, withTimeout: -1.0, tag: 0)
