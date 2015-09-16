@@ -31,10 +31,10 @@ import Cocoa
     var inputDict:[String: Int]!
     
     //PJLink
-    var PROJ1:PJProjector!
-    var PROJ2:PJProjector!
-    var PROJ3:PJProjector!
-    var PROJ4:PJProjector!
+    var PROJ1:PJProjector?
+    var PROJ2:PJProjector?
+    var PROJ3:PJProjector?
+    var PROJ4:PJProjector?
     let PJLINKPORT = 4352
     let epsonDefaultInput:UInt = 4
     let sonyDefaultInput:UInt = 5
@@ -72,78 +72,44 @@ import Cocoa
         self.subToNotifications()
         
         if (IPDictionary!.count - 2) == 1 {
-            
             Statuses[10] = IPDictionary!["Projector1"]!
-            
             PROJ1 = PJProjector(host: Statuses[10], port: PJLINKPORT)
-            PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
-            PROJ1.refreshTimerOn = true
-            PROJ1.refreshTimerInterval = 5
-            
-        }
-        
-        else if (IPDictionary!.count - 2) == 2 {
-        
+        } else if (IPDictionary!.count - 2) == 2 {
             Statuses[10] = IPDictionary!["Projector1"]!
             Statuses[19] = IPDictionary!["Projector2"]!
-        
             PROJ1 = PJProjector(host: Statuses[10], port: PJLINKPORT)
-            PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
-            PROJ1.refreshTimerOn = true
-            PROJ1.refreshTimerInterval = 5
             PROJ2 = PJProjector(host: Statuses[19], port: PJLINKPORT)
-            PROJ2.refreshTimerOn = true
-            PROJ2.refreshTimerInterval = 6
-            PROJ2.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
 
-        }
-        
-        else if (IPDictionary!.count - 2) == 3 {
-            
+        } else if (IPDictionary!.count - 2) == 3 {
             Statuses[10] = IPDictionary!["Projector1"]!
             Statuses[19] = IPDictionary!["Projector2"]!
             Statuses[28] = IPDictionary!["Projector3"]!
-            
             PROJ1 = PJProjector(host: Statuses[10], port: PJLINKPORT)
-            PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
-            PROJ1.refreshTimerOn = true
-            PROJ1.refreshTimerInterval = 5
             PROJ2 = PJProjector(host: Statuses[19], port: PJLINKPORT)
-            PROJ2.refreshTimerOn = true
-            PROJ2.refreshTimerInterval = 6
-            PROJ2.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
             PROJ3 = PJProjector(host: Statuses[28], port: PJLINKPORT)
-            PROJ3.refreshTimerOn = true
-            PROJ3.refreshTimerInterval = 7
-            PROJ3.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
-        }
-        
-        else {
-            
+        } else {
             Statuses[10] = IPDictionary!["Projector1"]!
             Statuses[19] = IPDictionary!["Projector2"]!
             Statuses[28] = IPDictionary!["Projector3"]!
             Statuses[37] = IPDictionary!["Projector4"]!
-            
             PROJ1 = PJProjector(host: Statuses[10], port: PJLINKPORT)
-            PROJ1.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
-            PROJ1.refreshTimerOn = true
-            PROJ1.refreshTimerInterval = 5
             PROJ2 = PJProjector(host: Statuses[19], port: PJLINKPORT)
-            PROJ2.refreshTimerOn = true
-            PROJ2.refreshTimerInterval = 6
-            PROJ2.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
             PROJ3 = PJProjector(host: Statuses[28], port: PJLINKPORT)
-            PROJ3.refreshTimerOn = true
-            PROJ3.refreshTimerInterval = 7
-            PROJ3.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
             PROJ4 = PJProjector(host: Statuses[37], port: PJLINKPORT)
-            PROJ4.refreshTimerOn = true
-            PROJ4.refreshTimerInterval = 8
-            PROJ4.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
-
-            
         }
+        
+        PROJ1?.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+        PROJ1?.refreshTimerOn = true
+        PROJ1?.refreshTimerInterval = 5
+        PROJ2?.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+        PROJ2?.refreshTimerOn = true
+        PROJ2?.refreshTimerInterval = 5
+        PROJ3?.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+        PROJ3?.refreshTimerOn = true
+        PROJ3?.refreshTimerInterval = 5
+        PROJ4?.refreshAllQueriesForReason(PJRefreshReason.ProjectorCreation)
+        PROJ4?.refreshTimerOn = true
+        PROJ4?.refreshTimerInterval = 5
         
         for i in 1...IPDictionary!.count-2 {
             buttons += ["Projector \(i) IP (click to edit)", "Projector \(i) Connection Status", "Projector \(i) Name", "Projector \(i) Manufacturer", "Projector \(i) Product", "Projector \(i) Power", "Projector \(i) Input", "ERRORS [fan, lamp, temp, cover, filter, other]", ""]
@@ -257,6 +223,17 @@ import Cocoa
                 "*"/* 19 */, "", "", "", "", "", "", "", "",
                 "*"/* 28 */, "", "", "", "", "", "", "", "",
                 "*"/* 37 */, "", "", "", "", "", "", "", ""/*end filler line*/]
+            
+            //manage attached devices
+            PROJ1?.requestPowerStateChange(false)
+            PROJ2?.requestPowerStateChange(false)
+            PROJ3?.requestPowerStateChange(false)
+            PROJ4?.requestPowerStateChange(false)
+            PROJ1 = nil
+            PROJ2 = nil
+            PROJ3 = nil
+            PROJ4 = nil
+            
             table.reloadData()
         }
     }
@@ -264,10 +241,10 @@ import Cocoa
     @objc func recievedP1source(source:String){
         Statuses[1] = source
         if (source == "OFF") {
-            PROJ1.requestPowerStateChange(false)
+            PROJ1?.requestPowerStateChange(false)
         }
         else {
-            PROJ1.requestPowerStateChange(true)
+            PROJ1?.requestPowerStateChange(true)
             changeAVInput(inputDict[source]!, output: 1)
         }
         table.reloadDataForRowIndexes(NSIndexSet(index: 1), columnIndexes: NSIndexSet(index: 1))
@@ -276,10 +253,10 @@ import Cocoa
     @objc func recievedP2source(source:String){
         Statuses[2] = source
         if (source == "OFF") {
-            PROJ2.requestPowerStateChange(false)
+            PROJ2?.requestPowerStateChange(false)
         }
         else {
-            PROJ2.requestPowerStateChange(true)
+            PROJ2?.requestPowerStateChange(true)
             changeAVInput(inputDict[source]!, output: 2)
         }
         table.reloadDataForRowIndexes(NSIndexSet(index: 2), columnIndexes: NSIndexSet(index: 1))
@@ -288,10 +265,10 @@ import Cocoa
     @objc func recievedP3source(source:String) {
         Statuses[3] = source
         if (source == "OFF") {
-            PROJ3.requestPowerStateChange(false)
+            PROJ3?.requestPowerStateChange(false)
         }
         else {
-            PROJ3.requestPowerStateChange(true)
+            PROJ3?.requestPowerStateChange(true)
             //change AV input on proj 3 somehow
         }
         table.reloadDataForRowIndexes(NSIndexSet(index: 3), columnIndexes: NSIndexSet(index: 1))
@@ -300,10 +277,10 @@ import Cocoa
     @objc func recievedP4source(source:String) {
         Statuses[4] = source
         if (source == "OFF") {
-            PROJ4.requestPowerStateChange(false)
+            PROJ4?.requestPowerStateChange(false)
         }
         else {
-            PROJ4.requestPowerStateChange(true)
+            PROJ4?.requestPowerStateChange(true)
             //change AV input on proj 4 somehow
         }
         table.reloadDataForRowIndexes(NSIndexSet(index: 4), columnIndexes: NSIndexSet(index: 1))
@@ -443,40 +420,6 @@ import Cocoa
             proj.PJProjectorHasErrors = true
         }
         table.reloadDataForRowIndexes(NSIndexSet(indexesInRange: NSRange(index...(index + 5))), columnIndexes: NSIndexSet(index: 1))
-        
-        var ipadIndex = 0
-        switch index {
-        case 12:
-            ipadIndex = 1
-        case 21:
-            ipadIndex = 2
-        case 30:
-            ipadIndex = 3
-        case 39:
-            ipadIndex = 4
-        default:
-            ipadIndex = 0
-        }
-        
-        //was causing onSocketDidDisconnect crash
-        /*
-        if Statuses[index + 3] == "Lamp On" {
-            if let _ = inputDict[Statuses[ipadIndex]] {
-                proj.requestPowerStateChange(true)
-                if proj.manufacturerName == "EPSON" {
-                    if proj.activeInputIndex != epsonDefaultInput {
-                        proj.requestInputChangeToInputIndex(epsonDefaultInput)
-                    }
-                } else if proj.manufacturerName == "SONY" {
-                    if proj.activeInputIndex != sonyDefaultInput {
-                        proj.requestInputChangeToInputIndex(sonyDefaultInput)
-                    }
-                }
-            } else {
-                proj.requestPowerStateChange(false)
-            }
-        }
-        */
     }
 
     func projDidChange(notification:NSNotification) {
