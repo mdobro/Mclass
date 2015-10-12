@@ -259,7 +259,7 @@ class MainViewController: UIViewController, PTChannelDelegate, SettingsViewContr
         }
     
         print("Sending device info over ")
-        print(peerChannel_, appendNewline: true)
+        print(peerChannel_, terminator: "\n")
         
         let screen = UIScreen.mainScreen()
         let screenSize = screen.bounds.size;
